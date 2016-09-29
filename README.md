@@ -8,17 +8,17 @@ R package for geochemical data plot
 
 # Developer's guide
 
-1. Generate documentation
+Generate documentation
 
 ```
 $ cd ~/devel-godigo/R/chelyabinsk
 $ Rscript -e "devtools::document()"
 ```
 
-2. Run test
+Run test
 
 ```
 $ R CMD check ../chelyabinsk
 ```
 
-3. Push to the Git server
+Push to the Git server
