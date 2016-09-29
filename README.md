@@ -13,9 +13,12 @@ R package for geochemical data plot
 ```
 $ cd ~/devel-godigo/R/chelyabinsk
 $ Rscript -e "devtools::document()"
+```
 
 2. Run test
 
+```
 $ R CMD check ../chelyabinsk
+```
 
 3. Push to the Git server
