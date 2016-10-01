@@ -9,13 +9,13 @@
 #' R> tbl0 <- cas.read.dataframe("20130528105235-594267.dataframe","ppm")
 cas.read.dataframe <- function(dataframefile,tableunit="none"){
   #' ----------------
-  #' unit definition
+  #'* unit definition (should be defined as function in the future)
   #' ----------------
   convector        <- c( 1,     1,    100, 100,    100,1000,    1000,  1000000,1000000,1000000000,1000000000,1000000000000)
   names(convector) <- c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm",  "ug/g", "ppb",     "ng/g",    "pg/g")
-  
+
   #' ----------------
-  #' load dataset from csvfile with unit
+  #'* load dataset from csvfile with unit
   #' ----------------
   tblin <- read.csv(dataframefile,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(tblin)) {
