@@ -2,8 +2,8 @@
 #' @param name A filename
 #' @return A path to lib directory
 #' @examples
-#' castbl.path("periodic-table.csv")
+#' cas.path("periodic-table.csv")
 #' @export
-castbl.path <- function(name){
+cas.path <- function(name){
   return(system.file("data", name, package = "chelyabinsk"))
 }

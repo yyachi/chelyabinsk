@@ -3,7 +3,7 @@
 export(cas.balance)
 export(cas.exec)
 export(cas.normalize)
+export(cas.path)
 export(cas.periodic)
 export(cas.ref)
 export(cas.vector)
-export(castbl.path)
