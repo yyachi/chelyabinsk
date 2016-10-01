@@ -19,6 +19,10 @@ A numeric vector of element abundances with label
 Return element abundances from file `ref.csv'
 }
 \examples{
-cas.ref("Boynton 1989")
+> cas.ref("Boynton 1989")
+    La     Ce     Pr     Nd     Sm     Eu     Gd     Tb     Dy     Ho     Er
+0.3100 0.8080 0.1220 0.6000 0.1950 0.0735 0.2590 0.0474 0.3220 0.0718 0.2100
+    Tm     Yb     Lu
+0.0324 0.2090 0.0322
 }
 
