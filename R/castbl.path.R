@@ -5,5 +5,5 @@
 #' castbl.path("periodic-table.csv")
 #' @export
 castbl.path <- function(name){
-    return(system.file("data", name, package = "chelyabinsk"))
+  return(system.file("data", name, package = "chelyabinsk"))
 }

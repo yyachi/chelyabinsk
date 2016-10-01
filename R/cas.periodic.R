@@ -5,8 +5,8 @@
 #' cas.periodic("atomicnumber")['H']
 #' @export
 cas.periodic <- function(property){
-    foo        <- read.csv(castbl.path("periodic-table.csv"),row.names=1)
-    bar        <- foo[,property]
-    names(bar) <- rownames(foo)
-    return(sort(bar))
+  foo        <- read.csv(castbl.path("periodic-table.csv"),row.names=1)
+  bar        <- foo[,property]
+  names(bar) <- rownames(foo)
+  return(sort(bar))
 }
