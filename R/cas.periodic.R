@@ -9,7 +9,7 @@
 #' 49 55 56 57 58 59 60 62 63 64 65 66 67 68 69 70 71 72 73 81 82 83 90 92
 #' @export
 cas.periodic <- function(property){
-  foo        <- read.csv(castbl.path("periodic-table.csv"),row.names=1)
+  foo        <- read.csv(cas.path("periodic-table.csv"),row.names=1)
   bar        <- foo[,property]
   names(bar) <- rownames(foo)
   return(sort(bar))

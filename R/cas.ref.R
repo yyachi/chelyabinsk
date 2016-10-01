@@ -15,7 +15,7 @@ cas.ref <- function(analysis,property=NULL){
   ## names(foo) <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
 
   ### read as vector
-  castbl        <- read.table(castbl.path("ref.csv"),sep=",",header=T,row.names=1)
+  castbl        <- read.table(cas.path("ref.csv"),sep=",",header=T,row.names=1)
   ## foo        <- as.numeric(castbl)
   foo           <- as.numeric(castbl[analysis,]) # conversion to numeric vector
   names(foo)    <- names(castbl)
