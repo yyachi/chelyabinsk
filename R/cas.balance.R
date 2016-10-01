@@ -6,6 +6,7 @@
 #' @param density Vector of density of phases with label
 #' @return Element abundances with rows of remainder and series of
 #'     quantity, and columns of density and mode
+#' @export
 #' @examples
 #' > datain
 #'           Ba       Nb       La       Ce       Pr        Sr       Nd       Sm
@@ -33,7 +34,6 @@
 #' 3.3 3.4 3.3
 #' QQ <- cas.balance(datain,elements,phases,mode,density)
 #' QQzCI <- cas.normalize(QQ,ref0)
-#' @export
 cas.balance <- function(datain,element,phase,mode,density){
   ### pre process
   phase_meas <- datain[phase,element]

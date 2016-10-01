@@ -5,6 +5,7 @@
 #' @param ref A numeric vector of element abundances with label
 #' @return A ref-normalized daraframe with only elements defined in
 #'     ref
+#' @export
 #' @examples
 #' > property <- cas.periodic("atomicnumber")
 #' > ref      <- cas.ref("Boynton 1989")
@@ -20,7 +21,6 @@
 #' > lines(xxx,yyy[,"Po-4"],col="blue")
 #' > abline(h=(10^(-1:3)),lty="dashed") # grid
 #' > box() # bounding box
-#' @export
 cas.normalize <- function(castbl,ref,suffix_after_name_of_element=NULL){
   ## name filter when number of elements in ref exceeds those in sample
   ## typically suffix_after_name_of_element is "_error"

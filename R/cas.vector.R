@@ -1,6 +1,7 @@
 #' Convert dataframe with label to vector with label
 #' @param casdfm A dataframe with label
 #' @return A vector with label
+#' @export
 #' @examples
 #' > DD
 #'            ol   pig  WR
@@ -24,7 +25,6 @@
 #' > str(VV)
 #'  Named num [1:3] 3.3 3.4 3.3
 #'  - attr(*, "names")= chr [1:3] "ol" "pig" "WR"
-#' @export
 cas.vector <- function(casdfm){
   ## Primary target is a dataframe with single row
   casvector        <- as.numeric(casdfm)
