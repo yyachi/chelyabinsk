@@ -12,7 +12,7 @@ To install and use this package issue following command.
     R> install_github('misasa/chelyabinsk') % instead of install
 
     R> library('chelyabinsk')
-    $> castbl.path("periodic-table.csv")
+    R> cas.path("periodic-table.csv")
 
 # Developer's guide
 
