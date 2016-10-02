@@ -17,4 +17,7 @@ Conversion cofficient.  When `permil', this returns 1000
 \description{
 Return conversion cofficient depending on `unit'
 }
+\examples{
+> cas.convector("permil")
+}
 
