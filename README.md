@@ -37,6 +37,7 @@ $ Rscript -e "devtools::document()"
 ```
 
 ```
+R> setwd(file.path(Sys.getenv('HOME'),'devel-godigo','chelyabinsk'))
 R> devtools::document()
 ```
 
