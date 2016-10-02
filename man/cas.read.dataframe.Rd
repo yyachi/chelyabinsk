@@ -2,7 +2,7 @@
 % Please edit documentation in R/cas.read.dataframe.R
 \name{cas.read.dataframe}
 \alias{cas.read.dataframe}
-\title{Convert dataframe with label to vector with label}
+\title{Read dataframe created from casteml with column `unit'}
 \usage{
 cas.read.dataframe(dataframefile, tableunit = "none")
 }
@@ -15,17 +15,19 @@ cas.read.dataframe(dataframefile, tableunit = "none")
 A dataframe
 }
 \description{
-Convert dataframe with label to vector with label
+Read dataframe created from casteml with column `unit'
 }
 \examples{
+\dontrun{
 $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
 $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20130528105235-594267.dataframe
 R> tbl0 <- cas.read.dataframe("20130528105235-594267.dataframe","ppm")
+}
 ----------------
-unit definition
+* unit definition (should be defined as function in the future)
 ----------------
 ----------------
-load dataset from csvfile with unit
+* load dataset from csvfile with unit
 ----------------
 }
 
