@@ -13,12 +13,6 @@ cas.read.dataframe(dataframefile, tableunit)
 }
 \value{
 A dataframe with unit organized
-----------------
-* unit definition (should be defined as function in the future)
-----------------
-----------------
-* load dataset from csvfile with unit
-----------------
 }
 \description{
 Read dataframe created from casteml with column "unit"

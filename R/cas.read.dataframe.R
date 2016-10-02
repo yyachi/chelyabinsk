@@ -9,6 +9,7 @@
 #' @param dataframefile A flipped csvfile
 #' @param tableunit Preferred unit that will be passed to `cas.convector'
 #' @return A dataframe with unit organized
+#' @export
 cas.read.dataframe <- function(dataframefile,tableunit){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
