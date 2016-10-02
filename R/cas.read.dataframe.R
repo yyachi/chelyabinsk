@@ -1,6 +1,6 @@
 #' Read dataframe created from casteml with column `unit'
 #' @param dataframefile A flipped csvfile
-#' @param tableunit Preferred unit, that is one of c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm","ug/g","ppb","ng/g","pg/g")
+#' @param tableunit Preferred unit, that will be passed to `cas.convector'
 #' @return A dataframe
 #' @export
 #' @examples

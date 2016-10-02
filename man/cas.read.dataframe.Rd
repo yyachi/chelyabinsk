@@ -9,7 +9,7 @@ cas.read.dataframe(dataframefile, tableunit = "none")
 \arguments{
 \item{dataframefile}{A flipped csvfile}
 
-\item{tableunit}{Preferred unit, that is one of c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm","ug/g","ppb","ng/g","pg/g")}
+\item{tableunit}{Preferred unit, that will be passed to `cas.convector'}
 }
 \value{
 A dataframe
