@@ -22,20 +22,4 @@ Return normalized element abundances.  Note that only elements that
 exist both in castbl and ref are processed.  See also
 "Geochemical Modelling..." by Janousek et al. (2015)
 }
-\examples{
-> property <- cas.periodic("atomicnumber")
-> ref      <- cas.ref("Boynton 1989")
-> sample   <- read.table("sazava.tsv",sep="\\t",header=T,row.names=1)
->
-> yyy      <- cas.normalize(sample,ref) # normalized values
-> xxx      <- property[names(ref)]
->
-> plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")
-> axis(1,xxx,labels=names(xxx),cex.axis=0.75)
-> axis(2,cex.axis=0.75)
-> points(xxx,yyy[,"Po-4"],col="blue")
-> lines(xxx,yyy[,"Po-4"],col="blue")
-> abline(h=(10^(-1:3)),lty="dashed") # grid
-> box() # bounding box
-}
 

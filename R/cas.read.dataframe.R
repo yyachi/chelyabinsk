@@ -3,13 +3,12 @@
 #' @param tableunit Preferred unit, that will be passed to `cas.convector'
 #' @return A dataframe
 #' @export
-#' @examples
-#' \dontrun{
-#' $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
-#' $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20130528105235-594267.dataframe
-#' R> tbl0 <- cas.read.dataframe("20130528105235-594267.dataframe","ppm")
-#' }
 cas.read.dataframe <- function(dataframefile,tableunit="none"){
+  ### EXAMPLES
+  ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
+  ### $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20130528105235-594267.dataframe
+  ### R> tbl0 <- cas.read.dataframe("20130528105235-594267.dataframe","ppm")
+
   #' ----------------
   #'* unit definition (should be defined as function in the future)
   #' ----------------

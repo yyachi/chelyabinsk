@@ -2,7 +2,8 @@
 % Please edit documentation in R/cas.vector.R
 \name{cas.vector}
 \alias{cas.vector}
-\title{Convert dataframe with label to vector with label}
+\title{Convert dataframe with label to vector with label.  This is written
+at initial stage of development.  May be not that useful.}
 \usage{
 cas.vector(casdfm)
 }
@@ -13,30 +14,7 @@ cas.vector(casdfm)
 A vector with label
 }
 \description{
-Convert dataframe with label to vector with label
-}
-\examples{
-> DD
-           ol   pig  WR
-mode    0.525 0.353 1.0
-density 3.300 3.400 3.3
-> str(DD)
-'data.frame':	2 obs. of  3 variables:
- $ ol : num  0.525 3.3
- $ pig: num  0.353 3.4
- $ WR : num  1 3.3
-> DD["density",]
-         ol pig  WR
-density 3.3 3.4 3.3
-> cas.vector(DD["density",])
- ol pig  WR
-3.3 3.4 3.3
-> VV <- cas.vector(DD["density",])
-> VV
- ol pig  WR
-3.3 3.4 3.3
-> str(VV)
- Named num [1:3] 3.3 3.4 3.3
- - attr(*, "names")= chr [1:3] "ol" "pig" "WR"
+Convert dataframe with label to vector with label.  This is written
+at initial stage of development.  May be not that useful.
 }
 

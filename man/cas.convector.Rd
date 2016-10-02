@@ -18,6 +18,6 @@ Conversion cofficient.  When "permil", this returns 1000
 Return conversion cofficient depending on "unit"
 }
 \examples{
-> cas.convector("permil")
+cas.convector("permil")
 }
 

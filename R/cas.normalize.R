@@ -6,22 +6,23 @@
 #' @return A ref-normalized daraframe with only elements defined in
 #'     ref
 #' @export
-#' @examples
-#' > property <- cas.periodic("atomicnumber")
-#' > ref      <- cas.ref("Boynton 1989")
-#' > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
-#' >
-#' > yyy      <- cas.normalize(sample,ref) # normalized values
-#' > xxx      <- property[names(ref)]
-#' >
-#' > plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")
-#' > axis(1,xxx,labels=names(xxx),cex.axis=0.75)
-#' > axis(2,cex.axis=0.75)
-#' > points(xxx,yyy[,"Po-4"],col="blue")
-#' > lines(xxx,yyy[,"Po-4"],col="blue")
-#' > abline(h=(10^(-1:3)),lty="dashed") # grid
-#' > box() # bounding box
 cas.normalize <- function(castbl,ref,suffix_after_name_of_element=NULL){
+  ### EXAMPLES
+  ### > property <- cas.periodic("atomicnumber")
+  ### > ref      <- cas.ref("Boynton 1989")
+  ### > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
+  ### >
+  ### > yyy      <- cas.normalize(sample,ref) # normalized values
+  ### > xxx      <- property[names(ref)]
+  ### >
+  ### > plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")
+  ### > axis(1,xxx,labels=names(xxx),cex.axis=0.75)
+  ### > axis(2,cex.axis=0.75)
+  ### > points(xxx,yyy[,"Po-4"],col="blue")
+  ### > lines(xxx,yyy[,"Po-4"],col="blue")
+  ### > abline(h=(10^(-1:3)),lty="dashed") # grid
+  ### > box() # bounding box
+
   ## name filter when number of elements in ref exceeds those in sample
   ## typically suffix_after_name_of_element is "_error"
   names.share  <- intersect(names(ref),names(castbl))
