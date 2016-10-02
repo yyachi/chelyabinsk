@@ -3,7 +3,7 @@
 #' @param property A numeric vector of element property with label
 #'     that serves as sort key (option)
 #' @return A numeric vector of element abundances with label
-#' 
+#' @export
 #' @examples
 #' > cas.ref("Boynton 1989")
 #'     La     Ce     Pr     Nd     Sm     Eu     Gd     Tb     Dy     Ho     Er
