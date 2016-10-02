@@ -7,5 +7,5 @@ test_that("without existing file cas.path should return ''.",{
 })
 
 test_that("cas.periodic('atomicnumber') should return ''.",{
-	expect_that(as.integer(cas.periodic("atomicnumber")['H']), equals(1) )
+	expect_that(as.integer(cas.periodic("atomicnumber")['H']), equals(1))
 })
