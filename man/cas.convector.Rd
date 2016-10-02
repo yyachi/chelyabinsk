@@ -2,21 +2,19 @@
 % Please edit documentation in R/cas.convector.R
 \name{cas.convector}
 \alias{cas.convector}
-\title{Return conversion cofficient depending on unit}
+\title{Return conversion cofficient depending on `unit'}
 \usage{
 cas.convector(tableunit)
 }
 \arguments{
 \item{tableunit}{Unit string, that is one of
-c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm","ug/g","ppb","ng/g","pg/g")}
+"none","g/g","wt%","cg/g","%","permil","mg/g","ppm","ug/g","ppb","ng/g","pg/g"}
 }
 \value{
-Conversion cofficient.  When `permil', this returns 1000 instead of 0.001
+Conversion cofficient.  When `permil', this returns 1000
+  instead of 0.001
 }
 \description{
-Return conversion cofficient depending on unit
-}
-\examples{
-cas.convector("permil")
+Return conversion cofficient depending on `unit'
 }
 
