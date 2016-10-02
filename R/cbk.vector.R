@@ -3,7 +3,7 @@
 #' @param casdfm A dataframe with label
 #' @return A vector with label
 #' @export
-cas.vector <- function(casdfm){
+cbk.vector <- function(casdfm){
   ### EXAMPLES
   ### > DD
   ###            ol   pig  WR
@@ -17,10 +17,10 @@ cas.vector <- function(casdfm){
   ### > DD["density",]
   ###          ol pig  WR
   ### density 3.3 3.4 3.3
-  ### > cas.vector(DD["density",])
+  ### > cbk.vector(DD["density",])
   ###  ol pig  WR
   ### 3.3 3.4 3.3
-  ### > VV <- cas.vector(DD["density",])
+  ### > VV <- cbk.vector(DD["density",])
   ### > VV
   ###  ol pig  WR
   ### 3.3 3.4 3.3

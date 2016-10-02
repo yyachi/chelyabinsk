@@ -3,7 +3,7 @@
 #' @param x A filename
 #' @return result
 #' @export
-cas.exec <- function(x){
+cbk.exec <- function(x){
   # replacement for shell.exe (doesn't exist on MAC)
   if (exists("shell.exec",where = "package:base"))
     return(base::shell.exec(x))

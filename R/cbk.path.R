@@ -3,7 +3,7 @@
 #' @return A path to lib directory
 #' @export
 #' @examples
-#' cas.path("periodic-table.csv")
-cas.path <- function(name){
+#' cbk.path("periodic-table.csv")
+cbk.path <- function(name){
   return(system.file("data", name, package = "chelyabinsk"))
 }

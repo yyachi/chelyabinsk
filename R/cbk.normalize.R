@@ -6,13 +6,13 @@
 #' @return A ref-normalized daraframe with only elements defined in
 #'     ref
 #' @export
-cas.normalize <- function(castbl,ref,suffix_after_name_of_element=NULL){
+cbk.normalize <- function(castbl,ref,suffix_after_name_of_element=NULL){
   ### EXAMPLES
-  ### > property <- cas.periodic("atomicnumber")
-  ### > ref      <- cas.ref("Boynton 1989")
+  ### > property <- cbk.periodic("atomicnumber")
+  ### > ref      <- cbk.ref("Boynton 1989")
   ### > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
   ### >
-  ### > yyy      <- cas.normalize(sample,ref) # normalized values
+  ### > yyy      <- cbk.normalize(sample,ref) # normalized values
   ### > xxx      <- property[names(ref)]
   ### >
   ### > plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")

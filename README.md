@@ -3,11 +3,9 @@ R package for geochemical data plot
 
 # User's guide
 
-To install and use this package issue following command.
+install this package issue following command.
 
     R> install.packages('devtools')
-    R> install.packages('testthat')
-    R> install.packages("roxygen2")
 
     R> library(devtools)                    % provide install_github
     R> install_github('misasa/chelyabinsk') % instead of install
@@ -17,13 +15,15 @@ To install and use this package issue following command.
 
 # Developer's guide
 
-1. Clone the project from GitHub.
+1. Clone the project from GitHub and install appropriate packages.
 
   https://github.com/misasa/chelyabinsk
 
 ```
 $ cd ~/devel-godigo
 $ git clone https://github.com/misasa/chelyabinsk.git
+R> install.packages('testthat')
+R> install.packages("roxygen2")
 ```
 
 2. Locate your script with a function to directory "R".  Write

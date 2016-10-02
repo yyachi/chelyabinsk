@@ -7,7 +7,7 @@
 #' @return Element abundances with rows of remainder and series of
 #'     quantity, and columns of density and mode
 #' @export
-cas.balance <- function(datain,element,phase,mode,density){
+cbk.balance <- function(datain,element,phase,mode,density){
   ### EXAMPLES
   ### > datain
   ###           Ba       Nb       La       Ce       Pr        Sr       Nd       Sm
@@ -33,8 +33,8 @@ cas.balance <- function(datain,element,phase,mode,density){
   ### > density
   ###  ol pig  WR
   ### 3.3 3.4 3.3
-  ### QQ <- cas.balance(datain,element,phase,mode,density)
-  ### QQzCI <- cas.normalize(QQ,ref0)
+  ### QQ <- cbk.balance(datain,element,phase,mode,density)
+  ### QQzCI <- cbk.normalize(QQ,ref0)
 
   ### pre process
   phase_meas <- datain[phase,element]
