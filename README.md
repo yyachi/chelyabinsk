@@ -7,6 +7,7 @@ To install and use this package issue following command.
 
     R> install.packages('devtools')
     R> install.packages('testthat')
+    R> install.packages("roxygen2")
 
     R> library(devtools)                    % provide install_github
     R> install_github('misasa/chelyabinsk') % instead of install
