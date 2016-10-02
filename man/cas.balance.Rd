@@ -39,15 +39,15 @@ ol  0.031766 0.010288
 pig 0.200000 0.037148
 WR  0.077000 0.014200
 > element
- [1] "Ba" "Nb" "La" "Ce" "Pr" "Sr" "Nd" "Sm" "Zr" "Hf" "Eu" "Gd" "Dy" "Li" "Y" 
+ [1] "Ba" "Nb" "La" "Ce" "Pr" "Sr" "Nd" "Sm" "Zr" "Hf" "Eu" "Gd" "Dy" "Li" "Y"
 [16] "Er" "Yb" "Lu"
 > phase
 [1] "ol"  "pig"
 > mode
-   ol   pig    WR 
-0.525 0.353 1.000 
+   ol   pig    WR
+0.525 0.353 1.000
 > density
- ol pig  WR 
+ ol pig  WR
 3.3 3.4 3.3
 QQ <- cas.balance(datain,elements,phases,mode,density)
 QQzCI <- cas.normalize(QQ,ref0)
