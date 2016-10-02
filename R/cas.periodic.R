@@ -1,5 +1,6 @@
-#' Return properties of elements from a file "periotic-table.csv"
-#' @param property A name of PROPERTY such for atomicnumber, volatility, and compatibility
+#' Return properties of elements from a file `periotic-table.csv'
+#' @param property A name of PROPERTY such for atomicnumber,
+#'   volatility, and compatibility
 #' @return A numeric vector of element property with label
 #' @export
 #' @examples
