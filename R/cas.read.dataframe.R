@@ -21,7 +21,8 @@ cas.read.dataframe <- function(dataframefile,tableunit="none"){
   #' ----------------
   tblin <- read.csv(dataframefile,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(tblin)) {
-    factor <- convector[tblin[,'unit']]
+    ## factor <- convector[tblin[,'unit']]
+    factor <- cas.convector(tblin[,'unit'])
     names(factor) <- rownames(tblin)
     factor[is.na(factor)] <- 1
     ## tbl0 <- t(tblin[colnames(tblin) != 'unit'] / factor) * convector[tableunit]
