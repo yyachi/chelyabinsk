@@ -8,7 +8,7 @@ cas.convector(tableunit)
 }
 \arguments{
 \item{tableunit}{Unit string, that is one of
-"none","g/g","wt%","cg/g","%","permil","mg/g","ppm","ug/g","ppb","ng/g","pg/g"}
+"none","g/g","wt\%","cg/g","\%","permil","mg/g","ppm","ug/g","ppb","ng/g","pg/g"}
 }
 \value{
 Conversion cofficient.  When `permil', this returns 1000
