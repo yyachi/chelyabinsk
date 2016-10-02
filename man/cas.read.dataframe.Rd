@@ -2,19 +2,31 @@
 % Please edit documentation in R/cas.read.dataframe.R
 \name{cas.read.dataframe}
 \alias{cas.read.dataframe}
-\title{Read dataframe created from casteml with column `unit'}
+\title{Read dataframe created from casteml with column "unit"}
 \usage{
-cas.read.dataframe(dataframefile, tableunit = "none")
+cas.read.dataframe(dataframefile, tableunit)
 }
 \arguments{
 \item{dataframefile}{A flipped csvfile}
 
-\item{tableunit}{Preferred unit, that will be passed to `cas.convector'}
+\item{tableunit}{Preferred unit that will be passed to `cas.convector'}
 }
 \value{
-A dataframe
+A dataframe with unit organized
+----------------
+* unit definition (should be defined as function in the future)
+----------------
+----------------
+* load dataset from csvfile with unit
+----------------
 }
 \description{
-Read dataframe created from casteml with column `unit'
+Read dataframe created from casteml with column "unit"
+}
+\details{
+This is designed to read CASTEML file by Rscript.
+}
+\seealso{
+\code{\link{read.csv}}
 }
 

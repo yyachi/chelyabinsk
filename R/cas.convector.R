@@ -1,4 +1,4 @@
-#' Return conversion cofficient depending on "unit"
+#' Return conversion cofficient for unit
 #' @param tableunit Unit string, that is one of
 #'   none, g/g, wt\%, cg/g, \%, permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g
 #' @return Conversion cofficient.  When "permil", this returns 1000

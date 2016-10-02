@@ -1,9 +1,15 @@
-#' Read dataframe created from casteml with column `unit'
+#' @title Read dataframe created from casteml with column "unit"
+#'
+#' @description Read dataframe created from casteml with column "unit"
+#'
+#' @details This is designed to read CASTEML file by Rscript.
+#'
+#' @seealso \code{\link{read.csv}}
+#' 
 #' @param dataframefile A flipped csvfile
-#' @param tableunit Preferred unit, that will be passed to `cas.convector'
-#' @return A dataframe
-#' @export
-cas.read.dataframe <- function(dataframefile,tableunit="none"){
+#' @param tableunit Preferred unit that will be passed to `cas.convector'
+#' @return A dataframe with unit organized
+cas.read.dataframe <- function(dataframefile,tableunit){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ### $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20130528105235-594267.dataframe

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cas.convector.R
 \name{cas.convector}
 \alias{cas.convector}
-\title{Return conversion cofficient depending on "unit"}
+\title{Return conversion cofficient for unit}
 \usage{
 cas.convector(tableunit)
 }
@@ -15,7 +15,7 @@ Conversion cofficient.  When "permil", this returns 1000
   instead of 0.001
 }
 \description{
-Return conversion cofficient depending on "unit"
+Return conversion cofficient for unit
 }
 \examples{
 cas.convector("permil")
