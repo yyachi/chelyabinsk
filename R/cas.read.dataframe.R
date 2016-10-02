@@ -13,8 +13,8 @@ cas.read.dataframe <- function(dataframefile,tableunit="none"){
   #' ----------------
   #'* unit definition (should be defined as function in the future)
   #' ----------------
-  convector        <- c( 1,     1,    100, 100,    100,1000,    1000,  1000000,1000000,1000000000,1000000000,1000000000000)
-  names(convector) <- c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm",  "ug/g", "ppb",     "ng/g",    "pg/g")
+  ## convector        <- c(1,     1,    100,  100,   100,1000,    1000,  1000000,1000000,1000000000,1000000000,1000000000000)
+  ## names(convector) <- c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm",  "ug/g", "ppb",     "ng/g",    "pg/g")
 
   #' ----------------
   #'* load dataset from csvfile with unit
@@ -24,7 +24,8 @@ cas.read.dataframe <- function(dataframefile,tableunit="none"){
     factor <- convector[tblin[,'unit']]
     names(factor) <- rownames(tblin)
     factor[is.na(factor)] <- 1
-    tbl0 <- t(tblin[colnames(tblin) != 'unit'] / factor) * convector[tableunit]
+    ## tbl0 <- t(tblin[colnames(tblin) != 'unit'] / factor) * convector[tableunit]
+    tbl0 <- t(tblin[colnames(tblin) != 'unit'] / factor) * cas.convector(tableunit)
   } else {
     tbl0 <- t(tblin)
   }
