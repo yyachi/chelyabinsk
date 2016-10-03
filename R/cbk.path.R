@@ -5,5 +5,5 @@
 #' @examples
 #' cbk.path("periodic-table.csv")
 cbk.path <- function(name){
-  return(system.file("data", name, package = "chelyabinsk"))
+  return(system.file("extdata", name, package = "chelyabinsk"))
 }
