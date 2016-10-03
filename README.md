@@ -58,6 +58,10 @@ $ R CMD install chelyabinsk_1.0.tar.gz
 
 # Developer's TODO
 
-1. Write document in R/chelyabinsk-package.R, texinfo, and GitHub
+1. Write document in R/chelyabinsk-package.R
 2. Write document in each function by Roxygen2
 3. Write test code
+4. Have inst/extdata/ref.csv in casteml-dataframe format
+5. Revise cbk.ref.R accodringly or create new function
+6. Convert inst/extdata/periodic-table.csv to more handy format
+7. Write document in texinfo
