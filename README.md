@@ -1,5 +1,5 @@
 # chelyabinsk
-R package for geochemical data plot
+R package for geochemical datasets
 
 # User's guide
 
