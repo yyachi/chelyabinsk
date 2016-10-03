@@ -48,7 +48,7 @@ R> devtools::document()
 $ vi ./tests/testthat/test-mytest.R
 $ R CMD check ../chelyabinsk
 $ R CMD build ../chelyabinsk
-$ R CMD install ./chelyabinsk_1.0.tar.gz
+$ R CMD install chelyabinsk_1.0.tar.gz
 ```
 
 5. Push to the server
