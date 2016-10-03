@@ -27,7 +27,8 @@ R> install.packages("roxygen2")
 ```
 
 2. Locate your script with a function to directory "R".  Write
-   document with rule of Roxygen2.
+   document with rule of Roxygen2.  Do not use `#' in main code
+   besides the documentation in Roxygen2.
 
 3. Generate documentation by following commands.
 
