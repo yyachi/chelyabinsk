@@ -30,7 +30,7 @@ R> install.packages("roxygen2")
    document with rule of Roxygen2.  Do not use |#' | in main code
    besides the documentation in Roxygen2.
 
-3. Generate documentation by following commands.
+3. Generate Rdoc by following commands.
 
 ```
 $ cd ~/devel-godigo/chelyabinsk
@@ -42,20 +42,22 @@ R> setwd(path.expand("~/devel-godigo/chelyabinsk"))
 R> devtools::document()
 ```
 
-4. Write and run test
+4. Run test
 
 ```
 $ vi ./tests/testthat/test-mytest.R
 $ R CMD check ../chelyabinsk
+```
+
+5. Push to the server or build/install locally
+
+```
 $ R CMD build ../chelyabinsk
 $ R CMD install chelyabinsk_1.0.tar.gz
 ```
 
-5. Push to the server
-
 # Developer's TODO
 
-1. Write a Makefile
-2. Write document in R/chelyabinsk-package.R
-3. Write document in each function by Roxygen2
-4. Write test code
+1. Write document in R/chelyabinsk-package.R, texinfo, and GitHub
+2. Write document in each function by Roxygen2
+3. Write test code
