@@ -1,11 +1,4 @@
-#' @title Read dataframe created from casteml with column "unit"
-#'
-#' @description Read dataframe created from casteml with column "unit"
-#'
-#' @details This is designed to read CASTEML file by Rscript.
-#'
-#' @seealso \code{\link{read.csv}}
-#' 
+#' Read dataframe created from casteml with column "unit"
 #' @param dataframefile A flipped csvfile
 #' @param tableunit Preferred unit that will be passed to `cbk.convector'
 #' @return A dataframe with unit organized

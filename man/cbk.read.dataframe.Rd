@@ -17,10 +17,4 @@ A dataframe with unit organized
 \description{
 Read dataframe created from casteml with column "unit"
 }
-\details{
-This is designed to read CASTEML file by Rscript.
-}
-\seealso{
-\code{\link{read.csv}}
-}
 
