@@ -46,6 +46,16 @@ R> devtools::document()
 ```
 $ vi ./tests/testthat/test-mytest.R
 $ R CMD check ../chelyabinsk
+$ R CMD build ../chelyabinsk
+$ R CMD install ./chelyabinsk_1.0.tar.gz
 ```
 
 5. Push to the server
+
+# Developer's TODO
+
+1. Eliminate error related to NAMESPACE
+2. Write a Makefile
+3. Write document in R/chelyabinsk-package.R
+4. Write document in each function
+5. Write test code
