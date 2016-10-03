@@ -55,8 +55,7 @@ $ R CMD install ./chelyabinsk_1.0.tar.gz
 
 # Developer's TODO
 
-1. Eliminate error related to NAMESPACE
-2. Write a Makefile
-3. Write document in R/chelyabinsk-package.R
-4. Write document in each function
-5. Write test code
+1. Write a Makefile
+2. Write document in R/chelyabinsk-package.R
+3. Write document in each function by Roxygen2
+4. Write test code
