@@ -1,6 +1,6 @@
 PACKAGENAME:=$(shell basename `pwd`)
 VERSION:=1.0
-TARGET:=PACKAGENAME_$(VERSION).tar.gz
+TARGET:=$(PACKAGENAME)_$(VERSION).tar.gz
 RFILE:=$(wildcard R/*.R)
 RDOCFILE:=$(wildcard man/*.Rd)
 
@@ -19,7 +19,7 @@ test:
 	R CMD check ../$(PACKAGENAME)
 
 .PHONY: build
-rdoc:
+build:
 	R CMD build ../$(PACKAGENAME)
 
 .PHONY: install
