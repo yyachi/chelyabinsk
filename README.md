@@ -61,7 +61,8 @@ $ R CMD install chelyabinsk_1.0.tar.gz
 1. Write document in R/chelyabinsk-package.R
 2. Write document in each function by Roxygen2
 3. Write test code
-4. Have inst/extdata/ref.csv in casteml-dataframe format
-5. Revise cbk.ref.R accodringly or create new function
-6. Convert inst/extdata/periodic-table.csv to more handy format
-7. Write document in texinfo
+4. Update R scripts in https://github.com/misasa/casteml/tree/master/template/plot
+5. Write document in texinfo
+6. Have inst/extdata/ref.csv in casteml-dataframe format
+7. Revise cbk.ref.R accodringly or create new function
+8. Convert inst/extdata/periodic-table.csv to more handy format
