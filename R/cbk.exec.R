@@ -1,5 +1,14 @@
-#' Open file even on Mac
-#' @param file A filename
+#' @title Open a file or URL using Windows/Macintosoh file associations
+#'
+#' @description Open the specified file or URL using the application
+#'   specified in the Windows/Macintosh file associations.  On Windows
+#'   and Macintosh, this calls \code{\link{shell.exec}} and
+#'   \code{\link{system}}, respectively.
+#'
+#' @details The path in \code{file} is interpreted relative to the
+#'   current working directory.
+#' @seealso \code{\link{shell.exec}}, \code{\link{system}}
+#' @param file file or URL to be opened
 #' @return result by opening the file
 #' @export
 #' @examples
@@ -11,6 +20,5 @@ cbk.exec <- function(file){
   # replacement for shell.exe (doesn't exist on MAC)
   if (exists("shell.exec",where = "package:base"))
     return(base::shell.exec(file))
-  comm <- paste("open",file)
-  return(system(comm))
+  return(system(paste("open",file)))
 }

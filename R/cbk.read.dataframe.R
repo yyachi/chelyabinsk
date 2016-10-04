@@ -5,7 +5,6 @@
 #'
 #' @details This internally calls
 #'   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)}.
-#'
 #' @param csvfile A csvfile with columns of stone and rows of element
 #'   abundances, with 2nd column `unit'
 #' @param unit Preferred unit that will be passed to
