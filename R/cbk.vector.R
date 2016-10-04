@@ -1,5 +1,8 @@
 #' @title Convert dataframe with label to vector with label
 #'
+#' @description Convert dataframe with label to vector with label.  It
+#'   seems that this conversion is necessary for calcuration.
+#' 
 #' @details This is written at initial stage of development.  May be
 #'   not that useful.
 #' @param casdfm A dataframe with label

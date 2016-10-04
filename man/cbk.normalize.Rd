@@ -23,6 +23,9 @@ Return normalized element abundances.  Note that only
   elements that exist both in castbl and ref are processed.  See
   also "Geochemical Modelling..." by Janousek et al. (2015)
 }
+\examples{
+cbk.normalize(cbk.read.dataframe(cbk.path("20130528105235-594267_trace.dataframe"),"ppm"),cbk.ref("Boynton.1989"))
+}
 \seealso{
 \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
 }
