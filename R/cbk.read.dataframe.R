@@ -1,14 +1,24 @@
-#' Read dataframe created from casteml with column "unit"
-#' @param dataframefile A flipped csvfile
-#' @param tableunit Preferred unit that will be passed to `cbk.convector'
+#' @title Read csvfile created by casteml convert with column `unit'
+#'
+#' @description Read csvfile created by \code{casteml convert} with
+#'   column `unit'.
+#'
+#' @details This internally calls
+#'   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)}.
+#'
+#' @param csvfile A csvfile with columns of stone and rows of element
+#'   abundances, with 2nd column `unit'
+#' @param tableunit Preferred unit that will be passed to
+#'   `cbk.convector'
 #' @return A dataframe with unit organized
+#' @seealso \url{http://dream.misasa.okayama-u.ac.jp}, \code{\link{cbk.convector}}
 #' @export
-cbk.read.dataframe <- function(dataframefile,tableunit){
+cbk.read.dataframe <- function(csvfile,tableunit){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ### $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20130528105235-594267.dataframe
   ### R> tbl0 <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
-  tblin <- read.csv(dataframefile,row.names=1,header=T,stringsAsFactors=F)
+  tblin <- read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(tblin)) {
     factor <- cbk.convector(tblin[,'unit'])
     names(factor) <- rownames(tblin)

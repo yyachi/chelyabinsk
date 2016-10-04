@@ -2,19 +2,29 @@
 % Please edit documentation in R/cbk.read.dataframe.R
 \name{cbk.read.dataframe}
 \alias{cbk.read.dataframe}
-\title{Read dataframe created from casteml with column "unit"}
+\title{Read csvfile created by casteml convert with column `unit'}
 \usage{
-cbk.read.dataframe(dataframefile, tableunit)
+cbk.read.dataframe(csvfile, tableunit)
 }
 \arguments{
-\item{dataframefile}{A flipped csvfile}
+\item{csvfile}{A csvfile with columns of stone and rows of element
+abundances, with 2nd column `unit'}
 
-\item{tableunit}{Preferred unit that will be passed to `cbk.convector'}
+\item{tableunit}{Preferred unit that will be passed to
+`cbk.convector'}
 }
 \value{
 A dataframe with unit organized
 }
 \description{
-Read dataframe created from casteml with column "unit"
+Read csvfile created by \code{casteml convert} with
+  column `unit'.
+}
+\details{
+This internally calls
+  \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)}.
+}
+\seealso{
+\url{http://dream.misasa.okayama-u.ac.jp}, \code{\link{cbk.convector}}
 }
 
