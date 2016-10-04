@@ -24,4 +24,7 @@ Element abundances with rows of remainder and series of
 \description{
 Do mass balance calculation
 }
+\seealso{
+\code{\link{cbk.normalize}}
+}
 

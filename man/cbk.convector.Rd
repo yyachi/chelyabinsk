@@ -4,10 +4,10 @@
 \alias{cbk.convector}
 \title{Return conversion cofficient for unit}
 \usage{
-cbk.convector(tableunit)
+cbk.convector(unit)
 }
 \arguments{
-\item{tableunit}{Unit string, that is one of
+\item{unit}{Unit string, that is one of
 none, g/g, wt\%, cg/g, \%, permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g}
 }
 \value{
@@ -18,6 +18,8 @@ Conversion cofficient.  When "permil", this returns 1000
 Return conversion cofficient for unit
 }
 \examples{
+cbk.convector("none")
 cbk.convector("permil")
+cbk.convector("ppm")
 }
 

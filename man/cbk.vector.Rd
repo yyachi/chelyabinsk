@@ -2,8 +2,7 @@
 % Please edit documentation in R/cbk.vector.R
 \name{cbk.vector}
 \alias{cbk.vector}
-\title{Convert dataframe with label to vector with label.  This is written
-at initial stage of development.  May be not that useful.}
+\title{Convert dataframe with label to vector with label}
 \usage{
 cbk.vector(casdfm)
 }
@@ -13,8 +12,11 @@ cbk.vector(casdfm)
 \value{
 A vector with label
 }
-\description{
-Convert dataframe with label to vector with label.  This is written
-at initial stage of development.  May be not that useful.
+\details{
+This is written at initial stage of development.  May be
+  not that useful.
+}
+\examples{
+cbk.vector(data.frame(row.names=c("density"), ol=c(3.300), pig=c(3.400), WR=c(3.3)))
 }
 

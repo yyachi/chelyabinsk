@@ -6,6 +6,8 @@
 #' @importFrom utils read.csv
 #' @examples
 #' cbk.periodic("atomicnumber")
+#' cbk.periodic("volatility")
+#' cbk.periodic("compatibility")
 cbk.periodic <- function(property){
   ### EXAMPLES
   ### cbk.periodic("atomicnumber")

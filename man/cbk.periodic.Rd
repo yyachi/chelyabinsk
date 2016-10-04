@@ -18,5 +18,7 @@ Return properties of elements from a file `periotic-table.csv'
 }
 \examples{
 cbk.periodic("atomicnumber")
+cbk.periodic("volatility")
+cbk.periodic("compatibility")
 }
 

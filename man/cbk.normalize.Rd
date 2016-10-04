@@ -2,9 +2,7 @@
 % Please edit documentation in R/cbk.normalize.R
 \name{cbk.normalize}
 \alias{cbk.normalize}
-\title{Return normalized element abundances.  Note that only elements that
-exist both in castbl and ref are processed.  See also
-"Geochemical Modelling..." by Janousek et al. (2015)}
+\title{Return normalized element abundances}
 \usage{
 cbk.normalize(castbl, ref, suffix_after_name_of_element = NULL)
 }
@@ -21,8 +19,11 @@ A ref-normalized daraframe with only elements defined in
   ref
 }
 \description{
-Return normalized element abundances.  Note that only elements that
-exist both in castbl and ref are processed.  See also
-"Geochemical Modelling..." by Janousek et al. (2015)
+Return normalized element abundances.  Note that only
+  elements that exist both in castbl and ref are processed.  See
+  also "Geochemical Modelling..." by Janousek et al. (2015)
+}
+\seealso{
+\code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
 }
 

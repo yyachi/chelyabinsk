@@ -4,6 +4,7 @@
 #' @export
 #' @examples
 #' cbk.path("periodic-table.csv")
+#' cbk.path("ref.csv")
 cbk.path <- function(name){
   return(system.file("extdata", name, package = "chelyabinsk"))
 }

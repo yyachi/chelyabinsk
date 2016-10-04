@@ -1,8 +1,12 @@
-#' Convert dataframe with label to vector with label.  This is written
-#' at initial stage of development.  May be not that useful.
+#' @title Convert dataframe with label to vector with label
+#'
+#' @details This is written at initial stage of development.  May be
+#'   not that useful.
 #' @param casdfm A dataframe with label
 #' @return A vector with label
 #' @export
+#' @examples
+#' cbk.vector(data.frame(row.names=c("density"), ol=c(3.300), pig=c(3.400), WR=c(3.3)))
 cbk.vector <- function(casdfm){
   ### EXAMPLES
   ### DD <- data.frame(row.names=c("mode","density"), ol=c(0.525,3.300), pig=c(0.353,3.400), WR=c(1.0,3.3))

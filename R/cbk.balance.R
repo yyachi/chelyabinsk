@@ -6,6 +6,7 @@
 #' @param density Vector of density of phases with label
 #' @return Element abundances with rows of remainder and series of
 #'     quantity, and columns of density and mode
+#' @seealso \code{\link{cbk.normalize}}
 #' @export
 cbk.balance <- function(datain,element,phase,mode,density){
   ### EXAMPLES
