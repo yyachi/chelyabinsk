@@ -4,8 +4,12 @@
 \name{chelyabinsk-package}
 \alias{chelyabinsk}
 \alias{chelyabinsk-package}
-\title{Utility to plot geochemical data.}
+\title{Express element distribution using comprehensive geochemical datasets}
 \description{
-This package allows you to plot geochemical data
+Chelyabinsk allows you to handle comprehensive geochemical dataset.
+As a first step, you plot REE and SPIDER diagram using appropriate
+normalization.  Then, using both in-situ and whole-rock datasets,
+you obtain element quantitative-distribution among phases with
+mass-balance calculation.
 }
 
