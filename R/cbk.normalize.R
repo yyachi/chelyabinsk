@@ -39,5 +39,5 @@ cbk.normalize <- function(castbl,ref,suffix_after_name_of_element=NULL){
   }
 
   ## return(normtbl)
-  return(as.data.frame(normtbl)) # try to distribute object by data.frame to be consistent
+  return(as.data.frame(normtbl)) # data.frame to be consistent
 }

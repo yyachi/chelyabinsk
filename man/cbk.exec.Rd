@@ -2,19 +2,20 @@
 % Please edit documentation in R/cbk.exec.R
 \name{cbk.exec}
 \alias{cbk.exec}
-\title{Open file even on Mac.  This is copy from
-http://stackoverflow.com/questions/12273346/system-independent-method-of-opening-afile}
+\title{Open file even on Mac.}
 \usage{
-cbk.exec(x)
+cbk.exec(file)
 }
 \arguments{
-\item{x}{A filename}
+\item{file}{A filename}
 }
 \value{
-result
+result by opening the file
 }
 \description{
-Open file even on Mac.  This is copy from
-http://stackoverflow.com/questions/12273346/system-independent-method-of-opening-afile
+Open file even on Mac.
+}
+\examples{
+cbk.exec(".")
 }
 

@@ -12,7 +12,7 @@ none, g/g, wt\%, cg/g, \%, permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g}
 }
 \value{
 Conversion cofficient.  When "permil", this returns 1000
-  instead of 0.001
+  instead of 0.001.  Very likely you want to DIVIDE table by the factor
 }
 \description{
 Return conversion cofficient for unit

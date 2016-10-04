@@ -2,6 +2,8 @@
 #' @param file A filename
 #' @return result by opening the file
 #' @export
+#' @examples
+#' cbk.exec(".")
 cbk.exec <- function(file){
   # Idea is from
   # http://stackoverflow.com/questions/12273346/system-independent-method-of-opening-afile
