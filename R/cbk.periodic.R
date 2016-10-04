@@ -3,6 +3,7 @@
 #'   volatility, and compatibility
 #' @return A numeric vector of element property with label
 #' @export
+#' @importFrom utils read.csv
 #' @examples
 #' cbk.periodic("atomicnumber")
 cbk.periodic <- function(property){
