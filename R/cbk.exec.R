@@ -1,4 +1,4 @@
-#' Open file even on Mac.  
+#' Open file even on Mac
 #' @param file A filename
 #' @return result by opening the file
 #' @export

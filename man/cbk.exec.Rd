@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.exec.R
 \name{cbk.exec}
 \alias{cbk.exec}
-\title{Open file even on Mac.}
+\title{Open file even on Mac}
 \usage{
 cbk.exec(file)
 }
@@ -13,7 +13,7 @@ cbk.exec(file)
 result by opening the file
 }
 \description{
-Open file even on Mac.
+Open file even on Mac
 }
 \examples{
 cbk.exec(".")

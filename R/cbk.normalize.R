@@ -3,8 +3,10 @@
 #' "Geochemical Modelling..." by Janousek et al. (2015)
 #' @param castbl A dataframe of element abundances
 #' @param ref A numeric vector of element abundances with label
+#' @param suffix_after_name_of_element String to recognize column of
+#'   errors.  Feed "_error" when necessary (default: NULL)
 #' @return A ref-normalized daraframe with only elements defined in
-#'     ref
+#'   ref
 #' @export
 cbk.normalize <- function(castbl,ref,suffix_after_name_of_element=NULL){
   ### EXAMPLES

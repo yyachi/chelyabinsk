@@ -12,10 +12,13 @@ cbk.normalize(castbl, ref, suffix_after_name_of_element = NULL)
 \item{castbl}{A dataframe of element abundances}
 
 \item{ref}{A numeric vector of element abundances with label}
+
+\item{suffix_after_name_of_element}{String to recognize column of
+errors.  Feed "_error" when necessary (default: NULL)}
 }
 \value{
 A ref-normalized daraframe with only elements defined in
-    ref
+  ref
 }
 \description{
 Return normalized element abundances.  Note that only elements that
