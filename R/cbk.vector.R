@@ -5,6 +5,7 @@
 #' @export
 cbk.vector <- function(casdfm){
   ### EXAMPLES
+  ### DD <- data.frame(row.names=c("mode","density"), ol=c(0.525,3.300), pig=c(0.353,3.400), WR=c(1.0,3.3))
   ### > DD
   ###            ol   pig  WR
   ### mode    0.525 0.353 1.0
