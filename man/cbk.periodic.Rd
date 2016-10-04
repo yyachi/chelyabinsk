@@ -4,11 +4,11 @@
 \alias{cbk.periodic}
 \title{Return properties of elements from a file `periotic-table.csv'}
 \usage{
-cbk.periodic(property)
+cbk.periodic(property = "atomicnumber")
 }
 \arguments{
-\item{property}{A name of PROPERTY such for atomicnumber,
-volatility, and compatibility}
+\item{property}{A name of PROPERTY, either 'atomicnumber',
+'volatility', or 'compatibility'}
 }
 \value{
 A numeric vector of element property with label

@@ -1,6 +1,6 @@
 #' Return properties of elements from a file `periotic-table.csv'
-#' @param property A name of PROPERTY such for atomicnumber,
-#'   volatility, and compatibility
+#' @param property A name of PROPERTY, either 'atomicnumber',
+#'   'volatility', or 'compatibility'
 #' @return A numeric vector of element property with label
 #' @export
 #' @importFrom utils read.csv
@@ -8,7 +8,7 @@
 #' cbk.periodic("atomicnumber")
 #' cbk.periodic("volatility")
 #' cbk.periodic("compatibility")
-cbk.periodic <- function(property){
+cbk.periodic <- function(property="atomicnumber"){
   ### EXAMPLES
   ### cbk.periodic("atomicnumber")
   ###  H Li Be  B  C  N  F Na Mg Al Si  P  S Cl  K Ca Ti Cr Mn Fe Ni Rb Sr  Y Zr Nb
