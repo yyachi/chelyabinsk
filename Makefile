@@ -1,9 +1,9 @@
-PACKAGENAME:=$(shell basename `pwd`)
-VERSION:=1.0
-TARGET:=$(PACKAGENAME)_$(VERSION).tar.gz
-RFILE:=$(wildcard R/*.R)
-RDOCFILE:=$(wildcard man/*.Rd)
-DATAFILE:=$(wildcard inst/extdata/*.*)
+PACKAGENAME = $(shell basename `pwd`)
+VERSION = 1.0
+TARGET = $(PACKAGENAME)_$(VERSION).tar.gz
+RFILE = $(wildcard R/*.R)
+RDOCFILE = $(wildcard man/*.Rd)
+DATAFILE= $(wildcard inst/extdata/*.*)
 
 $(TARGET): DESCRIPTION NAMESPACE $(RDOCFILE) $(RFILE) $(DATAFILE)
 	R CMD check ../$(PACKAGENAME)
