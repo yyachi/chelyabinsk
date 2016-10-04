@@ -1,0 +1,90 @@
+Element abundances are expressed in unit of micro gram per gram.  Note
+that these are not in notation of oxide but metal.  Wasson 1988 and
+McDonough 1995 are from Wasson and Kallemeyn (1988) and McDonough, W.,
+& Sun, S. (1995), respectively.
+
+- Wasson, J. T., and Kallemeyn, G. W. (1988). Compositions of chondrites. Phil. Trans. Roy. Soc. London A, 325, 535–544.
+- McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223–253.
+
+
+#+TBLNAME: ref1
+|    | unit | Boynton 1989 | McDonough 1995 | Wasson 1988 |
+|----+------+--------------+----------------+-------------|
+| H  | ppm  |              |                |       20000 |
+| Li | ppm  |              |            1.5 |        1.57 |
+| Be | ppm  |              |          0.025 |       0.027 |
+| B  | ppm  |              |            0.9 |         1.2 |
+| C  | ppm  |              |          35000 |       32000 |
+| N  | ppm  |              |           3180 |        1500 |
+| F  | ppm  |              |             60 |          64 |
+| Na | ppm  |              |           5100 |        4900 |
+| Mg | ppm  |              |          96500 |       97000 |
+| Al | ppm  |              |           8600 |        8600 |
+| Si | ppm  |              |         106500 |      105000 |
+| P  | ppm  |              |           1080 |        1020 |
+| S  | ppm  |              |          54000 |       59000 |
+| Cl | ppm  |              |            680 |         680 |
+| K  | ppm  |              |            550 |         560 |
+| Ca | ppm  |              |           9250 |        9200 |
+| Sc | ppm  |              |           5.92 |        5.80 |
+| Ti | ppm  |              |            440 |         420 |
+| V  | ppm  |              |             56 |          55 |
+| Cr | ppm  |              |           2650 |        2650 |
+| Mn | ppm  |              |           1920 |        1900 |
+| Fe | ppm  |              |         181000 |      182000 |
+| Co | ppm  |              |            500 |         508 |
+| Ni | ppm  |              |          10500 |       10700 |
+| Cu | ppm  |              |            120 |         121 |
+| Zn | ppm  |              |            310 |         312 |
+| Ga | ppm  |              |            9.2 |         9.8 |
+| Ge | ppm  |              |             31 |        33.0 |
+| As | ppm  |              |           1.85 |        1.84 |
+| Se | ppm  |              |             21 |        19.6 |
+| Br | ppm  |              |           3.57 |        3.60 |
+| Rb | ppm  |              |           2.30 |        2.22 |
+| Sr | ppm  |              |           7.25 |         7.9 |
+| Y  | ppm  |              |           1.57 |        1.44 |
+| Zr | ppm  |              |           3.82 |         3.8 |
+| Nb | ppm  |              |           0.24 |        0.27 |
+| Mo | ppm  |              |          0.900 |       0.920 |
+| Ru | ppm  |              |          0.710 |       0.710 |
+| Rh | ppm  |              |          0.130 |       0.134 |
+| Pd | ppm  |              |          0.550 |       0.560 |
+| Ag | ppm  |              |          0.200 |       0.208 |
+| Cd | ppm  |              |          0.710 |       0.650 |
+| In | ppm  |              |          0.080 |       0.080 |
+| Sn | ppm  |              |          1.650 |       1.720 |
+| Sb | ppm  |              |          0.140 |       0.153 |
+| Te | ppm  |              |          2.330 |       2.400 |
+| I  | ppm  |              |          0.450 |       0.500 |
+| Cs | ppm  |              |          0.190 |       0.183 |
+| Ba | ppm  |              |          2.410 |       2.300 |
+| La | ppm  |         0.31 |          0.237 |       0.236 |
+| Ce | ppm  |        0.808 |          0.613 |       0.616 |
+| Pr | ppm  |        0.122 |         0.0928 |      0.0929 |
+| Nd | ppm  |          0.6 |          0.457 |       0.457 |
+| Sm | ppm  |        0.195 |          0.148 |       0.149 |
+| Eu | ppm  |       0.0735 |         0.0563 |       0.056 |
+| Gd | ppm  |        0.259 |          0.199 |       0.197 |
+| Tb | ppm  |       0.0474 |         0.0361 |      0.0355 |
+| Dy | ppm  |        0.322 |          0.246 |       0.245 |
+| Ho | ppm  |       0.0718 |         0.0546 |      0.0547 |
+| Er | ppm  |         0.21 |          0.160 |       0.160 |
+| Tm | ppm  |       0.0324 |         0.0247 |      0.0247 |
+| Yb | ppm  |        0.209 |          0.161 |       0.159 |
+| Lu | ppm  |       0.0322 |         0.0246 |      0.0245 |
+| Hf | ppm  |              |          0.103 |       0.120 |
+| Ta | ppm  |              |         0.0136 |       0.016 |
+| W  | ppm  |              |          0.093 |       0.100 |
+| Re | ppm  |              |          0.040 |       0.037 |
+| Os | ppm  |              |          0.490 |       0.490 |
+| Ir | ppm  |              |          0.455 |       0.460 |
+| Pt | ppm  |              |          1.010 |       0.990 |
+| Au | ppm  |              |          0.140 |       0.144 |
+| Hg | ppm  |              |          0.300 |       0.390 |
+| Tl | ppm  |              |          0.140 |       0.142 |
+| Pb | ppm  |              |          2.470 |       2.400 |
+| Bi | ppm  |              |          0.110 |       0.110 |
+| Th | ppm  |              |          0.029 |       0.029 |
+| U  | ppm  |              |         0.0074 |      0.0082 |
+
