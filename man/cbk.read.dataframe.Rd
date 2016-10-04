@@ -17,12 +17,15 @@ abundances, with 2nd column `unit'}
 A dataframe with unit organized
 }
 \description{
-Read csvfile created by \code{casteml convert} with
+Read csvfile created by \code{casteml convert --format dataframe} with
   column `unit'.
 }
 \details{
 This internally calls
   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)}.
+}
+\examples{
+cbk.read.dataframe(cbk.path("20130528105235-594267_trace.dataframe"),"ppm")
 }
 \seealso{
 \url{http://dream.misasa.okayama-u.ac.jp}, \code{\link{cbk.convector}}
