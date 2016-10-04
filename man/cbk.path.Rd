@@ -18,5 +18,6 @@ Convert filename of local library to absolute path
 \examples{
 cbk.path("periodic-table.csv")
 cbk.path("ref.csv")
+cbk.path("ref1.dataframe")
 }
 

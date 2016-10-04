@@ -7,7 +7,7 @@
 cbk.ref(analysis, property = NULL)
 }
 \arguments{
-\item{analysis}{A name of REFERENCE that is either "Boynton 1989", "McDonough 1995", or "Wasson 1988"}
+\item{analysis}{A name of reference that is either "Boynton.1989", "McDonough.1995", "Wasson.1988"}
 
 \item{property}{A numeric vector of element property with label
 that serves as sort key (default=NULL).  You can feed output from `cbk.periodic'}
@@ -19,8 +19,8 @@ A numeric vector of element abundances with label
 Return element abundances from file `ref.csv'
 }
 \examples{
-cbk.ref("Boynton 1989")
-cbk.ref("Wasson 1988",cbk.periodic('atomicnumber'))
-cbk.ref("McDonough 1995",cbk.periodic('volatility'))
+cbk.ref("Boynton.1989")
+cbk.ref("Wasson.1988",cbk.periodic('atomicnumber'))
+cbk.ref("McDonough.1995",cbk.periodic('volatility'))
 }
 

@@ -8,7 +8,7 @@ McDonough 1995 are from Wasson and Kallemeyn (1988) and McDonough, W.,
 
 
 #+TBLNAME: ref1
-|    | unit | Boynton 1989 | McDonough 1995 | Wasson 1988 |
+|    | unit | Boynton.1989 | McDonough.1995 | Wasson.1988 |
 |----+------+--------------+----------------+-------------|
 | H  | ppm  |              |                |       20000 |
 | Li | ppm  |              |            1.5 |        1.57 |
