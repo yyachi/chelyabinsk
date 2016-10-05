@@ -13,18 +13,18 @@ cbk.ref <- function(analysis,property=NULL){
   ## names(foo) <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
 
   ### read as vector
-  ## castbl     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
-  castbl        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
-  ## foo        <- as.numeric(castbl)
-  foo           <- as.numeric(castbl[analysis,]) # conversion to numeric vector
-  names(foo)    <- names(castbl)
+  ## cbktbl     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
+  cbktbl        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
+  ## foo        <- as.numeric(cbktbl)
+  foo           <- as.numeric(cbktbl[analysis,]) # conversion to numeric vector
+  names(foo)    <- names(cbktbl)
 
   ### filter
   bar           <- foo[is.finite(foo) & !is.nan(foo) & !is.na(foo)]
 
-  ### sort if sort-key is provided
+  ### sort when sort-key is provided
   if(!is.null(property)){
-    bar       <- bar[names(property)]
+    bar         <- bar[names(property)]
   }
 
   return(bar)

@@ -10,11 +10,10 @@ cbk.read.dataframe(csvfile, unit)
 \item{csvfile}{A csvfile with columns of stone and rows of element
 abundances, with 2nd column `unit'}
 
-\item{unit}{Preferred unit that will be passed to
-`cbk.convector'}
+\item{unit}{Preferred unit that will be passed to `cbk.convector'}
 }
 \value{
-A dataframe with unit organized
+A cbk.dataframe with unit organized
 }
 \description{
 Read csvfile created by \code{casteml convert --format dataframe} with
@@ -22,12 +21,14 @@ Read csvfile created by \code{casteml convert --format dataframe} with
 }
 \details{
 This internally calls
-  \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)}.
+  \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)},
+  take out column of `unit' and normalized by the `unit' column.
 }
 \examples{
 cbk.read.dataframe(cbk.path("20130528105235-594267_trace.dataframe"),"ppm")
 }
 \seealso{
-\url{http://dream.misasa.okayama-u.ac.jp}, \code{\link{cbk.convector}}
+\url{http://dream.misasa.okayama-u.ac.jp},
+  \code{\link{cbk.convector}}
 }
 

@@ -1,11 +1,9 @@
 Element abundances are expressed in unit of micro gram per gram.  Note
-that these are not in notation of oxide but metal.  Wasson 1988 and
-McDonough 1995 are from Wasson and Kallemeyn (1988) and McDonough, W.,
-& Sun, S. (1995), respectively.
+that these are not in notation of oxide but metal.  "Wasson.1988" and
+"McDonough.1995" are from [1] and [2], respectively.
 
-- Wasson, J. T., and Kallemeyn, G. W. (1988). Compositions of chondrites. Phil. Trans. Roy. Soc. London A, 325, 535–544.
-- McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223–253.
-
+[1] Wasson, J. T., and Kallemeyn, G. W. (1988). Compositions of chondrites. Phil. Trans. Roy. Soc. London A, 325, 535–544.
+[2] McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223–253.
 
 #+TBLNAME: ref1
 |    | unit | Boynton.1989 | McDonough.1995 | Wasson.1988 |
@@ -87,4 +85,3 @@ McDonough 1995 are from Wasson and Kallemeyn (1988) and McDonough, W.,
 | Bi | ppm  |              |          0.110 |       0.110 |
 | Th | ppm  |              |          0.029 |       0.029 |
 | U  | ppm  |              |         0.0074 |      0.0082 |
-

@@ -1,3 +1,8 @@
+Volatility and compatibility are from [1] and [2], respectively.
+
+[1] Davis, A. M. (2006). Volatile evolution and loss. Meteorites and the early solar system II 1, 295-307.
+[2] Sun, S., and McDonough, W. (1989). Chemical and isotopic systematics of oceanic basalts: implications for mantle composition and processes. Geological Society, London, Special Publications, 42, 313-345.
+
 #+TBLNAME: tbl0
 |    | atomicnumber | volatility | compatibility | atomicmass |
 |----+--------------+------------+---------------+------------|
@@ -78,6 +83,3 @@
 | Bi |           83 |         17 |            -1 |   208.9804 |
 | Th |           90 |         70 |             6 |   232.0381 |
 | U  |           92 |         61 |             7 |   238.0289 |
-
-- volatility is from Davis, A. M. (2006). Volatile evolution and loss. Meteorites and the early solar system II 1, 295-307.
-- compatibility is from Sun, S., and McDonough, W. (1989). Chemical and isotopic systematics of oceanic basalts: implications for mantle composition and processes. Geological Society, London, Special Publications, 42, 313-345.

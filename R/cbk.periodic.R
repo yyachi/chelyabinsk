@@ -16,7 +16,8 @@ cbk.periodic <- function(property="atomicnumber"){
   ### In Cs Ba La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta Tl Pb Bi Th  U
   ### 49 55 56 57 58 59 60 62 63 64 65 66 67 68 69 70 71 72 73 81 82 83 90 92
 
-  foo        <- read.csv(cbk.path("periodic-table.csv"),header=T,row.names=1)
+  ## foo     <- read.csv(cbk.path("periodic-table.csv"),header=T,row.names=1)
+  foo        <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
   bar        <- foo[,property]
   names(bar) <- rownames(foo)
   return(sort(bar))

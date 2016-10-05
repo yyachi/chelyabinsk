@@ -4,10 +4,10 @@
 \alias{cbk.normalize}
 \title{Return normalized element abundances}
 \usage{
-cbk.normalize(castbl, ref, suffix_after_name_of_element = NULL)
+cbk.normalize(cbktbl, ref, suffix_after_name_of_element = NULL)
 }
 \arguments{
-\item{castbl}{A dataframe of element abundances}
+\item{cbktbl}{A dataframe of element abundances}
 
 \item{ref}{A numeric vector of element abundances with label}
 
@@ -20,7 +20,7 @@ A ref-normalized daraframe with only elements defined in
 }
 \description{
 Return normalized element abundances.  Note that only
-  elements that exist both in castbl and ref are processed.  See
+  elements that exist both in cbktbl and ref are processed.  See
   also "Geochemical Modelling..." by Janousek et al. (2015)
 }
 \examples{

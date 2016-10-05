@@ -5,12 +5,12 @@
 #' 
 #' @details This is written at initial stage of development.  May be
 #'   not that useful.
-#' @param casdfm A dataframe with label
+#' @param df A dataframe with label
 #' @return A vector with label
 #' @export
 #' @examples
 #' cbk.vector(data.frame(row.names=c("density"), ol=c(3.300), pig=c(3.400), WR=c(3.3)))
-cbk.vector <- function(casdfm){
+cbk.vector <- function(df){
   ### EXAMPLES
   ### DD <- data.frame(row.names=c("mode","density"), ol=c(0.525,3.300), pig=c(0.353,3.400), WR=c(1.0,3.3))
   ### > DD
@@ -37,7 +37,7 @@ cbk.vector <- function(casdfm){
   ###  - attr(*, "names")= chr [1:3] "ol" "pig" "WR"
 
   ## Primary target is a dataframe with single row
-  casvector        <- as.numeric(casdfm)
-  names(casvector) <- names(casdfm)
-  return(casvector)
+  assocvector        <- as.numeric(df)
+  names(assocvector) <- names(df)
+  return(assocvector)
 }

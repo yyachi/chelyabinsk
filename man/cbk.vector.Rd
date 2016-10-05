@@ -4,10 +4,10 @@
 \alias{cbk.vector}
 \title{Convert dataframe with label to vector with label}
 \usage{
-cbk.vector(casdfm)
+cbk.vector(df)
 }
 \arguments{
-\item{casdfm}{A dataframe with label}
+\item{df}{A dataframe with label}
 }
 \value{
 A vector with label
