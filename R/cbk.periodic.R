@@ -1,14 +1,20 @@
-#' Return properties of elements from a file `periotic-table.csv'
+#' Return properties of elements from a file `periotic-table1.dataframe'
+#'
+#' Return properties of elements from a file
+#' `periotic-table1.dataframe'.  Specify property of your concern
+#' otherwise this return dataframe of periodic table.
+#' 
 #' @param property A name of PROPERTY, either 'atomicnumber',
-#'   'volatility', or 'compatibility'
-#' @return A numeric vector of element property with label
+#'   'volatility', or 'compatibility'.
+#' @return A numeric vector of element property with label or dataframe of periodic-table
 #' @export
 #' @importFrom utils read.csv
 #' @examples
+#' cbk.periodic()
 #' cbk.periodic("atomicnumber")
 #' cbk.periodic("volatility")
 #' cbk.periodic("compatibility")
-cbk.periodic <- function(property="atomicnumber"){
+cbk.periodic <- function(property=NULL){
   ### EXAMPLES
   ### cbk.periodic("atomicnumber")
   ###  H Li Be  B  C  N  F Na Mg Al Si  P  S Cl  K Ca Ti Cr Mn Fe Ni Rb Sr  Y Zr Nb
@@ -18,7 +24,13 @@ cbk.periodic <- function(property="atomicnumber"){
 
   ## foo     <- read.csv(cbk.path("periodic-table.csv"),header=T,row.names=1)
   foo        <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
-  bar        <- foo[,property]
-  names(bar) <- rownames(foo)
-  return(sort(bar))
+
+  if(!is.null(property)){
+    bar        <- foo[,property]
+    names(bar) <- rownames(foo)
+    out        <- sort(bar)
+  } else {
+    out        <- foo
+  }
+  return(out)
 }

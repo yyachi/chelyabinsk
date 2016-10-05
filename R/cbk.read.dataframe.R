@@ -8,14 +8,14 @@
 #'   take out column of `unit' and normalized by the `unit' column.
 #' @param csvfile A csvfile with columns of stone and rows of element
 #'   abundances, with 2nd column `unit'
-#' @param unit Preferred unit that will be passed to `cbk.convector'
-#' @return A cbk.dataframe with unit organized
+#' @param tableunit Output unit, that will be resolved by `cbk.convector' (default="none")
+#' @return A dataframe with unit organized
 #' @seealso \url{http://dream.misasa.okayama-u.ac.jp},
 #'   \code{\link{cbk.convector}}
 #' @export
 #' @examples
 #' cbk.read.dataframe(cbk.path("20130528105235-594267_trace.dataframe"),"ppm")
-cbk.read.dataframe <- function(csvfile,unit){
+cbk.read.dataframe <- function(csvfile,tableunit="none"){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ### $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20130528105235-594267_trace.dataframe
@@ -25,7 +25,7 @@ cbk.read.dataframe <- function(csvfile,unit){
     factor <- cbk.convector(tblin[,'unit'])
     names(factor) <- rownames(tblin)
     factor[is.na(factor)] <- 1
-    cbktbl0 <- as.data.frame(t(tblin[colnames(tblin) != 'unit'] / factor)) * cbk.convector(unit)
+    cbktbl0 <- as.data.frame(t(tblin[colnames(tblin) != 'unit'] / factor)) * cbk.convector(tableunit)
   } else {
     cbktbl0 <- as.data.frame(t(tblin))
   }

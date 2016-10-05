@@ -4,16 +4,16 @@
 \alias{cbk.read.dataframe}
 \title{Read csvfile created by casteml convert with column `unit'}
 \usage{
-cbk.read.dataframe(csvfile, unit)
+cbk.read.dataframe(csvfile, tableunit = "none")
 }
 \arguments{
 \item{csvfile}{A csvfile with columns of stone and rows of element
 abundances, with 2nd column `unit'}
 
-\item{unit}{Preferred unit that will be passed to `cbk.convector'}
+\item{tableunit}{Output unit, that will be resolved by `cbk.convector' (default="none")}
 }
 \value{
-A cbk.dataframe with unit organized
+A dataframe with unit organized
 }
 \description{
 Read csvfile created by \code{casteml convert --format dataframe} with

@@ -2,21 +2,24 @@
 % Please edit documentation in R/cbk.periodic.R
 \name{cbk.periodic}
 \alias{cbk.periodic}
-\title{Return properties of elements from a file `periotic-table.csv'}
+\title{Return properties of elements from a file `periotic-table1.dataframe'}
 \usage{
-cbk.periodic(property = "atomicnumber")
+cbk.periodic(property = NULL)
 }
 \arguments{
 \item{property}{A name of PROPERTY, either 'atomicnumber',
-'volatility', or 'compatibility'}
+'volatility', or 'compatibility'.}
 }
 \value{
-A numeric vector of element property with label
+A numeric vector of element property with label or dataframe of periodic-table
 }
 \description{
-Return properties of elements from a file `periotic-table.csv'
+Return properties of elements from a file
+`periotic-table1.dataframe'.  Specify property of your concern
+otherwise this return dataframe of periodic table.
 }
 \examples{
+cbk.periodic()
 cbk.periodic("atomicnumber")
 cbk.periodic("volatility")
 cbk.periodic("compatibility")
