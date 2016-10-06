@@ -11,5 +11,10 @@
 cbk.convector <- function(unit) {
   convector        <- c(1,     1,    100,  100,   100,1000,    1000,  1000000,1000000,1000000000,1000000000,1000000000000)
   names(convector) <- c("none","g/g","wt%","cg/g","%","permil","mg/g","ppm",  "ug/g", "ppb",     "ng/g",    "pg/g")
-  return(convector[unit]);
+  factor <- convector[unit]
+  if (is.na(factor)) {
+    factor <- 1
+  }
+  
+  return(factor)
 }
