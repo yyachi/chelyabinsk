@@ -4,9 +4,10 @@
 #' `periotic-table1.dataframe'.  Specify property of your concern
 #' otherwise this return dataframe of periodic table.
 #' 
-#' @param property A name of PROPERTY, either 'atomicnumber',
+#' @param property A name of PROPERTY, that is one of 'atomicnumber',
 #'   'volatility', or 'compatibility'.
-#' @return A numeric vector of element property with label or dataframe of periodic-table
+#' @return A numeric vector of element property with label or
+#'   dataframe of periodic-table
 #' @export
 #' @importFrom utils read.csv
 #' @examples
