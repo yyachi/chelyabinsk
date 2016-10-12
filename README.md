@@ -1,6 +1,10 @@
 # chelyabinsk
 R package for geochemical datasets
 
+# Dependency
+
+## [GNU R](https://www.r-project.org/ "follow instruction")
+
 # User's guide
 
 install this package issue following command.
