@@ -2,21 +2,28 @@
 % Please edit documentation in R/cbk.ref.R
 \name{cbk.ref}
 \alias{cbk.ref}
-\title{Return element abundances from file `ref.csv'}
+\title{Return element abundances of reference}
 \usage{
 cbk.ref(analysis, property = NULL)
 }
 \arguments{
-\item{analysis}{A name of reference that is either "Boynton.1989", "McDonough.1995", "Wasson.1988"}
+\item{analysis}{A name of reference that is either "Wasson.1988",
+"McDonough.1995", and "Boynton.1989".}
 
 \item{property}{A numeric vector of element property with label
-that serves as sort key (default=NULL).  You can feed output from `cbk.periodic'}
+that serves as sort key (default=NULL).  You can feed output from
+`cbk.periodic'}
 }
 \value{
 A numeric vector of element abundances with label
 }
 \description{
-Return element abundances from file `ref.csv'
+Return element abundances of reference.  The reference
+  includes "Wasson.1988", "McDonough.1995", and "Boynton.1989".
+
+[1] Wasson, J. T., and Kallemeyn, G. W. (1988). Compositions of chondrites. Phil. Trans. Roy. Soc. London A, 325, 535–544.
+[2] McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223–253.
+[3] Janousek, V. et al. (2015). Geochemical Modelling of Igneous Processes--Principles And Recipes in R Language. Springer
 }
 \examples{
 cbk.ref("Boynton.1989")

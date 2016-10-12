@@ -2,10 +2,11 @@
 #' @param pmlfile file path to CASTEML file
 #' @param category category to pass to `casteml convert'
 #' @return file path to converted file in temporary directory
-#' @examples
-#' pmlfile <- cbk.casteml.download("20160627191317-464538")
-#' cbk.casteml.convert(pmlfile,category="trace")
 cbk.casteml.convert <- function(pmlfile,category="trace") {
+  ## EXAMPLES
+  ## pmlfile <- cbk.casteml.download("20160627191317-464538")
+  ## cbk.casteml.convert(pmlfile,category="trace")
+
   outfiles <- c()
   ## ext <- sprintf("_%s.dataframe",categoray)
   for(ii in 1:length(pmlfile)) { 

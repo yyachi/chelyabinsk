@@ -16,8 +16,7 @@ A path to lib directory
 Convert filename of local library to absolute path
 }
 \examples{
-cbk.path("periodic-table.csv")
-cbk.path("ref.csv")
+cbk.path("periodic-table1.dataframe")
 cbk.path("ref1.dataframe")
 }
 

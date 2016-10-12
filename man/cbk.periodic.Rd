@@ -7,11 +7,12 @@
 cbk.periodic(property = NULL)
 }
 \arguments{
-\item{property}{A name of PROPERTY, either 'atomicnumber',
+\item{property}{A name of PROPERTY, that is one of 'atomicnumber',
 'volatility', or 'compatibility'.}
 }
 \value{
-A numeric vector of element property with label or dataframe of periodic-table
+A numeric vector of element property with label or
+  dataframe of periodic-table
 }
 \description{
 Return properties of elements from a file
