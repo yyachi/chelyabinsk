@@ -1,5 +1,5 @@
 # chelyabinsk
-R package for geochemical datasets
+R package for geochemical datasets.  This is referred by [gem package -- casteml](https://github.com/misasa/casteml "follow instruction").
 
 # Dependency
 
