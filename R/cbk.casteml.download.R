@@ -10,7 +10,7 @@ cbk.casteml.download <- function(arguments) {
   ## arguments <- c("20160627191317-464538","20160627191900-040404","20160627191919-895636")
   ## cbk.casteml.download(arguments)
   ## cbk.casteml.download("20160627191317-464538")
-  outfile <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext = ".pml")
+  outfile <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext=".pml")
   ## system(paste("casteml download",arguments[ii],">",outfile))
   cmd     <- paste("casteml download",arguments)
   cat(system(cmd, intern = TRUE),file=outfile,sep="\n")

@@ -7,13 +7,10 @@ cbk.casteml.convert <- function(pmlfile,category="trace") {
   ## EXAMPLES
   ## pmlfile <- cbk.casteml.download("20160627191317-464538")
   ## cbk.casteml.convert(pmlfile,category="trace")
-
-  outfiles <- c()
-  ## ext <- sprintf("_%s.dataframe",categoray)
-  for(ii in 1:length(pmlfile)) { 
-    outfile <- tempfile(pattern = paste(category,".",sep=""), fileext = ".dataframe")
-    system(paste("casteml convert -f dataframe -c ", category, pmlfile[ii],">", outfile))
-    outfiles <- c(outfiles,outfile)
-  }
-  return(outfiles)
+ 
+  outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
+  ## system(paste("casteml convert -f dataframe -c ", category, pmlfile,">", outfile))
+  cmd     <- paste("casteml convert -f dataframe -c ", category, pmlfile)
+  cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
+  return(outfile)
 }

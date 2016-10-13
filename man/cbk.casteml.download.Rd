@@ -4,13 +4,15 @@
 \alias{cbk.casteml.download}
 \title{Download analysis record in temporary directory and return the file path}
 \usage{
-cbk.casteml.download(stone)
+cbk.casteml.download(arguments)
 }
 \arguments{
-\item{ID}{Unique indentification number of stones in Medusa}
+\item{arguments}{Arguments that will pass to `casteml download'.
+Typically unique indentification number of stones in Medusa.}
 }
 \value{
-file path to CASTEML file that was downloaded in temporary directory
+file path to CASTEML file that was downloaded in temporary
+  directory
 }
 \description{
 Download analysis record in temporary directory and return the file path
