@@ -5,6 +5,7 @@
 #' @return file path to CASTEML file that was downloaded in temporary
 #'   directory
 #' @export
+#' @seealso \code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.convert}}
 cbk.casteml.download <- function(arguments) {
   ## EXAMPLES
   ## arguments <- c("20160627191317-464538","20160627191900-040404","20160627191919-895636")
