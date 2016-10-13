@@ -7,7 +7,7 @@ R package for geochemical datasets.  This is referred by [gem package -- casteml
 
 # User's guide
 
-install this package issue following command.
+To install this package issue following command.
 
     R> install.packages('devtools')
 
