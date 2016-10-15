@@ -16,12 +16,12 @@
 #'   `cbk.convector' (default="ppm")
 #' @return A numeric vector of element abundances with label
 #' @seealso \code{\link{cbk.periodic}}
+#' @export
 #' @examples
 #' cbk.ref("Boynton.1989","ppm")
 #' cbk.ref("Wasson.1988","ppm",cbk.periodic('atomicnumber'))
 #' cbk.ref("Wasson.1988","ppm",cbk.periodic('volatility'))
 #' cbk.ref("McDonough.1995","ppm",cbk.periodic('volatility'))
-#' @export
 cbk.ref <- function(analysis,tableunit="ppm",property=NULL){
   ## foo        <- c(.31,.808,.122,.6,.195,.0735,.2590,.0474,.322,.0718,.21,0.0324,.209,.0322)
   ## names(foo) <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
