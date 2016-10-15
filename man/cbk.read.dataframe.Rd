@@ -25,7 +25,7 @@ This internally calls
   take out column of `unit' and normalized by the `unit' column.
 }
 \examples{
-cbk.read.dataframe(cbk.path("20081202172326_trace.dataframe"),"ppm")
+cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
 }
 \seealso{
 \url{http://dream.misasa.okayama-u.ac.jp},

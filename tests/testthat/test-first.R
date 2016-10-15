@@ -1,6 +1,8 @@
 test_that("cbk.path should return a path only with a valid file",{
   expect_match(cbk.path("periodic-table1.dataframe"), "periodic-table1.dataframe")
   expect_match(cbk.path("ref1.dataframe"), "ref1.dataframe")
+  expect_match(cbk.path("20081202172326.kitagawa.pml"), "20081202172326.kitagawa.pml")
+  expect_match(cbk.path("20081202172326.kitagawa_trace.dataframe"), "20081202172326.kitagawa_trace.dataframe")
   expect_match(cbk.path("qeriodic-table1.dataframe"), "")
 })
 

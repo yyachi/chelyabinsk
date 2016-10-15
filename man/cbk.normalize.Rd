@@ -24,7 +24,7 @@ Return normalized element abundances.  Note that only
   also "Geochemical Modelling..." by Janousek et al. (2015)
 }
 \examples{
-cbk.normalize(cbk.read.dataframe(cbk.path("20081202172326_trace.dataframe"),"ppm"),cbk.ref("Boynton.1989"))
+cbk.normalize(cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm"),cbk.ref("Boynton.1989"))
 }
 \seealso{
 \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}

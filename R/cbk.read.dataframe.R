@@ -13,13 +13,13 @@
 #' @seealso \code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.download}}
 #' @export
 #' @examples
-#' cbk.read.dataframe(cbk.path("20081202172326_trace.dataframe"),"ppm")
+#' cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
 #' cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
 #' cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 cbk.read.dataframe <- function(csvfile,tableunit="none"){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
-  ### $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326_trace.dataframe
+  ### $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.kitagawa_trace.dataframe
   ### R> cbktbl0 <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
   tblin <- read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(tblin)) {
