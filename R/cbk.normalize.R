@@ -12,7 +12,9 @@
 #' @seealso \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
 #' @export
 #' @examples
-#' cbk.normalize(cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm"),cbk.ref("Boynton.1989"))
+#' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
+#' ref  <- cbk.ref("Boynton.1989")
+#' cbk.normalize(tbl0,ref)
 cbk.normalize <- function(cbktbl,ref,suffix_after_name_of_element=NULL){
   ### EXAMPLES
   ### > property <- cbk.periodic("atomicnumber")

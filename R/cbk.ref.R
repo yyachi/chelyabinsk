@@ -13,9 +13,10 @@
 #'   that serves as sort key (default=NULL).  You can feed output from
 #'   `cbk.periodic'
 #' @return A numeric vector of element abundances with label
-#' @examples
+#' @seealso \code{\link{cbk.periodic}}
 #' cbk.ref("Boynton.1989")
 #' cbk.ref("Wasson.1988",cbk.periodic('atomicnumber'))
+#' cbk.ref("Wasson.1988",cbk.periodic('volatility'))
 #' cbk.ref("McDonough.1995",cbk.periodic('volatility'))
 #' @export
 cbk.ref <- function(analysis,property=NULL){

@@ -13,9 +13,13 @@
 #' @seealso \code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.download}}
 #' @export
 #' @examples
-#' cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
-#' cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
-#' cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
+#' pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
+#' cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
+#' tbl0 <- cbk.read.dataframe(cbkfile,"ppm")
+#'
+#' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
+#' tbl0 <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
+#' tbl0 <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 cbk.read.dataframe <- function(csvfile,tableunit="none"){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml

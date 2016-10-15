@@ -11,7 +11,9 @@
 #' @seealso \code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.download}}
 #' @examples
 #' pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
-#' cbk.casteml.convert(pmlfile,category="trace")
+#' cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
+#'
+#' cbkfile <- cbk.casteml.convert(cbk.path("20081202172326.kitagawa.pml"),category="trace")
 cbk.casteml.convert <- function(pmlfile,category="trace") {
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
   outfile <- tempfile(fileext=".dataframe")
