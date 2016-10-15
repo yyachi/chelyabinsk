@@ -16,6 +16,7 @@
 #'   `cbk.convector' (default="ppm")
 #' @return A numeric vector of element abundances with label
 #' @seealso \code{\link{cbk.periodic}}
+#' @examples
 #' cbk.ref("Boynton.1989","ppm")
 #' cbk.ref("Wasson.1988","ppm",cbk.periodic('atomicnumber'))
 #' cbk.ref("Wasson.1988","ppm",cbk.periodic('volatility'))
