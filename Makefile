@@ -6,11 +6,9 @@ RDOCFILE = $(wildcard man/*.Rd)
 DATAFILE= $(wildcard inst/extdata/*.*)
 
 $(TARGET): DESCRIPTION NAMESPACE $(RDOCFILE) $(RFILE) $(DATAFILE)
+	Rscript -e "devtools::document()"
 	R CMD check ../$(PACKAGENAME)
 	R CMD build ../$(PACKAGENAME)
-
-NAMESPACE: $(RFILE)
-	Rscript -e "devtools::document()"
 
 .PHONY: rdoc
 rdoc:
