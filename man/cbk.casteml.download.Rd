@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.casteml.download.R
 \name{cbk.casteml.download}
 \alias{cbk.casteml.download}
-\title{Download analysis record in temporary directory and return the file path}
+\title{Download analysis record to CASTEML file}
 \usage{
 cbk.casteml.download(arguments)
 }
@@ -15,6 +15,11 @@ file path to CASTEML file that was downloaded in temporary
   directory
 }
 \description{
-Download analysis record in temporary directory and return the file path
+Download analysis record to CASTEML file.  The
+  downloaded is stored in a temporary directory.  This function
+  returns path to the file.
+}
+\seealso{
+\code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.convert}}
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.casteml.convert.R
 \name{cbk.casteml.convert}
 \alias{cbk.casteml.convert}
-\title{Convert CASTEML files to temporary directory and return the file path}
+\title{Convert CASTEML file to CSV file}
 \usage{
 cbk.casteml.convert(pmlfile, category = "trace")
 }
@@ -15,6 +15,11 @@ cbk.casteml.convert(pmlfile, category = "trace")
 file path to converted file in temporary directory
 }
 \description{
-Convert CASTEML files to temporary directory and return the file path
+Convert CASTEML file to CSV file.  The converted file
+  is stored in a temporary directory.  This function returns path
+  to the file.
+}
+\seealso{
+\code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.download}}
 }
 
