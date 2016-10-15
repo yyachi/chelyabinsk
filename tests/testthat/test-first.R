@@ -28,8 +28,10 @@ test_that("cbk.read.dataframe(cbk.path('ref1.dataframe')) should return Datafram
 })
 
 test_that("cbk.ref('Wasson.1988') should return Named num",{
-  ref_W1988 <- cbk.ref("Wasson.1988")
-  ref_M1995 <- cbk.ref("McDonough.1995")
-  expect_that(as.integer(ref_W1988["H"]), equals(20000))
-  expect_that(as.numeric(ref_M1995["Li"]), equals(as.numeric(1.5)))
+  ref_W1988_none <- cbk.ref("Wasson.1988","none")
+  ref_W1988_ppm  <- cbk.ref("Wasson.1988")
+  ref_M1995_ppm  <- cbk.ref("McDonough.1995","ppm")
+  expect_that(as.numeric(ref_W1988_none["H"]), equals(as.numeric(0.02)))
+  expect_that(as.integer(ref_W1988_ppm["H"]),  equals(20000))
+  expect_that(as.numeric(ref_M1995_ppm["Li"]), equals(as.numeric(1.5)))
 })

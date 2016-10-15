@@ -13,12 +13,12 @@
 #' @export
 #' @examples
 #' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
-#' ref  <- cbk.ref("Boynton.1989")
+#' ref  <- cbk.ref("Boynton.1989","ppm")
 #' cbk.normalize(tbl0,ref)
 cbk.normalize <- function(cbktbl,ref,suffix_after_name_of_element=NULL){
   ### EXAMPLES
   ### > property <- cbk.periodic("atomicnumber")
-  ### > ref      <- cbk.ref("Boynton.1989")
+  ### > ref      <- cbk.ref("Boynton.1989","ppm")
   ### > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
   ### >
   ### > yyy      <- cbk.normalize(sample,ref) # normalized values

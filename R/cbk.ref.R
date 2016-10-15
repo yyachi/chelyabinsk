@@ -12,20 +12,22 @@
 #' @param property A numeric vector of element property with label
 #'   that serves as sort key (default=NULL).  You can feed output from
 #'   `cbk.periodic'
+#' @param tableunit Output unit, that will be resolved by
+#'   `cbk.convector' (default="ppm")
 #' @return A numeric vector of element abundances with label
 #' @seealso \code{\link{cbk.periodic}}
-#' cbk.ref("Boynton.1989")
-#' cbk.ref("Wasson.1988",cbk.periodic('atomicnumber'))
-#' cbk.ref("Wasson.1988",cbk.periodic('volatility'))
-#' cbk.ref("McDonough.1995",cbk.periodic('volatility'))
+#' cbk.ref("Boynton.1989","ppm")
+#' cbk.ref("Wasson.1988","ppm",cbk.periodic('atomicnumber'))
+#' cbk.ref("Wasson.1988","ppm",cbk.periodic('volatility'))
+#' cbk.ref("McDonough.1995","ppm",cbk.periodic('volatility'))
 #' @export
-cbk.ref <- function(analysis,property=NULL){
+cbk.ref <- function(analysis,tableunit="ppm",property=NULL){
   ## foo        <- c(.31,.808,.122,.6,.195,.0735,.2590,.0474,.322,.0718,.21,0.0324,.209,.0322)
   ## names(foo) <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
 
   ### read as vector
   ## cbktbl     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
-  cbktbl        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
+  cbktbl        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),tableunit)
   ## foo        <- as.numeric(cbktbl)
   foo           <- as.numeric(cbktbl[analysis,]) # conversion to numeric vector
   names(foo)    <- names(cbktbl)
