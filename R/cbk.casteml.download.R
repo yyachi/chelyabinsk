@@ -4,8 +4,8 @@
 #'   downloaded is stored in a temporary directory.  This function
 #'   returns path to the file.
 #' 
-#' @param arguments Arguments that will pass to `casteml download'.
-#'   Typically unique indentification number of stones in Medusa.
+#' @param arguments Unique indentification number of stones in
+#'   Medusa.  Really, those will pass to `casteml download'.
 #' @return file path to CASTEML file that was downloaded in temporary
 #'   directory
 #' @export

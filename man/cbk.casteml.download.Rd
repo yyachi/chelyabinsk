@@ -7,8 +7,8 @@
 cbk.casteml.download(arguments)
 }
 \arguments{
-\item{arguments}{Arguments that will pass to `casteml download'.
-Typically unique indentification number of stones in Medusa.}
+\item{arguments}{Unique indentification number of stones in
+Medusa.  Really, those will pass to `casteml download'.}
 }
 \value{
 file path to CASTEML file that was downloaded in temporary

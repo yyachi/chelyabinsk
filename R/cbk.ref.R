@@ -12,7 +12,7 @@
 #' @param property A numeric vector of element property with label
 #'   that serves as sort key (default=NULL).  You can feed output from
 #'   `cbk.periodic'
-#' @param tableunit Output unit, that will be resolved by
+#' @param tableunit Output unit that will be resolved by
 #'   `cbk.convector' (default="ppm")
 #' @return A numeric vector of element abundances with label
 #' @seealso \code{\link{cbk.periodic}}

@@ -8,21 +8,21 @@
 #'   take out column of `unit' and normalized by the `unit' column.
 #' @param csvfile A csvfile with columns of stone and rows of element
 #'   abundances, with 2nd column `unit'
-#' @param tableunit Output unit, that will be resolved by
+#' @param tableunit Output unit that will be resolved by
 #'   `cbk.convector' (default="none")
 #' @return A dataframe with unit organized
-#' @seealso \code{casteml convert},
-#'   \url{https://github.com/misasa/casteml},
-#'   \code{\link{cbk.casteml.download}}, \code{\link{cbk.convector}},
+#' @seealso \code{\link{cbk.casteml.download}}, \code{casteml
+#'   convert}, \url{https://github.com/misasa/casteml},
+#'   \code{\link{cbk.convector}},
 #' @export
 #' @examples
 #' pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
 #' cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
-#' tbl0 <- cbk.read.dataframe(cbkfile,"ppm")
+#' tbl0    <- cbk.read.dataframe(cbkfile,"ppm")
 #'
-#' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
-#' tbl0 <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
-#' tbl0 <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
+#' tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
+#' tbl0    <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
+#' tbl0    <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 cbk.read.dataframe <- function(csvfile,tableunit="none"){
   ### EXAMPLES
   ### $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml

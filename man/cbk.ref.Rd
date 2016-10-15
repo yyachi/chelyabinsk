@@ -10,7 +10,7 @@ cbk.ref(analysis, tableunit = "ppm", property = NULL)
 \item{analysis}{A name of reference that is either "Wasson.1988",
 "McDonough.1995", and "Boynton.1989".}
 
-\item{tableunit}{Output unit, that will be resolved by
+\item{tableunit}{Output unit that will be resolved by
 `cbk.convector' (default="ppm")}
 
 \item{property}{A numeric vector of element property with label
