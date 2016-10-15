@@ -4,11 +4,14 @@
 \alias{cbk.ref}
 \title{Return element abundances of reference}
 \usage{
-cbk.ref(analysis, property = NULL)
+cbk.ref(analysis, tableunit = "ppm", property = NULL)
 }
 \arguments{
 \item{analysis}{A name of reference that is either "Wasson.1988",
 "McDonough.1995", and "Boynton.1989".}
+
+\item{tableunit}{Output unit, that will be resolved by
+`cbk.convector' (default="ppm")}
 
 \item{property}{A numeric vector of element property with label
 that serves as sort key (default=NULL).  You can feed output from
@@ -26,8 +29,12 @@ Return element abundances of reference.  The reference
 [3] Janousek, V. et al. (2015). Geochemical Modelling of Igneous Processes--Principles And Recipes in R Language. Springer
 }
 \examples{
-cbk.ref("Boynton.1989")
-cbk.ref("Wasson.1988",cbk.periodic('atomicnumber'))
-cbk.ref("McDonough.1995",cbk.periodic('volatility'))
+cbk.ref("Boynton.1989","ppm")
+cbk.ref("Wasson.1988","ppm",cbk.periodic('atomicnumber'))
+cbk.ref("Wasson.1988","ppm",cbk.periodic('volatility'))
+cbk.ref("McDonough.1995","ppm",cbk.periodic('volatility'))
+}
+\seealso{
+\code{\link{cbk.periodic}}
 }
 

@@ -19,6 +19,12 @@ Download analysis record to CASTEML file.  The
   downloaded is stored in a temporary directory.  This function
   returns path to the file.
 }
+\examples{
+stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
+pmlfile <- cbk.casteml.download(stone)
+
+pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
+}
 \seealso{
 \code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.convert}}
 }

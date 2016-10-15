@@ -19,6 +19,12 @@ Convert CASTEML file to CSV file.  The converted file
   is stored in a temporary directory.  This function returns path
   to the file.
 }
+\examples{
+pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
+cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
+
+cbkfile <- cbk.casteml.convert(cbk.path("20081202172326.kitagawa.pml"),category="trace")
+}
 \seealso{
 \code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.download}}
 }
