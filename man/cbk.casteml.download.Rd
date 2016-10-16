@@ -2,22 +2,22 @@
 % Please edit documentation in R/cbk.casteml.download.R
 \name{cbk.casteml.download}
 \alias{cbk.casteml.download}
-\title{Download analysis record to CASTEML file}
+\title{Download analysis records as a CASTEML file}
 \usage{
 cbk.casteml.download(arguments)
 }
 \arguments{
-\item{arguments}{Unique indentification number of stones in
-Medusa.  Really, those will pass to `casteml download'.}
+\item{arguments}{Unique indentification number of stones in Medusa.
+Really, those will pass to `casteml download'.}
 }
 \value{
-file path to CASTEML file that was downloaded in temporary
-  directory
+Path to CASTEML file that was downloaded in temporary
+  directory.
 }
 \description{
-Download analysis record to CASTEML file.  The
-  downloaded is stored in a temporary directory.  This function
-  returns path to the file.
+Download analysis records as a CASTEML file.  This
+  function returns path to the file.  The file is stored in a
+  temporary directory.
 }
 \examples{
 stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
@@ -26,6 +26,8 @@ pmlfile <- cbk.casteml.download(stone)
 pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
 }
 \seealso{
-\code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.convert}}
+\code{casteml download},
+  \url{https://github.com/misasa/casteml},
+  \code{\link{cbk.casteml.convert}}
 }
 

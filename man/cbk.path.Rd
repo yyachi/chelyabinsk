@@ -2,18 +2,18 @@
 % Please edit documentation in R/cbk.path.R
 \name{cbk.path}
 \alias{cbk.path}
-\title{Convert filename of local library to absolute path}
+\title{Return absolute path of files stored in local library}
 \usage{
-cbk.path(name)
+cbk.path(filename)
 }
 \arguments{
-\item{name}{A filename}
+\item{filename}{A filename}
 }
 \value{
-A path to lib directory
+An absolute path of files stored in local library
 }
 \description{
-Convert filename of local library to absolute path
+Return absolute path of files stored in local library
 }
 \examples{
 cbkfile <- cbk.path("periodic-table1.dataframe")

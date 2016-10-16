@@ -7,10 +7,11 @@
 cbk.read.casteml(pmlfile, tableunit = "none", category = "trace")
 }
 \arguments{
-\item{pmlfile}{CASTEML file download by `casteml download'}
+\item{pmlfile}{A CASTEML file that was download by `casteml
+download'}
 
 \item{tableunit}{Output unit that will be resolved by
-`cbk.convector()' (default="none")}
+cbk.convector() (default="none")}
 
 \item{category}{category to pass to `cbk.casteml.convert'}
 }
@@ -21,7 +22,7 @@ A dataframe with unit organized
 Read CASTEML file and return a dataframe.
 }
 \details{
-This function converts CASTEML file to csvfile by
+This function converts a CASTEML file to a csvfile by
   `cbk.casteml.convert()' and read it by `cbk.read.dataframe()'.
 }
 \examples{

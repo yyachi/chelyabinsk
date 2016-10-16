@@ -9,10 +9,10 @@ cbk.read.medusa(stone, tableunit = "none", category = "trace")
 }
 \arguments{
 \item{stone}{Unique indentification number of stones in Medusa.
-Really, those will pass to `casteml download'.}
+Really, those will pass to cbk.casteml.download().}
 
 \item{tableunit}{Output unit that will be resolved by
-`cbk.convector()' (default="none")}
+cbk.convector() (default="none")}
 
 \item{category}{category to pass to `casteml convert'}
 }
@@ -25,9 +25,9 @@ Return analyses records stored in Medusa in a form of
   command `casteml' then reads it as data.frame.
 }
 \details{
-This function downloads CASTEML file by
-  `cbk.casteml.download()', convert it to csvfile by
-  `cbk.casteml.convert()', and read the file by
+This function downloads a CASTEML file by
+  `cbk.casteml.download()', converts it to csvfile by
+  `cbk.casteml.convert()', and reads the file by
   `cbk.read.dataframe()'.
 }
 \examples{

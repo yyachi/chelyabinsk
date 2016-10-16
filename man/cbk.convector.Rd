@@ -2,20 +2,21 @@
 % Please edit documentation in R/cbk.convector.R
 \name{cbk.convector}
 \alias{cbk.convector}
-\title{Return conversion cofficient for unit}
+\title{Return conversion cofficient for certain unit}
 \usage{
 cbk.convector(unit)
 }
 \arguments{
-\item{unit}{Unit string, that is one of
-none, g/g, wt\%, cg/g, \%, permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g}
+\item{unit}{Unit string that is one of none, g/g, wt\%, cg/g, \%,
+permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g}
 }
 \value{
 Conversion cofficient.  When "permil", this returns 1000
-  instead of 0.001.  Very likely you want to DIVIDE table by the factor
+  instead of 0.001.  Very likely you want to DIVIDE table by the
+  factor
 }
 \description{
-Return conversion cofficient for unit
+Return conversion cofficient for certain unit
 }
 \examples{
 cbk.convector("none")

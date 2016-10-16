@@ -1,12 +1,12 @@
 #' @title Convert CASTEML file to CSV file
 #'
-#' @description Convert CASTEML file to CSV file.  The converted file
-#'   is stored in a temporary directory.  This function returns path
-#'   to the file.
+#' @description Convert CASTEML file to CSV file.  This function
+#'   returns path to the converted file.  The converted file is stored
+#'   in a temporary directory.
 #' 
 #' @param pmlfile file path to CASTEML file
 #' @param category category to pass to `casteml convert'
-#' @return file path to converted file in temporary directory
+#' @return file path to converted file
 #' @export
 #' @seealso \code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.casteml.download}}
 #' @examples

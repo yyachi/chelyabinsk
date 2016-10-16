@@ -7,7 +7,7 @@
 #' [2] McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223-253.
 #' [3] Janousek, V. et al. (2015). Geochemical Modelling of Igneous Processes--Principles And Recipes in R Language. Springer
 #'
-#' @param analysis A name of reference that is either "Wasson.1988",
+#' @param analysis A name of reference that is one of "Wasson.1988",
 #'   "McDonough.1995", and "Boynton.1989".
 #' @param property A numeric vector of element property with label
 #'   that serves as sort key (default=NULL).  You can feed output from

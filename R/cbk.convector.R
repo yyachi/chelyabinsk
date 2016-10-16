@@ -1,8 +1,9 @@
-#' Return conversion cofficient for unit
-#' @param unit Unit string, that is one of
-#'   none, g/g, wt\%, cg/g, \%, permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g
+#' Return conversion cofficient for certain unit
+#' @param unit Unit string that is one of none, g/g, wt\%, cg/g, \%,
+#'   permil, mg/g, ppm, ug/g, ppb, ng/g, pg/g
 #' @return Conversion cofficient.  When "permil", this returns 1000
-#'   instead of 0.001.  Very likely you want to DIVIDE table by the factor
+#'   instead of 0.001.  Very likely you want to DIVIDE table by the
+#'   factor
 #' @export
 #' @examples
 #' cbk.convector("none")

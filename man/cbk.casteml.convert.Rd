@@ -12,12 +12,12 @@ cbk.casteml.convert(pmlfile, category = "trace")
 \item{category}{category to pass to `casteml convert'}
 }
 \value{
-file path to converted file in temporary directory
+file path to converted file
 }
 \description{
-Convert CASTEML file to CSV file.  The converted file
-  is stored in a temporary directory.  This function returns path
-  to the file.
+Convert CASTEML file to CSV file.  This function
+  returns path to the converted file.  The converted file is stored
+  in a temporary directory.
 }
 \examples{
 pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
