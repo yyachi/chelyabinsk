@@ -1,8 +1,9 @@
-#' @title Return a dataframe stored in Medusa
+#' @title Return analyses records stored in Medusa in a form of a
+#'   dataframe
 #'
-#' @description Return a dataframe stored in Medusa.  This function
-#'   downloads CASTEML file by external command `casteml' then read
-#'   it as data.frame.
+#' @description Return analyses records stored in Medusa in a form of
+#'   a dataframe.  This function downloads CASTEML file by external
+#'   command `casteml' then reads it as data.frame.
 #'
 #' @details This function downloads CASTEML file by
 #'   `cbk.casteml.download()', convert it to csvfile by
@@ -17,14 +18,13 @@
 #' @seealso \url{https://github.com/misasa/casteml},
 #'   \code{\link{cbk.casteml.download}},
 #'   \code{\link{cbk.casteml.convert}},
-#'   \code{\link{cbk.read.datafram}}
+#'   \code{\link{cbk.read.dataframe}}
 #' @export
 #' @examples
-#' tbl0 <- cbk.read("20081202172326.hkitagawa","ppm","trace")
+#' tbl0 <- cbk.read.medusa("20081202172326.hkitagawa","ppm","trace")
 #'
-cbk.read <- function(stone,tableunit="none",category="trace"){
+cbk.read.medusa <- function(stone,tableunit="none",category="trace"){
   pmlfile <- cbk.casteml.download(stone)
-  cbkfile <- cbk.casteml.convert(pmlfile,category)
-  tbl0    <- cbk.read.dataframe(cbkfile,tableunit)
+  tbl0    <- cbk.read.casteml(pmlfile,tableunit,category)
   return(tbl0)
 }

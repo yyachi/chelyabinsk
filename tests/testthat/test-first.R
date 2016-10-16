@@ -6,16 +6,23 @@ test_that("cbk.path should return a path only with a valid file",{
   expect_match(cbk.path("qeriodic-table1.dataframe"), "")
 })
 
-test_that("cbk.read('20081202172326.hkitagawa','ppm','trace') should return Dataframe of Kitagawa et al., 2008",{
-  tbl0 <- cbk.read('20081202172326.hkitagawa','ppm','trace')
+test_that("cbk.read.medusa('20081202172326.hkitagawa','ppm','trace') should return Dataframe of Kitagawa et al., 2008",{
+  bib <- "20081202172326.hkitagawa"
+  tbl0 <- cbk.read.medusa(bib,'ppm','trace')
   expect_true(is.data.frame(tbl0))
   expect_that(as.numeric(tbl0["analysis.of.I1502","Li"]), equals(as.numeric(4.02)))
 })
 
-
+test_that("cbk.read.casteml(cbk.path('20081202172326.kitagawa.pml'),'ppm','trace') should return Dataframe of Kitagawa et al., 2008",{
+  pmlfile <- cbk.path('20081202172326.kitagawa.pml')
+  tbl0 <- cbk.read.casteml(pmlfile,'ppm','trace')
+  expect_true(is.data.frame(tbl0))
+  expect_that(as.numeric(tbl0["analysis.of.I1502","Li"]), equals(as.numeric(4.02)))
+})
 
 test_that("cbk.read.dataframe(cbk.path('periodic-table1.dataframe')) should return Dataframe of periodic table",{
-  periodic_df <- cbk.read.dataframe(cbk.path('periodic-table1.dataframe'))
+  cbkfile <- cbk.path('periodic-table1.dataframe')
+  periodic_df <- cbk.read.dataframe(cbkfile)
   expect_true(is.data.frame(periodic_df))
   expect_that(as.integer(periodic_df["H","atomicnumber"]), equals(1))
 })
@@ -25,7 +32,7 @@ test_that("cbk.periodic('atomicnumber') should return Named num",{
 })
 
 test_that("cbk.periodic() should return Dataframe of periodic table",{
-  expect_that(as.integer( cbk.periodic()["H","atomicnumber"]), equals(1))
+  expect_that(as.integer(cbk.periodic()["H","atomicnumber"]), equals(1))
 })
 
 test_that("cbk.read.dataframe(cbk.path('ref1.dataframe')) should return Dataframe of refs with unit converted",{

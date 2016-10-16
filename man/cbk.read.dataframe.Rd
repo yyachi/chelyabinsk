@@ -17,8 +17,8 @@ abundances, with 2nd column `unit'}
 A dataframe with unit organized
 }
 \description{
-Read csvfile created by \code{casteml convert --format
-  dataframe} with column `unit'.
+Read csvfile with column `unit' created by
+  \code{casteml convert --format dataframe} .
 }
 \details{
 This internally calls

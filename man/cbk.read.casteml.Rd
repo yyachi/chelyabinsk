@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.read.casteml.R
 \name{cbk.read.casteml}
 \alias{cbk.read.casteml}
-\title{Return a dataframe from CASTEML file}
+\title{Read CASTEML file and return a dataframe}
 \usage{
 cbk.read.casteml(pmlfile, tableunit = "none", category = "trace")
 }
@@ -18,10 +18,10 @@ cbk.read.casteml(pmlfile, tableunit = "none", category = "trace")
 A dataframe with unit organized
 }
 \description{
-Return a dataframe from CASTEML file.
+Read CASTEML file and return a dataframe.
 }
 \details{
-This function convert CASTEML file to csvfile by
+This function converts CASTEML file to csvfile by
   `cbk.casteml.convert()' and read it by `cbk.read.dataframe()'.
 }
 \examples{
@@ -31,7 +31,7 @@ tbl0 <- cbk.read.casteml(pmlfile,"ppm","trace")
 }
 \seealso{
 \code{\link{cbk.casteml.convert}},
-  \code{\link{cbk.read.datafram}},
+  \code{\link{cbk.read.dataframe}},
   \url{https://github.com/misasa/casteml}
 }
 

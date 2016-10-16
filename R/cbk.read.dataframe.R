@@ -1,7 +1,7 @@
 #' @title Read csvfile created by casteml convert with column `unit'
 #'
-#' @description Read csvfile created by \code{casteml convert --format
-#'   dataframe} with column `unit'.
+#' @description Read csvfile with column `unit' created by
+#'   \code{casteml convert --format dataframe} .
 #'
 #' @details This internally calls
 #'   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)},
