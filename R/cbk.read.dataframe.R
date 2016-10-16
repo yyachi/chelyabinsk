@@ -1,7 +1,7 @@
 #' @title Read csvfile created by casteml convert with column `unit'
 #'
-#' @description Read csvfile created by \code{casteml convert --format dataframe} with
-#'   column `unit'.
+#' @description Read csvfile created by \code{casteml convert --format
+#'   dataframe} with column `unit'.
 #'
 #' @details This internally calls
 #'   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)},
@@ -9,7 +9,7 @@
 #' @param csvfile A csvfile with columns of stone and rows of element
 #'   abundances, with 2nd column `unit'
 #' @param tableunit Output unit that will be resolved by
-#'   `cbk.convector' (default="none")
+#'   `cbk.convector()' (default="none")
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.casteml.download}}, \code{casteml
 #'   convert}, \url{https://github.com/misasa/casteml},

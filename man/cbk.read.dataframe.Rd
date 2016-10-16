@@ -11,14 +11,14 @@ cbk.read.dataframe(csvfile, tableunit = "none")
 abundances, with 2nd column `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
-`cbk.convector' (default="none")}
+`cbk.convector()' (default="none")}
 }
 \value{
 A dataframe with unit organized
 }
 \description{
-Read csvfile created by \code{casteml convert --format dataframe} with
-  column `unit'.
+Read csvfile created by \code{casteml convert --format
+  dataframe} with column `unit'.
 }
 \details{
 This internally calls
