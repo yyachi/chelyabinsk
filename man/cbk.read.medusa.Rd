@@ -9,7 +9,7 @@ cbk.read.medusa(stone, tableunit = "none", category = NULL)
 }
 \arguments{
 \item{stone}{Unique indentification number of stones in Medusa.
-Really, those will pass to cbk.casteml.download().}
+Really, those will pass to cbk.download.casteml().}
 
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}
@@ -26,8 +26,8 @@ Return analyses records stored in Medusa in a form of
 }
 \details{
 This function downloads a CASTEML file by
-  `cbk.casteml.download()', converts it to csvfile by
-  `cbk.casteml.convert()', and reads the file by
+  `cbk.download.casteml()', converts it to csvfile by
+  `cbk.convert.casteml()', and reads the file by
   `cbk.read.dataframe()'.
 }
 \examples{
@@ -36,8 +36,8 @@ tbl0 <- cbk.read.medusa("20081202172326.hkitagawa","ppm","trace")
 }
 \seealso{
 \url{https://github.com/misasa/casteml},
-  \code{\link{cbk.casteml.download}},
-  \code{\link{cbk.casteml.convert}},
+  \code{\link{cbk.download.casteml}},
+  \code{\link{cbk.convert.casteml}},
   \code{\link{cbk.read.dataframe}}
 }
 

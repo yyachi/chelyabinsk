@@ -11,13 +11,13 @@
 #' @export
 #' @seealso \code{casteml download},
 #'   \url{https://github.com/misasa/casteml},
-#'   \code{\link{cbk.casteml.convert}}
+#'   \code{\link{cbk.convert.casteml}}
 #' @examples
 #' stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
-#' pmlfile <- cbk.casteml.download(stone)
+#' pmlfile <- cbk.download.casteml(stone)
 #'
-#' pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
-cbk.casteml.download <- function(arguments) {
+#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+cbk.download.casteml <- function(arguments) {
 
   ## outfile <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext=".pml")
   outfile <- tempfile(fileext=".pml")
