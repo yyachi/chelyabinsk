@@ -4,28 +4,31 @@
 \alias{cbk.convert.casteml}
 \title{Convert CASTEML file to CSV file}
 \usage{
-cbk.convert.casteml(pmlfile, ..., category = NULL)
+cbk.convert.casteml(pmlfile, category = NULL)
 }
 \arguments{
 \item{pmlfile}{file path to CASTEML file}
 
-\item{category}{category to pass to `casteml convert'}
+\item{category}{category filter that is passed to `casteml convert'}
 }
 \value{
-file path to converted file
+file path to the converted file
 }
 \description{
 Convert CASTEML file to CSV file.  This function
   returns path to the converted file.  The converted file is stored
-  in a temporary directory.
+  in a temporary directory.  This is low-level function and users
+  are not encourage to call this but cbk.read.casteml().
 }
 \examples{
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+cbkfile <- cbk.convert.casteml(pmlfile)
+
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
-
-cbkfile <- cbk.convert.casteml(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
 }
 \seealso{
-\code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.download.casteml}}
+\code{casteml convert},
+  \url{https://github.com/misasa/casteml}
 }
 

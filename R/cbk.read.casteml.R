@@ -23,7 +23,7 @@
 #' tbl0 <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #'
 #' tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",Medusa=TRUE)
-cbk.read.casteml <- function(pmlfile_or_stone, ..., tableunit="none", category=NULL, Medusa=FALSE){
+cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL,Medusa=FALSE){
   if (Medusa) { # id is provided
     stone   <- pmlfile_or_stone
     pmlfile <- cbk.download.casteml(stone)

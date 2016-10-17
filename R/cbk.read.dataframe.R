@@ -1,7 +1,9 @@
 #' @title Read csvfile created by casteml convert with column `unit'
 #'
 #' @description Read csvfile with column `unit' created by
-#'   \code{casteml convert --format dataframe} .
+#'   \code{casteml convert --format dataframe} .  This is low-level
+#'   function and users are not encourage to call this but
+#'   cbk.read.casteml().
 #'
 #' @details This internally calls
 #'   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)},

@@ -4,7 +4,7 @@
 \alias{cbk.read.casteml}
 \title{Read CASTEML file and return a dataframe}
 \usage{
-cbk.read.casteml(pmlfile_or_stone, ..., tableunit = "none", category = NULL,
+cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL,
   Medusa = FALSE)
 }
 \arguments{
