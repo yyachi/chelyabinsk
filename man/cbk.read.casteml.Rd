@@ -4,7 +4,7 @@
 \alias{cbk.read.casteml}
 \title{Read CASTEML file and return a dataframe}
 \usage{
-cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL, ...,
+cbk.read.casteml(pmlfile_or_stone, ..., tableunit = "none", category = NULL,
   Medusa = FALSE)
 }
 \arguments{
@@ -33,9 +33,9 @@ This function converts a CASTEML file to a csvfile by
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-tbl0 <- cbk.read.casteml(pmlfile,"ppm","trace")
+tbl0 <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 
-tbl0 <- cbk.read.casteml("20081202172326.hkitagawa","ppm","trace",Medusa=TRUE)
+tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",Medusa=TRUE)
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},

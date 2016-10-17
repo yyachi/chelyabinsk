@@ -6,21 +6,21 @@ test_that("cbk.path should return a path only with a valid file",{
   expect_match(cbk.path("qeriodic-table1.dataframe"), "")
 })
 
-test_that("cbk.read.casteml('20081202172326.hkitagawa','ppm','trace',Medusa=TRUE) should return Dataframe of Kitagawa et al., 2008",{
+test_that("cbk.read.casteml(stone, ..., Medusa=TRUE) should return Dataframe",{
   bib <- "20081202172326.hkitagawa"
-  tbl0 <- cbk.read.casteml(bib,'ppm','trace',Medusa=TRUE)
+  tbl0 <- cbk.read.casteml(bib,tableunit='ppm',category='trace',Medusa=TRUE)
   expect_true(is.data.frame(tbl0))
   expect_that(as.numeric(tbl0["analysis.of.I1502","Li"]), equals(as.numeric(4.02)))
 })
 
-test_that("cbk.read.casteml(cbk.path('20081202172326.hkitagawa.pml'),'ppm','trace') should return Dataframe of Kitagawa et al., 2008",{
+test_that("cbk.read.casteml(pmlfile, ...) should return Dataframe",{
   pmlfile <- cbk.path('20081202172326.hkitagawa.pml')
-  tbl0 <- cbk.read.casteml(pmlfile,'ppm','trace')
+  tbl0 <- cbk.read.casteml(pmlfile,tableunit='ppm',category='trace')
   expect_true(is.data.frame(tbl0))
   expect_that(as.numeric(tbl0["analysis.of.I1502","Li"]), equals(as.numeric(4.02)))
 })
 
-test_that("cbk.read.dataframe(cbk.path('periodic-table1.dataframe')) should return Dataframe of periodic table",{
+test_that("cbk.read.dataframe(cbkfile) should return Dataframe of periodic table",{
   cbkfile <- cbk.path('periodic-table1.dataframe')
   periodic_df <- cbk.read.dataframe(cbkfile)
   expect_true(is.data.frame(periodic_df))
