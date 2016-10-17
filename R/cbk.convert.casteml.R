@@ -13,7 +13,7 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
 #'
-#' cbkfile <- cbk.convert.casteml(cbk.path("20081202172326.kitagawa.pml"),category="trace")
+#' cbkfile <- cbk.convert.casteml(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
 cbk.convert.casteml <- function(pmlfile,category=NULL) {
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
   outfile <- tempfile(fileext=".dataframe")

@@ -4,16 +4,20 @@
 \alias{cbk.read.casteml}
 \title{Read CASTEML file and return a dataframe}
 \usage{
-cbk.read.casteml(pmlfile, tableunit = "none", category = NULL)
+cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL, ...,
+  Medusa = FALSE)
 }
 \arguments{
-\item{pmlfile}{A CASTEML file that was download by `casteml
-download'}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (when Medusa=TRUE)}
 
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}
 
 \item{category}{category to pass to `cbk.convert.casteml'}
+
+\item{Medusa}{flag to directory download from Medusa
+(default=FALSE)}
 }
 \value{
 A dataframe with unit organized
@@ -24,11 +28,14 @@ Read CASTEML file and return a dataframe.
 \details{
 This function converts a CASTEML file to a csvfile by
   `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
+  When Medusa option was specified, this directly reads stones from
+  Medusa.
 }
 \examples{
-pmlfile <- cbk.path("20081202172326.kitagawa.pml")
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 tbl0 <- cbk.read.casteml(pmlfile,"ppm","trace")
 
+tbl0 <- cbk.read.casteml("20081202172326.hkitagawa","ppm","trace",Medusa=TRUE)
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},

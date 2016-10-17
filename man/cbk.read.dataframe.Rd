@@ -30,7 +30,7 @@ pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
 tbl0    <- cbk.read.dataframe(cbkfile,"ppm")
 
-tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
+tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
 tbl0    <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
 tbl0    <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 }

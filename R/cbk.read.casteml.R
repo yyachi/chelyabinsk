@@ -4,21 +4,32 @@
 #'
 #' @details This function converts a CASTEML file to a csvfile by
 #'   `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
-#' @param pmlfile A CASTEML file that was download by `casteml
-#'   download'
+#'   When Medusa option was specified, this directly reads stones from
+#'   Medusa.
+#' @param pmlfile_or_stone A CASTEML file that exits locally or
+#'   stone-ID (when Medusa=TRUE)
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
 #' @param category category to pass to `cbk.convert.casteml'
+#' @param Medusa flag to directory download from Medusa
+#'   (default=FALSE)
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.convert.casteml}},
 #'   \code{\link{cbk.read.dataframe}},
 #'   \url{https://github.com/misasa/casteml}
 #' @export
 #' @examples
-#' pmlfile <- cbk.path("20081202172326.kitagawa.pml")
+#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' tbl0 <- cbk.read.casteml(pmlfile,"ppm","trace")
 #'
-cbk.read.casteml <- function(pmlfile,tableunit="none",category=NULL){
+#' tbl0 <- cbk.read.casteml("20081202172326.hkitagawa","ppm","trace",Medusa=TRUE)
+cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL, ..., Medusa=FALSE){
+  if (Medusa) { # id is provided
+    stone   <- pmlfile_or_stone
+    pmlfile <- cbk.download.casteml(stone)
+  } else { # pmlfile is provided
+    pmlfile <- pmlfile_or_stone
+  }
   cbkfile <- cbk.convert.casteml(pmlfile,category)
   tbl0    <- cbk.read.dataframe(cbkfile,tableunit)
   return(tbl0)

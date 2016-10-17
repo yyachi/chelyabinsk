@@ -24,7 +24,7 @@ Return normalized element abundances.  Note that only
   also "Geochemical Modelling..." by Janousek et al. (2015)
 }
 \examples{
-tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
+tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
 ref  <- cbk.ref("Boynton.1989","ppm")
 cbk.normalize(tbl0,ref)
 }

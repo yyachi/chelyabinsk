@@ -23,7 +23,7 @@ Convert CASTEML file to CSV file.  This function
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
 
-cbkfile <- cbk.convert.casteml(cbk.path("20081202172326.kitagawa.pml"),category="trace")
+cbkfile <- cbk.convert.casteml(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
 }
 \seealso{
 \code{casteml convert}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.download.casteml}}

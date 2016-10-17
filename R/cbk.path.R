@@ -5,8 +5,8 @@
 #' @examples
 #' cbkfile <- cbk.path("periodic-table1.dataframe")
 #' cbkfile <- cbk.path("ref1.dataframe")
-#' pmlfile <- cbk.path("20081202172326.kitagawa.pml")
-#' cbkfile <- cbk.path("20081202172326.kitagawa_trace.dataframe")
+#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+#' cbkfile <- cbk.path("20081202172326.hkitagawa_trace.dataframe")
 cbk.path <- function(filename){
   return(system.file("extdata", filename, package = "chelyabinsk"))
 }

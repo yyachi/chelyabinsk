@@ -12,7 +12,7 @@
 #' @seealso \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
 #' @export
 #' @examples
-#' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
+#' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
 #' ref  <- cbk.ref("Boynton.1989","ppm")
 #' cbk.normalize(tbl0,ref)
 cbk.normalize <- function(cbktbl,ref,suffix_after_name_of_element=NULL){
