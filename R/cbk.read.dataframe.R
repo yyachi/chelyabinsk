@@ -11,13 +11,13 @@
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
 #' @return A dataframe with unit organized
-#' @seealso \code{\link{cbk.casteml.download}}, \code{casteml
+#' @seealso \code{\link{cbk.download.casteml}}, \code{casteml
 #'   convert}, \url{https://github.com/misasa/casteml},
 #'   \code{\link{cbk.convector}},
 #' @export
 #' @examples
-#' pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
-#' cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
+#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+#' cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
 #' tbl0    <- cbk.read.dataframe(cbkfile,"ppm")
 #'
 #' tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")

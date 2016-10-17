@@ -6,25 +6,25 @@
 #'   command `casteml' then reads it as data.frame.
 #'
 #' @details This function downloads a CASTEML file by
-#'   `cbk.casteml.download()', converts it to csvfile by
-#'   `cbk.casteml.convert()', and reads the file by
+#'   `cbk.download.casteml()', converts it to csvfile by
+#'   `cbk.convert.casteml()', and reads the file by
 #'   `cbk.read.dataframe()'.
 #' @param stone Unique indentification number of stones in Medusa.
-#'   Really, those will pass to cbk.casteml.download().
+#'   Really, those will pass to cbk.download.casteml().
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
 #' @param category category to pass to `casteml convert'
 #' @return A dataframe with unit organized
 #' @seealso \url{https://github.com/misasa/casteml},
-#'   \code{\link{cbk.casteml.download}},
-#'   \code{\link{cbk.casteml.convert}},
+#'   \code{\link{cbk.download.casteml}},
+#'   \code{\link{cbk.convert.casteml}},
 #'   \code{\link{cbk.read.dataframe}}
 #' @export
 #' @examples
 #' tbl0 <- cbk.read.medusa("20081202172326.hkitagawa","ppm","trace")
 #'
 cbk.read.medusa <- function(stone,tableunit="none",category=NULL){
-  pmlfile <- cbk.casteml.download(stone)
+  pmlfile <- cbk.download.casteml(stone)
   tbl0    <- cbk.read.casteml(pmlfile,tableunit,category)
   return(tbl0)
 }

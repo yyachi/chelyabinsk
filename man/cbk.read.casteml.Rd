@@ -13,7 +13,7 @@ download'}
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}
 
-\item{category}{category to pass to `cbk.casteml.convert'}
+\item{category}{category to pass to `cbk.convert.casteml'}
 }
 \value{
 A dataframe with unit organized
@@ -23,7 +23,7 @@ Read CASTEML file and return a dataframe.
 }
 \details{
 This function converts a CASTEML file to a csvfile by
-  `cbk.casteml.convert()' and read it by `cbk.read.dataframe()'.
+  `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.kitagawa.pml")
@@ -31,7 +31,7 @@ tbl0 <- cbk.read.casteml(pmlfile,"ppm","trace")
 
 }
 \seealso{
-\code{\link{cbk.casteml.convert}},
+\code{\link{cbk.convert.casteml}},
   \code{\link{cbk.read.dataframe}},
   \url{https://github.com/misasa/casteml}
 }

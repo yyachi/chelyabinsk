@@ -26,8 +26,8 @@ This internally calls
   take out column of `unit' and normalized by the `unit' column.
 }
 \examples{
-pmlfile <- cbk.casteml.download("20081202172326.hkitagawa")
-cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
+pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
 tbl0    <- cbk.read.dataframe(cbkfile,"ppm")
 
 tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.kitagawa_trace.dataframe"),"ppm")
@@ -35,7 +35,7 @@ tbl0    <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
 tbl0    <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 }
 \seealso{
-\code{\link{cbk.casteml.download}}, \code{casteml
+\code{\link{cbk.download.casteml}}, \code{casteml
   convert}, \url{https://github.com/misasa/casteml},
   \code{\link{cbk.convector}},
 }
