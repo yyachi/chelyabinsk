@@ -18,9 +18,9 @@ cbk.convert.casteml <- function(pmlfile, ..., category=NULL) {
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
   outfile <- tempfile(fileext=".dataframe")
   if(is.null(category)){
-    cmd     <- paste("casteml convert -f dataframe -c", category, pmlfile)
-  } else {
     cmd     <- paste("casteml convert -f dataframe", pmlfile)
+  } else {
+    cmd     <- paste("casteml convert -f dataframe -c", category, pmlfile)
   }
   cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
   return(outfile)
