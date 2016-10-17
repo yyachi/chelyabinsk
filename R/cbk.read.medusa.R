@@ -23,7 +23,7 @@
 #' @examples
 #' tbl0 <- cbk.read.medusa("20081202172326.hkitagawa","ppm","trace")
 #'
-cbk.read.medusa <- function(stone,tableunit="none",category="trace"){
+cbk.read.medusa <- function(stone,tableunit="none",category=NULL){
   pmlfile <- cbk.casteml.download(stone)
   tbl0    <- cbk.read.casteml(pmlfile,tableunit,category)
   return(tbl0)

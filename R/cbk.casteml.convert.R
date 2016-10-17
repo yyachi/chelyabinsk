@@ -14,11 +14,14 @@
 #' cbkfile <- cbk.casteml.convert(pmlfile,category="trace")
 #'
 #' cbkfile <- cbk.casteml.convert(cbk.path("20081202172326.kitagawa.pml"),category="trace")
-cbk.casteml.convert <- function(pmlfile,category="trace") {
+cbk.casteml.convert <- function(pmlfile,category=NULL) {
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
   outfile <- tempfile(fileext=".dataframe")
-  ## system(paste("casteml convert -f dataframe -c ", category, pmlfile,">", outfile))
-  cmd     <- paste("casteml convert -f dataframe -c", category, pmlfile)
+  if(is.null(category)){
+    cmd     <- paste("casteml convert -f dataframe -c", category, pmlfile)
+  } else {
+    cmd     <- paste("casteml convert -f dataframe", pmlfile)
+  }
   cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
   return(outfile)
 }

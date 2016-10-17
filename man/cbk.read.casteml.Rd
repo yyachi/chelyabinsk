@@ -4,7 +4,7 @@
 \alias{cbk.read.casteml}
 \title{Read CASTEML file and return a dataframe}
 \usage{
-cbk.read.casteml(pmlfile, tableunit = "none", category = "trace")
+cbk.read.casteml(pmlfile, tableunit = "none", category = NULL)
 }
 \arguments{
 \item{pmlfile}{A CASTEML file that was download by `casteml

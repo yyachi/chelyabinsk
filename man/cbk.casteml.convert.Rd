@@ -4,7 +4,7 @@
 \alias{cbk.casteml.convert}
 \title{Convert CASTEML file to CSV file}
 \usage{
-cbk.casteml.convert(pmlfile, category = "trace")
+cbk.casteml.convert(pmlfile, category = NULL)
 }
 \arguments{
 \item{pmlfile}{file path to CASTEML file}

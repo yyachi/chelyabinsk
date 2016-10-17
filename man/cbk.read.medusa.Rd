@@ -5,7 +5,7 @@
 \title{Return analyses records stored in Medusa in a form of a
   dataframe}
 \usage{
-cbk.read.medusa(stone, tableunit = "none", category = "trace")
+cbk.read.medusa(stone, tableunit = "none", category = NULL)
 }
 \arguments{
 \item{stone}{Unique indentification number of stones in Medusa.

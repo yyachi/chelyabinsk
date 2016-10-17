@@ -18,7 +18,7 @@
 #' pmlfile <- cbk.path("20081202172326.kitagawa.pml")
 #' tbl0 <- cbk.read.casteml(pmlfile,"ppm","trace")
 #'
-cbk.read.casteml <- function(pmlfile,tableunit="none",category="trace"){
+cbk.read.casteml <- function(pmlfile,tableunit="none",category=NULL){
   cbkfile <- cbk.casteml.convert(pmlfile,category)
   tbl0    <- cbk.read.dataframe(cbkfile,tableunit)
   return(tbl0)
