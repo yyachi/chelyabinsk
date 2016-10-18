@@ -5,9 +5,9 @@
 #'   in a temporary directory.  This is low-level function and users
 #'   are not encourage to call this but cbk.read.casteml().
 #' 
-#' @param pmlfile file path to CASTEML file
-#' @param category category filter that is passed to `casteml convert'
-#' @return file path to the converted file
+#' @param pmlfile File path to CASTEML file
+#' @param category Category filter that is passed to `casteml convert'
+#' @return File path to the converted file
 #' @export
 #' @seealso \code{casteml convert},
 #'   \url{https://github.com/misasa/casteml}

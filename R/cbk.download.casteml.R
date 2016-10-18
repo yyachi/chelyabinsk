@@ -2,10 +2,11 @@
 #'
 #' @description Download analysis records as a CASTEML file.  This
 #'   function returns path to the file.  The file is stored in a
-#'   temporary directory.
+#'   temporary directory unless specified.
 #' 
 #' @param arguments Unique indentification number of stones in Medusa.
 #'   Really, those will pass to `casteml download'.
+#' @param file File path to save downloaded CASTEML file
 #' @return Path to CASTEML file that was downloaded in temporary
 #'   directory.
 #' @export
@@ -17,12 +18,11 @@
 #' pmlfile <- cbk.download.casteml(stone)
 #'
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbk.download.casteml <- function(arguments) {
+cbk.download.casteml <- function(arguments,file=tempfile(fileext=".pml")) {
 
-  ## outfile <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext=".pml")
-  outfile <- tempfile(fileext=".pml")
-  ## system(paste("casteml download",arguments[ii],">",outfile))
+  ## file <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext=".pml")
+  ## system(paste("casteml download",arguments[ii],">",file))
   cmd     <- paste(c("casteml download",arguments),collapse=" ")
-  cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
-  return(outfile)
+  cat(system(cmd, intern = TRUE),file=file,sep="\n")
+  return(file)
 }

@@ -7,12 +7,12 @@
 cbk.convert.casteml(pmlfile, category = NULL)
 }
 \arguments{
-\item{pmlfile}{file path to CASTEML file}
+\item{pmlfile}{File path to CASTEML file}
 
-\item{category}{category filter that is passed to `casteml convert'}
+\item{category}{Category filter that is passed to `casteml convert'}
 }
 \value{
-file path to the converted file
+File path to the converted file
 }
 \description{
 Convert CASTEML file to CSV file.  This function
