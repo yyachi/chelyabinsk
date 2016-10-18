@@ -18,10 +18,15 @@
 #' pmlfile <- cbk.download.casteml(stone)
 #'
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbk.download.casteml <- function(arguments,file=tempfile(fileext=".pml")) {
+cbk.download.casteml <- function(arguments,file=NULL) {
 
   ## file <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext=".pml")
   ## system(paste("casteml download",arguments[ii],">",file))
+  if(is.null(file)){
+    file <- tempfile(fileext=".pml")
+    ## file <- file.path(tempdir(),sprintf("%s%s",paste(arguments,collapse="&"),".pml")) # does not work on October 19, 2016
+  }
+
   cmd     <- paste(c("casteml download",arguments),collapse=" ")
   cat(system(cmd, intern = TRUE),file=file,sep="\n")
   return(file)

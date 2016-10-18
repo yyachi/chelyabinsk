@@ -4,7 +4,7 @@
 \alias{cbk.download.casteml}
 \title{Download analysis records as a CASTEML file}
 \usage{
-cbk.download.casteml(arguments, file = tempfile(fileext = ".pml"))
+cbk.download.casteml(arguments, file = NULL)
 }
 \arguments{
 \item{arguments}{Unique indentification number of stones in Medusa.
