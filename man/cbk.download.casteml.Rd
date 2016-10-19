@@ -4,13 +4,15 @@
 \alias{cbk.download.casteml}
 \title{Download analysis records as a CASTEML file}
 \usage{
-cbk.download.casteml(arguments, file = NULL)
+cbk.download.casteml(arguments, file = NULL, force = FALSE)
 }
 \arguments{
 \item{arguments}{Unique indentification number of stones in Medusa.
 Really, those will pass to `casteml download'.}
 
 \item{file}{File path to save downloaded CASTEML file}
+
+\item{force}{Force download CASTEML file}
 }
 \value{
 Path to CASTEML file that was downloaded in temporary
@@ -19,7 +21,9 @@ Path to CASTEML file that was downloaded in temporary
 \description{
 Download analysis records as a CASTEML file.  This
   function returns path to the file.  The file is stored in a
-  temporary directory unless specified.
+  temporary directory unless specified.  Note with the same
+  arguments, this function downloads file only once per a R
+  session.
 }
 \examples{
 stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
