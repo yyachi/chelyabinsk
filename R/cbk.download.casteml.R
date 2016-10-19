@@ -28,7 +28,7 @@ cbk.download.casteml <- function(arguments,file=NULL,force=FALSE) {
   ## system(paste("casteml download",arguments[ii],">",file))
   if(is.null(file)){
     ## file <- tempfile(fileext=".pml")
-    file <- file.path(tempdir(),paste(digest::digest(cmd,algo='md5'),".pml",sep=""))
+    file <- file.path(tempdir(),paste0(digest::digest(cmd,algo='md5'),".pml"))
   }
 
   ## Download file only when it does not exist
