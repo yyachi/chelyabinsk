@@ -5,6 +5,9 @@
 #'   canvas in advance.
 #'
 #' @param pmlfile File path to CASTEML file
+#' @param tableunit Unit to toss to cbk.read.casteml()
+#' @param property Property to align x-axis
+#' @param reference Reference of element abundance
 #' @return trace diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}

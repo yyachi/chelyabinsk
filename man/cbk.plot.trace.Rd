@@ -9,6 +9,12 @@ cbk.plot.trace(pmlfile, tableunit = "ug/g", property = "atomicnumber",
 }
 \arguments{
 \item{pmlfile}{File path to CASTEML file}
+
+\item{tableunit}{Unit to toss to cbk.read.casteml()}
+
+\item{property}{Property to align x-axis}
+
+\item{reference}{Reference of element abundance}
 }
 \value{
 trace diagram
