@@ -2,31 +2,27 @@
 % Please edit documentation in R/cbk.plot.trace.R
 \name{cbk.plot.trace}
 \alias{cbk.plot.trace}
-\title{Read dataframe and create trace diagram}
+\title{Read CASTEML file and create trace diagram}
 \usage{
 cbk.plot.trace(pmlfile, tableunit = "ug/g", property = "atomicnumber",
   reference = "Wasson.1988")
 }
 \arguments{
-\item{dataframe}{file path to dataframe}
+\item{pmlfile}{File path to CASTEML file}
 }
 \value{
-file path to created file
+trace diagram
 }
 \description{
-Read dataframe and create trace diagram.  The
-  created file is stored in current directory.  This function
-  returns path to the file.
+Read CASTEML file and create trace diagram.  This
+  function does not save the created diagram.  You should prepare a
+  canvas in advance.
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-rplotfile <- sprintf("\%s.\%s",sub("\\\\.[[:alnum:]]+$","",pmlfile),"pdf")
-pdf(rplotfile)
 cbk.plot.trace(pmlfile)
-dev.off()
-cbk.exec(rplotfile)
 }
 \seealso{
-\code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.download.casteml}}
+\url{https://github.com/misasa/casteml}
 }
 

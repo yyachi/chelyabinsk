@@ -1,23 +1,20 @@
-#' @title Read dataframe and create trace diagram
+#' @title Read CASTEML file and create trace diagram
 #'
-#' @description Read dataframe and create trace diagram.  
-#' This function does not save the created diagram.
-#' You should prepare a canvas in advance.
-#' 
+#' @description Read CASTEML file and create trace diagram.  This
+#'   function does not save the created diagram.  You should prepare a
+#'   canvas in advance.
+#'
 #' @param pmlfile File path to CASTEML file
 #' @return trace diagram
 #' @export
-#' @seealso \code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.download.casteml}}
+#' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' rplotfile <- sprintf("%s.%s",sub("\\.[[:alnum:]]+$","",pmlfile),"pdf")
-#' pdf(rplotfile)
 #' cbk.plot.trace(pmlfile)
-#' dev.off()
-#' cbk.exec(rplotfile)
 cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  cbkfile  <- cbk.convert.casteml(pmlfile,category="trace")
-  tbl0     <- cbk.read.dataframe(cbkfile,tableunit)
+  ## cbkfile  <- cbk.convert.casteml(pmlfile,category="trace")
+  ## tbl0     <- cbk.read.dataframe(cbkfile,tableunit)
+  tbl0     <- cbk.read.casteml(pmlfile,tableunit,category="trace")
   periodic <- cbk.periodic()
   ref1     <- cbk.ref(reference,tableunit,cbk.periodic(property))
   stonelist   <- rownames(tbl0)
