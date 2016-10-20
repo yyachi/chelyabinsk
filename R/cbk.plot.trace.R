@@ -1,11 +1,11 @@
 #' @title Read dataframe and create trace diagram
 #'
-#' @description Read dataframe and create trace diagram.  The
-#'   created file is stored in current directory.  This function
-#'   returns path to the file.
+#' @description Read dataframe and create trace diagram.  
+#' This function does not save the created diagram.
+#' You should prepare a canvas in advance.
 #' 
-#' @param dataframe file path to dataframe
-#' @return file path to created file
+#' @param pmlfile File path to CASTEML file
+#' @return trace diagram
 #' @export
 #' @seealso \code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.download.casteml}}
 #' @examples
@@ -16,12 +16,10 @@
 #' dev.off()
 #' cbk.exec(rplotfile)
 cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-
   cbkfile  <- cbk.convert.casteml(pmlfile,category="trace")
   tbl0     <- cbk.read.dataframe(cbkfile,tableunit)
   periodic <- cbk.periodic()
   ref1     <- cbk.ref(reference,tableunit,cbk.periodic(property))
-
   stonelist   <- rownames(tbl0)
   stoneindex  <- 1:nrow(tbl0)
   chemlist    <- colnames(tbl0)
@@ -70,6 +68,5 @@ cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refe
   abline(h=1,lty=2)
   box(lwd=1)
   legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5)
-
-  return(YY)
+  ## return(YY)
 }
