@@ -5,18 +5,18 @@
 \title{Read CASTEML file and return a dataframe}
 \usage{
 cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL,
-  Medusa = FALSE)
+  download = FALSE)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
-stone-ID (when Medusa=TRUE)}
+stone-ID (when download=TRUE)}
 
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}
 
 \item{category}{category to pass to `cbk.convert.casteml'}
 
-\item{Medusa}{flag to directory download from Medusa
+\item{download}{flag to directory download from Medusa
 (default=FALSE)}
 }
 \value{
@@ -35,7 +35,7 @@ This function converts a CASTEML file to a csvfile by
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 tbl0 <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 
-tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",Medusa=TRUE)
+tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},
