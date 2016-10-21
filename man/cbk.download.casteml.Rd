@@ -4,11 +4,12 @@
 \alias{cbk.download.casteml}
 \title{Download analysis records as a CASTEML file}
 \usage{
-cbk.download.casteml(arguments, file = NULL, force = FALSE)
+cbk.download.casteml(stone, file = NULL, force = FALSE)
 }
 \arguments{
-\item{arguments}{Unique indentification number of stones in Medusa.
-Really, those will pass to `casteml download'.}
+\item{stone}{Unique indentification number of stones in Medusa.
+Really, those will pass to `casteml download' and thus you can
+include options.}
 
 \item{file}{File path to save downloaded CASTEML file}
 

@@ -17,7 +17,7 @@ cbk.plot.trace(pmlfile, tableunit = "ug/g", property = "atomicnumber",
 \item{reference}{Reference of element abundance}
 }
 \value{
-trace diagram
+Dataframe used to plot the diagram
 }
 \description{
 Read CASTEML file and create trace diagram.  This

@@ -6,8 +6,9 @@
 #'   arguments, this function downloads file only once per a R
 #'   session.
 #' 
-#' @param arguments Unique indentification number of stones in Medusa.
-#'   Really, those will pass to `casteml download'.
+#' @param stone Unique indentification number of stones in Medusa.
+#'   Really, those will pass to `casteml download' and thus you can
+#'   include options.
 #' @param file File path to save downloaded CASTEML file
 #' @param force Force download CASTEML file
 #' @return Path to CASTEML file that was downloaded in temporary
@@ -21,11 +22,11 @@
 #' pmlfile <- cbk.download.casteml(stone)
 #'
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbk.download.casteml <- function(arguments,file=NULL,force=FALSE) {
-  cmd    <- paste(c("casteml download",arguments),collapse=" ")
+cbk.download.casteml <- function(stone,file=NULL,force=FALSE) {
+  cmd    <- paste(c("casteml download",stone),collapse=" ")
 
-  ## file <- tempfile(pattern = paste(arguments[1],"@",sep=""), fileext=".pml")
-  ## system(paste("casteml download",arguments[ii],">",file))
+  ## file <- tempfile(pattern = paste(stone[1],"@",sep=""), fileext=".pml")
+  ## system(paste("casteml download",stone[ii],">",file))
   if(is.null(file)){
     ## file <- tempfile(fileext=".pml")
     file <- file.path(tempdir(),paste0(digest::digest(cmd,algo='md5'),".pml"))
