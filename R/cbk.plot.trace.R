@@ -9,15 +9,21 @@
 #' @export
 #' @seealso \code{casteml download}, \url{https://github.com/misasa/casteml}, \code{\link{cbk.download.casteml}}
 #' @examples
-#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' rplotfile <- sprintf("%s.%s",sub("\\.[[:alnum:]]+$","",pmlfile),"pdf")
+#' rplotfile <- tempfile(fileext=".pml")
 #' pdf(rplotfile)
-#' cbk.plot.trace(pmlfile)
+#' cbk.plot.trace("20081202172326.hkitagawa",Medusa=TRUE)
 #' dev.off()
 #' cbk.exec(rplotfile)
-cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  cbkfile  <- cbk.convert.casteml(pmlfile,category="trace")
-  tbl0     <- cbk.read.dataframe(cbkfile,tableunit)
+#'
+#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+#' cbk.plot.trace(pmlfile)
+cbk.plot.trace <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988",Medusa=FALSE) {
+  if (Medusa) { # id is provided
+    tbl0     <- cbk.read.casteml("20081202172326.hkitagawa",tableunit=tableunit,category="trace",Medusa=TRUE)
+  } else { # pmlfile is provided
+    cbkfile  <- cbk.convert.casteml(pmlfile_or_stone,category="trace")
+    tbl0     <- cbk.read.dataframe(cbkfile,tableunit)
+  }
   periodic <- cbk.periodic()
   ref1     <- cbk.ref(reference,tableunit,cbk.periodic(property))
   stonelist   <- rownames(tbl0)
