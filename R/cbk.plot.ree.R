@@ -40,7 +40,7 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   ### ----------------
   ###* PLOT
   ### ----------------
-  par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
+  ## par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
   matplot(XX0,YY,log="y",type="o",lty=1,pch=stoneindex,
           xlab='',ylab='ZZ/CI',axes=FALSE)
@@ -53,5 +53,5 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
-  return(YY)
+  return(tbl0)
 }
