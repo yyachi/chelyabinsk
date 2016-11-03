@@ -28,8 +28,8 @@ Read CASTEML file and return a dataframe.
 \details{
 This function converts a CASTEML file to a csvfile by
   `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
-  When Medusa option was specified, this directly reads stones from
-  Medusa.
+  When `download' option was specified, this directly reads stones
+  from Medusa.
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")

@@ -4,8 +4,8 @@
 #'
 #' @details This function converts a CASTEML file to a csvfile by
 #'   `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
-#'   When Medusa option was specified, this directly reads stones from
-#'   Medusa.
+#'   When `download' option was specified, this directly reads stones
+#'   from Medusa.
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID (when download=TRUE)
 #' @param tableunit Output unit that will be resolved by
@@ -24,7 +24,7 @@
 #'
 #' tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
 cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL,download=FALSE){
-  if (download) { # id is provided
+  if (download) { # stone-ID is provided
     stone   <- pmlfile_or_stone
     pmlfile <- cbk.download.casteml(stone)
   } else { # pmlfile is provided
