@@ -10,19 +10,19 @@
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
-#' pmlfile <- cbk.download.casteml("-R 20130528105235-594267")
+#' pmlfile <- cbk.download.casteml(c("-R","20130528105235-594267"))
 #' cbk.plot.oxygen(pmlfile)
 cbk.plot.oxygen <- function(pmlfile,tableunit="none") {
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  tbl0        <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
+  tbl0       <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
   stonelist  <- rownames(tbl0)
   stoneindex <- 1:nrow(tbl0)
 
-  ## ### ----------------
-  ## ###* PARSE
-  ## ### ----------------
+  ### ----------------
+  ###* PARSE
+  ### ----------------
   XX         <- tbl0[,'d18O']
   YY         <- tbl0[,'d17O']
 
@@ -57,5 +57,5 @@ cbk.plot.oxygen <- function(pmlfile,tableunit="none") {
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
-  return(XX)
+  return(tbl0)
 }

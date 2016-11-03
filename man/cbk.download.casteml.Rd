@@ -23,8 +23,7 @@ Path to CASTEML file that was downloaded in temporary
 Download analysis records as a CASTEML file.  This
   function returns path to the file.  The file is stored in a
   temporary directory unless specified.  Note with the same
-  arguments, this function downloads file only once per a R
-  session.
+  arguments, this function downloads only once per a R session.
 }
 \examples{
 stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")

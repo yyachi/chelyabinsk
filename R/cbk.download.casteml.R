@@ -3,8 +3,7 @@
 #' @description Download analysis records as a CASTEML file.  This
 #'   function returns path to the file.  The file is stored in a
 #'   temporary directory unless specified.  Note with the same
-#'   arguments, this function downloads file only once per a R
-#'   session.
+#'   arguments, this function downloads only once per a R session.
 #' 
 #' @param stone Unique indentification number of stones in Medusa.
 #'   Really, those will pass to `casteml download' and thus you can
