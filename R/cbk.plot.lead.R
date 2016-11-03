@@ -34,15 +34,15 @@ cbk.plot.lead <- function(pmlfile,tableunit="none") {
        col=stoneindex,pch=stoneindex,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^207*"Pb/"*{}^204*"Pb"))
   legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
-  #' Northern Hemisphere Reference Line (Hart,1984)
+  # Northern Hemisphere Reference Line (Hart,1984)
   curve(0.1084*x + 13.491,type="l",lty=1,add=TRUE)
 
-  #' Pb206zPb204_vs_Pb208zPb204
+  # Pb206zPb204_vs_Pb208zPb204
   plot(XX,YY2,type="p",
        col=stoneindex,pch=stoneindex,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^208*"Pb/"*{}^204*"Pb"))
   legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
-  #' Northern Hemisphere Reference Line (Hart,1984)
+  # Northern Hemisphere Reference Line (Hart,1984)
   curve(1.209*x + 15.627,type="l",lty=1,add=TRUE)
 
   ### ----------------
