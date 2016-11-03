@@ -20,7 +20,7 @@ Read CASTEML file and create lead diagram.  This
   canvas in advance.
 }
 \examples{
-pmlfile <- cbk.download.casteml("-R 20080616170000.hk")
+pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 cbk.plot.lead(pmlfile)
 }
 \seealso{

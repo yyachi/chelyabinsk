@@ -27,9 +27,9 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   subchemlist <- intersect(REElist,chemlist)
 
-  ## ### ----------------
-  ## ###* PARSE
-  ## ### ----------------
+  ### ----------------
+  ###* PARSE
+  ### ----------------
   property0        <- periodic[subchemlist,property] # atomicnumber, volatility, compatibility
   names(property0) <- subchemlist
   XX0              <- sort(property0)
