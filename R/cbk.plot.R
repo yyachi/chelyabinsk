@@ -9,7 +9,14 @@
 #' @seealso \code{\link{cbk.plot.trace}}
 #' @examples
 #' cbk.plot("20081202172326.hkitagawa",category="trace")
+#' cbk.plot("20081202172326.hkitagawa",category="lead")
+#' cbk.plot(c("-R","20130528105235-594267"),category="oxygen")
 cbk.plot <- function(stone,category="trace") {
   pmlfile <- cbk.download.casteml(stone)
-  return(cbk.plot.trace(pmlfile))
+  ans <- switch(category,
+                "trace"  = cbk.plot.trace(pmlfile),
+                "oxygen" = cbk.plot.oxygen(pmlfile),
+                "lead"   = cbk.plot.lead(pmlfile),
+                stop("No action defined"))
+  return(ans)
 }
