@@ -18,9 +18,10 @@ Dataframe used to plot the diagram
 Download CASTEML file and create geochemical diagram
 }
 \examples{
+cbk.plot("20130318074936-009-271",category="trace")
 cbk.plot("20081202172326.hkitagawa",category="trace")
 cbk.plot("20081202172326.hkitagawa",category="lead")
-cbk.plot(c("-R","20130528105235-594267"),category="oxygen")
+cbk.plot("20130528105235-594267",category="oxygen")
 }
 \seealso{
 \code{\link{cbk.plot.trace}}

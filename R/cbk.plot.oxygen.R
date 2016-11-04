@@ -10,7 +10,7 @@
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
-#' pmlfile <- cbk.download.casteml(c("-R","20130528105235-594267"))
+#' pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
 #' cbk.plot.oxygen(pmlfile)
 cbk.plot.oxygen <- function(pmlfile,tableunit="none") {
   ## ----------------

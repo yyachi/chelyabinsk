@@ -20,7 +20,7 @@ Read CASTEML file and create oxygen diagram.  This
   canvas in advance.
 }
 \examples{
-pmlfile <- cbk.download.casteml(c("-R","20130528105235-594267"))
+pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
 cbk.plot.oxygen(pmlfile)
 }
 \seealso{
