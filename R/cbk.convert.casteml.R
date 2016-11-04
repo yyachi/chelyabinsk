@@ -2,8 +2,10 @@
 #'
 #' @description Convert CASTEML file to CSV file.  This function
 #'   returns path to the converted file.  The converted file is stored
-#'   in a temporary directory.  This is low-level function and users
-#'   are not encourage to call this but cbk.read.casteml().
+#'   in a temporary directory.  Note with the same arguments, this
+#'   function convert file only once per a R session.  This is
+#'   low-level function and users are not encourage to call this but
+#'   cbk.read.casteml().
 #' 
 #' @param pmlfile File path to CASTEML file
 #' @param category Category filter that is passed to `casteml convert'

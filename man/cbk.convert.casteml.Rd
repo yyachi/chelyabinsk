@@ -4,7 +4,7 @@
 \alias{cbk.convert.casteml}
 \title{Convert CASTEML file to CSV file}
 \usage{
-cbk.convert.casteml(pmlfile, category = NULL)
+cbk.convert.casteml(pmlfile, category = NULL, force = FALSE)
 }
 \arguments{
 \item{pmlfile}{File path to CASTEML file}
@@ -17,8 +17,10 @@ File path to the converted file
 \description{
 Convert CASTEML file to CSV file.  This function
   returns path to the converted file.  The converted file is stored
-  in a temporary directory.  This is low-level function and users
-  are not encourage to call this but cbk.read.casteml().
+  in a temporary directory.  Note with the same arguments, this
+  function convert file only once per a R session.  This is
+  low-level function and users are not encourage to call this but
+  cbk.read.casteml().
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
