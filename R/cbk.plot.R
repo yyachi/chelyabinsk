@@ -1,10 +1,12 @@
-#' @title Download CASTEML file associated with a stone and create
-#'   geochemical diagram
+#' @title Plot Analyses with descendants of a stone
 #'
-#' @description Download CASTEML file associated with a stone and
-#'   create geochemical diagram
+#' @description Plot Analyses with descendants of a stone.  This
+#'   function downloads CASTEML file associated with a stone and
+#'   creates geochemical diagram depending on category specified.
 #'
-#' @param stone Unique indentification number of stones in Medusa.
+#' @param stone Unique indentification number of stone in Medusa.
+#'   This will be passed to cbk.download.casteml() with "--recursive"
+#'   option.
 #' @param category Category filter that is passed to `casteml convert'
 #' @return Dataframe used to plot the diagram
 #' @export
@@ -15,7 +17,7 @@
 #' cbk.plot("20081202172326.hkitagawa",category="lead")
 #' cbk.plot("20130528105235-594267",category="oxygen")
 cbk.plot <- function(stone,category="trace") {
-  pmlfile <- cbk.download.casteml(c("-r", stone))
+  pmlfile <- cbk.download.casteml(c("--recursive", stone))
   ans <- switch(category,
                 "trace"  = cbk.plot.trace(pmlfile),
                 "oxygen" = cbk.plot.oxygen(pmlfile),

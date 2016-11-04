@@ -2,12 +2,14 @@
 % Please edit documentation in R/cbk.plot.R
 \name{cbk.plot}
 \alias{cbk.plot}
-\title{Download CASTEML file and create geochemical diagram}
+\title{Plot Analyses with descendants of a stone}
 \usage{
 cbk.plot(stone, category = "trace")
 }
 \arguments{
-\item{stone}{Unique indentification number of stones in Medusa.}
+\item{stone}{Unique indentification number of stone in Medusa.
+This will be passed to cbk.download.casteml() with "--recursive"
+option.}
 
 \item{category}{Category filter that is passed to `casteml convert'}
 }
@@ -15,7 +17,9 @@ cbk.plot(stone, category = "trace")
 Dataframe used to plot the diagram
 }
 \description{
-Download CASTEML file and create geochemical diagram
+Plot Analyses with descendants of a stone.  This
+  function downloads CASTEML file associated with a stone and
+  creates geochemical diagram depending on category specified.
 }
 \examples{
 cbk.plot("20130318074936-009-271",category="trace")

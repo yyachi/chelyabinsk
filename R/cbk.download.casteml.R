@@ -22,7 +22,7 @@
 #'
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 cbk.download.casteml <- function(stone,file=NULL,force=FALSE) {
-  cmd    <- paste(c("casteml download",stone),collapse=" ")
+  cmd <- paste(c("casteml download",stone),collapse=" ")
 
   ## file <- tempfile(pattern = paste(stone[1],"@",sep=""), fileext=".pml")
   ## system(paste("casteml download",stone[ii],">",file))
