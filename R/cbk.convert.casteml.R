@@ -17,14 +17,19 @@
 #'
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
-cbk.convert.casteml <- function(pmlfile,category=NULL) {
+cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
-  outfile <- tempfile(fileext=".dataframe")
+  ## outfile <- tempfile(fileext=".dataframe")
   if(is.null(category)){
     cmd     <- paste("casteml convert -f dataframe",pmlfile)
   } else {
     cmd     <- paste("casteml convert -f dataframe -c",category,pmlfile)
   }
-  cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
+  outfile <- file.path(tempdir(),paste0(digest::digest(cmd,algo='md5'),".dataframe"))
+
+  ## Convert file only when it does not exist
+  if (force || !file.exists(outfile)) {
+    cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
+  }
   return(outfile)
 }
