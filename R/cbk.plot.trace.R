@@ -15,19 +15,19 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' cbk.plot.trace(pmlfile)
 cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  ### ----------------
-  ###* PAGE SETUP
-  ### ----------------
+  ## ----------------
+  ##* PAGE SETUP
+  ## ----------------
   par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
-  ### ----------------
-  ###* PLOTS
-  ### ----------------
+  ## ----------------
+  ##* PLOTS
+  ## ----------------
   tbl0 <- cbk.plot.spider(pmlfile)
   tbl1 <- cbk.plot.ree(pmlfile)
 
-  ### ----------------
-  ###* CLOSING REMARK
-  ### ----------------
+  ## ----------------
+  ##* CLOSING REMARK
+  ## ----------------
   return(tbl0)
 }

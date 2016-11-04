@@ -9,35 +9,35 @@
 #' @seealso \code{\link{cbk.normalize}}
 #' @export
 cbk.balance <- function(datain,element,phase,mode,density){
-  ### EXAMPLES
-  ### > datain
-  ###           Ba       Nb       La       Ce       Pr        Sr       Nd       Sm
-  ### ol  0.044000 0.049000 0.000415 0.004941 0.000608  0.619333 0.000000 0.000000
-  ### pig 0.059048 0.183133 0.003487 0.016731 0.004169  0.546383 0.041143 0.043506
-  ### WR  4.510000 0.022500 0.013000 0.031000 0.004400 77.300000 0.029000 0.014000
-  ###           Zr       Hf       Eu       Gd       Dy       Li        Y       Er
-  ### ol  0.264633 0.024833 0.003022 0.004000 0.027036 1.635333 0.000000 0.023356
-  ### pig 0.370700 0.043394 0.006900 0.069043 0.180000 0.682633 1.370666 0.178516
-  ### WR  0.140000 0.005000 0.002800 0.032000 0.061000 2.050000 0.462000 0.057000
-  ###           Yb       Lu
-  ### ol  0.031766 0.010288
-  ### pig 0.200000 0.037148
-  ### WR  0.077000 0.014200
-  ### > element
-  ###  [1] "Ba" "Nb" "La" "Ce" "Pr" "Sr" "Nd" "Sm" "Zr" "Hf" "Eu" "Gd" "Dy" "Li" "Y"
-  ### [16] "Er" "Yb" "Lu"
-  ### > phase
-  ### [1] "ol"  "pig"
-  ### > mode
-  ###    ol   pig    WR
-  ### 0.525 0.353 1.000
-  ### > density
-  ###  ol pig  WR
-  ### 3.3 3.4 3.3
-  ### QQ <- cbk.balance(datain,element,phase,mode,density)
-  ### QQzCI <- cbk.normalize(QQ,ref0)
+  ## EXAMPLES
+  ## > datain
+  ##           Ba       Nb       La       Ce       Pr        Sr       Nd       Sm
+  ## ol  0.044000 0.049000 0.000415 0.004941 0.000608  0.619333 0.000000 0.000000
+  ## pig 0.059048 0.183133 0.003487 0.016731 0.004169  0.546383 0.041143 0.043506
+  ## WR  4.510000 0.022500 0.013000 0.031000 0.004400 77.300000 0.029000 0.014000
+  ##           Zr       Hf       Eu       Gd       Dy       Li        Y       Er
+  ## ol  0.264633 0.024833 0.003022 0.004000 0.027036 1.635333 0.000000 0.023356
+  ## pig 0.370700 0.043394 0.006900 0.069043 0.180000 0.682633 1.370666 0.178516
+  ## WR  0.140000 0.005000 0.002800 0.032000 0.061000 2.050000 0.462000 0.057000
+  ##           Yb       Lu
+  ## ol  0.031766 0.010288
+  ## pig 0.200000 0.037148
+  ## WR  0.077000 0.014200
+  ## > element
+  ##  [1] "Ba" "Nb" "La" "Ce" "Pr" "Sr" "Nd" "Sm" "Zr" "Hf" "Eu" "Gd" "Dy" "Li" "Y"
+  ## [16] "Er" "Yb" "Lu"
+  ## > phase
+  ## [1] "ol"  "pig"
+  ## > mode
+  ##    ol   pig    WR
+  ## 0.525 0.353 1.000
+  ## > density
+  ##  ol pig  WR
+  ## 3.3 3.4 3.3
+  ## QQ <- cbk.balance(datain,element,phase,mode,density)
+  ## QQzCI <- cbk.normalize(QQ,ref0)
 
-  ### pre process
+  ## pre process
   phase_meas <- datain[phase,element]
   phase_meas[is.na(phase_meas)] <- 0  # replace NA by 0
   ## phase_mode    <- datain[phase,"mode"]
@@ -49,7 +49,7 @@ cbk.balance <- function(datain,element,phase,mode,density){
   ## bulk_density  <- datain["WR","density"]
   bulk_density  <- density["WR"]
 
-  ### element quantity of each phase considering mode and density
+  ## element quantity of each phase considering mode and density
   for(jj in 1:length(phase_mode)) { # loop for phase
     jj_qtty           <- phase_meas[jj,] * phase_mode[jj] * phase_density[jj] / bulk_density
     rownames(jj_qtty) <- paste(rownames(jj_qtty),"(quantity)")
@@ -60,7 +60,7 @@ cbk.balance <- function(datain,element,phase,mode,density){
     }
   }
 
-  ### essential calculation
+  ## essential calculation
   total_qtty            <- data.frame(t(colSums(phase_qtty))) # sum of element quantity
   rownames(total_qtty)  <- "WR (calc)"
   miss_mode             <- 1-sum(phase_mode) # missing phase (or remainder)
@@ -71,7 +71,7 @@ cbk.balance <- function(datain,element,phase,mode,density){
   miss_ab[miss_ab <= 0] <- NA
   rownames(miss_ab)     <- "remainder"
 
-  ### after process
+  ## after process
   phase_meas$mode       <- phase_mode
   phase_meas$density    <- phase_density
   phase_qtty$mode       <- phase_mode

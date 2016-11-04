@@ -15,9 +15,9 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' cbk.plot.ree(pmlfile)
 cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  ### ----------------
-  ###* OPENING REMARK
-  ### ----------------
+  ## ----------------
+  ##* OPENING REMARK
+  ## ----------------
   tbl0        <- cbk.read.casteml(pmlfile,tableunit,category="trace")
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
@@ -27,9 +27,9 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   subchemlist <- intersect(REElist,chemlist)
 
-  ### ----------------
-  ###* PARSE
-  ### ----------------
+  ## ----------------
+  ##* PARSE
+  ## ----------------
   property0        <- periodic[subchemlist,property] # atomicnumber, volatility, compatibility
   names(property0) <- subchemlist
   XX0              <- sort(property0)
@@ -37,9 +37,9 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
 
-  ### ----------------
-  ###* PLOT
-  ### ----------------
+  ## ----------------
+  ##* PLOT
+  ## ----------------
   ## par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
   matplot(XX0,YY,log="y",type="o",lty=1,pch=stoneindex,
@@ -50,8 +50,8 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   box(lwd=1)
   legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5)
 
-  ### ----------------
-  ###* CLOSING REMARK
-  ### ----------------
+  ## ----------------
+  ##* CLOSING REMARK
+  ## ----------------
   return(tbl0)
 }

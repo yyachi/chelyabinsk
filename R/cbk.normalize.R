@@ -16,21 +16,21 @@
 #' ref  <- cbk.ref("Boynton.1989","ppm")
 #' cbk.normalize(tbl0,ref)
 cbk.normalize <- function(cbktbl,ref,suffix_after_name_of_element=NULL){
-  ### EXAMPLES
-  ### > property <- cbk.periodic("atomicnumber")
-  ### > ref      <- cbk.ref("Boynton.1989","ppm")
-  ### > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
-  ### >
-  ### > yyy      <- cbk.normalize(sample,ref) # normalized values
-  ### > xxx      <- property[names(ref)]
-  ### >
-  ### > plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")
-  ### > axis(1,xxx,labels=names(xxx),cex.axis=0.75)
-  ### > axis(2,cex.axis=0.75)
-  ### > points(xxx,yyy[,"Po-4"],col="blue")
-  ### > lines(xxx,yyy[,"Po-4"],col="blue")
-  ### > abline(h=(10^(-1:3)),lty="dashed") # grid
-  ### > box() # bounding box
+  ## EXAMPLES
+  ## > property <- cbk.periodic("atomicnumber")
+  ## > ref      <- cbk.ref("Boynton.1989","ppm")
+  ## > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
+  ## >
+  ## > yyy      <- cbk.normalize(sample,ref) # normalized values
+  ## > xxx      <- property[names(ref)]
+  ## >
+  ## > plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")
+  ## > axis(1,xxx,labels=names(xxx),cex.axis=0.75)
+  ## > axis(2,cex.axis=0.75)
+  ## > points(xxx,yyy[,"Po-4"],col="blue")
+  ## > lines(xxx,yyy[,"Po-4"],col="blue")
+  ## > abline(h=(10^(-1:3)),lty="dashed") # grid
+  ## > box() # bounding box
 
   ## name filter when number of elements in ref exceeds those in sample
   ## typically suffix_after_name_of_element is "_error"

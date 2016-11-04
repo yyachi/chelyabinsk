@@ -13,23 +13,23 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' cbk.plot.lead(pmlfile)
 cbk.plot.lead <- function(pmlfile,tableunit="none") {
-  ### ----------------
-  ###* OPENING REMARK
-  ### ----------------
+  ## ----------------
+  ##* OPENING REMARK
+  ## ----------------
   tbl0       <- cbk.read.casteml(pmlfile,tableunit,category="lead")
   stonelist  <- rownames(tbl0)
   stoneindex <- 1:nrow(tbl0)
 
-  ### ----------------
-  ###* PARSE
-  ### ----------------
+  ## ----------------
+  ##* PARSE
+  ## ----------------
   XX         <- tbl0[,'Pb206zPb204']
   YY1        <- tbl0[,'Pb207zPb204']
   YY2        <- tbl0[,'Pb208zPb204']
 
-  ### ----------------
-  ###* PLOT
-  ### ----------------
+  ## ----------------
+  ##* PLOT
+  ## ----------------
   par(mfrow=c(2,1),oma=c(0.5,0.5,0.5,0.5)) # c(row,col) c(1,1); c(b,l,t,r) c(0,0,0,0)
 
   # Pb206zPb204_vs_Pb207zPb204
@@ -50,8 +50,8 @@ cbk.plot.lead <- function(pmlfile,tableunit="none") {
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(1.209*x + 15.627,type="l",lty=1,add=TRUE)
 
-  ### ----------------
-  ###* CLOSING REMARK
-  ### ----------------
+  ## ----------------
+  ##* CLOSING REMARK
+  ## ----------------
   return(tbl0)
 }

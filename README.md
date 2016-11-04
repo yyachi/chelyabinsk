@@ -61,7 +61,7 @@ $ R CMD install chelyabinsk_1.0.tar.gz
 ```
 
 # Developer's TODO
-O
+
 1. Write document in each function by Roxygen2
 2. Write test code
 3. Update R scripts in https://github.com/misasa/casteml/tree/master/template/plot

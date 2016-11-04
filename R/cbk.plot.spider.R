@@ -15,9 +15,9 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' cbk.plot.spider(pmlfile)
 cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  ### ----------------
-  ###* OPENING REMARK
-  ### ----------------
+  ## ----------------
+  ##* OPENING REMARK
+  ## ----------------
   tbl0        <- cbk.read.casteml(pmlfile,tableunit,category="trace")
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
@@ -25,9 +25,9 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   stoneindex  <- 1:nrow(tbl0)
   chemlist    <- colnames(tbl0)
 
-  ### ----------------
-  ###* PARSE
-  ### ----------------
+  ## ----------------
+  ##* PARSE
+  ## ----------------
   property0        <- periodic[chemlist,property] # atomicnumber, volatility, compatibility
   names(property0) <- chemlist
   XX0              <- sort(property0)
@@ -36,9 +36,9 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
 
-  ### ----------------
-  ###* PLOTS
-  ### ----------------
+  ## ----------------
+  ##* PLOTS
+  ## ----------------
   ## par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
   matplot(XX,YY,log="y",type="o",lty=1,pch=stoneindex,
@@ -48,8 +48,8 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   abline(h=1,lty=2)
   box(lwd=1)
 
-  ### ----------------
-  ###* CLOSING REMARK
-  ### ----------------
+  ## ----------------
+  ##* CLOSING REMARK
+  ## ----------------
   return(tbl0)
 }
