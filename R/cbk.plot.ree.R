@@ -22,7 +22,7 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
   stonelist   <- rownames(tbl0)
-  stoneindex  <- 1:nrow(tbl0)
+  stoneindex  <- 1:length(stonelist)
   chemlist    <- colnames(tbl0)
   REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   subchemlist <- intersect(REElist,chemlist)
