@@ -23,28 +23,29 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
 ###
 ### extract "Si" and element numbers
-  oxidelist        <- c("SiO2", "Al2O3", "CaO", "MgO", "Fe2O3", "FeO", "Na2O", "H2O+", "TiO2", "K2O", "P2O5", "MnO")
-  convector        <- c("Si"  , "Al"   , "Ca" , "Mg" , "Fe"   , "Fe" , "Na"  , "H"   , "Ti"  , "K"  , "P"   , "MnO")
-  names(convector) <- oxidelist
-  convector        <- rbind(convector,c(  1,    2,    1,    1,    2,    1,    2,   2,    1,   2,   2,     1))
-  convector        <- rbind(convector,c(  2,    3,    1,    1,    3,    1,    1,   1,    2,   1,   5,     1))
+##   oxidelist        <- c("SiO2", "Al2O3", "CaO", "MgO", "Fe2O3", "FeO", "Na2O", "H2O+", "TiO2", "K2O", "P2O5", "MnO")
+##   convector        <- c("Si"  , "Al"   , "Ca" , "Mg" , "Fe"   , "Fe" , "Na"  , "H"   , "Ti"  , "K"  , "P"   , "MnO")
+##   names(convector) <- oxidelist
+##   convector        <- rbind(convector,c(  1,    2,    1,    1,    2,    1,    2,   2,    1,   2,   2,     1))
+##   convector        <- rbind(convector,c(  2,    3,    1,    1,    3,    1,    1,   1,    2,   1,   5,     1))
 
-### add "Si" column to tbl0
-  oxygen <- 15.9994
-  for(ii in 1:length(oxidelist)) {
-    obj         <- convector[,oxidelist[ii]][1]
-    objnum      <- as.numeric(convector[,oxidelist[ii]][2])
-    oxynum      <- as.numeric(convector[,oxidelist[ii]][3])
+## ### add "Si" column to tbl0
+##   oxygen <- 15.9994
+##   for(ii in 1:length(oxidelist)) {
+##     obj         <- convector[,oxidelist[ii]][1]
+##     objnum      <- as.numeric(convector[,oxidelist[ii]][2])
+##     oxynum      <- as.numeric(convector[,oxidelist[ii]][3])
 
-    objmass     <- periodic[obj,"atomicmass"]
-    oxideweight <- objmass * objnum + oxygen * oxynum
-    tbl0[,obj]  <- tbl0[,oxidelist[ii]] * objmass * objnum / oxideweight
-  }
+##     objmass     <- periodic[obj,"atomicmass"]
+##     oxideweight <- objmass * objnum + oxygen * oxynum
+##     tbl0[,obj]  <- tbl0[,oxidelist[ii]] * objmass * objnum / oxideweight
+##   }
+  tbl1    <- cbk.oxider(tbl0)
 ###
 ###
-  stonelist   <- rownames(tbl0)
-  stoneindex  <- 1:nrow(tbl0)
-  chemlist    <- colnames(tbl0)
+  stonelist   <- rownames(tbl1)
+  stoneindex  <- 1:nrow(tbl1)
+  chemlist    <- colnames(tbl1)
 
   ### ----------------
   ###* PARSE
@@ -53,7 +54,7 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   names(property0) <- chemlist
   XX0              <- sort(property0)
   XX               <- 1:length(XX0)
-  ZZ               <- tbl0[,names(XX0),drop=FALSE]
+  ZZ               <- tbl1[,names(XX0),drop=FALSE]
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
 
@@ -73,5 +74,5 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
-  return(tbl0)
+  return(tbl1)
 }
