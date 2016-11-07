@@ -31,7 +31,7 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
 
 ### add "Si" column to tbl0
   oxygen <- 15.9994
-  for(ii in 1:length(oxidelist)) { # for(iistone in stonelist)
+  for(ii in 1:length(oxidelist)) {
     obj         <- convector[,oxidelist[ii]][1]
     objnum      <- as.numeric(convector[,oxidelist[ii]][2])
     oxynum      <- as.numeric(convector[,oxidelist[ii]][3])
@@ -68,7 +68,8 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   axis(2,axTicks(2),axTicks(2))
   abline(h=1,lty=2)
   box(lwd=1)
-
+  legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5)
+  
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
