@@ -23,15 +23,17 @@ cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
   ## outfile <- tempfile(fileext=".dataframe")
   if(is.null(category)){
-    cmd     <- paste("casteml convert -f dataframe",pmlfile)
+    cmd     <- paste("convert -f dataframe",pmlfile)
   } else {
-    cmd     <- paste("casteml convert -f dataframe -c",category,pmlfile)
+    cmd     <- paste("convert -f dataframe -c",category,pmlfile)
   }
   outfile <- file.path(tempdir(),paste0(digest::digest(cmd,algo='md5'),".dataframe"))
 
   ## Convert file only when it does not exist
   if (force || !file.exists(outfile)) {
-    cat(system(cmd, intern = TRUE),file=outfile,sep="\n")
+    ## system(cmd,">",outfile))
+    ## cat(system(cmd,intern=TRUE),file=outfile,sep="\n") # intern=T accepts 8095 char max per a line
+    system2("casteml",cmd,stdout=outfile)
   }
   return(outfile)
 }
