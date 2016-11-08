@@ -40,7 +40,7 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
 ##     oxideweight <- objmass * objnum + oxygen * oxynum
 ##     tbl0[,obj]  <- tbl0[,oxidelist[ii]] * objmass * objnum / oxideweight
 ##   }
-  tbl1    <- cbk.oxider(tbl0)
+  tbl1    <- cbk.reducer(tbl0)
 ###
 ###
   stonelist   <- rownames(tbl1)

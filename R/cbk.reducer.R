@@ -5,8 +5,8 @@
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' tbl0    <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-#' tbl1    <- cbk.oxider(tbl0)
-cbk.oxider <- function(tbl0,oxides=NULL) {
+#' tbl1    <- cbk.reducer(tbl0)
+cbk.reducer <- function(tbl0,oxides=NULL) {
 ### extract "Si" and element numbers
   periodic         <- cbk.periodic()
   oxidelist        <- c("SiO2", "Al2O3", "CaO", "MgO", "Fe2O3", "FeO", "Na2O", "H2O+", "TiO2", "K2O", "P2O5", "MnO")
