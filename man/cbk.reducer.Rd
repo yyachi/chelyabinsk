@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.reducer.R
 \name{cbk.reducer}
 \alias{cbk.reducer}
-\title{Convert oxide concentration to value without oxygen}
+\title{Convert major-element concentration as oxide to one as metal}
 \usage{
 cbk.reducer(tbl0, oxides = NULL)
 }
@@ -16,7 +16,7 @@ element abundances}
 A dataframe with converted columns
 }
 \description{
-Convert oxide concentration to value without oxygen
+Convert major-element concentration as oxide to one as metal
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")

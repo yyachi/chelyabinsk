@@ -1,4 +1,4 @@
-#' Convert oxide concentration to value without oxygen
+#' Convert major-element concentration as oxide to one as metal
 #' @param tbl0 A dataframe with columns of stone and rows of
 #' element abundances
 #' @param oxide A list of oxide to be converted

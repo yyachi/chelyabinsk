@@ -4,7 +4,7 @@
 \alias{cbk.plot}
 \title{Plot Analyses with descendants of a stone}
 \usage{
-cbk.plot(stone, category = "trace")
+cbk.plot(stone, category = "default")
 }
 \arguments{
 \item{stone}{Unique indentification number of stone in Medusa.

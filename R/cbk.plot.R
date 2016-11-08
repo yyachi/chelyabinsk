@@ -16,12 +16,13 @@
 #' cbk.plot("20081202172326.hkitagawa",category="trace")
 #' cbk.plot("20081202172326.hkitagawa",category="lead")
 #' cbk.plot("20130528105235-594267",category="oxygen")
-cbk.plot <- function(stone,category="trace") {
+cbk.plot <- function(stone,category="default") {
   pmlfile <- cbk.download.casteml(c("--recursive", stone))
   ans <- switch(category,
-                "trace"  = cbk.plot.trace(pmlfile),
-                "oxygen" = cbk.plot.oxygen(pmlfile),
-                "lead"   = cbk.plot.lead(pmlfile),
+                "default" = cbk.plot.trace(pmlfile),
+                "trace"   = cbk.plot.trace(pmlfile),
+                "oxygen"  = cbk.plot.oxygen(pmlfile),
+                "lead"    = cbk.plot.lead(pmlfile),
                 stop("No action defined"))
   return(ans)
 }
