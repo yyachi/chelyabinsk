@@ -21,6 +21,7 @@ cbk.oxider <- function(tbl0,oxides=NULL) {
     oxidelist     <- oxides
   }
   for(ii in 1:length(oxidelist)) {
+    if (oxidelist[ii] %in% colnames(tbl0)) {
     obj         <- convector[,oxidelist[ii]][1]  # "Si"
     objnum      <- as.numeric(convector[,oxidelist[ii]][2])  # 1 # "Si" number
     oxynum      <- as.numeric(convector[,oxidelist[ii]][3])  # 2 # "O" number 
@@ -30,6 +31,7 @@ cbk.oxider <- function(tbl0,oxides=NULL) {
     ## tbl0[,obj]  <- tbl0[,oxidelist[ii]] * objmass * objnum / oxideweight
     tbl0[,oxidelist[ii]]  <- tbl0[,oxidelist[ii]] * objmass * objnum / oxideweight # replace value
     colnames(tbl0)[grep(oxidelist[ii],colnames(tbl0))] <- obj # replace colname
+    }
   }
   return(tbl0)
 }
