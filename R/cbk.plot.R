@@ -17,7 +17,7 @@
 #' cbk.plot("20081202172326.hkitagawa",category="lead")
 #' cbk.plot("20130528105235-594267",category="oxygen")
 cbk.plot <- function(stone,category="default") {
-  pmlfile <- cbk.download.casteml(c("--recursive", stone))
+  pmlfile <- cbk.download.casteml(c("-r", stone))
   ans <- switch(category,
                 "default" = cbk.plot.trace(pmlfile),
                 "trace"   = cbk.plot.trace(pmlfile),
