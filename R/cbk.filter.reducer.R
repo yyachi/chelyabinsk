@@ -1,13 +1,14 @@
 #' Convert major-element concentration as oxide to one as metal
-#' @param tbl0 A dataframe with columns of stone and rows of
-#' element abundances
+#' @param tbl0 A dataframe with columns of stone and rows of element
+#'   abundances
 #' @return A dataframe with converted columns
 #' @export
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' tbl0    <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-#' tbl1    <- cbk.reducer(tbl0)
-cbk.reducer <- function(tbl0) {
+#' tbl1    <- cbk.filter.reducer(tbl0)
+cbk.filter.reducer <- function(tbl0) {
+
   comment.datain <- "
 #+TBLNAME: detoxtable
 #+ORGTBL: SEND detoxtable:datain orgtbl-to-R :no-escape t :dataframe t
@@ -48,7 +49,7 @@ cbk.reducer <- function(tbl0) {
       chem_in_oxide <- tbl0[,oxide]
       chem_in_metal <- chem_in_oxide * metalweight / oxideweight
 
-      ## colnames(tbl0)[grep(oxide,chemlist)] <- metal # replace colname
+      ## colnames(tbl0)[grep(oxide,chemlist)] <- metal # rename col
       colnames(tbl0)[which(chemlist == oxide)] <- metal # rename col
       tbl0[,metal]  <- chem_in_metal # replace value of oxide by metal
     }

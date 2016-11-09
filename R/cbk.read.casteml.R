@@ -25,8 +25,7 @@
 #' tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
 cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL,download=FALSE){
   if (download) { # stone-ID is provided
-    stone   <- pmlfile_or_stone
-    pmlfile <- cbk.download.casteml(stone)
+    pmlfile <- cbk.download.casteml(pmlfile_or_stone)
   } else { # pmlfile is provided
     pmlfile <- pmlfile_or_stone
   }
