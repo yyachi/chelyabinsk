@@ -1,6 +1,5 @@
 #' Convert major-element concentration as oxide to one as metal
-#' @param tbl0 A dataframe with columns of stone and rows of element
-#'   abundances
+#' @param tbl0 A dataframe with columns of stone and rows of chem
 #' @return A dataframe with converted columns
 #' @export
 #' @examples
