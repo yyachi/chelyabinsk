@@ -18,12 +18,12 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  tbl0        <- cbk.read.casteml(pmlfile,tableunit,category="trace")
+  pmlame      <- cbk.read.casteml(pmlfile,tableunit,category="trace")
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
-  stonelist   <- rownames(tbl0)
+  stonelist   <- rownames(pmlame)
   stoneindex  <- 1:length(stonelist)
-  chemlist    <- colnames(tbl0)
+  chemlist    <- colnames(pmlame)
   REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   subchemlist <- intersect(REElist,chemlist)
 
@@ -33,7 +33,7 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   property0        <- periodic[subchemlist,property] # atomicnumber, volatility, compatibility
   names(property0) <- subchemlist
   XX0              <- sort(property0)
-  ZZ               <- tbl0[,names(XX0),drop=FALSE]
+  ZZ               <- pmlame[,names(XX0),drop=FALSE]
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
 
@@ -53,5 +53,5 @@ cbk.plot.ree <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refere
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
-  return(tbl0)
+  return(pmlame)
 }

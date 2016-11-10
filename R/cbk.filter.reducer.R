@@ -1,12 +1,12 @@
 #' Convert major-element concentration as oxide to one as metal
-#' @param tbl0 A dataframe with columns of stone and rows of chem
+#' @param pmlame A dataframe with columns of stone and rows of chem
 #' @return A dataframe with converted columns
 #' @export
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' tbl0    <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-#' tbl1    <- cbk.filter.reducer(tbl0)
-cbk.filter.reducer <- function(tbl0) {
+#' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
+#' pmlame1 <- cbk.filter.reducer(pmlame)
+cbk.filter.reducer <- function(pmlame) {
 
   comment.datain <- "
 #+TBLNAME: detoxtable
@@ -34,7 +34,7 @@ cbk.filter.reducer <- function(tbl0) {
 
   periodic             <- cbk.periodic()
   oxidelist <- rownames(detoxtable)    # "SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"
-  chemlist  <- colnames(tbl0)          # "SiO2","Al2O3","La","Ce"
+  chemlist  <- colnames(pmlame)          # "SiO2","Al2O3","La","Ce"
   oxygenweight <- 15.9994
   for(ii in 1:length(oxidelist)) {
     ### replace columns of "SiO2" and "Al2O3" by "Si" and "Al"
@@ -45,13 +45,13 @@ cbk.filter.reducer <- function(tbl0) {
 
       metalweight <- periodic[metal,"atomicmass"] # 28.0855
       oxideweight <- metalweight + oxygenweight * noxygen # 60.0843
-      chem_in_oxide <- tbl0[,oxide]
+      chem_in_oxide <- pmlame[,oxide]
       chem_in_metal <- chem_in_oxide * metalweight / oxideweight
 
-      ## colnames(tbl0)[grep(oxide,chemlist)] <- metal # rename col
-      colnames(tbl0)[which(chemlist == oxide)] <- metal # rename col
-      tbl0[,metal]  <- chem_in_metal # replace value of oxide by metal
+      ## colnames(pmlame)[grep(oxide,chemlist)] <- metal # rename col
+      colnames(pmlame)[which(chemlist == oxide)] <- metal # rename col
+      pmlame[,metal]  <- chem_in_metal # replace value of oxide by metal
     }
   }
-  return(tbl0)
+  return(pmlame)
 }

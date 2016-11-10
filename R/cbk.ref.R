@@ -27,11 +27,11 @@ cbk.ref <- function(analysis,tableunit="ppm",property=NULL){
   ## names(foo) <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
 
   ## read as vector
-  ## cbktbl     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
-  cbktbl        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),tableunit)
-  ## foo        <- as.numeric(cbktbl)
-  foo           <- as.numeric(cbktbl[analysis,]) # conversion to numeric vector
-  names(foo)    <- names(cbktbl)
+  ## pmlame     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
+  pmlame        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),tableunit)
+  ## foo        <- as.numeric(pmlame)
+  foo           <- as.numeric(pmlame[analysis,]) # conversion to numeric vector
+  names(foo)    <- names(pmlame)
 
   ## filter
   bar           <- foo[is.finite(foo) & !is.nan(foo) & !is.na(foo)]

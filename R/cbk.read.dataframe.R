@@ -19,25 +19,25 @@
 #' @export
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
-#' tbl0    <- cbk.read.dataframe(cbkfile,"ppm")
+#' pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
+#' pmlame  <- cbk.read.dataframe(pmlcsv,"ppm")
 #'
-#' tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-#' tbl0    <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
-#' tbl0    <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
+#' pmlame  <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+#' pmlame  <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
+#' pmlame  <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 cbk.read.dataframe <- function(csvfile,tableunit="none"){
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
-  ## R> cbktbl0 <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
+  ## R> pmlame <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
   tblin <- read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(tblin)) {
     factor <- cbk.convector(tblin[,'unit'])
     names(factor) <- rownames(tblin)
     factor[is.na(factor)] <- 1
-    cbktbl0 <- as.data.frame(t(tblin[colnames(tblin) != 'unit'] / factor)) * cbk.convector(tableunit)
+    pmlame <- as.data.frame(t(tblin[colnames(tblin) != 'unit'] / factor)) * cbk.convector(tableunit)
   } else {
-    cbktbl0 <- as.data.frame(t(tblin))
+    pmlame <- as.data.frame(t(tblin))
   }
-  return(cbktbl0)
+  return(pmlame)
 }

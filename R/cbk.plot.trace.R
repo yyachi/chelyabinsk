@@ -23,11 +23,11 @@ cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refe
   ## ----------------
   ##* PLOTS
   ## ----------------
-  tbl0 <- cbk.plot.spider(pmlfile)
-  tbl1 <- cbk.plot.ree(pmlfile)
+  pmlame  <- cbk.plot.spider(pmlfile)
+  pmlame1 <- cbk.plot.ree(pmlfile)
 
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
-  return(tbl0)
+  return(pmlame)
 }

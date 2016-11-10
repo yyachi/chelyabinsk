@@ -1,9 +1,9 @@
 #' @title Return normalized element abundances
 #'
 #' @description Return normalized element abundances.  Note that only
-#'   elements that exist both in cbktbl and ref are processed.  See
+#'   elements that exist both in pmlame and ref are processed.  See
 #'   also "Geochemical Modelling..." by Janousek et al. (2015)
-#' @param cbktbl A dataframe of element abundances
+#' @param pmlame A dataframe of element abundances
 #' @param ref A numeric vector of element abundances with label
 #' @param suffix_after_name_of_element String to recognize column of
 #'   errors.  Feed "_error" when necessary (default: NULL)
@@ -12,10 +12,10 @@
 #' @seealso \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
 #' @export
 #' @examples
-#' tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-#' ref  <- cbk.ref("Boynton.1989","ppm")
-#' cbk.normalize(tbl0,ref)
-cbk.normalize <- function(cbktbl,ref,suffix_after_name_of_element=NULL){
+#' pmlame <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+#' ref    <- cbk.ref("Boynton.1989","ppm")
+#' cbk.normalize(pmlame,ref)
+cbk.normalize <- function(pmlame,ref,suffix_after_name_of_element=NULL){
   ## EXAMPLES
   ## > property <- cbk.periodic("atomicnumber")
   ## > ref      <- cbk.ref("Boynton.1989","ppm")
@@ -34,16 +34,16 @@ cbk.normalize <- function(cbktbl,ref,suffix_after_name_of_element=NULL){
 
   ## name filter when number of elements in ref exceeds those in sample
   ## typically suffix_after_name_of_element is "_error"
-  names.share  <- intersect(names(ref),names(cbktbl))
+  names.share  <- intersect(names(ref),names(pmlame))
   ref1         <- ref[names.share]
   names(ref1)  <- names.share
 
   ## extraction and normalization
   if(is.null(suffix_after_name_of_element)){
-    normtbl      <- t(cbktbl[,names(ref1)])/ref1
+    normtbl      <- t(pmlame[,names(ref1)])/ref1
   } else {
     names_with_suffix  <- paste(names(ref1),suffix_after_name_of_element,sep="")
-    normtbl           <- t(cbktbl[,names_with_suffix])/ref1
+    normtbl           <- t(pmlame[,names_with_suffix])/ref1
     rownames(normtbl) <- names.share
   }
 

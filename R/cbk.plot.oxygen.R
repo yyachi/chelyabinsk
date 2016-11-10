@@ -16,15 +16,15 @@ cbk.plot.oxygen <- function(pmlfile,tableunit="none") {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  tbl0       <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
-  stonelist  <- rownames(tbl0)
-  stoneindex <- 1:nrow(tbl0)
+  pmlame     <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
+  stonelist  <- rownames(pmlame)
+  stoneindex <- 1:nrow(pmlame)
 
   ## ----------------
   ##* PARSE
   ## ----------------
-  XX         <- tbl0[,'d18O']
-  YY         <- tbl0[,'d17O']
+  XX         <- pmlame[,'d18O']
+  YY         <- pmlame[,'d17O']
 
   ## ----------------
   ##* PLOT
@@ -57,5 +57,5 @@ cbk.plot.oxygen <- function(pmlfile,tableunit="none") {
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
-  return(tbl0)
+  return(pmlame)
 }

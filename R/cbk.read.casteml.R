@@ -20,16 +20,16 @@
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-#' tbl0 <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
+#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #'
-#' tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
+#' pmlame  <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
 cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL,download=FALSE){
   if (download) { # stone-ID is provided
     pmlfile <- cbk.download.casteml(pmlfile_or_stone)
   } else { # pmlfile is provided
     pmlfile <- pmlfile_or_stone
   }
-  cbkfile <- cbk.convert.casteml(pmlfile,category=category)
-  tbl0    <- cbk.read.dataframe(cbkfile,tableunit)
-  return(tbl0)
+  pmlcsv  <- cbk.convert.casteml(pmlfile,category=category)
+  pmlame  <- cbk.read.dataframe(pmlcsv,tableunit)
+  return(pmlame)
 }

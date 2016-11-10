@@ -18,7 +18,7 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  tbl0        <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
+  pmlame      <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
 ###
@@ -29,7 +29,7 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
 ##   convector        <- rbind(convector,c(  1,    2,    1,    1,    2,    1,    2,   2,    1,   2,   2,     1))
 ##   convector        <- rbind(convector,c(  2,    3,    1,    1,    3,    1,    1,   1,    2,   1,   5,     1))
 
-## ### add "Si" column to tbl0
+## ### add "Si" column to pmlame
 ##   oxygen <- 15.9994
 ##   for(ii in 1:length(oxidelist)) {
 ##     obj         <- convector[,oxidelist[ii]][1]
@@ -38,14 +38,14 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
 
 ##     objmass     <- periodic[obj,"atomicmass"]
 ##     oxideweight <- objmass * objnum + oxygen * oxynum
-##     tbl0[,obj]  <- tbl0[,oxidelist[ii]] * objmass * objnum / oxideweight
+##     pmlame[,obj]  <- pmlame[,oxidelist[ii]] * objmass * objnum / oxideweight
 ##   }
-  tbl1    <- cbk.filter.reducer(tbl0)
+  pmlame1    <- cbk.filter.reducer(pmlame)
 ###
 ###
-  stonelist   <- rownames(tbl1)
-  stoneindex  <- 1:nrow(tbl1)
-  chemlist    <- colnames(tbl1)
+  ## stonelist   <- rownames(pmlame1)
+  ## stoneindex  <- 1:nrow(pmlame1)
+  chemlist    <- colnames(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -54,10 +54,15 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   names(property0) <- chemlist
   XX0              <- sort(property0)
   XX               <- 1:length(XX0)
-  ZZ               <- tbl1[,names(XX0),drop=FALSE]
+  ZZ               <- pmlame1[,names(XX0),drop=FALSE]
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
 
+  ind <- apply(YY, 2, function(x) all(is.na(x)))
+  YY <- YY[ ,!ind ]
+  stonelist   <- colnames(YY)
+  stoneindex  <- 1:ncol(YY)
+  
   ## ----------------
   ##* PLOTS
   ## ----------------
@@ -74,5 +79,5 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
-  return(tbl1)
+  return(pmlame1)
 }
