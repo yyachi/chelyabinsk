@@ -4,7 +4,7 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlfile File path to CASTEML file
+#' @param pmlame A dataframe of element abundances
 #' @param tableunit Unit to toss to cbk.read.casteml()
 #' @param property Property to align x-axis
 #' @param reference Reference of element abundance
@@ -13,14 +13,15 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' cbk.plot.spider(pmlfile)
-cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
+#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
+#' cbk.plot.spider(pmlame)
+cbk.plot.spider <- function(pmlame,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  pmlame      <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
-  periodic    <- cbk.periodic()
-  ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
+  ## pmlame      <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
+  periodic <- cbk.periodic()
+  ref1     <- cbk.ref(reference,tableunit,cbk.periodic(property))
 ###
 ### extract "Si" and element numbers
 ##   oxidelist        <- c("SiO2", "Al2O3", "CaO", "MgO", "Fe2O3", "FeO", "Na2O", "H2O+", "TiO2", "K2O", "P2O5", "MnO")
@@ -40,12 +41,12 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
 ##     oxideweight <- objmass * objnum + oxygen * oxynum
 ##     pmlame[,obj]  <- pmlame[,oxidelist[ii]] * objmass * objnum / oxideweight
 ##   }
-  pmlame1    <- cbk.filter.reducer(pmlame)
+  pmlame1  <- cbk.filter.reducer(pmlame)
 ###
 ###
   ## stonelist   <- rownames(pmlame1)
   ## stoneindex  <- 1:nrow(pmlame1)
-  chemlist    <- colnames(pmlame1)
+  chemlist <- colnames(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -58,10 +59,10 @@ cbk.plot.spider <- function(pmlfile,tableunit="ug/g",property="atomicnumber",ref
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
 
-  ind <- apply(YY, 2, function(x) all(is.na(x)))
-  YY <- YY[ ,!ind ]
-  stonelist   <- colnames(YY)
-  stoneindex  <- 1:ncol(YY)
+  ind        <- apply(YY, 2, function(x) all(is.na(x)))
+  YY         <- YY[ ,!ind ]
+  stonelist  <- colnames(YY)
+  stoneindex <- 1:ncol(YY)
   
   ## ----------------
   ##* PLOTS

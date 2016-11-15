@@ -4,19 +4,20 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlfile File path to CASTEML file
+#' @param pmlame A dataframe of element abundances
 #' @param tableunit Unit to toss to cbk.read.casteml()
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
-#' cbk.plot.oxygen(pmlfile)
-cbk.plot.oxygen <- function(pmlfile,tableunit="none") {
+#' pmlame  <- cbk.read.casteml(pmlfile,category="oxygen")
+#' cbk.plot.oxygen(pmlame)
+cbk.plot.oxygen <- function(pmlame,tableunit="none") {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  pmlame     <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
+  ## pmlame     <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
   stonelist  <- rownames(pmlame)
   stoneindex <- 1:nrow(pmlame)
 

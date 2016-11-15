@@ -4,7 +4,7 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlfile File path to CASTEML file
+#' @param pmlame A dataframe of element abundances
 #' @param tableunit Unit to toss to cbk.read.casteml()
 #' @param property Property to align x-axis
 #' @param reference Reference of element abundance
@@ -13,8 +13,9 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' cbk.plot.trace(pmlfile)
-cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
+#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
+#' cbk.plot.trace(pmlame)
+cbk.plot.trace <- function(pmlame,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
   ## ----------------
   ##* PAGE SETUP
   ## ----------------
@@ -23,8 +24,8 @@ cbk.plot.trace <- function(pmlfile,tableunit="ug/g",property="atomicnumber",refe
   ## ----------------
   ##* PLOTS
   ## ----------------
-  pmlame  <- cbk.plot.spider(pmlfile)
-  pmlame1 <- cbk.plot.ree(pmlfile)
+  pmlame  <- cbk.plot.spider(pmlame)
+  pmlame1 <- cbk.plot.ree(pmlame)
 
   ## ----------------
   ##* CLOSING REMARK
