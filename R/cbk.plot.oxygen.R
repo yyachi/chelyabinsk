@@ -1,8 +1,8 @@
 #' @title Read CASTEML file and create oxygen diagram
 #'
-#' @description Read CASTEML file and create oxygen diagram.  This
-#'   function does not save the created diagram.  You should prepare a
-#'   canvas in advance.
+#' @description Read CASTEML dataframe and create oxygen diagram.
+#'   This function does not save the created diagram.  You should
+#'   prepare a canvas in advance.
 #'
 #' @param pmlame A dataframe of element abundances
 #' @param tableunit Unit to toss to cbk.read.casteml()

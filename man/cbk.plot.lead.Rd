@@ -15,7 +15,7 @@ cbk.plot.lead(pmlame, tableunit = "none")
 Dataframe used to plot the diagram
 }
 \description{
-Read CASTEML file and create lead diagram.  This
+Read CASTEML dataframe and create lead diagram.  This
   function does not save the created diagram.  You should prepare a
   canvas in advance.
 }

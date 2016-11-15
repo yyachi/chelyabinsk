@@ -1,10 +1,10 @@
 #' @title Read CASTEML file and create lithium diagram
 #'
-#' @description Read CASTEML file and create lithium diagram.  This
-#'   function does not save the created diagram.  You should prepare a
-#'   canvas in advance.
+#' @description Read CASTEML dataframe and create lithium diagram.
+#'   This function does not save the created diagram.  You should
+#'   prepare a canvas in advance.
 #'
-#' @param pmlfile File path to CASTEML file
+#' @param pmlame A dataframe of element abundances
 #' @param tableunit Unit to toss to cbk.read.casteml().  This function
 #'   reads both element concentration and isotope composition, thus,
 #'   any unit cannot be appropriate as of November 15 (2016).  Do not
@@ -14,13 +14,14 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
-#' cbk.plot.lithium(pmlfile)
-cbk.plot.lithium <- function(pmlfile,tableunit="none") {
+#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none")
+#' cbk.plot.lithium(pmlame)
+cbk.plot.lithium <- function(pmlame,tableunit="none") {
 
   ## ----------------
   ##* Opening remark
   ## ----------------
-  pmlame     <- cbk.read.casteml(pmlfile,tableunit)
+  ## pmlame     <- cbk.read.casteml(pmlfile,tableunit)
   pmlame1    <- pmlame[,c("d7Li","Li")]
   XX         <- pmlame1[,'Li']
   YY         <- pmlame1[,'d7Li']

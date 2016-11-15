@@ -4,10 +4,10 @@
 \alias{cbk.plot.lithium}
 \title{Read CASTEML file and create lithium diagram}
 \usage{
-cbk.plot.lithium(pmlfile, tableunit = "none")
+cbk.plot.lithium(pmlame, tableunit = "none")
 }
 \arguments{
-\item{pmlfile}{File path to CASTEML file}
+\item{pmlame}{A dataframe of element abundances}
 
 \item{tableunit}{Unit to toss to cbk.read.casteml().  This function
 reads both element concentration and isotope composition, thus,
@@ -18,13 +18,14 @@ feed `ppm.'}
 Dataframe used to plot the diagram
 }
 \description{
-Read CASTEML file and create lithium diagram.  This
-  function does not save the created diagram.  You should prepare a
-  canvas in advance.
+Read CASTEML dataframe and create lithium diagram.
+  This function does not save the created diagram.  You should
+  prepare a canvas in advance.
 }
 \examples{
 pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
-cbk.plot.lithium(pmlfile)
+pmlame  <- cbk.read.casteml(pmlfile,tableunit="none")
+cbk.plot.lithium(pmlame)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}

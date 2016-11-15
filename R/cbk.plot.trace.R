@@ -1,6 +1,6 @@
 #' @title Read CASTEML file and create trace diagram
 #'
-#' @description Read CASTEML file and create trace diagram.  This
+#' @description Read CASTEML dataframe and create trace diagram.  This
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'

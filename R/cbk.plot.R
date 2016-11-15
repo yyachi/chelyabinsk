@@ -27,7 +27,7 @@ cbk.plot <- function(stone,category="default") {
   ans <- switch(category,
                 "default" = cbk.plot.trace(pmlame),
                 "trace"   = cbk.plot.trace(pmlame),
-                "lithium" = cbk.plot.lithium(pmlfile),
+                "lithium" = cbk.plot.lithium(pmlame),
                 "oxygen"  = cbk.plot.oxygen(pmlame),
                 "lead"    = cbk.plot.lead(pmlame),
                 stop("No action defined"))

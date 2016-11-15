@@ -23,7 +23,7 @@ cbk.convector() (default="none")}
 A dataframe with unit organized
 }
 \description{
-Read CASTEML file and return a dataframe.
+Read CASTEML dataframe and return a dataframe.
 }
 \details{
 This function converts a CASTEML file to a csvfile by

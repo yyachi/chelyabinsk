@@ -20,7 +20,7 @@ cbk.plot.ree(pmlame, tableunit = "ug/g", property = "atomicnumber",
 Dataframe used to plot the diagram
 }
 \description{
-Read CASTEML file and create REE diagram.  This
+Read CASTEML dataframe and create REE diagram.  This
   function does not save the created diagram.  You should prepare a
   canvas in advance.
 }

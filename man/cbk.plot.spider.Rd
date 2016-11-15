@@ -20,9 +20,9 @@ cbk.plot.spider(pmlame, tableunit = "ug/g", property = "atomicnumber",
 Dataframe used to plot the diagram
 }
 \description{
-Read CASTEML file and create spider diagram.  This
-  function does not save the created diagram.  You should prepare a
-  canvas in advance.
+Read CASTEML dataframe and create spider diagram.
+  This function does not save the created diagram.  You should
+  prepare a canvas in advance.
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")

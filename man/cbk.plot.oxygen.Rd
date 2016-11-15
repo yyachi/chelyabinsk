@@ -15,9 +15,9 @@ cbk.plot.oxygen(pmlame, tableunit = "none")
 Dataframe used to plot the diagram
 }
 \description{
-Read CASTEML file and create oxygen diagram.  This
-  function does not save the created diagram.  You should prepare a
-  canvas in advance.
+Read CASTEML dataframe and create oxygen diagram.
+  This function does not save the created diagram.  You should
+  prepare a canvas in advance.
 }
 \examples{
 pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
