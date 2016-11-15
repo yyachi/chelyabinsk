@@ -14,8 +14,9 @@
 #' @examples
 #' cbk.plot("20130318074936-009-271",category="trace")
 #' cbk.plot("20081202172326.hkitagawa",category="trace")
-#' cbk.plot("20081202172326.hkitagawa",category="lead")
+#' cbk.plot("20130528105235-594267",category="lithium")
 #' cbk.plot("20130528105235-594267",category="oxygen")
+#' cbk.plot("20081202172326.hkitagawa",category="lead")
 cbk.plot <- function(stone,category="default") {
   pmlfile  <- cbk.download.casteml(c("-r", stone))
   if (category=="default" || category=="trace") {
@@ -26,6 +27,7 @@ cbk.plot <- function(stone,category="default") {
   ans <- switch(category,
                 "default" = cbk.plot.trace(pmlame),
                 "trace"   = cbk.plot.trace(pmlame),
+                "lithium" = cbk.plot.lithium(pmlfile),
                 "oxygen"  = cbk.plot.oxygen(pmlame),
                 "lead"    = cbk.plot.lead(pmlame),
                 stop("No action defined"))

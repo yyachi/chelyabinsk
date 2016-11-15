@@ -24,8 +24,9 @@ Plot Analyses with descendants of a stone.  This
 \examples{
 cbk.plot("20130318074936-009-271",category="trace")
 cbk.plot("20081202172326.hkitagawa",category="trace")
-cbk.plot("20081202172326.hkitagawa",category="lead")
+cbk.plot("20130528105235-594267",category="lithium")
 cbk.plot("20130528105235-594267",category="oxygen")
+cbk.plot("20081202172326.hkitagawa",category="lead")
 }
 \seealso{
 \code{\link{cbk.plot.trace}}

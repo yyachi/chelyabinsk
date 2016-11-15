@@ -4,10 +4,10 @@
 \alias{cbk.normalize}
 \title{Return normalized element abundances}
 \usage{
-cbk.normalize(cbktbl, ref, suffix_after_name_of_element = NULL)
+cbk.normalize(pmlame, ref, suffix_after_name_of_element = NULL)
 }
 \arguments{
-\item{cbktbl}{A dataframe of element abundances}
+\item{pmlame}{A dataframe of element abundances}
 
 \item{ref}{A numeric vector of element abundances with label}
 
@@ -20,13 +20,13 @@ A ref-normalized daraframe with only elements defined in
 }
 \description{
 Return normalized element abundances.  Note that only
-  elements that exist both in cbktbl and ref are processed.  See
+  elements that exist both in pmlame and ref are processed.  See
   also "Geochemical Modelling..." by Janousek et al. (2015)
 }
 \examples{
-tbl0 <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-ref  <- cbk.ref("Boynton.1989","ppm")
-cbk.normalize(tbl0,ref)
+pmlame <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+ref    <- cbk.ref("Boynton.1989","ppm")
+cbk.normalize(pmlame,ref)
 }
 \seealso{
 \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}

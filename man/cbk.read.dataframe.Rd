@@ -29,12 +29,12 @@ This internally calls
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
-tbl0    <- cbk.read.dataframe(cbkfile,"ppm")
+pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
+pmlame  <- cbk.read.dataframe(pmlcsv,"ppm")
 
-tbl0    <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-tbl0    <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
-tbl0    <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
+pmlame  <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+pmlame  <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
+pmlame  <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 }
 \seealso{
 \code{\link{cbk.download.casteml}}, \code{casteml

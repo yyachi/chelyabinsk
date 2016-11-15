@@ -16,9 +16,9 @@ An absolute path of files stored in local library
 Return absolute path of files stored in local library
 }
 \examples{
-cbkfile <- cbk.path("periodic-table1.dataframe")
-cbkfile <- cbk.path("ref1.dataframe")
+pmlcsv  <- cbk.path("periodic-table1.dataframe")
+pmlcsv  <- cbk.path("ref1.dataframe")
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-cbkfile <- cbk.path("20081202172326.hkitagawa_trace.dataframe")
+pmlcsv  <- cbk.path("20081202172326.hkitagawa_trace.dataframe")
 }
 

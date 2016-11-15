@@ -24,10 +24,10 @@ Convert CASTEML file to CSV file.  This function
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-cbkfile <- cbk.convert.casteml(pmlfile)
+pmlcsv  <- cbk.convert.casteml(pmlfile)
 
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbkfile <- cbk.convert.casteml(pmlfile,category="trace")
+pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
 }
 \seealso{
 \code{casteml convert},

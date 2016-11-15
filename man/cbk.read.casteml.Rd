@@ -33,9 +33,9 @@ This function converts a CASTEML file to a csvfile by
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-tbl0 <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
+pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 
-tbl0 <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
+pmlame  <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},
