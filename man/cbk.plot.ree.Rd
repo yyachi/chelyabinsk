@@ -4,11 +4,11 @@
 \alias{cbk.plot.ree}
 \title{Read CASTEML file and create REE diagram}
 \usage{
-cbk.plot.ree(pmlfile, tableunit = "ug/g", property = "atomicnumber",
+cbk.plot.ree(pmlame, tableunit = "ug/g", property = "atomicnumber",
   reference = "Wasson.1988")
 }
 \arguments{
-\item{pmlfile}{File path to CASTEML file}
+\item{pmlame}{A dataframe of element abundances}
 
 \item{tableunit}{Unit to toss to cbk.read.casteml()}
 
@@ -26,7 +26,8 @@ Read CASTEML file and create REE diagram.  This
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbk.plot.ree(pmlfile)
+pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category="trace")
+cbk.plot.ree(pmlame)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}

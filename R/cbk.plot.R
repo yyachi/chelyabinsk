@@ -19,7 +19,7 @@
 #' cbk.plot("20081202172326.hkitagawa",category="lead")
 cbk.plot <- function(stone,category="default") {
   pmlfile  <- cbk.download.casteml(c("-r", stone))
-  if (category=="default" || category=="trace") {
+  if (category=="default" || category=="trace" || category=="lithium") {
     pmlame <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
   } else {
     pmlame <- cbk.read.casteml(pmlfile,tableunit="ug/g",category)

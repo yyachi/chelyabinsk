@@ -4,10 +4,10 @@
 \alias{cbk.plot.lead}
 \title{Read CASTEML file and create lead diagram}
 \usage{
-cbk.plot.lead(pmlfile, tableunit = "none")
+cbk.plot.lead(pmlame, tableunit = "none")
 }
 \arguments{
-\item{pmlfile}{File path to CASTEML file}
+\item{pmlame}{A dataframe of element abundances}
 
 \item{tableunit}{Unit to toss to cbk.read.casteml()}
 }
@@ -21,7 +21,8 @@ Read CASTEML file and create lead diagram.  This
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbk.plot.lead(pmlfile)
+pmlame  <- cbk.read.casteml(pmlfile,category="lead")
+cbk.plot.lead(pmlame)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}

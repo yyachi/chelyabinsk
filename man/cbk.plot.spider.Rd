@@ -4,11 +4,11 @@
 \alias{cbk.plot.spider}
 \title{Read CASTEML file and create spider diagram}
 \usage{
-cbk.plot.spider(pmlfile, tableunit = "ug/g", property = "atomicnumber",
+cbk.plot.spider(pmlame, tableunit = "ug/g", property = "atomicnumber",
   reference = "Wasson.1988")
 }
 \arguments{
-\item{pmlfile}{File path to CASTEML file}
+\item{pmlame}{A dataframe of element abundances}
 
 \item{tableunit}{Unit to toss to cbk.read.casteml()}
 
@@ -26,7 +26,8 @@ Read CASTEML file and create spider diagram.  This
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-cbk.plot.spider(pmlfile)
+pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
+cbk.plot.spider(pmlame)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}
