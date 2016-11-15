@@ -4,11 +4,10 @@
 \alias{cbk.filter.reducer}
 \title{Convert major-element concentration as oxide to one as metal}
 \usage{
-cbk.filter.reducer(tbl0)
+cbk.filter.reducer(pmlame)
 }
 \arguments{
-\item{tbl0}{A dataframe with columns of stone and rows of element
-abundances}
+\item{pmlame}{A dataframe with columns of stone and rows of chem}
 }
 \value{
 A dataframe with converted columns
@@ -18,7 +17,7 @@ Convert major-element concentration as oxide to one as metal
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-tbl0    <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-tbl1    <- cbk.filter.reducer(tbl0)
+pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
+pmlame1 <- cbk.filter.reducer(pmlame)
 }
 
