@@ -11,7 +11,7 @@ To install this package issue following command.
 
     R> install.packages('devtools')
 
-    R> library(devtools); install_github('misasa/chelyabinsk')
+    R> devtools::install_github('misasa/chelyabinsk')
 
     R> library('chelyabinsk')
     R> cbk.path("periodic-table.csv")
