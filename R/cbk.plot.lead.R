@@ -5,7 +5,6 @@
 #'   canvas in advance.
 #'
 #' @param pmlame A dataframe of element abundances
-#' @param tableunit Unit to toss to cbk.read.casteml()
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
@@ -13,7 +12,7 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' pmlame  <- cbk.read.casteml(pmlfile,category="lead")
 #' cbk.plot.lead(pmlame)
-cbk.plot.lead <- function(pmlame,tableunit="none") {
+cbk.plot.lead <- function(pmlame) {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------

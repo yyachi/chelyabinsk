@@ -5,10 +5,6 @@
 #'   prepare a canvas in advance.
 #'
 #' @param pmlame A dataframe of element abundances
-#' @param tableunit Unit to toss to cbk.read.casteml().  This function
-#'   reads both element concentration and isotope composition, thus,
-#'   any unit cannot be appropriate as of November 15 (2016).  Do not
-#'   feed `ppm.'
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
@@ -16,7 +12,7 @@
 #' pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none")
 #' cbk.plot.lithium(pmlame)
-cbk.plot.lithium <- function(pmlame,tableunit="none") {
+cbk.plot.lithium <- function(pmlame) {
 
   ## ----------------
   ##* Opening remark
