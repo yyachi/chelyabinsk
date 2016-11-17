@@ -4,12 +4,10 @@
 \alias{cbk.plot.lead}
 \title{Read CASTEML file and create lead diagram}
 \usage{
-cbk.plot.lead(pmlame, tableunit = "none")
+cbk.plot.lead(pmlame)
 }
 \arguments{
 \item{pmlame}{A dataframe of element abundances}
-
-\item{tableunit}{Unit to toss to cbk.read.casteml()}
 }
 \value{
 Dataframe used to plot the diagram

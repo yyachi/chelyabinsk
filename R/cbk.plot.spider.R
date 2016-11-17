@@ -55,14 +55,14 @@ cbk.plot.spider <- function(pmlame,tableunit="ug/g",property="atomicnumber",refe
   names(property0) <- chemlist
   XX0              <- sort(property0)
   XX               <- 1:length(XX0)
-  ZZ               <- pmlame1[,names(XX0),drop=FALSE]
+  ZZ0              <- pmlame1[,names(XX0),drop=FALSE]
+  ZZ               <- cbk.filter.drop.dharma(ZZ0)
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
-
-  ind        <- apply(YY, 2, function(x) all(is.na(x)))
-  YY         <- YY[ ,!ind ]
-  stonelist  <- colnames(YY)
-  stoneindex <- 1:ncol(YY)
+  ## ind              <- apply(YY, 2, function(x) all(is.na(x)))
+  ## YY               <- YY[ ,!ind ]
+  stonelist        <- colnames(YY)
+  stoneindex       <- 1:ncol(YY)
   
   ## ----------------
   ##* PLOTS

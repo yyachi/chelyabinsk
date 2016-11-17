@@ -4,12 +4,10 @@
 \alias{cbk.plot.oxygen}
 \title{Read CASTEML file and create oxygen diagram}
 \usage{
-cbk.plot.oxygen(pmlame, tableunit = "none")
+cbk.plot.oxygen(pmlame)
 }
 \arguments{
 \item{pmlame}{A dataframe of element abundances}
-
-\item{tableunit}{Unit to toss to cbk.read.casteml()}
 }
 \value{
 Dataframe used to plot the diagram

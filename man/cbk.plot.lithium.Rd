@@ -4,15 +4,10 @@
 \alias{cbk.plot.lithium}
 \title{Read CASTEML file and create lithium diagram}
 \usage{
-cbk.plot.lithium(pmlame, tableunit = "none")
+cbk.plot.lithium(pmlame)
 }
 \arguments{
 \item{pmlame}{A dataframe of element abundances}
-
-\item{tableunit}{Unit to toss to cbk.read.casteml().  This function
-reads both element concentration and isotope composition, thus,
-any unit cannot be appropriate as of November 15 (2016).  Do not
-feed `ppm.'}
 }
 \value{
 Dataframe used to plot the diagram
