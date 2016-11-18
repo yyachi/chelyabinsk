@@ -41,7 +41,7 @@ cbk.plot.spider <- function(pmlame,tableunit="ug/g",property="atomicnumber",refe
 ##     oxideweight <- objmass * objnum + oxygen * oxynum
 ##     pmlame[,obj]  <- pmlame[,oxidelist[ii]] * objmass * objnum / oxideweight
 ##   }
-  pmlame1  <- cbk.filter.reducer(pmlame)
+  pmlame1  <- cbk.filter.reduce(pmlame)
 ###
 ###
   ## stonelist   <- rownames(pmlame1)
