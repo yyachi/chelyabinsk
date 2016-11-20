@@ -17,7 +17,8 @@ cbk.plot.lithium <- function(pmlame) {
   ## ----------------
   ##* Opening remark
   ## ----------------
-  ## pmlame     <- cbk.read.casteml(pmlfile,tableunit)
+  ## pmlame  <- cbk.read.casteml(pmlfile,tableunit)
+  pmlame     <- cbk.read.casteml(pmlfile)
   pmlame1    <- pmlame[,c("d7Li","Li")]
   XX         <- pmlame1[,'Li']
   YY         <- pmlame1[,'d7Li']

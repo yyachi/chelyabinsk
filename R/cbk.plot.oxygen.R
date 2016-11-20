@@ -16,8 +16,9 @@ cbk.plot.oxygen <- function(pmlame) {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  ## pmlame  <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
-  pmlame1    <- pmlame[,c("d18O","d17O")]
+  ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
+  pmlame    <- cbk.read.casteml(pmlfile)
+  pmlame1   <- pmlame[,c("d18O","d17O")]
 
   stonelist  <- rownames(pmlame1)
   stoneindex <- 1:nrow(pmlame1)

@@ -19,7 +19,8 @@ cbk.plot.ree <- function(pmlame,tableunit="ug/g",property="atomicnumber",referen
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  ## pmlame      <- cbk.read.casteml(pmlfile,tableunit,category="trace")
+  ## pmlame   <- cbk.read.casteml(pmlfile,tableunit,category="trace")
+  pmlame      <- cbk.read.casteml(pmlfile,tableunit)
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
   stonelist   <- rownames(pmlame)

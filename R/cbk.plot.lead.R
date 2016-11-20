@@ -16,7 +16,8 @@ cbk.plot.lead <- function(pmlame) {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  ## pmlame     <- cbk.read.casteml(pmlfile,tableunit,category="lead")
+  ## pmlame  <- cbk.read.casteml(pmlfile,tableunit,category="lead")
+  pmlame     <- cbk.read.casteml(pmlfile)
   stonelist  <- rownames(pmlame)
   stoneindex <- 1:nrow(pmlame)
 
