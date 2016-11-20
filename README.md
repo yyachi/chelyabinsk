@@ -72,4 +72,3 @@ $ R CMD install chelyabinsk_1.0.tar.gz
 1. Write document in R/chelyabinsk-package.R
 2. Have inst/extdata/ref.csv in casteml-dataframe format ref1.dataframe
 3. Revise cbk.ref.R accodringly or create new function
-

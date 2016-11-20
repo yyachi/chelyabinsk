@@ -9,6 +9,7 @@
 #' 
 #' @param pmlfile File path to CASTEML file
 #' @param category Category filter that is passed to `casteml convert'
+#' @param force Flag to force convert again
 #' @return File path to the converted file
 #' @export
 #' @seealso \code{casteml convert},

@@ -10,6 +10,8 @@ cbk.convert.casteml(pmlfile, category = NULL, force = FALSE)
 \item{pmlfile}{File path to CASTEML file}
 
 \item{category}{Category filter that is passed to `casteml convert'}
+
+\item{force}{Flag to force convert again}
 }
 \value{
 File path to the converted file

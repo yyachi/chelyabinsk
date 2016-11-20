@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.filter.drop.dharma.R
 \name{cbk.filter.drop.dharma}
 \alias{cbk.filter.drop.dharma}
-\title{Remove rows with all values are NA}
+\title{Remove rows where all values are NA}
 \usage{
 cbk.filter.drop.dharma(pmlame)
 }
@@ -13,7 +13,7 @@ cbk.filter.drop.dharma(pmlame)
 A dataframe without removed rows
 }
 \description{
-Remove rows with all values are NA
+Remove rows where all values are NA
 }
 \examples{
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")

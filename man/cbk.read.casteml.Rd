@@ -2,14 +2,13 @@
 % Please edit documentation in R/cbk.read.casteml.R
 \name{cbk.read.casteml}
 \alias{cbk.read.casteml}
-\title{Read CASTEML file and return a dataframe}
+\title{Read CASTEML file and return a pmlame}
 \usage{
-cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL,
-  download = FALSE)
+cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
-stone-ID (when download=TRUE)}
+stone-ID}
 
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}
@@ -23,19 +22,17 @@ cbk.convector() (default="none")}
 A dataframe with unit organized
 }
 \description{
-Read CASTEML dataframe and return a dataframe.
+Read CASTEML file and return a pmlame.
 }
 \details{
 This function converts a CASTEML file to a csvfile by
   `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
-  When `download' option was specified, this directly reads stones
-  from Medusa.
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 
-pmlame  <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace",download=TRUE)
+pmlame  <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace")
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},
