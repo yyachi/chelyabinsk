@@ -30,14 +30,14 @@ cbk.read.dataframe <- function(csvfile,tableunit="none"){
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
   ## R> pmlame <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
-  tblin <- read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)
-  if ('unit' %in% colnames(tblin)) {
-    factor <- cbk.convector(tblin[,'unit'])
-    names(factor) <- rownames(tblin)
+  qmlame <- read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)
+  if ('unit' %in% colnames(qmlame)) {
+    factor <- cbk.convector(qmlame[,'unit'])
+    names(factor) <- rownames(qmlame)
     factor[is.na(factor)] <- 1
-    pmlame <- as.data.frame(t(tblin[colnames(tblin) != 'unit'] / factor)) * cbk.convector(tableunit)
-  } else {
-    pmlame <- as.data.frame(t(tblin))
+    pmlame <- as.data.frame(t(qmlame[colnames(qmlame) != 'unit'] / factor)) * cbk.convector(tableunit)
+  } else { # without unit column
+    pmlame <- as.data.frame(t(qmlame))
   }
   return(pmlame)
 }
