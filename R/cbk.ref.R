@@ -14,7 +14,7 @@
 #'   `cbk.periodic'
 #' @param tableunit Output unit that will be resolved by
 #'   `cbk.convector' (default="ppm")
-#' @return A numeric vector of element abundances with label
+#' @return A dataframe of element abundances
 #' @seealso \code{\link{cbk.periodic}}
 #' @export
 #' @examples
@@ -30,15 +30,21 @@ cbk.ref <- function(analysis,tableunit="ppm",property=NULL){
   ## pmlame     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
   pmlame        <- cbk.read.dataframe(cbk.path("ref1.dataframe"),tableunit)
   ## foo        <- as.numeric(pmlame)
-  foo           <- as.numeric(pmlame[analysis,]) # conversion to numeric vector
-  names(foo)    <- names(pmlame)
+  ## foo           <- as.numeric(pmlame[analysis,]) # conversion to numeric vector
+  ## names(foo)    <- names(pmlame)
+  foo           <- pmlame[analysis,]
 
   ## filter
-  bar           <- foo[is.finite(foo) & !is.nan(foo) & !is.na(foo)]
+  ## bar           <- foo[is.finite(foo) & !is.nan(foo) & !is.na(foo)]
+  blank         <- apply(foo, 2, function(x) all(is.na(x)))
+  bar           <- foo[,!blank]
 
   ## sort when sort-key is provided
   if(!is.null(property)){
-    bar         <- bar[names(property)]
+    ## bar         <- bar[names(property)]
+    names.share <- intersect(names(property),names(bar))
+    bar         <- bar[,names.share,drop=FALSE]
+    ## bar         <- bar[,names(property),drop=FALSE]
   }
 
   return(bar)

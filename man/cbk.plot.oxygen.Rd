@@ -19,7 +19,7 @@ Read CASTEML dataframe and create oxygen diagram.
 }
 \examples{
 pmlfile <- cbk.path("20130528105235-594267.pml")
-pmlame  <- cbk.read.casteml(pmlfile,category="oxygen")
+pmlame  <- cbk.read.casteml(pmlfile)
 cbk.plot.oxygen(pmlame)
 }
 \seealso{

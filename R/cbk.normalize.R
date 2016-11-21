@@ -36,11 +36,11 @@ cbk.normalize <- function(pmlame,ref,suffix_after_name_of_element=NULL){
   ## typically suffix_after_name_of_element is "_error"
   names.share  <- intersect(names(ref),names(pmlame))
   ref1         <- ref[names.share]
-  names(ref1)  <- names.share
+  ## names(ref1)  <- names.share
 
   ## extraction and normalization
   if(is.null(suffix_after_name_of_element)){
-    normtbl      <- t(pmlame[,names(ref1)])/ref1
+    normtbl      <- t(pmlame[,names(ref1)])/cbk.vector(ref1)
   } else {
     names_with_suffix  <- paste(names(ref1),suffix_after_name_of_element,sep="")
     normtbl           <- t(pmlame[,names_with_suffix])/ref1
@@ -48,5 +48,5 @@ cbk.normalize <- function(pmlame,ref,suffix_after_name_of_element=NULL){
   }
 
   ## return(normtbl)
-  return(as.data.frame(normtbl)) # data.frame to be consistent
+  return(as.data.frame(t(normtbl))) # data.frame to be consistent
 }
