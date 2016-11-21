@@ -14,7 +14,7 @@
 #'   `cbk.periodic'
 #' @param tableunit Output unit that will be resolved by
 #'   `cbk.convector' (default="ppm")
-#' @return A dataframe of element abundances
+#' @return A pmlame of element abundances
 #' @seealso \code{\link{cbk.periodic}}
 #' @export
 #' @examples
