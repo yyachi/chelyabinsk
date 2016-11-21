@@ -16,17 +16,20 @@ cbk.plot.lead <- function(pmlame) {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
-  ## pmlame  <- cbk.read.casteml(pmlfile,tableunit,category="lead")
-  pmlame0    <- cbk.read.casteml(pmlame)
+  ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="lead")
+  pmlame0   <- cbk.read.casteml(pmlame)
+  pmlame1   <- pmlame0[,c("Pb206zPb204","Pb207zPb204","Pb208zPb204")]
+  pmlame1   <- cbk.filter.drop.dharma(pmlame1)
+
   stonelist  <- rownames(pmlame0)
   stoneindex <- 1:nrow(pmlame0)
 
   ## ----------------
   ##* PARSE
   ## ----------------
-  XX         <- pmlame0[,'Pb206zPb204']
-  YY1        <- pmlame0[,'Pb207zPb204']
-  YY2        <- pmlame0[,'Pb208zPb204']
+  XX         <- pmlame1[,'Pb206zPb204']
+  YY1        <- pmlame1[,'Pb207zPb204']
+  YY2        <- pmlame1[,'Pb208zPb204']
 
   ## ----------------
   ##* PLOT
@@ -54,5 +57,5 @@ cbk.plot.lead <- function(pmlame) {
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
-  return(pmlame0)
+  return(pmlame1)
 }

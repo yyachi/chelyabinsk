@@ -20,6 +20,7 @@ cbk.plot.lithium <- function(pmlame) {
   ## pmlame  <- cbk.read.casteml(pmlfile,tableunit)
   pmlame0    <- cbk.read.casteml(pmlame)
   pmlame1    <- pmlame0[,c("d7Li","Li")]
+  pmlame1   <- cbk.filter.drop.dharma(pmlame1)
   XX         <- pmlame1[,'Li']
   YY         <- pmlame1[,'d7Li']
 
