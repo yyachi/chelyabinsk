@@ -4,17 +4,10 @@
 \alias{cbk.plot.trace}
 \title{Read CASTEML file and create trace diagram}
 \usage{
-cbk.plot.trace(pmlame, tableunit = "ug/g", property = "atomicnumber",
-  reference = "Wasson.1988")
+cbk.plot.trace(pmlfile_or_stone)
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
-
-\item{tableunit}{Unit to toss to cbk.read.casteml()}
-
-\item{property}{Property to align x-axis}
-
-\item{reference}{Reference of element abundance}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 }
 \value{
 Dataframe used to plot the diagram

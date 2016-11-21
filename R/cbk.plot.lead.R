@@ -4,20 +4,19 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlame A dataframe of element abundances (or pmlfile or stone-ID)
+#' @param pmlfile_or_stone A dataframe of element abundances (or pmlfile or stone-ID)
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-#' pmlame  <- cbk.read.casteml(pmlfile,category="lead")
-#' cbk.plot.lead(pmlame)
-cbk.plot.lead <- function(pmlame) {
+#' cbk.plot.lead(pmlfile)
+cbk.plot.lead <- function(pmlfile_or_stone) {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="lead")
-  pmlame0   <- cbk.read.casteml(pmlame)
+  pmlame0   <- cbk.read.casteml(pmlfile_or_stone)
   pmlame1   <- pmlame0[,c("Pb206zPb204","Pb207zPb204","Pb208zPb204")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
 

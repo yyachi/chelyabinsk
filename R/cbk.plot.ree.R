@@ -4,7 +4,7 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlame A dataframe of element abundances (or pmlfile or stone-ID)
+#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
 #' @param tableunit Unit to toss to cbk.read.casteml()
 #' @param property Property to align x-axis
 #' @param reference Reference of element abundance
@@ -15,12 +15,12 @@
 #' pmlfile <- pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category="trace")
 #' cbk.plot.ree(pmlame)
-cbk.plot.ree <- function(pmlame,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
+cbk.plot.ree <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
   ## pmlame   <- cbk.read.casteml(pmlfile,tableunit,category="trace")
-  pmlame      <- cbk.read.casteml(pmlame,tableunit)
+  pmlame      <- cbk.read.casteml(pmlfile_or_stone,tableunit)
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
   stonelist   <- rownames(pmlame)

@@ -4,11 +4,11 @@
 \alias{cbk.plot.spider}
 \title{Read CASTEML file and create spider diagram}
 \usage{
-cbk.plot.spider(pmlame, tableunit = "ug/g", property = "atomicnumber",
-  reference = "Wasson.1988")
+cbk.plot.spider(pmlfile_or_stone, tableunit = "ug/g",
+  property = "atomicnumber", reference = "Wasson.1988")
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 
 \item{tableunit}{Unit to toss to cbk.read.casteml()}
 
