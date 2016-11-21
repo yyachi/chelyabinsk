@@ -10,7 +10,7 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
-#' pmlame  <- cbk.read.casteml(pmlfile,category="oxygen")
+#' pmlame  <- cbk.read.casteml(pmlfile)
 #' cbk.plot.oxygen(pmlame)
 cbk.plot.oxygen <- function(pmlame) {
   ## ----------------
@@ -19,6 +19,7 @@ cbk.plot.oxygen <- function(pmlame) {
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
   pmlame0   <- cbk.read.casteml(pmlame,tableunit="permil")
   pmlame1   <- pmlame0[,c("d18O","d17O")]
+  pmlame1   <- cbk.filter.drop.dharma(pmlame0)
 
   stonelist  <- rownames(pmlame1)
   stoneindex <- 1:nrow(pmlame1)
