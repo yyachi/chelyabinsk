@@ -7,7 +7,7 @@
 cbk.plot.lead(pmlame)
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances}
+\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
 }
 \value{
 Dataframe used to plot the diagram
@@ -18,7 +18,7 @@ Read CASTEML dataframe and create lead diagram.  This
   canvas in advance.
 }
 \examples{
-pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,category="lead")
 cbk.plot.lead(pmlame)
 }

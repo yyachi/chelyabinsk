@@ -8,7 +8,7 @@ cbk.plot.spider(pmlame, tableunit = "ug/g", property = "atomicnumber",
   reference = "Wasson.1988")
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances}
+\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
 
 \item{tableunit}{Unit to toss to cbk.read.casteml()}
 
@@ -25,7 +25,7 @@ Read CASTEML dataframe and create spider diagram.
   prepare a canvas in advance.
 }
 \examples{
-pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 cbk.plot.spider(pmlame)
 }

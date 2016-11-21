@@ -30,7 +30,7 @@ cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
       pmlfile <- pmlfile_or_stone
     } else {                             # stone fed
       stone   <- pmlfile_or_stone
-      pmlfile <- cbk.download.casteml(pmlfile_or_stone)
+      pmlfile <- cbk.download.casteml(c("-r", stone))
     }
     pmlcsv  <- cbk.convert.casteml(pmlfile,category=category)
     pmlame  <- cbk.read.dataframe(pmlcsv,tableunit)

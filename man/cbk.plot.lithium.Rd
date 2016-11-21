@@ -7,7 +7,7 @@
 cbk.plot.lithium(pmlame)
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances}
+\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
 }
 \value{
 Dataframe used to plot the diagram
@@ -18,7 +18,7 @@ Read CASTEML dataframe and create lithium diagram.
   prepare a canvas in advance.
 }
 \examples{
-pmlfile <- cbk.download.casteml(c("-r","20130528105235-594267"))
+pmlfile <- cbk.path("20130528105235-594267.pml")
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="none")
 cbk.plot.lithium(pmlame)
 }

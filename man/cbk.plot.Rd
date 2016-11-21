@@ -4,12 +4,10 @@
 \alias{cbk.plot}
 \title{Plot Analyses with descendants of a stone}
 \usage{
-cbk.plot(stone, category = "default")
+cbk.plot(pmlame, category = "default")
 }
 \arguments{
-\item{stone}{Unique indentification number of stone in Medusa.
-This will be passed to cbk.download.casteml() with "--recursive"
-option.}
+\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
 
 \item{category}{Category filter that is passed to `casteml convert'}
 }
@@ -22,11 +20,11 @@ Plot Analyses with descendants of a stone.  This
   creates geochemical diagram depending on category specified.
 }
 \examples{
-cbk.plot("20130318074936-009-271",category="trace")
-cbk.plot("20081202172326.hkitagawa",category="trace")
-cbk.plot("20130528105235-594267",category="lithium")
-cbk.plot("20130528105235-594267",category="oxygen")
-cbk.plot("20081202172326.hkitagawa",category="lead")
+cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
+cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
+cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
+cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
+cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 }
 \seealso{
 \code{\link{cbk.plot.trace}}

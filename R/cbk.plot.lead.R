@@ -4,12 +4,12 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlame A dataframe of element abundances
+#' @param pmlame A dataframe of element abundances (or pmlfile or stone-ID)
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
-#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,category="lead")
 #' cbk.plot.lead(pmlame)
 cbk.plot.lead <- function(pmlame) {

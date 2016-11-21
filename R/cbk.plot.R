@@ -4,28 +4,18 @@
 #'   function downloads CASTEML file associated with a stone and
 #'   creates geochemical diagram depending on category specified.
 #'
-#' @param stone Unique indentification number of stone in Medusa.
-#'   This will be passed to cbk.download.casteml() with "--recursive"
-#'   option.
+#' @param pmlame A dataframe of element abundances (or pmlfile or stone-ID)
 #' @param category Category filter that is passed to `casteml convert'
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \code{\link{cbk.plot.trace}}
 #' @examples
-#' cbk.plot("20130318074936-009-271",category="trace")
-#' cbk.plot("20081202172326.hkitagawa",category="trace")
-#' cbk.plot("20130528105235-594267",category="lithium")
-#' cbk.plot("20130528105235-594267",category="oxygen")
-#' cbk.plot("20081202172326.hkitagawa",category="lead")
-cbk.plot <- function(stone,category="default") {
-  if (category=="default" || category=="trace" || category=="lithium") {
-    category1=NULL
-  }
-
-  pmlfile <- cbk.download.casteml(c("-r", stone))
-  pmlame0 <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=category1)
-  pmlame  <- cbk.filter.drop.dharma(pmlame0)
-
+#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
+#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
+#' cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
+#' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
+#' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
+cbk.plot <- function(pmlame,category="default") {
   ans <- switch(category,
                 "default" = cbk.plot.trace(pmlame),
                 "trace"   = cbk.plot.trace(pmlame),
