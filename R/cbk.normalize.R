@@ -40,11 +40,13 @@ cbk.normalize <- function(pmlame,ref,suffix_after_name_of_element=NULL){
 
   ## extraction and normalization
   if(is.null(suffix_after_name_of_element)){
-    normtbl      <- t(pmlame[,names(ref1)])/cbk.vector(ref1)
+    normtbl           <- t(pmlame[,names(ref1)])/cbk.vector(ref1)
   } else {
-    names_with_suffix  <- paste(names(ref1),suffix_after_name_of_element,sep="")
-    normtbl           <- t(pmlame[,names_with_suffix])/ref1
-    rownames(normtbl) <- names.share
+    names_with_suffix <- paste(names(ref1),suffix_after_name_of_element,sep="")
+    ## normtbl           <- t(pmlame[,names_with_suffix])/cbk.vector(ref1)
+    ## rownames(normtbl) <- names.share
+    normtbl           <- t(pmlame[,names(ref1)])/cbk.vector(ref1)
+    rownames(normtbl) <- names_with_suffix
   }
 
   ## return(normtbl)
