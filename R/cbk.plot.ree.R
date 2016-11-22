@@ -20,37 +20,51 @@ cbk.plot.ree <- function(pmlame,tableunit="ug/g",property="atomicnumber",referen
   ##* OPENING REMARK
   ## ----------------
   ## pmlame   <- cbk.read.casteml(pmlfile,tableunit,category="trace")
-  pmlame      <- cbk.read.casteml(pmlame,tableunit)
-  periodic    <- cbk.periodic()
-  ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
-  stonelist   <- rownames(pmlame)
-  stoneindex  <- 1:length(stonelist)
-  chemlist    <- colnames(pmlame)
+  errout1 <- tryCatch({
+    pmlame      <- cbk.read.casteml(pmlame,tableunit)
+    periodic    <- cbk.periodic()
+    ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
+    stonelist   <- rownames(pmlame)
+    stoneindex  <- 1:length(stonelist)
+    chemlist    <- colnames(pmlame)
+    subchemlist <- intersect(REElist,chemlist)
+  },error=function(e){
+    return(e)
+  })
   REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
-  subchemlist <- intersect(REElist,chemlist)
-
+  
   ## ----------------
   ##* PARSE
   ## ----------------
-  property0        <- periodic[subchemlist,property] # atomicnumber, volatility, compatibility
-  names(property0) <- subchemlist
-  XX0              <- sort(property0)
-  ZZ               <- pmlame[,names(XX0),drop=FALSE]
-  CI               <- cbk.vector(ref1[names(XX0)])
-  YY               <- t(ZZ) / CI
-
+  errout2 <- tryCatch({
+    property0        <- periodic[subchemlist,property] # atomicnumber, volatility, compatibility
+    names(property0) <- subchemlist
+    XX0              <- sort(property0)
+    ZZ               <- pmlame[,names(XX0),drop=FALSE]
+    CI               <- cbk.vector(ref1[names(XX0)])
+    YY               <- t(ZZ) / CI
+  },error=function(e){
+    return(e)
+  })
+  
   ## ----------------
   ##* PLOT
   ## ----------------
   ## par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
-  matplot(XX0,YY,log="y",type="o",lty=1,pch=stoneindex,
-          xlab='',ylab='ZZ/CI',axes=FALSE)
-  axis(1,at=XX0,labels=names(XX0),cex.axis=0.9,las=2)
+  tryCatch({
+    matplot(XX0,YY,log="y",type="o",lty=1,pch=stoneindex,
+            xlab='',ylab='ZZ/CI',axes=FALSE)
+    axis(1,at=XX0,labels=names(XX0),cex.axis=0.9,las=2)
+  },error=function(e){
+    cbk.disp.dummy(e,REElist)
+    if (inherits(errout1,"error")) {
+      text(length(REElist)/2,3,print(errout1),cex=0.8)}
+  })
   axis(2,axTicks(2),axTicks(2))
   abline(h=1,lty=2)
   box(lwd=1)
-  legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5)
+  try(legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5))
 
   ## ----------------
   ##* CLOSING REMARK
