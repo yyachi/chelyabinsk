@@ -4,10 +4,10 @@
 \alias{cbk.plot.oxygen}
 \title{Read CASTEML file and create oxygen diagram}
 \usage{
-cbk.plot.oxygen(pmlame)
+cbk.plot.oxygen(pmlfile_or_stone)
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 }
 \value{
 Dataframe used to plot the diagram
@@ -19,8 +19,7 @@ Read CASTEML dataframe and create oxygen diagram.
 }
 \examples{
 pmlfile <- cbk.path("20130528105235-594267.pml")
-pmlame  <- cbk.read.casteml(pmlfile)
-cbk.plot.oxygen(pmlame)
+cbk.plot.oxygen(pmlfile)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}

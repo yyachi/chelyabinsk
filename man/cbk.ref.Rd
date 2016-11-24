@@ -18,7 +18,7 @@ that serves as sort key (default=NULL).  You can feed output from
 `cbk.periodic'}
 }
 \value{
-A dataframe of element abundances
+A pmlame of element abundances
 }
 \description{
 Return element abundances of reference.  The reference

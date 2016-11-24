@@ -4,7 +4,7 @@
 #'   This function does not save the created diagram.  You should
 #'   prepare a canvas in advance.
 #'
-#' @param pmlame A dataframe of element abundances (or pmlfile or stone-ID)
+#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
 #' @param tableunit Unit to toss to cbk.read.casteml()
 #' @param property Property to align x-axis
 #' @param reference Reference of element abundance
@@ -15,13 +15,13 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 #' cbk.plot.spider(pmlame)
-cbk.plot.spider <- function(pmlame,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
+cbk.plot.spider <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
   errout1 <- tryCatch({
-    pmlame    <- cbk.read.casteml(pmlame,tableunit)
+    pmlame    <- cbk.read.casteml(pmlfile_or_stone,tableunit)
     periodic  <- cbk.periodic()
     ref1      <- cbk.ref(reference,tableunit,cbk.periodic(property))
     ###
@@ -88,7 +88,7 @@ cbk.plot.spider <- function(pmlame,tableunit="ug/g",property="atomicnumber",refe
       text(38.5,4,print(errout1),cex=0.8)}
     if (inherits(errout2,"error")) {
       text(38.5,3,print(errout2),cex=0.8)}
-    pmlame1 <<- pmlame
+    pmlame1 <<- pmlfile_or_stone
   })
   axis(2,axTicks(2),axTicks(2))
   abline(h=1,lty=2)

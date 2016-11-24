@@ -4,7 +4,7 @@
 #'   function downloads CASTEML file associated with a stone and
 #'   creates geochemical diagram depending on category specified.
 #'
-#' @param pmlame A dataframe of element abundances (or pmlfile or stone-ID)
+#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
 #' @param category Category filter that is passed to `casteml convert'
 #' @return Dataframe used to plot the diagram
 #' @export
@@ -15,13 +15,13 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
-cbk.plot <- function(pmlame,category="default") {
+cbk.plot <- function(pmlfile_or_stone,category="default") {
   ans <- switch(category,
-                "default" = cbk.plot.trace(pmlame),
-                "trace"   = cbk.plot.trace(pmlame),
-                "lithium" = cbk.plot.lithium(pmlame),
-                "oxygen"  = cbk.plot.oxygen(pmlame),
-                "lead"    = cbk.plot.lead(pmlame),
+                "default" = cbk.plot.trace(pmlfile_or_stone),
+                "trace"   = cbk.plot.trace(pmlfile_or_stone),
+                "lithium" = cbk.plot.lithium(pmlfile_or_stone),
+                "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
+                "lead"    = cbk.plot.lead(pmlfile_or_stone),
                 stop("No action defined"))
   return(ans)
 }

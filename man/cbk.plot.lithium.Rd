@@ -4,10 +4,10 @@
 \alias{cbk.plot.lithium}
 \title{Read CASTEML file and create lithium diagram}
 \usage{
-cbk.plot.lithium(pmlame)
+cbk.plot.lithium(pmlfile_or_stone)
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances (or pmlfile or stone-ID)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 }
 \value{
 Dataframe used to plot the diagram
@@ -19,8 +19,7 @@ Read CASTEML dataframe and create lithium diagram.
 }
 \examples{
 pmlfile <- cbk.path("20130528105235-594267.pml")
-pmlame  <- cbk.read.casteml(pmlfile,tableunit="none")
-cbk.plot.lithium(pmlame)
+cbk.plot.lithium(pmlfile)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}
