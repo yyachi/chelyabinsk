@@ -12,7 +12,7 @@
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
-#' pmlfile <- pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category="trace")
 #' cbk.plot.ree(pmlame)
 cbk.plot.ree <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
