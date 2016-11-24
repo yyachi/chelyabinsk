@@ -20,18 +20,9 @@ cbk.plot.ree <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumbe
   ##* OPENING REMARK
   ## ----------------
   ## pmlame   <- cbk.read.casteml(pmlfile,tableunit,category="trace")
-<<<<<<< HEAD
-=======
-  pmlame      <- cbk.read.casteml(pmlfile_or_stone,tableunit)
-  periodic    <- cbk.periodic()
-  ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
-  stonelist   <- rownames(pmlame)
-  stoneindex  <- 1:length(stonelist)
-  chemlist    <- colnames(pmlame)
->>>>>>> 12ade04419167929877160531e88e80b78bc2166
   REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   errout1 <- tryCatch({
-    pmlame      <- cbk.read.casteml(pmlame,tableunit)
+    pmlame      <- cbk.read.casteml(pmlfile_or_stone,tableunit)
     periodic    <- cbk.periodic()
     ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
     stonelist   <- rownames(pmlame)
@@ -69,6 +60,7 @@ cbk.plot.ree <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumbe
     cbk.disp.dummy(e,REElist)
     if (inherits(errout1,"error")) {
       text(length(REElist)/2,3,print(errout1),cex=0.8)}
+    pmlame <<- pmlfile_or_stone
   })
   axis(2,axTicks(2),axTicks(2))
   abline(h=1,lty=2)
