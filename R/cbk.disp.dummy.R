@@ -3,7 +3,7 @@
 #' @return A dataframe used to plot
 #' @export
 #' @examples
-#' tryCatch({cbk.plot("20081202172326.hkitagawa")
+#' tryCatch({plot(XX,YY)
 #' },error=function(error){
 #' cbk.disp.dummy(error)})
 cbk.disp.dummy <- function(error,xlabel=NULL) {

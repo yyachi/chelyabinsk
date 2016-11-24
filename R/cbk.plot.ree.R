@@ -20,6 +20,7 @@ cbk.plot.ree <- function(pmlame,tableunit="ug/g",property="atomicnumber",referen
   ##* OPENING REMARK
   ## ----------------
   ## pmlame   <- cbk.read.casteml(pmlfile,tableunit,category="trace")
+  REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   errout1 <- tryCatch({
     pmlame      <- cbk.read.casteml(pmlame,tableunit)
     periodic    <- cbk.periodic()
@@ -31,7 +32,6 @@ cbk.plot.ree <- function(pmlame,tableunit="ug/g",property="atomicnumber",referen
   },error=function(e){
     return(e)
   })
-  REElist     <- c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu');
   
   ## ----------------
   ##* PARSE
