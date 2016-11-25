@@ -26,6 +26,9 @@
 #' pmlame  <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
 #' pmlame  <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
 cbk.read.dataframe <- function(csvfile,tableunit="none"){
+
+  cat(file=stderr(),"cbk.read.dataframe: csvfile is |",csvfile,"|\n")
+
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
