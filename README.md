@@ -4,6 +4,7 @@ R package for geochemical datasets.  This is referred by [gem package -- casteml
 # Dependency
 
 ## [GNU R](https://www.r-project.org/ "follow instruction")
+## [gem package -- casteml](https://github.com/misasa/casteml "follow instruction")
 
 # User's guide
 
