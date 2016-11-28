@@ -23,8 +23,9 @@
 #' pmlame  <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace")
 cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
 
-  cat(file=stderr(),"cbk.read.casteml: pmlfile_or_stone is |",pmlfile_or_stone,"|\n")
-
+  ## cat(file=stderr(),"cbk.read.casteml: pmlfile_or_stone is |",pmlfile_or_stone,"|\n")
+  cat(file=stderr(),"cbk.read.casteml:27: pmlfile_or_stone # =>",pmlfile_or_stone,"\n")
+  
   if (is.data.frame(pmlfile_or_stone)) { # pmlame fed
     pmlame  <- pmlfile_or_stone
   } else {

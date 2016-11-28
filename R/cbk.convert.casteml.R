@@ -6,7 +6,7 @@
 #'   function convert file only once per a R session.  This is
 #'   low-level function and users are not encourage to call this but
 #'   cbk.read.casteml().
-#' 
+#'
 #' @param pmlfile File path to CASTEML file
 #' @param category Category filter that is passed to `casteml convert'
 #' @param force Flag to force convert again
@@ -21,7 +21,8 @@
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
 cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
-  cat(file=stderr(),"cbk.convert.casteml: pmlfile is |",pmlfile,"|\n")
+  ## cat(file=stderr(),"cbk.convert.casteml: pmlfile is |",pmlfile,"|\n")
+  cat(file=stderr(),"cbk.convert.casteml:25: pmlfile # =>",pmlfile,"\n")
 
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
   ## outfile <- tempfile(fileext=".dataframe")
