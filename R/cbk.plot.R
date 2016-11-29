@@ -16,12 +16,17 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 cbk.plot <- function(pmlfile_or_stone,category="default") {
-  ans <- switch(category,
-                "default" = cbk.plot.trace(pmlfile_or_stone),
-                "trace"   = cbk.plot.trace(pmlfile_or_stone),
-                "lithium" = cbk.plot.lithium(pmlfile_or_stone),
-                "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
-                "lead"    = cbk.plot.lead(pmlfile_or_stone),
-                stop("No action defined"))
+  tryCatch({
+    ans <- switch(category,
+                  "default" = cbk.plot.trace(pmlfile_or_stone),
+                  "trace"   = cbk.plot.trace(pmlfile_or_stone),
+                  "lithium" = cbk.plot.lithium(pmlfile_or_stone),
+                  "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
+                  "lead"    = cbk.plot.lead(pmlfile_or_stone),
+                  stop("No action defined"))
+  },error=function(e){
+    cbk.plot.message(pmlfile_or_stone,e)
+    text(50,60,sprintf("Error in cbk.plot(pmlfile_or_stone,category=\"%s\"):",category),cex=0.8)
+  })
   return(ans)
 }
