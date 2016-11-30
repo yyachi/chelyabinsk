@@ -26,8 +26,7 @@ Read CASTEML dataframe and create REE diagram.  This
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category="trace")
-cbk.plot.ree(pmlame)
+cbk.plot.ree(pmlfile)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}
