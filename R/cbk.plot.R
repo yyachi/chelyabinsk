@@ -16,6 +16,7 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 cbk.plot <- function(pmlfile_or_stone,category="default") {
+  ans <- -1
   tryCatch({
     ans <- switch(category,
                   "default" = cbk.plot.trace(pmlfile_or_stone),
