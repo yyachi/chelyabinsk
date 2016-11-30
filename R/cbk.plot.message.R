@@ -1,13 +1,14 @@
-#' Display dummy diagram
-#' @param msg A error message to be displayed on diagram
-#' @return A dataframe used to plot
+#' Display a diagram with message
+#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
+#' @param msg Message to be displayed on diagram
+#' @return Dataframe used to plot the diagram
 #' @export
 #' @examples
 #' pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
 #' tryCatch({plot(XX,YY)
 #' },error=function(e){
 #' cbk.plot.message(pmlame,e)})
-cbk.plot.message <- function(pmlame,msg) {
+cbk.plot.message <- function(pmlfile_or_stone,msg) {
   ## periodic <- cbk.periodic()
   ## ref      <- cbk.ref("Wasson.1988","ug/g",cbk.periodic("atomicnumber"))
   ## XX       <- 1:length(ref)
@@ -23,5 +24,5 @@ cbk.plot.message <- function(pmlame,msg) {
   ## axis(2,axTicks(2),axTicks(2))
   ## abline(h=1,lty=2)
   box(lwd=1)
-  return(pmlame)
+  return(pmlfile_or_stone)
 }

@@ -2,18 +2,20 @@
 % Please edit documentation in R/cbk.plot.message.R
 \name{cbk.plot.message}
 \alias{cbk.plot.message}
-\title{Display dummy diagram}
+\title{Display a diagram with message}
 \usage{
-cbk.plot.message(pmlame, msg)
+cbk.plot.message(pmlfile_or_stone, msg)
 }
 \arguments{
-\item{msg}{A error message to be displayed on diagram}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+
+\item{msg}{Message to be displayed on diagram}
 }
 \value{
-A dataframe used to plot
+Dataframe used to plot the diagram
 }
 \description{
-Display dummy diagram
+Display a diagram with message
 }
 \examples{
 pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
