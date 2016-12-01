@@ -6,8 +6,8 @@
 #' @examples
 #' pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
 #' tryCatch({plot(XX,YY)
-#' },error=function(e){
-#' cbk.plot.message(pmlame,e)})
+#' },error=function(msg){
+#' cbk.plot.message(pmlame,msg)})
 cbk.plot.message <- function(pmlfile_or_stone,msg) {
   ## periodic <- cbk.periodic()
   ## ref      <- cbk.ref("Wasson.1988","ug/g",cbk.periodic("atomicnumber"))

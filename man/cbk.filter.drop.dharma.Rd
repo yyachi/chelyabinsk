@@ -4,10 +4,12 @@
 \alias{cbk.filter.drop.dharma}
 \title{Remove rows where all values are NA}
 \usage{
-cbk.filter.drop.dharma(pmlame)
+cbk.filter.drop.dharma(pmlame, column = FALSE)
 }
 \arguments{
-\item{pmlame}{A dataframe with rows of stone and rows of chem}
+\item{pmlame}{A dataframe with rows of stone and columns of chem}
+
+\item{column}{Flag to remove columns}
 }
 \value{
 A dataframe without removed rows
