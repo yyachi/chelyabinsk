@@ -19,8 +19,6 @@ Display a diagram with message
 }
 \examples{
 pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
-tryCatch({plot(XX,YY)
-},error=function(msg){
-cbk.plot.message(pmlame,msg)})
+cbk.plot.message(pmlame,"Hello, world!")
 }
 
