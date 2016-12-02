@@ -8,19 +8,19 @@
 #' category <- cbk.category.dwim(pmlame)
 cbk.category.dwim <- function(pmlame) {
   pmlame1  <- cbk.filter.drop.dharma(pmlame,column=TRUE)
-  chemlist <- colnames(pmlame1)
-  REElist  <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
-  Olist    <- c("d18O","d17O")
-  List     <- "d7Li"
-  Pblist   <- c("Pb206zPb204","Pb207zPb204","Pb208zPb204")
+  ChemList <- colnames(pmlame1)
+  REEList  <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
+  OxyList  <- c("d18O","d17O")
+  LiList   <- "d7Li"
+  PbList   <- c("Pb206zPb204","Pb207zPb204","Pb208zPb204")
 
-  if (any(REElist %in% chemlist)) {
+  if (any(REEList %in% ChemList)) {
     category <- "trace"
-  } else if (any(Olist %in% chemlist)) {
+  } else if (any(OxyList %in% ChemList)) {
     category <- "oxygen"
-  } else if (any(List %in% chemlist)) {
+  } else if (any(LiList %in% ChemList)) {
     category <- "lithium"
-  } else if (any(Pblist %in% chemlist)) {
+  } else if (any(PbList %in% ChemList)) {
     category <- "lead"
   } else {
     category <- "trace"
