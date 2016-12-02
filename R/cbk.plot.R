@@ -18,8 +18,12 @@
 cbk.plot <- function(pmlfile_or_stone,category="default") {
   ans <- -1
   tryCatch({
+    if (category == "default") {
+      pmlame   <- cbk.read.casteml(pmlfile_or_stone)
+      category <- cbk.category.dwim(pmlame)
+    }
     ans <- switch(category,
-                  "default" = cbk.plot.trace(pmlfile_or_stone),
+                  ## "default" = cbk.plot.trace(pmlfile_or_stone),
                   "trace"   = cbk.plot.trace(pmlfile_or_stone),
                   "lithium" = cbk.plot.lithium(pmlfile_or_stone),
                   "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
