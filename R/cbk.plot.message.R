@@ -10,10 +10,15 @@
 cbk.plot.message <- function(pmlfile_or_stone,msg) {
   XX    <- 1:100
   ## YY <- rep(1,100)
-  YY    <- 5*sin(XX/5) + 10
+  YY1    <- 5*sin(XX/5)   + 10
+  YY2    <- 5*sin(XX/5+1) + 10
+  YY3    <- 5*sin(XX/5+2) + 10
   mylim <- c(0,100)
-  plot(XX,YY,type="l",lty=1,pch=4,col="red",xlim=mylim,ylim=mylim,
+  par(mar=c(0.1,0.1,0.1,0.1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
+  plot(XX,YY1,type="l",lty=1,pch=4,col="red",xlim=mylim,ylim=mylim,
        xlab='',ylab='',xaxs='i',yaxs='i',axes=FALSE)
+  lines(XX,YY2,type="l",col="blue")
+  lines(XX,YY3,type="l",col="green")
 
   ## text(50,50,msg,cex=0.8)
   wrap_strings <- function(vector_of_strings,width){
