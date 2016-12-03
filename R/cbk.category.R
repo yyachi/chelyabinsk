@@ -6,6 +6,8 @@
 cbk.category <- function(){
   categorylist = list(
     "trace",
+    "spider",
+    "ree",
     "lithium",
     "oxygen",
     "lead")

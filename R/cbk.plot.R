@@ -17,14 +17,18 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 cbk.plot <- function(pmlfile_or_stone,category="default") {
   ans <- -1
-  if (category == "default") {
-    pmlame   <- cbk.read.casteml(pmlfile_or_stone)
-    category <- cbk.category.dwim(pmlame)
-  }
   tryCatch({
+    pmlame <- cbk.read.casteml(pmlfile_or_stone)
+
+    if (category == "default") {
+      category <- cbk.category.dwim(pmlame)
+    }
+
     ans <- switch(category,
                   ## "default" = cbk.plot.trace(pmlfile_or_stone),
                   "trace"   = cbk.plot.trace(pmlfile_or_stone),
+                  "spider"  = cbk.plot.spider(pmlfile_or_stone),
+                  "ree"     = cbk.plot.ree(pmlfile_or_stone),
                   "lithium" = cbk.plot.lithium(pmlfile_or_stone),
                   "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
                   "lead"    = cbk.plot.lead(pmlfile_or_stone),

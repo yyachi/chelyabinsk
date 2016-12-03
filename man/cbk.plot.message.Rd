@@ -2,22 +2,22 @@
 % Please edit documentation in R/cbk.plot.message.R
 \name{cbk.plot.message}
 \alias{cbk.plot.message}
-\title{Display a diagram with message.  When show error massage, quote in
-advance.}
+\title{Display message on a diagram.}
 \usage{
-cbk.plot.message(pmlfile_or_stone, msg)
+cbk.plot.message(pmlfile_or_stone, text)
 }
 \arguments{
-\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (or pmlame)}
 
-\item{msg}{Message to be displayed on diagram}
+\item{text}{Message to be displayed on diagram.  When it is with
+special caractors, quote it in advance.}
 }
 \value{
 Dataframe used to plot the diagram
 }
 \description{
-Display a diagram with message.  When show error massage, quote in
-advance.
+Display message on a diagram.
 }
 \examples{
 pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
