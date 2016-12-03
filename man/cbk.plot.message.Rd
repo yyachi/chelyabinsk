@@ -2,7 +2,8 @@
 % Please edit documentation in R/cbk.plot.message.R
 \name{cbk.plot.message}
 \alias{cbk.plot.message}
-\title{Display a diagram with message}
+\title{Display a diagram with message.  When show error massage, quote in
+advance.}
 \usage{
 cbk.plot.message(pmlfile_or_stone, msg)
 }
@@ -15,10 +16,11 @@ cbk.plot.message(pmlfile_or_stone, msg)
 Dataframe used to plot the diagram
 }
 \description{
-Display a diagram with message
+Display a diagram with message.  When show error massage, quote in
+advance.
 }
 \examples{
 pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
-cbk.plot.message(pmlame,"Hello, world!")
+cbk.plot.message(pmlame,sQuote("Hello, world!"))
 }
 
