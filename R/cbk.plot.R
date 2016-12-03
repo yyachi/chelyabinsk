@@ -10,6 +10,7 @@
 #' @export
 #' @seealso \code{\link{cbk.plot.trace}}
 #' @examples
+#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"))
 #' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
 #' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
@@ -21,14 +22,14 @@ cbk.plot <- function(pmlfile_or_stone,category="default") {
     pmlame <- cbk.read.casteml(pmlfile_or_stone)
 
     if (category == "default") {
-      category <- cbk.category.suggest(pmlame)
+      category <- cbk.category.suggest(pmlame)[1]
     }
 
     ans <- switch(category,
                   ## "default" = cbk.plot.trace(pmlfile_or_stone),
                   "trace"   = cbk.plot.trace(pmlfile_or_stone),
                   "spider"  = cbk.plot.spider(pmlfile_or_stone),
-                  "ree"     = cbk.plot.ree(pmlfile_or_stone),
+                  "REE"     = cbk.plot.ree(pmlfile_or_stone),
                   "lithium" = cbk.plot.lithium(pmlfile_or_stone),
                   "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
                   "lead"    = cbk.plot.lead(pmlfile_or_stone),

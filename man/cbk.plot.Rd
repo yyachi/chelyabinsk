@@ -20,6 +20,7 @@ Plot Analyses with descendants of a stone.  This
   creates geochemical diagram depending on category specified.
 }
 \examples{
+cbk.plot(cbk.path("20081202172326.hkitagawa.pml"))
 cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
 cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
 cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")

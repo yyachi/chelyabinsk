@@ -1,6 +1,6 @@
-#' Suggest a category to plot
+#' Suggest categories to plot
 #' @param pmlame A dataframe with rows of stone and columns of chem
-#' @return A representative category in the dataframe
+#' @return Categories in preferred order
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
@@ -14,33 +14,33 @@ cbk.category.suggest <- function(pmlame) {
   LiList   <- "d7Li"
   PbList   <- c("Pb206zPb204","Pb207zPb204","Pb208zPb204")
 
-  ### Suggest a category
-  if (any(REEList %in% ChemList)) {
-    category <- "trace"
-  } else if (any(OxyList %in% ChemList)) {
-    category <- "oxygen"
-  } else if (any(LiList %in% ChemList)) {
-    category <- "lithium"
-  } else if (any(PbList %in% ChemList)) {
-    category <- "lead"
-  } else {
-    category <- "trace"
-  }
-
-  ### Make list of plottable cateogry
-  ## foo <- c("default")
+  ### Suggest single category
   ## if (any(REEList %in% ChemList)) {
-  ##   foo <- append(foo, c("trace", "ree", "spider"))
+  ##   category <- "trace"
+  ## } else if (any(OxyList %in% ChemList)) {
+  ##   category <- "oxygen"
+  ## } else if (any(LiList %in% ChemList)) {
+  ##   category <- "lithium"
+  ## } else if (any(PbList %in% ChemList)) {
+  ##   category <- "lead"
+  ## } else {
+  ##   category <- "trace"
   ## }
-  ## if (any(OxyList %in% ChemList)) {
-  ##   foo <- append(foo, "oxygen")
-  ## }
-  ## if (any(LiList %in% ChemList)) {
-  ##   foo <- append(foo, "lithium")
-  ## }
-  ## if (any(PbList %in% ChemList)) {
-  ##   foo <- append(foo, "lead")
-  ## }
+
+  ### Suggest categories in preferred order
+  category <- c()
+  if (any(REEList %in% ChemList)) {
+    category <- append(category, c("trace", "REE", "spider"))
+  }
+  if (any(OxyList %in% ChemList)) {
+    category <- append(category, "oxygen")
+  }
+  if (any(LiList %in% ChemList)) {
+    category <- append(category, "lithium")
+  }
+  if (any(PbList %in% ChemList)) {
+    category <- append(category, "lead")
+  }
   
   return(category)
 }

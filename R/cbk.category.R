@@ -8,7 +8,7 @@ cbk.category <- function(){
     "default",
     "trace",
     "spider",
-    "ree",
+    "REE",
     "lithium",
     "oxygen",
     "lead")

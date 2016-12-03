@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.category.suggest.R
 \name{cbk.category.suggest}
 \alias{cbk.category.suggest}
-\title{Suggest a category to plot}
+\title{Suggest categories to plot}
 \usage{
 cbk.category.suggest(pmlame)
 }
@@ -10,10 +10,10 @@ cbk.category.suggest(pmlame)
 \item{pmlame}{A dataframe with rows of stone and columns of chem}
 }
 \value{
-A representative category in the dataframe
+Categories in preferred order
 }
 \description{
-Suggest a category to plot
+Suggest categories to plot
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
