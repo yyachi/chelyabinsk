@@ -17,11 +17,11 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 cbk.plot <- function(pmlfile_or_stone,category="default") {
   ans <- -1
+  if (category == "default") {
+    pmlame   <- cbk.read.casteml(pmlfile_or_stone)
+    category <- cbk.category.dwim(pmlame)
+  }
   tryCatch({
-    if (category == "default") {
-      pmlame   <- cbk.read.casteml(pmlfile_or_stone)
-      category <- cbk.category.dwim(pmlame)
-    }
     ans <- switch(category,
                   ## "default" = cbk.plot.trace(pmlfile_or_stone),
                   "trace"   = cbk.plot.trace(pmlfile_or_stone),
