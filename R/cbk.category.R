@@ -5,6 +5,7 @@
 #' categorylist <- cbk.category()
 cbk.category <- function(){
   categorylist = list(
+    "default",
     "trace",
     "spider",
     "ree",
