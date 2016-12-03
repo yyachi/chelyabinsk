@@ -3,7 +3,7 @@
 #' @return A representative category in the dataframe
 #' @export
 #' @examples
-#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
 #' category <- cbk.category.dwim(pmlame)
 cbk.category.dwim <- function(pmlame) {
@@ -14,6 +14,7 @@ cbk.category.dwim <- function(pmlame) {
   LiList   <- "d7Li"
   PbList   <- c("Pb206zPb204","Pb207zPb204","Pb208zPb204")
 
+  ### Suggest a category
   if (any(REEList %in% ChemList)) {
     category <- "trace"
   } else if (any(OxyList %in% ChemList)) {
@@ -25,5 +26,21 @@ cbk.category.dwim <- function(pmlame) {
   } else {
     category <- "trace"
   }
+
+  ### Make list of plottable cateogry
+  ## foo <- c("default")
+  ## if (any(REEList %in% ChemList)) {
+  ##   foo <- append(foo, c("trace", "ree", "spider"))
+  ## }
+  ## if (any(OxyList %in% ChemList)) {
+  ##   foo <- append(foo, "oxygen")
+  ## }
+  ## if (any(LiList %in% ChemList)) {
+  ##   foo <- append(foo, "lithium")
+  ## }
+  ## if (any(PbList %in% ChemList)) {
+  ##   foo <- append(foo, "lead")
+  ## }
+  
   return(category)
 }
