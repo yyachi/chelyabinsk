@@ -30,9 +30,9 @@ cbk.plot <- function(pmlfile_or_stone,category="default") {
                   "lead"    = cbk.plot.lead(pmlfile_or_stone),
                   stop("No action defined"))
   },error=function(msg){
-    cbk.plot.message(pmlfile_or_stone,sprintf("cbk.plot(pmlfile_or_stone,category=\"%s\"):",category))
+    cbk.plot.message(pmlfile_or_stone,sQuote(msg))
     ## text(50,60,sprintf("Error in cbk.plot(pmlfile_or_stone,category=\"%s\"):",category),cex=0.8)
-    text(0,50,msg,cex=0.8,adj=c(0,NA))
+    ## text(0,50,msg,cex=0.8,adj=c(0,NA))
   })
   return(ans)
 }
