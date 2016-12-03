@@ -21,7 +21,7 @@ cbk.plot <- function(pmlfile_or_stone,category="default") {
     pmlame <- cbk.read.casteml(pmlfile_or_stone)
 
     if (category == "default") {
-      category <- cbk.category.dwim(pmlame)
+      category <- cbk.category.suggest(pmlame)
     }
 
     ans <- switch(category,

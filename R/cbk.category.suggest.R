@@ -1,12 +1,12 @@
-#' Return representative category
+#' Suggest a category to plot
 #' @param pmlame A dataframe with rows of stone and columns of chem
 #' @return A representative category in the dataframe
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-#' category <- cbk.category.dwim(pmlame)
-cbk.category.dwim <- function(pmlame) {
+#' category <- cbk.category.suggest(pmlame)
+cbk.category.suggest <- function(pmlame) {
   pmlame1  <- cbk.filter.drop.dharma(pmlame,column=TRUE)
   ChemList <- colnames(pmlame1)
   REEList  <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")

@@ -2,7 +2,7 @@
 
 export(cbk.balance)
 export(cbk.category)
-export(cbk.category.dwim)
+export(cbk.category.suggest)
 export(cbk.convector)
 export(cbk.convert.casteml)
 export(cbk.download.casteml)
