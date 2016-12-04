@@ -19,10 +19,8 @@
 cbk.plot <- function(pmlfile_or_stone,category="default") {
   ans <- -1
   tryCatch({
-    pmlame <- cbk.read.casteml(pmlfile_or_stone)
-
     if (category == "default") {
-      category <- cbk.category.suggest(pmlame)[[1]]
+      category <- cbk.category.suggest(pmlfile_or_stone)[[1]]
     }
 
     ans <- switch(category,

@@ -14,9 +14,6 @@ stone-ID}
 cbk.convector() (default="none")}
 
 \item{category}{category to pass to `cbk.convert.casteml'}
-
-\item{download}{flag to directory download from Medusa
-(default=FALSE)}
 }
 \value{
 A dataframe with unit organized

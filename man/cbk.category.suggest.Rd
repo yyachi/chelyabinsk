@@ -4,10 +4,10 @@
 \alias{cbk.category.suggest}
 \title{Suggest categories to plot}
 \usage{
-cbk.category.suggest(pmlame)
+cbk.category.suggest(pmlfile_or_stone = NULL)
 }
 \arguments{
-\item{pmlame}{A dataframe with rows of stone and columns of chem}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 }
 \value{
 Categories in preferred order
@@ -16,8 +16,8 @@ Categories in preferred order
 Suggest categories to plot
 }
 \examples{
-pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-category <- cbk.category.suggest(pmlame)
+pmlfile  <- cbk.path("20081202172326.hkitagawa.pml")
+category <- cbk.category.suggest(pmlfile)
+category <- cbk.category.suggest()
 }
 

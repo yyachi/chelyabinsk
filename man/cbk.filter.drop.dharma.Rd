@@ -18,7 +18,7 @@ A dataframe without removed rows
 Remove rows where all values are NA
 }
 \examples{
-pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
 pmlame1 <- cbk.filter.drop.dharma(pmlame)
 }

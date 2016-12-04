@@ -9,8 +9,6 @@
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
 #' @param category category to pass to `cbk.convert.casteml'
-#' @param download flag to directory download from Medusa
-#'   (default=FALSE)
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.convert.casteml}},
 #'   \code{\link{cbk.read.dataframe}},
@@ -19,17 +17,15 @@
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
-#'
-#' pmlame  <- cbk.read.casteml("20081202172326.hkitagawa",tableunit="ppm",category="trace")
+#' stone   <- "20081202172326.hkitagawa"
+#' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
 cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
+  cat(file=stderr(),
+      "cbk.read.casteml:24: pmlfile_or_stone # =>",
+      ifelse(is.data.frame(pmlfile_or_stone),"#<pmlame>",pmlfile_or_stone),"\n")
+  
   if (is.data.frame(pmlfile_or_stone)) { # pmlame fed
-    cat(file=stderr(),"cbk.read.casteml:27: pmlfile_or_stone # =>","#<pmlame>","\n")
-  } else {
-    cat(file=stderr(),"cbk.read.casteml:27: pmlfile_or_stone # =>",pmlfile_or_stone,"\n")
-  }
-
-  if (is.data.frame(pmlfile_or_stone)) { # pmlame fed
-    pmlame  <- pmlfile_or_stone
+    pmlame    <- pmlfile_or_stone
   } else {
     if (file.exists(pmlfile_or_stone)) { # existing-pmlfile fed
       pmlfile <- pmlfile_or_stone
@@ -37,8 +33,8 @@ cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
       stone   <- pmlfile_or_stone
       pmlfile <- cbk.download.casteml(c("-r", stone))
     }
-    pmlcsv  <- cbk.convert.casteml(pmlfile,category=category)
-    pmlame  <- cbk.read.dataframe(pmlcsv,tableunit)
+    pmlcsv    <- cbk.convert.casteml(pmlfile,category=category)
+    pmlame    <- cbk.read.dataframe(pmlcsv,tableunit)
   }
 
   return(pmlame)
