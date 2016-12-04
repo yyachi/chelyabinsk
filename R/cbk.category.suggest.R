@@ -28,7 +28,7 @@ cbk.category.suggest <- function(pmlame) {
   ## }
 
   ### Suggest categories in preferred order
-  category <- c()
+  category <- list()
   if (any(REEList %in% ChemList)) {
     category <- append(category, c("trace", "REE", "spider"))
   }

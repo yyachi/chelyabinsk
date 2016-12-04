@@ -12,7 +12,7 @@
 cbk.plot.message <- function(pmlfile_or_stone,text) {
   XX    <- 1:100
   ## YY <- rep(1,100)
-  YY1    <- 5*1.02^XX*sin(0.995^XX*XX/3)         + 20
+  YY1    <- 5*1.02^XX*sin(0.995^XX*XX/3)          + 20
   YY2    <- 5*1.02^XX*sin(0.995^XX*XX/3+6.28/3*1) + 20
   YY3    <- 5*1.02^XX*sin(0.995^XX*XX/3+6.28/3*2) + 20
   mylim <- c(0,100)
