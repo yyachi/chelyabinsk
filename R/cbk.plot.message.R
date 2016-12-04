@@ -1,5 +1,5 @@
 #' Display message on a diagram.
-#' 
+#'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID (or pmlame)
 #' @param text Message to be displayed on diagram.  When it is with
@@ -27,6 +27,7 @@ cbk.plot.message <- function(pmlfile_or_stone,text) {
     as.character(sapply(text,FUN=function(xx){paste(strwrap(xx,width=width),collapse="\n")}))
   }
   text(3,97,wrap_line(text,76),adj=c(0,1))
+  text(3, 5,Sys.time(),adj=c(0,1))
 
   box(lwd=1)
   return(pmlfile_or_stone)
