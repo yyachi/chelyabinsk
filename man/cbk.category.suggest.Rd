@@ -7,7 +7,9 @@
 cbk.category.suggest(pmlfile_or_stone = NULL)
 }
 \arguments{
-\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (or pmlame) to survey categories.  Default is NULL and
+return all categories regardless their plotability.}
 }
 \value{
 Categories in preferred order

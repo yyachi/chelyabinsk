@@ -2,17 +2,24 @@
 % Please edit documentation in R/cbk.category.R
 \name{cbk.category}
 \alias{cbk.category}
-\title{Return list of categories that are acceptable by `cbk.plot'}
+\title{Suggest categories to plot}
 \usage{
-cbk.category()
+cbk.category(pmlfile_or_stone = NULL)
+}
+\arguments{
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (or pmlame) to survey categories.  Default is NULL and
+return all categories regardless their plotability.}
 }
 \value{
-A list of categories that are acceptable by `cbk.plot'
+Categories in preferred order
 }
 \description{
-Return list of categories that are acceptable by `cbk.plot'
+Suggest categories to plot
 }
 \examples{
-categorylist <- cbk.category()
+pmlfile  <- cbk.path("20081202172326.hkitagawa.pml")
+category <- cbk.category(pmlfile)
+category <- cbk.category()
 }
 
