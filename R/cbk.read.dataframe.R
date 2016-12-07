@@ -6,9 +6,9 @@
 #'   cbk.read.casteml().
 #'
 #' @details This internally calls
-#'   \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)},
+#'   \code{read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)},
 #'   take out column of `unit' and normalized by the `unit' column.
-#' @param csvfile A csvfile with columns of stone and rows of element
+#' @param pmlcsv A csvfile with columns of stone and rows of element
 #'   abundances, with 2nd column `unit'
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
@@ -25,16 +25,16 @@
 #' pmlame  <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
 #' pmlame  <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
 #' pmlame  <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
-cbk.read.dataframe <- function(csvfile,tableunit="none"){
+cbk.read.dataframe <- function(pmlcsv,tableunit="none"){
 
-  ## cat(file=stderr(),"cbk.read.dataframe: csvfile is |",csvfile,"|\n")
-  cat(file=stderr(),"cbk.read.dataframe:31: csvfile # =>",csvfile,"\n")
+  ## cat(file=stderr(),"cbk.read.dataframe: pmlcsv is |",pmlcsv,"|\n")
+  cat(file=stderr(),"cbk.read.dataframe:31: pmlcsv # =>",pmlcsv,"\n")
   
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
   ## R> pmlame <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
-  qmlame <- read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)
+  qmlame <- read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(qmlame)) {
     factor <- cbk.convector(qmlame[,'unit'])
     names(factor) <- rownames(qmlame)
