@@ -9,8 +9,8 @@
 #' pmlame1 <- cbk.filter.drop.dharma(pmlame)
 cbk.filter.drop.dharma <- function(pmlame,column=FALSE) {
   ## repalce space by NA
-  pmlame0   <- apply(pmlame,  2, function(x) gsub("^$|^ $", NA, x))
-
+  pmlame0   <- apply(pmlame, c(1,2), function(x) gsub("^$|^ $", NA, x))
+  
   ## find lines only with NA
   blank_row <- apply(pmlame0, 1, function(x) all(is.na(x)))
 

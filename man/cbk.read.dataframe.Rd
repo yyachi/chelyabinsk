@@ -4,10 +4,10 @@
 \alias{cbk.read.dataframe}
 \title{Read csvfile created by casteml convert with column `unit'}
 \usage{
-cbk.read.dataframe(csvfile, tableunit = "none")
+cbk.read.dataframe(pmlcsv, tableunit = "none")
 }
 \arguments{
-\item{csvfile}{A csvfile with columns of stone and rows of element
+\item{pmlcsv}{A csvfile with columns of stone and rows of element
 abundances, with 2nd column `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
@@ -24,7 +24,7 @@ Read csvfile with column `unit' created by
 }
 \details{
 This internally calls
-  \code{read.csv(csvfile,row.names=1,header=T,stringsAsFactors=F)},
+  \code{read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)},
   take out column of `unit' and normalized by the `unit' column.
 }
 \examples{
