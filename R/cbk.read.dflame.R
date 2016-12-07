@@ -20,20 +20,20 @@
 #' @examples
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 #' pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
-#' pmlame  <- cbk.read.dataframe(pmlcsv,"ppm")
+#' pmlame  <- cbk.read.dflame(pmlcsv,"ppm")
 #'
-#' pmlame  <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-#' pmlame  <- cbk.read.dataframe(cbk.path("ref1.dataframe"),"ppm")
-#' pmlame  <- cbk.read.dataframe(cbk.path("periodic-table1.dataframe"))
-cbk.read.dataframe <- function(pmlcsv,tableunit="none"){
+#' pmlame  <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+#' pmlame  <- cbk.read.dflame(cbk.path("ref1.dataframe"),"ppm")
+#' pmlame  <- cbk.read.dflame(cbk.path("periodic-table1.dataframe"))
+cbk.read.dflame <- function(pmlcsv,tableunit="none"){
 
-  ## cat(file=stderr(),"cbk.read.dataframe: pmlcsv is |",pmlcsv,"|\n")
-  cat(file=stderr(),"cbk.read.dataframe:31: pmlcsv # =>",pmlcsv,"\n")
+  ## cat(file=stderr(),"cbk.read.dflame: pmlcsv is |",pmlcsv,"|\n")
+  cat(file=stderr(),"cbk.read.dflame:31: pmlcsv # =>",pmlcsv,"\n")
   
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
-  ## R> pmlame <- cbk.read.dataframe("20130528105235-594267.dataframe","ppm")
+  ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dataframe","ppm")
   qmlame <- read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(qmlame)) {
     factor <- cbk.convector(qmlame[,'unit'])
