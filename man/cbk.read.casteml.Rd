@@ -23,7 +23,7 @@ Read CASTEML file and return a pmlame.
 }
 \details{
 This function converts a CASTEML file to a csvfile by
-  `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
+  `cbk.convert.casteml()' and read it by `cbk.read.dflame()'.
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
@@ -33,7 +33,7 @@ pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},
-  \code{\link{cbk.read.dataframe}},
+  \code{\link{cbk.read.dflame}},
   \url{https://github.com/misasa/casteml}
 }
 

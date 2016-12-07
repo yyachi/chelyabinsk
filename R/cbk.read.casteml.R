@@ -3,7 +3,7 @@
 #' @description Read CASTEML file and return a pmlame.
 #'
 #' @details This function converts a CASTEML file to a csvfile by
-#'   `cbk.convert.casteml()' and read it by `cbk.read.dataframe()'.
+#'   `cbk.convert.casteml()' and read it by `cbk.read.dflame()'.
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID
 #' @param tableunit Output unit that will be resolved by
@@ -11,7 +11,7 @@
 #' @param category category to pass to `cbk.convert.casteml'
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.convert.casteml}},
-#'   \code{\link{cbk.read.dataframe}},
+#'   \code{\link{cbk.read.dflame}},
 #'   \url{https://github.com/misasa/casteml}
 #' @export
 #' @examples
@@ -34,7 +34,7 @@ cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
       pmlfile <- cbk.download.casteml(c("-r", stone))
     }
     pmlcsv    <- cbk.convert.casteml(pmlfile,category=category)
-    pmlame    <- cbk.read.dataframe(pmlcsv,tableunit)
+    pmlame    <- cbk.read.dflame(pmlcsv,tableunit)
   }
 
   return(pmlame)

@@ -12,7 +12,7 @@
 #' @seealso \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
 #' @export
 #' @examples
-#' pmlame <- cbk.read.dataframe(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+#' pmlame <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
 #' ref    <- cbk.ref("Boynton.1989","ppm")
 #' cbk.normalize(pmlame,ref)
 cbk.normalize <- function(pmlame,ref,suffix_after_name_of_element=NULL){
