@@ -15,11 +15,11 @@
 #' @seealso \code{casteml convert},
 #'   \url{https://github.com/misasa/casteml}
 #' @examples
-#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-#' pmlcsv  <- cbk.convert.casteml(pmlfile)
+#' pmlfile    <- cbk.path("20081202172326.hkitagawa.pml")
+#' dflame.csv <- cbk.convert.casteml(pmlfile)
 #'
-#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
+#' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
+#' dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
 cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
   ## cat(file=stderr(),"cbk.convert.casteml: pmlfile is |",pmlfile,"|\n")
   cat(file=stderr(),"cbk.convert.casteml:25: pmlfile # =>",pmlfile,"\n")

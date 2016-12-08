@@ -6,9 +6,9 @@
 #'   cbk.read.casteml().
 #'
 #' @details This internally calls
-#'   \code{read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)},
+#'   \code{read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)},
 #'   take out column of `unit' and normalized by the `unit' column.
-#' @param pmlcsv A csvfile with columns of stone and rows of element
+#' @param dflame.csv A csvfile with columns of stone and rows of element
 #'   abundances, with 2nd column `unit'
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
@@ -18,23 +18,23 @@
 #'   \code{\link{cbk.convector}},
 #' @export
 #' @examples
-#' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
-#' pmlame  <- cbk.read.dflame(pmlcsv,"ppm")
+#' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
+#' dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
+#' pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
 #'
-#' pmlame  <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-#' pmlame  <- cbk.read.dflame(cbk.path("ref1.dataframe"),"ppm")
-#' pmlame  <- cbk.read.dflame(cbk.path("periodic-table1.dataframe"))
-cbk.read.dflame <- function(pmlcsv,tableunit="none"){
+#' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+#' pmlame     <- cbk.read.dflame(cbk.path("ref1.dataframe"),"ppm")
+#' pmlame     <- cbk.read.dflame(cbk.path("periodic-table1.dataframe"))
+cbk.read.dflame <- function(dflame.csv,tableunit="none"){
 
-  ## cat(file=stderr(),"cbk.read.dflame: pmlcsv is |",pmlcsv,"|\n")
-  cat(file=stderr(),"cbk.read.dflame:31: pmlcsv # =>",pmlcsv,"\n")
+  ## cat(file=stderr(),"cbk.read.dflame: dflame.csv is |",dflame.csv,"|\n")
+  cat(file=stderr(),"cbk.read.dflame:31: dflame.csv # =>",dflame.csv,"\n")
   
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dataframe","ppm")
-  qmlame <- read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)
+  qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(qmlame)) {
     factor <- cbk.convector(qmlame[,'unit'])
     names(factor) <- rownames(qmlame)

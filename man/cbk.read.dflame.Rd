@@ -4,10 +4,10 @@
 \alias{cbk.read.dflame}
 \title{Read csvfile created by casteml convert with column `unit'}
 \usage{
-cbk.read.dflame(pmlcsv, tableunit = "none")
+cbk.read.dflame(dflame.csv, tableunit = "none")
 }
 \arguments{
-\item{pmlcsv}{A csvfile with columns of stone and rows of element
+\item{dflame.csv}{A csvfile with columns of stone and rows of element
 abundances, with 2nd column `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
@@ -24,17 +24,17 @@ Read csvfile with column `unit' created by
 }
 \details{
 This internally calls
-  \code{read.csv(pmlcsv,row.names=1,header=T,stringsAsFactors=F)},
+  \code{read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)},
   take out column of `unit' and normalized by the `unit' column.
 }
 \examples{
-pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-pmlcsv  <- cbk.convert.casteml(pmlfile,category="trace")
-pmlame  <- cbk.read.dflame(pmlcsv,"ppm")
+pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
+dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
+pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
 
-pmlame  <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-pmlame  <- cbk.read.dflame(cbk.path("ref1.dataframe"),"ppm")
-pmlame  <- cbk.read.dflame(cbk.path("periodic-table1.dataframe"))
+pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+pmlame     <- cbk.read.dflame(cbk.path("ref1.dataframe"),"ppm")
+pmlame     <- cbk.read.dflame(cbk.path("periodic-table1.dataframe"))
 }
 \seealso{
 \code{\link{cbk.download.casteml}}, \code{casteml

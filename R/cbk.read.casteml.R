@@ -25,16 +25,16 @@ cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
       ifelse(is.data.frame(pmlfile_or_stone),"#<pmlame>",pmlfile_or_stone),"\n")
   
   if (is.data.frame(pmlfile_or_stone)) { # pmlame fed
-    pmlame    <- pmlfile_or_stone
+    pmlame     <- pmlfile_or_stone
   } else {
     if (file.exists(pmlfile_or_stone)) { # existing-pmlfile fed
-      pmlfile <- pmlfile_or_stone
+      pmlfile  <- pmlfile_or_stone
     } else {                             # stone fed
-      stone   <- pmlfile_or_stone
-      pmlfile <- cbk.download.casteml(c("-r", stone))
+      stone    <- pmlfile_or_stone
+      pmlfile  <- cbk.download.casteml(c("-r", stone))
     }
-    pmlcsv    <- cbk.convert.casteml(pmlfile,category=category)
-    pmlame    <- cbk.read.dflame(pmlcsv,tableunit)
+    dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
+    pmlame     <- cbk.read.dflame(dflame.csv,tableunit)
   }
 
   return(pmlame)
