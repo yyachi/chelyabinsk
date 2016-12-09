@@ -15,19 +15,19 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 #' cbk.plot.spider(pmlame)
-cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL) {
-  ## cbk.plot.spider <- function(pmlfile_or_stone,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  dflt <- list(tableunit="ug/g",property="atomicnumber",reference="Wasson.1988")
-  dflt[intersect(names(dflt),names(opts))] <- NULL  ## Reset shared options
-  opts <- c(opts,dflt)
+cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
+  ## cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL) {
+  ## opts_default <- list(tableunit="ug/g",property="atomicnumber",reference="Wasson.1988")
+  ## opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
+  ## opts <- c(opts,opts_default)
 
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  ## pmlame <- cbk.read.casteml(pmlfile,opts$tableunit,category=NULL)
-  pmlame    <- cbk.read.casteml(pmlfile_or_stone,opts$tableunit)
+  ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
+  pmlame    <- cbk.read.casteml(pmlfile_or_stone,tableunit)
   periodic  <- cbk.periodic()
-  ref1      <- cbk.ref(opts$reference,opts$tableunit,cbk.periodic(opts$property))
+  ref1      <- cbk.ref(reference,tableunit,cbk.periodic(property))
   ###
   ### extract "Si" and element numbers
   ##   oxidelist        <- c("SiO2", "Al2O3", "CaO", "MgO", "Fe2O3", "FeO", "Na2O", "H2O+", "TiO2", "K2O", "P2O5", "MnO")
@@ -57,7 +57,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* PARSE
   ## ----------------
-  property0        <- periodic[chemlist,opts$property] # atomicnumber, volatility, compatibility
+  property0        <- periodic[chemlist,property] # atomicnumber, volatility, compatibility
   names(property0) <- chemlist
   XX0              <- sort(property0)
   XX               <- 1:length(XX0)

@@ -17,9 +17,9 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 cbk.plot <- function(pmlfile_or_stone,category="default",opts=NULL) {
-  dflt <- list(category="default",legendp=FALSE, axis="equal")
-  dflt[intersect(names(dflt),names(opts))] <- NULL  ## Reset shared option
-  opts <- c(opts,dflt)
+  opts_default <- list(legendp=FALSE, axis="equal")
+  opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared option
+  opts <- c(opts,opts_default)
 
   ans <- -1
   tryCatch({
