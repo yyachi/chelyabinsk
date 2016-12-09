@@ -16,7 +16,11 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
-cbk.plot <- function(pmlfile_or_stone,category="default") {
+cbk.plot <- function(pmlfile_or_stone,category="default",opts=NULL) {
+  dflt <- list(category="default",legendp=FALSE, axis="equal")
+  dflt[intersect(names(dflt),names(opts))] <- NULL  ## Reset shared option
+  opts <- c(opts,dflt)
+
   ans <- -1
   tryCatch({
     if (category == "default") {
@@ -26,7 +30,7 @@ cbk.plot <- function(pmlfile_or_stone,category="default") {
     ans <- switch(category,
                   ## "default" = cbk.plot.trace(pmlfile_or_stone),
                   "trace"   = cbk.plot.trace(pmlfile_or_stone),
-                  "spider"  = cbk.plot.spider(pmlfile_or_stone),
+                  "spider"  = cbk.plot.spider(pmlfile_or_stone,opts),
                   "REE"     = cbk.plot.ree(pmlfile_or_stone),
                   "lithium" = cbk.plot.lithium(pmlfile_or_stone),
                   "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone),
