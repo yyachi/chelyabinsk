@@ -1,6 +1,7 @@
 #' @title Read csvfile created by casteml convert with column `unit'
 #'
-#' @description Read csvfile with row `unit'.  
+#' @description Read csvfile with row `unit', that is also referred as
+#'   `tblame'.
 #'
 #' @details This internally calls
 #'   \code{read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)},
@@ -16,8 +17,8 @@
 #' @export
 cbk.read.tblame <- function(tblame,tableunit="none"){
 
-  ## cat(file=stderr(),"cbk.read.tblame: tblame is |",tblame,"|\n")
-  cat(file=stderr(),"cbk.read.tblame:32: tblame # =>",tblame,"\n")
+  ## cat(file=stderr(),"cbk.read.tblame:20: tblame is |",tblame,"|\n")
+  cat(file=stderr(),"cbk.read.tblame:21: tblame # =>",tblame,"\n")
 
   pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% rownames(pmlame)) {
