@@ -4,7 +4,7 @@
 \alias{cbk.plot.ree}
 \title{Read CASTEML file and create REE diagram}
 \usage{
-cbk.plot.ree(pmlfile_or_stone, tableunit = "ug/g",
+cbk.plot.ree(pmlfile_or_stone, opts = NULL, tableunit = "ug/g",
   property = "atomicnumber", reference = "Wasson.1988")
 }
 \arguments{

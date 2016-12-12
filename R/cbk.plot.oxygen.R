@@ -11,7 +11,10 @@
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.oxygen(pmlfile)
-cbk.plot.oxygen <- function(pmlfile_or_stone) {
+cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
+  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
+  opts <- c(opts,opts_default)
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
@@ -34,9 +37,9 @@ cbk.plot.oxygen <- function(pmlfile_or_stone) {
   ## ----------------
   plot(XX,YY,type="p",pch=stoneindex,col=stoneindex,
        xlab=expression(paste(delta,{}^18*O)), ylab=expression(paste(delta,{}^17*O)), asp=1)
-
-  legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
-
+  if (opts$legendp) {
+    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
+  }
   ## ----------------
   ##* Draw reference lines
   ## ----------------

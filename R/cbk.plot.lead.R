@@ -11,7 +11,10 @@
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.lead(pmlfile)
-cbk.plot.lead <- function(pmlfile_or_stone) {
+cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
+  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
+  opts <- c(opts,opts_default)
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
@@ -40,7 +43,9 @@ cbk.plot.lead <- function(pmlfile_or_stone) {
   plot(XX,YY1,type="p",
        col=stoneindex,pch=stoneindex,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^207*"Pb/"*{}^204*"Pb"))
-  legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
+  if (opts$legendp) {
+    legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
+  }
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(0.1084*x + 13.491,type="l",lty=1,add=TRUE)
 
@@ -49,7 +54,9 @@ cbk.plot.lead <- function(pmlfile_or_stone) {
   plot(XX,YY2,type="p",
        col=stoneindex,pch=stoneindex,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^208*"Pb/"*{}^204*"Pb"))
-  legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
+  if (opts$legendp) {
+    legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
+  }
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(1.209*x + 15.627,type="l",lty=1,add=TRUE)
 

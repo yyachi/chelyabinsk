@@ -4,7 +4,7 @@
 \alias{cbk.plot}
 \title{Plot Analyses with descendants of a stone}
 \usage{
-cbk.plot(pmlfile_or_stone, category = "default")
+cbk.plot(pmlfile_or_stone, category = "default", opts = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}

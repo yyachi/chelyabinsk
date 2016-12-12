@@ -4,7 +4,7 @@
 \alias{cbk.plot.lithium}
 \title{Read CASTEML file and create lithium diagram}
 \usage{
-cbk.plot.lithium(pmlfile_or_stone)
+cbk.plot.lithium(pmlfile_or_stone, opts = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}

@@ -12,7 +12,7 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 #' cbk.plot.trace(pmlame)
-cbk.plot.trace <- function(pmlfile_or_stone) {
+cbk.plot.trace <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* PAGE SETUP
   ## ----------------
@@ -21,8 +21,8 @@ cbk.plot.trace <- function(pmlfile_or_stone) {
   ## ----------------
   ##* PLOTS
   ## ----------------
-  pmlame  <- cbk.plot.spider(pmlfile_or_stone)
-  pmlame1 <- cbk.plot.ree(pmlfile_or_stone)
+  pmlame  <- cbk.plot.spider(pmlfile_or_stone,opts)
+  pmlame1 <- cbk.plot.ree(pmlfile_or_stone,opts)
 
   ## ----------------
   ##* CLOSING REMARK

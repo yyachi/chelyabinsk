@@ -17,7 +17,8 @@ cbk.convector() (default="none")}
 A dataframe with unit organized
 }
 \description{
-Read csvfile with row `unit'.
+Read csvfile with row `unit', that is also referred as
+  `tblame'.
 }
 \details{
 This internally calls

@@ -11,7 +11,7 @@
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.lithium(pmlfile)
-cbk.plot.lithium <- function(pmlfile_or_stone) {
+cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
 
   ## ----------------
   ##* Opening remark

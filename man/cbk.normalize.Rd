@@ -7,9 +7,9 @@
 cbk.normalize(pmlame, ref, suffix_after_name_of_element = NULL)
 }
 \arguments{
-\item{pmlame}{A dataframe of element abundances}
+\item{pmlame}{A dataframe of element abundances of sample}
 
-\item{ref}{A numeric vector of element abundances with label}
+\item{ref}{A dataframe of element abundances of reference}
 
 \item{suffix_after_name_of_element}{String to recognize column of
 errors.  Feed "_error" when necessary (default: NULL)}

@@ -17,9 +17,9 @@
 #' cbk.plot.spider(pmlame)
 cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
   ## cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL) {
-  ## opts_default <- list(tableunit="ug/g",property="atomicnumber",reference="Wasson.1988")
-  ## opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
-  ## opts <- c(opts,opts_default)
+  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
+  opts <- c(opts,opts_default)
 
   ### ----------------
   ###* OPENING REMARK
@@ -81,8 +81,9 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property
   axis(2,axTicks(2),axTicks(2))
   abline(h=1,lty=2)
   box(lwd=1)
-  legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5)
-
+  if (opts$legendp) {
+    legend('bottomright',stonelist,lty=1,pch=stoneindex,col=stoneindex,ncol=4,cex=0.5)
+  }
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
