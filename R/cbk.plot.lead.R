@@ -41,7 +41,7 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   # Pb206zPb204_vs_Pb207zPb204
   par(mar=c(2.5,4.5,0.0,0.5)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
   plot(XX,YY1,type="p",
-       col=stoneindex,pch=stoneindex,
+       col=stoneindex,pch=stoneindex,asp=1,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^207*"Pb/"*{}^204*"Pb"))
   if (opts$legendp) {
     legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
@@ -51,7 +51,7 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
 
   # Pb206zPb204_vs_Pb208zPb204
   par(mar=c(4.0,4.5,0.0,0.5)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
-  plot(XX,YY2,type="p",
+  plot(XX,YY2,type="p",asp=1,
        col=stoneindex,pch=stoneindex,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^208*"Pb/"*{}^204*"Pb"))
   if (opts$legendp) {
