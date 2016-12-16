@@ -24,14 +24,14 @@ cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
   ## cat(file=stderr(),"cbk.convert.casteml: pmlfile is |",pmlfile,"|\n")
   cat(file=stderr(),"cbk.convert.casteml:25: pmlfile # =>",pmlfile,"\n")
 
-  ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dataframe")
-  ## outfile <- tempfile(fileext=".dataframe")
+  ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dflame")
+  ## outfile <- tempfile(fileext=".dflame")
   if(is.null(category)){
     cmd     <- paste("convert -f dataframe",pmlfile)
   } else {
     cmd     <- paste("convert -f dataframe -c",category,pmlfile)
   }
-  outfile <- file.path(tempdir(),paste0(digest::digest(cmd,algo='md5'),".dataframe"))
+  outfile <- file.path(tempdir(),paste0(digest::digest(cmd,algo='md5'),".dflame"))
 
   ## Convert file only when it does not exist
   if (force || !file.exists(outfile)) {

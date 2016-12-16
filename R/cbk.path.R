@@ -6,7 +6,7 @@
 #' dflame.csv <- cbk.path("periodic-table1.dflame")
 #' dflame.csv <- cbk.path("ref1.dflame")
 #' pmlfile    <- cbk.path("20081202172326.hkitagawa.pml")
-#' dflame.csv <- cbk.path("20081202172326.hkitagawa_trace.dataframe")
+#' dflame.csv <- cbk.path("20081202172326.hkitagawa_trace.dflame")
 cbk.path <- function(filename){
   return(system.file("extdata", filename, package = "chelyabinsk"))
 }

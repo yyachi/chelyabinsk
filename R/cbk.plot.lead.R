@@ -5,6 +5,7 @@
 #'   canvas in advance.
 #'
 #' @param pmlfile_or_stone A dataframe of element abundances (or pmlfile or stone-ID)
+#' @param opts List of further options for plot
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}

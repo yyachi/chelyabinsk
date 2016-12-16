@@ -5,6 +5,7 @@
 #'   canvas in advance.
 #'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
+#' @param opts List of further options for plot
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}

@@ -14,26 +14,25 @@
 #'   cbk.convector() (default="none")
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.download.casteml}}, \code{casteml
-#'   convert}, \url{https://github.com/misasa/casteml},
-#'   \code{\link{cbk.convector}},
+#'   convert}, \url{https://github.com/misasa/casteml}, and
+#'   \code{\link{cbk.convector}}
 #' @export
 #' @examples
 #' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
 #' dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
 #' pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
 #'
-#' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
+#' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
 #' pmlame     <- cbk.read.dflame(cbk.path("ref1.dflame"),"ppm")
 #' pmlame     <- cbk.read.dflame(cbk.path("periodic-table1.dflame"))
 cbk.read.dflame <- function(dflame.csv,tableunit="none"){
 
-  ## cat(file=stderr(),"cbk.read.dflame: dflame.csv is |",dflame.csv,"|\n")
-  cat(file=stderr(),"cbk.read.dflame:31: dflame.csv # =>",dflame.csv,"\n")
-  
+  cat(file=stderr(),"cbk.read.dflame:30: dflame.csv # =>",dflame.csv,"\n")
+
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
-  ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dataframe
-  ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dataframe","ppm")
+  ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dflame
+  ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
   qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(qmlame)) {
     factor <- cbk.convector(qmlame[,'unit'])

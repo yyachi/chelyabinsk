@@ -10,6 +10,8 @@ cbk.plot.spider(pmlfile_or_stone, opts = NULL, tableunit = "ug/g",
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 
+\item{opts}{List of further options for plot}
+
 \item{tableunit}{Unit to toss to cbk.read.casteml()}
 
 \item{property}{Property to align x-axis}

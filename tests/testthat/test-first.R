@@ -1,9 +1,9 @@
 test_that("cbk.path should return a path only with a valid file",{
-  expect_match(cbk.path("periodic-table1.dataframe"), "periodic-table1.dataframe")
-  expect_match(cbk.path("ref1.dataframe"), "ref1.dataframe")
+  expect_match(cbk.path("periodic-table1.dflame"), "periodic-table1.dflame")
+  expect_match(cbk.path("ref1.dflame"), "ref1.dflame")
   expect_match(cbk.path("20081202172326.hkitagawa.pml"), "20081202172326.hkitagawa.pml")
-  expect_match(cbk.path("20081202172326.hkitagawa_trace.dataframe"), "20081202172326.hkitagawa_trace.dataframe")
-  expect_match(cbk.path("qeriodic-table1.dataframe"), "")
+  expect_match(cbk.path("20081202172326.hkitagawa_trace.dflame"), "20081202172326.hkitagawa_trace.dflame")
+  expect_match(cbk.path("qeriodic-table1.dflame"), "")
 })
 
 test_that("cbk.read.casteml(stone, ...) should return Dataframe",{
@@ -21,7 +21,7 @@ test_that("cbk.read.casteml(pmlfile, ...) should return Dataframe",{
 })
 
 test_that("cbk.read.dflame(pmlcsv) should return Dataframe of periodic table",{
-  pmlcsv <- cbk.path('periodic-table1.dataframe')
+  pmlcsv <- cbk.path('periodic-table1.dflame')
   periodic_df <- cbk.read.dflame(pmlcsv)
   expect_true(is.data.frame(periodic_df))
   expect_that(as.integer(periodic_df["H","atomicnumber"]), equals(1))
@@ -35,8 +35,8 @@ test_that("cbk.periodic() should return Dataframe of periodic table",{
   expect_that(as.integer(cbk.periodic()["H","atomicnumber"]), equals(1))
 })
 
-test_that("cbk.read.dflame(cbk.path('ref1.dataframe')) should return Dataframe of refs with unit converted",{
-  refs_df <- cbk.read.dflame(cbk.path('ref1.dataframe'),'ppm')
+test_that("cbk.read.dflame(cbk.path('ref1.dflame')) should return Dataframe of refs with unit converted",{
+  refs_df <- cbk.read.dflame(cbk.path('ref1.dflame'),'ppm')
   expect_true(is.data.frame(refs_df))
   expect_that(as.integer(refs_df['Wasson.1988','H']), equals(20000))
   expect_that(as.numeric(refs_df['McDonough.1995','Li']), equals(as.numeric(1.5)))
