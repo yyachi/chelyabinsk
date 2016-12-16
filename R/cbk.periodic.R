@@ -24,7 +24,7 @@ cbk.periodic <- function(property=NULL){
   ## 49 55 56 57 58 59 60 62 63 64 65 66 67 68 69 70 71 72 73 81 82 83 90 92
 
   ## foo     <- read.csv(cbk.path("periodic-table.csv"),header=T,row.names=1)
-  foo        <- cbk.read.dflame(cbk.path("periodic-table1.dflame"))
+  foo        <- cbk.read.dflame(cbk.path("periodic-dflame1.csv"))
 
   if(!is.null(property)){
     bar        <- foo[,property]

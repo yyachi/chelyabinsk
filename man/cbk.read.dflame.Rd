@@ -33,8 +33,8 @@ dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
 pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
 
 pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
-pmlame     <- cbk.read.dflame(cbk.path("ref1.dflame"),"ppm")
-pmlame     <- cbk.read.dflame(cbk.path("periodic-table1.dflame"))
+pmlame     <- cbk.read.dflame(cbk.path("ref1-dflame1.csv"),"ppm")
+pmlame     <- cbk.read.dflame(cbk.path("periodic-dflame1.csv"))
 }
 \seealso{
 \code{\link{cbk.download.casteml}}, \code{casteml
