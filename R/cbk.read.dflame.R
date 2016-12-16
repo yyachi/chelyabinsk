@@ -23,8 +23,8 @@
 #' pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
 #'
 #' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dataframe"),"ppm")
-#' pmlame     <- cbk.read.dflame(cbk.path("ref1.dataframe"),"ppm")
-#' pmlame     <- cbk.read.dflame(cbk.path("periodic-table1.dataframe"))
+#' pmlame     <- cbk.read.dflame(cbk.path("ref1.dflame"),"ppm")
+#' pmlame     <- cbk.read.dflame(cbk.path("periodic-table1.dflame"))
 cbk.read.dflame <- function(dflame.csv,tableunit="none"){
 
   ## cat(file=stderr(),"cbk.read.dflame: dflame.csv is |",dflame.csv,"|\n")
