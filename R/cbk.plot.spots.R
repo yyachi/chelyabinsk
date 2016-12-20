@@ -24,8 +24,8 @@ cbk.plot.spots <- function(pmlfile_or_stone,opts=NULL) {
   pmlame1   <- pmlame0[,c("x_image","y_image")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
 
-  stonelist  <- rownames(pmlame1)
-  stoneindex <- 1:nrow(pmlame1)
+  ## stonelist  <- rownames(pmlame1)
+  ## stoneindex <- 1:nrow(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -37,10 +37,11 @@ cbk.plot.spots <- function(pmlfile_or_stone,opts=NULL) {
   ##* PLOT
   ## ----------------
   plot(XX,YY,type="p",xlim=c(-50,50),ylim=c(-50,50),
-       pch=stoneindex,col=stoneindex,xlab="",ylab="",asp=1)
-  if (opts$legendp) {
-    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
-  }
+       ## pch=stoneindex,col=stoneindex,
+       xlab="",ylab="",asp=1)
+  ## if (opts$legendp) {
+  ##   legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
+  ## }
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
