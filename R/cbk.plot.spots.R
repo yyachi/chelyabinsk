@@ -20,7 +20,7 @@ cbk.plot.spots <- function(pmlfile_or_stone,opts=NULL) {
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
-  pmlame0   <- cbk.read.casteml(pmlfile_or_stone)
+  pmlame0   <- cbk.read.casteml(pmlfile_or_stone,opts)
   pmlame1   <- pmlame0[,c("x_image","y_image")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
 

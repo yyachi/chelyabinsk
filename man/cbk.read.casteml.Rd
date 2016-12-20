@@ -4,11 +4,14 @@
 \alias{cbk.read.casteml}
 \title{Read CASTEML file and return a pmlame}
 \usage{
-cbk.read.casteml(pmlfile_or_stone, tableunit = "none", category = NULL)
+cbk.read.casteml(pmlfile_or_stone, opts = NULL, tableunit = "none",
+  category = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
 stone-ID}
+
+\item{opts}{List of further options for plot}
 
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}

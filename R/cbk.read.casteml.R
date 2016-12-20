@@ -9,6 +9,7 @@
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default="none")
 #' @param category category to pass to `cbk.convert.casteml'
+#' @param opts List of further options for plot
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.convert.casteml}},
 #'   \code{\link{cbk.read.dflame}}, and
@@ -19,11 +20,15 @@
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #' stone   <- "20081202172326.hkitagawa"
 #' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
-cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
+cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL){
+  opts_default <- list(Recursivep=FALSE)
+  opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
+  opts <- c(opts,opts_default)
+
   cat(file=stderr(),
       "cbk.read.casteml:24: pmlfile_or_stone # =>",
       ifelse(is.data.frame(pmlfile_or_stone),"#<pmlame>",pmlfile_or_stone),"\n")
-  
+
   if (is.data.frame(pmlfile_or_stone)) { # pmlame fed
     pmlame     <- pmlfile_or_stone
   } else {
@@ -31,7 +36,11 @@ cbk.read.casteml <- function(pmlfile_or_stone,tableunit="none",category=NULL){
       pmlfile  <- pmlfile_or_stone
     } else {                             # stone fed
       stone    <- pmlfile_or_stone
-      pmlfile  <- cbk.download.casteml(c("-r", stone))
+      if (opts$Recursivep) {
+        pmlfile  <- cbk.download.casteml(c("-R", stone))
+      } else {
+        pmlfile  <- cbk.download.casteml(c("-r", stone))
+      }
     }
     dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
     pmlame     <- cbk.read.dflame(dflame.csv,tableunit)

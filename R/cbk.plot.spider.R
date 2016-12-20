@@ -18,7 +18,7 @@
 #' cbk.plot.spider(pmlame)
 cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
   ## cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
 
@@ -26,7 +26,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property
   ###* OPENING REMARK
   ### ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
-  pmlame    <- cbk.read.casteml(pmlfile_or_stone,tableunit)
+  pmlame    <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
   periodic  <- cbk.periodic()
   ref1      <- cbk.ref(reference,tableunit,cbk.periodic(property))
   ###

@@ -13,14 +13,14 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.lead(pmlfile)
 cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="lead")
-  pmlame0   <- cbk.read.casteml(pmlfile_or_stone)
+  pmlame0   <- cbk.read.casteml(pmlfile_or_stone,opts)
   pmlame1   <- pmlame0[,c("Pb206zPb204","Pb207zPb204","Pb208zPb204")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
 

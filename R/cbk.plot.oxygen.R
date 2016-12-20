@@ -13,14 +13,14 @@
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.oxygen(pmlfile)
 cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
-  pmlame0   <- cbk.read.casteml(pmlfile_or_stone,tableunit="permil")
+  pmlame0   <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit="permil")
   pmlame1   <- pmlame0[,c("d18O","d17O")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
 

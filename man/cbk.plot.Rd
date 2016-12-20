@@ -4,14 +4,14 @@
 \alias{cbk.plot}
 \title{Plot Analyses with descendants of a stone}
 \usage{
-cbk.plot(pmlfile_or_stone, category = "default", opts = NULL)
+cbk.plot(pmlfile_or_stone, opts = NULL, category = "default")
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 
-\item{category}{Category filter that is passed to `casteml convert'}
-
 \item{opts}{List of further options for plot}
+
+\item{category}{Category filter that is passed to `casteml convert'}
 }
 \value{
 Dataframe used to plot the diagram

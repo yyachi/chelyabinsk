@@ -16,14 +16,14 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.ree(pmlfile)
 cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  opts_default <- list(legendp=TRUE, axis="equal")
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
   ##* OPENING REMARK
   ## ----------------
   ## pmlame   <- cbk.read.casteml(pmlfile,tableunit,category="trace")
-  pmlame      <- cbk.read.casteml(pmlfile_or_stone,tableunit)
+  pmlame      <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
   periodic    <- cbk.periodic()
   ref1        <- cbk.ref(reference,tableunit,cbk.periodic(property))
   stonelist   <- rownames(pmlame)

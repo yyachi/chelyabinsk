@@ -13,12 +13,14 @@
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.lithium(pmlfile)
 cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
-
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
+  opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
+  opts <- c(opts,opts_default)
   ## ----------------
   ##* Opening remark
   ## ----------------
   ## pmlame  <- cbk.read.casteml(pmlfile,tableunit)
-  pmlame0    <- cbk.read.casteml(pmlfile_or_stone)
+  pmlame0    <- cbk.read.casteml(pmlfile_or_stone,opts)
   pmlame1    <- pmlame0[,c("d7Li","Li")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
   XX         <- pmlame1[,'Li']
