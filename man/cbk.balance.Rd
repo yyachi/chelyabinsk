@@ -19,7 +19,7 @@ cbk.balance(datain, element, phase, mode, density)
 }
 \value{
 Element abundances with rows of remainder and series of
-    quantity, and columns of density and mode
+  quantity, and columns of density and mode
 }
 \description{
 Do mass balance calculation

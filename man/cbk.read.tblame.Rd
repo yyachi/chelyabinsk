@@ -7,8 +7,8 @@
 cbk.read.tblame(tblame, tableunit = "none")
 }
 \arguments{
-\item{tblame}{A csvfile with columns of element abundances and
-rows of stones, with 2nd row `unit'}
+\item{tblame}{A csvfile with columns of element abundances and rows
+of stones, with 2nd row `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
 cbk.convector() (default="none")}
@@ -27,7 +27,7 @@ This internally calls
 }
 \seealso{
 \code{\link{cbk.read.dflame}},
-  \url{https://github.com/misasa/casteml},
+  \url{https://github.com/misasa/casteml}, and
   \code{\link{cbk.convector}},
 }
 

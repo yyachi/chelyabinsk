@@ -11,7 +11,7 @@
 #' @param category category to pass to `cbk.convert.casteml'
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.convert.casteml}},
-#'   \code{\link{cbk.read.dflame}},
+#'   \code{\link{cbk.read.dflame}}, and
 #'   \url{https://github.com/misasa/casteml}
 #' @export
 #' @examples
