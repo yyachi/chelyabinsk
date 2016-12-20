@@ -29,6 +29,6 @@ ref    <- cbk.ref("Boynton.1989","ppm")
 cbk.normalize(pmlame,ref)
 }
 \seealso{
-\code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
+\code{\link{cbk.ref}} and \code{\link{cbk.periodic}}
 }
 

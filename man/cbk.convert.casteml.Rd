@@ -32,7 +32,7 @@ pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
 dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
 }
 \seealso{
-\code{casteml convert},
+\code{casteml convert} and
   \url{https://github.com/misasa/casteml}
 }
 

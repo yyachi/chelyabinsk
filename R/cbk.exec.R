@@ -7,7 +7,7 @@
 #'
 #' @details The path in \code{file} is interpreted relative to the
 #'   current working directory.
-#' @seealso \code{\link{shell.exec}}, \code{\link{system}}
+#' @seealso \code{\link{shell.exec}} and \code{\link{system}}
 #' @param file file or URL to be opened
 #' @return result by opening the file
 #' @export

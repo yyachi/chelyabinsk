@@ -14,7 +14,7 @@
 #'   directory.
 #' @export
 #' @seealso \code{casteml download},
-#'   \url{https://github.com/misasa/casteml},
+#'   \url{https://github.com/misasa/casteml}, and
 #'   \code{\link{cbk.convert.casteml}}
 #' @examples
 #' stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")

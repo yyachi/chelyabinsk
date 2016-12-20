@@ -12,7 +12,7 @@
 #' @param force Flag to force convert again
 #' @return File path to the converted file
 #' @export
-#' @seealso \code{casteml convert},
+#' @seealso \code{casteml convert} and
 #'   \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile    <- cbk.path("20081202172326.hkitagawa.pml")

@@ -33,7 +33,7 @@ pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
 }
 \seealso{
 \code{\link{cbk.convert.casteml}},
-  \code{\link{cbk.read.dflame}},
+  \code{\link{cbk.read.dflame}}, and
   \url{https://github.com/misasa/casteml}
 }
 

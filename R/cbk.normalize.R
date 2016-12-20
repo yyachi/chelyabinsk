@@ -9,7 +9,7 @@
 #'   errors.  Feed "_error" when necessary (default: NULL)
 #' @return A ref-normalized daraframe with only elements defined in
 #'   ref
-#' @seealso \code{\link{cbk.ref}}, \code{\link{cbk.periodic}}
+#' @seealso \code{\link{cbk.ref}} and \code{\link{cbk.periodic}}
 #' @export
 #' @examples
 #' pmlame <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
