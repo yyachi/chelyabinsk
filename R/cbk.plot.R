@@ -36,6 +36,7 @@ cbk.plot <- function(pmlfile_or_stone,category="default",opts=NULL) {
                   "lithium" = cbk.plot.lithium(pmlfile_or_stone,opts),
                   "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone,opts),
                   "lead"    = cbk.plot.lead(pmlfile_or_stone,opts),
+                  "spots"   = cbk.plot.spots(pmlfile_or_stone,opts),
                   stop("No action defined"))
   },error=function(msg){
     cbk.plot.message(pmlfile_or_stone,sQuote(msg))

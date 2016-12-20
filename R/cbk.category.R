@@ -17,15 +17,17 @@ cbk.category <- function(pmlfile_or_stone=NULL) {
       "REE",
       "lithium",
       "oxygen",
-      "lead")
+      "lead",
+      "spots")
   } else {
-    pmlame0  <- cbk.read.casteml(pmlfile_or_stone)
-    pmlame   <- cbk.filter.drop.dharma(pmlame0,column=TRUE)
-    ChemList <- colnames(pmlame)
-    REEList  <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
-    OxyList  <- c("d18O","d17O")
-    LiList   <- "d7Li"
-    PbList   <- c("Pb206zPb204","Pb207zPb204","Pb208zPb204")
+    pmlame0   <- cbk.read.casteml(pmlfile_or_stone)
+    pmlame    <- cbk.filter.drop.dharma(pmlame0,column=TRUE)
+    ChemList  <- colnames(pmlame)
+    REEList   <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
+    OxyList   <- c("d18O","d17O")
+    LiList    <- "d7Li"
+    PbList    <- c("Pb206zPb204","Pb207zPb204","Pb208zPb204")
+    SpotsList <- c("x_image","y_image")
 
     ### Suggest single category
     ## if (any(REEList %in% ChemList)) {
@@ -53,6 +55,9 @@ cbk.category <- function(pmlfile_or_stone=NULL) {
     }
     if (any(PbList %in% ChemList)) {
       category <- append(category, "lead")
+    }
+    if (any(SpotsList %in% ChemList)) {
+      category <- append(category, "spots")
     }
   }
   return(category)
