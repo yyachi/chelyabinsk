@@ -1,8 +1,10 @@
-Volatility and compatibility are from [1] and [2], respectively.
+Datasets of periodic are shown in Table \ref{dflame1}.  Volatility and
+compatibility are from [1] and [2], respectively.
 
 [1] Davis, A. M. (2006). Volatile evolution and loss. Meteorites and the early solar system II 1, 295-307.
 [2] Sun, S., and McDonough, W. (1989). Chemical and isotopic systematics of oceanic basalts: implications for mantle composition and processes. Geological Society, London, Special Publications, 42, 313-345.
 
+#+CAPTION: periodic
 #+TBLNAME: dflame1
 |               | unit |      H |    Li |     Be |      B |       C |       N |       F |      Na |     Mg |      Al |      Si |       P |      S |     Cl |       K |     Ca |      Sc |     Ti |       V |      Cr |     Mn |     Fe |      Co |      Ni |     Cu |    Zn |     Ga |    Ge |      As |    Se |     Br |      Rb |    Sr |       Y |     Zr |      Nb |    Mo |     Ru |       Rh |     Pd |       Ag |      Cd |      In |     Sn |     Sb |    Te |        I |       Cs |      Ba |       La |      Ce |       Pr |     Nd |     Sm |      Eu |     Gd |       Tb |    Dy |       Ho |      Er |       Tm |      Yb |      Lu |     Hf |       Ta |      W |      Re |     Os |      Ir |      Pt |      Au |     Hg |       Tl |    Pb |       Bi |       Th |        U |
 |---------------+------+--------+-------+--------+--------+---------+---------+---------+---------+--------+---------+---------+---------+--------+--------+---------+--------+---------+--------+---------+---------+--------+--------+---------+---------+--------+-------+--------+-------+---------+-------+--------+---------+-------+---------+--------+---------+-------+--------+----------+--------+----------+---------+---------+--------+--------+-------+----------+----------+---------+----------+---------+----------+--------+--------+---------+--------+----------+-------+----------+---------+----------+---------+---------+--------+----------+--------+---------+--------+---------+---------+---------+--------+----------+-------+----------+----------+----------|
