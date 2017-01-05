@@ -8,3 +8,4 @@ Maintainer: Tak Kunihiro <tkk@misasa.okayama-u.ac.jp>
 Description: R package for geochemical datasets
 License: GPL (>= 2)
 RoxygenNote: 5.0.1
+Imports: tidyr, dplyr

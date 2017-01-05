@@ -28,6 +28,6 @@ This internally calls
 \seealso{
 \code{\link{cbk.read.dflame}},
   \url{https://github.com/misasa/casteml}, and
-  \code{\link{cbk.convector}},
+  \code{\link{cbk.convector}}
 }
 
