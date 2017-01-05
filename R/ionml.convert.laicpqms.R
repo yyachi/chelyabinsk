@@ -5,9 +5,9 @@
 #'   iCAP-Q to ion-type TBLAME.CSV.  Filter metadata out and append
 #'   column of cycle number.
 #' 
-#'   This does NOT create IONML but imcomplete IONML that is ion-type
-#'   TBLAME.CSV.  This program assumes extensions of QTEGRA.CSV and
-#'   TBLAME.CSV to be `.csv' and `.ion', respectively.
+#'   This really does NOT create IONML but imcomplete IONML that is
+#'   ion-type TBLAME.CSV.  This program assumes extensions of
+#'   QTEGRA.CSV and TBLAME.CSV to be `.csv' and `.ion', respectively.
 #'
 #' @param acqfile Name of laicpqms-type QTEGRA.CSV exported form Qtegra
 #' @param outfile Name of ion-type TBLAME.CSV that will be created
