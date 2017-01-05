@@ -35,6 +35,7 @@ Read icnml-type TBLAME.csv of an acquisition by
   (`Si29' instead of `29Si').
 }
 \examples{
+library(dplyr)
 pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.icn"))
 }
 \seealso{

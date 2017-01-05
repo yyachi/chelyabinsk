@@ -15,7 +15,7 @@ To install this package issue following command.
     R> devtools::install_github('misasa/chelyabinsk')
 
     R> library('chelyabinsk')
-    R> cbk.path("periodic-table.csv")
+    R> cbk.path("periodic-dflame1.csv")
 
 # Developer's guide
 

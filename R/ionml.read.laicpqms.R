@@ -19,6 +19,7 @@
 #' @seealso ionml-laicpqms.plx
 #' @export
 #' @examples
+#' library(dplyr)
 #' pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.icn"))
 ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29") {
   ## Setup I/O
