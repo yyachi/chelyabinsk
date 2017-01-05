@@ -53,7 +53,7 @@ ionml.convert.laicpqms <- function(acqfile,outfile=NULL,force=FALSE) {
         bodyp <- 1
         line <- sub("Time","time",line)
         line <- gsub("([0-9]+)([A-Z][a-z]?)","\\2\\1",line) # 151Eu -> Eu151
-        writeLines(sprintf("rownames,%s",line),con)
+        writeLines(sprintf("cycle,%s",line),con)
       } else {
         dwellp <- grepl("dwell",line)
         if (bodyp && !dwellp) {
