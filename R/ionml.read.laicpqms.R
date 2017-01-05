@@ -1,31 +1,33 @@
-#' @title Read icnml-type TBLAME.csv of an acquisition by Analyte G2 with iCAP-Q
+#' @title Read ion-type TBLAME.csv by Analyte G2 with iCAP-Q
 #'
-#' @description Read icnml-type TBLAME.csv of an acquisition by
-#'   Analyte G2 with iCAP-Q.  The original QTEGRA.csv (CSV file
-#'   exported from Qtegra) should be processed in advance to be
-#'   icnml-type TBLNAME.csv.  The icnml-type TBLNAME.csv consists of
-#'   columns of time and ion intensities.  Rowname of the pmlame
-#'   should be cycle number.  Colname of the icnml-type TBLNAME.csv
-#'   should be `time' and name of element followed by atomic weight
-#'   (`Si29' instead of `29Si').
-#' @param pmlame_or_file icnml-type pmlame or icnml-type TBLAME.csv
+#' @description Read ion-type TBLAME.csv by Analyte G2 with iCAP-Q.
+#'   The original QTEGRA.csv (CSV file exported from Qtegra) should be
+#'   processed in advance to be ion-type TBLNAME.csv.  The ion-type
+#'   TBLNAME.csv consists of columns of time and ion intensities.
+#'   Rowname of the pmlame should be cycle number.  Colname of the
+#'   ion-type TBLNAME.csv should be `time' and name of element
+#'   followed by atomic weight (`Si29' instead of `29Si').
+#' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.csv
 #' @param ref reference ion such as "Si29"
 #' @param t0 time when baseline starts
 #' @param t1 time when baseline ends
 #' @param t2 time when ion starts
 #' @param t3 time when ion ends
-#' @return The icnml-type pmlame of ion/ref online with rows of
+#' @return The ion-type pmlame of ion/ref online with rows of
 #'   statistical information
-#' @seealso ionml-laicpqms.plx
 #' @export
+#' @seealso \code{\link{ionml.convert.laicpqms}}
 #' @examples
-#' library(dplyr)
-#' pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.icn"))
+#' file <- cbk.path("ref_cpx_klb1@1.ion")
+#' pmlfile0 <- ionml.read.laicpqms(file)
 ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29") {
+  library(dplyr)
+  
   ## Setup I/O
   if (is.data.frame(pmlame_or_file)) { # pmlame fed
     pmlame0           <- pmlame_or_file
-  } else {
+  } else { # file fed
+    ## load from file
     pmlame0           <- cbk.read.tblame(pmlame_or_file)
   }
 

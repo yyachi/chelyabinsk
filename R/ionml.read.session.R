@@ -1,20 +1,19 @@
-#' @title Read a session stored as a series of icnml-type TBLAME.csv
+#' @title Read a session stored as a series of ion-type TBLAME.csv
 #'
-#' @description Read a session stored as a series of icnml-type
+#' @description Read a session stored as a series of ion-type
 #'   TBLAME.csv.  As of January 5, 2017, this function uses
-#'   `ionml.read.laicpqms' to read the icnml-type TBLAME.csv.
-#' @param tblame.csv Paths to icnml-type TBLAME.csv
-#' @param ref Reference ion such as `Si29'
-#' @return The icnml-type pmlame with average and standard error
+#'   `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
+#' @param tblame.csv paths to ion-type TBLAME.csv
+#' @param ref reference ion such as `Si29'
+#' @return ion-type pmlame with average and standard error
 #' @seealso \code{\link{ionml.read.laicpqms}}
 #' @export
 #' @examples
-#' library(dplyr)
-#' files <- c(cbk.path("ref_cpx_klb1@1.icn"),cbk.path("ref_cpx_klb1@2.icn"),cbk.path("ref_cpx_klb1@3.icn"))
+#' files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
 #' pmlame0 <- ionml.read.session(files)
 ionml.read.session <- function(tblame.csv,ref="Si29") {
-  pmMean0               <- data.frame()
-  pmSderr0              <- data.frame()
+  pmMean0               <- data.frame() # summary
+  pmSderr0              <- data.frame() # summary
 
   for(acq_ii in tblame.csv){
     acqname             <- tools::file_path_sans_ext(basename(acq_ii))

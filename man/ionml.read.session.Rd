@@ -2,26 +2,25 @@
 % Please edit documentation in R/ionml.read.session.R
 \name{ionml.read.session}
 \alias{ionml.read.session}
-\title{Read a session stored as a series of icnml-type TBLAME.csv}
+\title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, ref = "Si29")
 }
 \arguments{
-\item{tblame.csv}{Paths to icnml-type TBLAME.csv}
+\item{tblame.csv}{paths to ion-type TBLAME.csv}
 
-\item{ref}{Reference ion such as `Si29'}
+\item{ref}{reference ion such as `Si29'}
 }
 \value{
-The icnml-type pmlame with average and standard error
+ion-type pmlame with average and standard error
 }
 \description{
-Read a session stored as a series of icnml-type
+Read a session stored as a series of ion-type
   TBLAME.csv.  As of January 5, 2017, this function uses
-  `ionml.read.laicpqms' to read the icnml-type TBLAME.csv.
+  `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
 }
 \examples{
-library(dplyr)
-files <- c(cbk.path("ref_cpx_klb1@1.icn"),cbk.path("ref_cpx_klb1@2.icn"),cbk.path("ref_cpx_klb1@3.icn"))
+files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
 pmlame0 <- ionml.read.session(files)
 }
 \seealso{
