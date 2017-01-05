@@ -2,13 +2,15 @@
 % Please edit documentation in R/ionml.read.laicpqms.R
 \name{ionml.read.laicpqms}
 \alias{ionml.read.laicpqms}
-\title{Read ion-type TBLAME.csv by Analyte G2 with iCAP-Q}
+\title{Read ion-type TBLAME.CSV originated from Analyte G2 with
+  iCAP-Q}
 \usage{
 ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
   ref = "Si29")
 }
 \arguments{
-\item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.csv}
+\item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.CSV with
+extension `.ion'}
 
 \item{t0}{time when baseline starts}
 
@@ -25,16 +27,22 @@ The ion-type pmlame of ion/ref online with rows of
   statistical information
 }
 \description{
-Read ion-type TBLAME.csv by Analyte G2 with iCAP-Q.
-  The original QTEGRA.csv (CSV file exported from Qtegra) should be
-  processed in advance to be ion-type TBLNAME.csv.  The ion-type
-  TBLNAME.csv consists of columns of time and ion intensities.
-  Rowname of the pmlame should be cycle number.  Colname of the
-  ion-type TBLNAME.csv should be `time' and name of element
-  followed by atomic weight (`Si29' instead of `29Si').
+Read ion-type TBLAME.CSV originated from Analyte G2
+  with iCAP-Q.  The original QTEGRA.CSV (CSV file exported from
+  Qtegra) should be processed in advance to have ion-type
+  TBLNAME.CSV with extension `.ion'.
+
+  The ion-type TBLNAME.CSV consists of columns of time and ion
+  intensities.  The first column of each line should be cycle
+  number.  Colname of the ion-type TBLNAME.CSV should be `time' and
+  name of element followed by atomic weight (`Si29' instead of
+  `29Si').
 }
 \examples{
 file <- cbk.path("ref_cpx_klb1@1.ion")
 pmlfile0 <- ionml.read.laicpqms(file)
+}
+\seealso{
+\code{\link{ionml.convert.laicpqms}}
 }
 

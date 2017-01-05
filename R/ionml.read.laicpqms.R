@@ -1,13 +1,18 @@
-#' @title Read ion-type TBLAME.csv by Analyte G2 with iCAP-Q
+#' @title Read ion-type TBLAME.CSV originated from Analyte G2 with
+#'   iCAP-Q
 #'
-#' @description Read ion-type TBLAME.csv by Analyte G2 with iCAP-Q.
-#'   The original QTEGRA.csv (CSV file exported from Qtegra) should be
-#'   processed in advance to be ion-type TBLNAME.csv.  The ion-type
-#'   TBLNAME.csv consists of columns of time and ion intensities.
-#'   Rowname of the pmlame should be cycle number.  Colname of the
-#'   ion-type TBLNAME.csv should be `time' and name of element
-#'   followed by atomic weight (`Si29' instead of `29Si').
-#' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.csv
+#' @description Read ion-type TBLAME.CSV originated from Analyte G2
+#'   with iCAP-Q.  The original QTEGRA.CSV (CSV file exported from
+#'   Qtegra) should be processed in advance to have ion-type
+#'   TBLNAME.CSV with extension `.ion'.
+#'
+#'   The ion-type TBLNAME.CSV consists of columns of time and ion
+#'   intensities.  The first column of each line should be cycle
+#'   number.  Colname of the ion-type TBLNAME.CSV should be `time' and
+#'   name of element followed by atomic weight (`Si29' instead of
+#'   `29Si').
+#' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.CSV with
+#'   extension `.ion'
 #' @param ref reference ion such as "Si29"
 #' @param t0 time when baseline starts
 #' @param t1 time when baseline ends
@@ -22,13 +27,23 @@
 #' pmlfile0 <- ionml.read.laicpqms(file)
 ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29") {
   library(dplyr)
-  
+
   ## Setup I/O
   if (is.data.frame(pmlame_or_file)) { # pmlame fed
     pmlame0           <- pmlame_or_file
   } else { # file fed
-    ## load from file
-    pmlame0           <- cbk.read.tblame(pmlame_or_file)
+    ionbase           <- tools::file_path_sans_ext(pmlame_or_file)
+
+    ## Force set extension of ionfile
+    ionfile <- paste0(ionbase,".ion")
+
+    ## automatic conversion on miss of ionfile
+    if (!file.exists(ionfile)) {
+      ionfile <- ionml.convert.laicpqms(ionbase)
+    }
+
+    ## load from ionfile
+    pmlame0           <- cbk.read.tblame(ionfile)
   }
 
   ## Stat baseline

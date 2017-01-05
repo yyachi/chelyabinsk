@@ -7,17 +7,17 @@
 ionml.read.session(tblame.csv, ref = "Si29")
 }
 \arguments{
-\item{tblame.csv}{paths to ion-type TBLAME.csv}
+\item{tblame.csv}{paths to ion-type TBLAME.CSV}
 
 \item{ref}{reference ion such as `Si29'}
 }
 \value{
-ion-type pmlame with average and standard error
+casteml-type pmlame with average and standard error
 }
 \description{
 Read a session stored as a series of ion-type
-  TBLAME.csv.  As of January 5, 2017, this function uses
-  `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
+  TBLAME.CSV.  As of January 5, 2017, this function uses
+  `ionml.read.laicpqms' to read the ion-type TBLAME.CSV.
 }
 \examples{
 files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))

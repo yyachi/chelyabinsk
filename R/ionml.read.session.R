@@ -1,11 +1,11 @@
 #' @title Read a session stored as a series of ion-type TBLAME.csv
 #'
 #' @description Read a session stored as a series of ion-type
-#'   TBLAME.csv.  As of January 5, 2017, this function uses
-#'   `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
-#' @param tblame.csv paths to ion-type TBLAME.csv
+#'   TBLAME.CSV.  As of January 5, 2017, this function uses
+#'   `ionml.read.laicpqms' to read the ion-type TBLAME.CSV.
+#' @param tblame.csv paths to ion-type TBLAME.CSV
 #' @param ref reference ion such as `Si29'
-#' @return ion-type pmlame with average and standard error
+#' @return casteml-type pmlame with average and standard error
 #' @seealso \code{\link{ionml.read.laicpqms}}
 #' @export
 #' @examples

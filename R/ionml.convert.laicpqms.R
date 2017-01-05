@@ -5,34 +5,37 @@
 #'   iCAP-Q to ion-type TBLAME.CSV.  Filter metadata out and append
 #'   column of cycle number.
 #' 
-#'   This does NOT produce IONML but does imcomplete IONML that is
-#'   ion-type TBLAME.csv.
+#'   This does NOT create IONML but imcomplete IONML that is ion-type
+#'   TBLAME.CSV.  This program assumes extensions of QTEGRA.CSV and
+#'   TBLAME.CSV to be `.csv' and `.ion', respectively.
 #'
-#' @param file Name of laicpqms-type QTEGRA.CSV exported form Qtegra
-#' @param outfile Name of ion-type TBLAME.csv file that will be
-#'   created
+#' @param acqfile Name of laicpqms-type QTEGRA.CSV exported form Qtegra
+#' @param outfile Name of ion-type TBLAME.CSV that will be created
 #' @param force Flag to force convert again
-#' @return Name of ion-type TBLAME.csv file that was saved
+#' @return Name of ion-type TBLAME.CSV that was created
 #' @seealso ionml-laicpqms.plx
 #' @export
 #' @examples
-#' file <- cbk.path("ref_cpx_klb1@1.qtg")
-#' ionml.convert.laicpqms(file,outfile=tempfile(fileext=".ion"))
-ionml.convert.laicpqms <- function(file,outfile=NULL,force=FALSE) {
-  ## Guess extension for input on omit
-  if (grepl("",tools::file_ext(file))) {
-    file <- paste0(tools::file_path_sans_ext(file),".qtg")
+#' acqfile <- cbk.path("ref_cpx_klb1@1.csv")
+#' ionml.convert.laicpqms(acqfile,outfile=tempfile(fileext=".ion"))
+ionml.convert.laicpqms <- function(acqfile,outfile=NULL,force=FALSE) {
+
+  ## Guess extension of acqfile on omit
+  if (grepl("",tools::file_ext(acqfile))) {
+    acqfile <- paste0(tools::file_path_sans_ext(acqfile),".csv")
   }
 
-  ## Set appropriate extension for output
+  cat(file=stderr(),"ionml.convert.laicpqms:28: acqfile # =>",acqfile,"\n")
+
+  ## Set name of outfile by default
   if(is.null(outfile)){
-    outfile <- paste0(tools::file_path_sans_ext(file),".ion")
+    outfile <- paste0(tools::file_path_sans_ext(acqfile),".ion")
   }
 
   ## Convert file only when destination does not exist
   if (force || !file.exists(outfile)) {
     ## INPUT
-    con <- file(file,open="r")
+    con <- file(acqfile,open="r")
     line_stack <-readLines(con)
     close(con)
 
