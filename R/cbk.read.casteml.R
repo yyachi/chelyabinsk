@@ -26,7 +26,7 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
   opts <- c(opts,opts_default)
 
   cat(file=stderr(),
-      "cbk.read.casteml:24: pmlfile_or_stone # =>",
+      "cbk.read.casteml:29: pmlfile_or_stone # =>",
       ifelse(is.data.frame(pmlfile_or_stone),"#<pmlame>",pmlfile_or_stone),"\n")
 
   if (is.data.frame(pmlfile_or_stone)) { # pmlame fed

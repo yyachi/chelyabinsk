@@ -12,7 +12,9 @@
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.spots(pmlfile)
-cbk.plot.spots <- function(pmlfile_or_stone,opts=NULL) {
+cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
+  library(jpeg) # install.packages('jpeg')
+  library(png) # install.packages('png')
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
@@ -30,15 +32,41 @@ cbk.plot.spots <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* PARSE
   ## ----------------
-  XX         <- pmlame1[,'x_image']
-  YY         <- pmlame1[,'y_image']
+  XX   <- pmlame1[,'x_image']
+  YY   <- pmlame1[,'y_image']
 
   ## ----------------
   ##* PLOT
   ## ----------------
-  plot(XX,YY,type="p",xlim=c(-50,50),ylim=c(-50,50),
+  if (!is.null(imagefile)){
+    ext <- tools::file_ext(imagefile)
+    if (grepl(ext,"png")){
+      img <- readPNG(imagefile)
+    } else if (grepl(ext,"jpg")) {
+      img <- readJPEG(imagefile)
+    } else {
+      stop("Such image type is not supported")
+    }
+
+    plot(XX,YY,type="n",axes=FALSE,asp=1,
+         xlim=c(-50,50), ylim=c(-50,50),
+         xlab="",ylab="")
+    if (dim(img)[1] > dim(img)[2]) {  # for portrait image
+      xmax <- 50 * dim(img)[2] / dim(img)[1]
+      ymax <- 50
+    } else {                          # for landscape image
+      xmax <- 50
+      ymax <- 50 * dim(img)[1] / dim(img)[2]
+    }
+    rasterImage(img, -xmax, -ymax, xmax, ymax) # (image, xleft, ybottom, xright, ytop)
+    par(new=T)
+  }
+  ## rasterImage(img, -50, -50, 50, 50)
+  plot(XX,YY,type="p",asp=1,
+       xlim=c(-50,50), ylim=c(-50,50),
        ## pch=stoneindex,col=stoneindex,
-       xlab="",ylab="",asp=1)
+       xlab="",ylab="")
+
   ## if (opts$legendp) {
   ##   legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
   ## }
