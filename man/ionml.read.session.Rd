@@ -19,6 +19,11 @@ Read a session stored as a series of icnml-type
   TBLAME.csv.  As of January 5, 2017, this function uses
   `ionml.read.laicpqms' to read the icnml-type TBLAME.csv.
 }
+\examples{
+library(dplyr)
+files <- c(cbk.path("ref_cpx_klb1@1.icn"),cbk.path("ref_cpx_klb1@2.icn"),cbk.path("ref_cpx_klb1@3.icn"))
+pmlame0 <- ionml.read.session(files)
+}
 \seealso{
 \code{\link{ionml.read.laicpqms}}
 }

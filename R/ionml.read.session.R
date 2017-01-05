@@ -8,6 +8,10 @@
 #' @return The icnml-type pmlame with average and standard error
 #' @seealso \code{\link{ionml.read.laicpqms}}
 #' @export
+#' @examples
+#' library(dplyr)
+#' files <- c(cbk.path("ref_cpx_klb1@1.icn"),cbk.path("ref_cpx_klb1@2.icn"),cbk.path("ref_cpx_klb1@3.icn"))
+#' pmlame0 <- ionml.read.session(files)
 ionml.read.session <- function(tblame.csv,ref="Si29") {
   pmMean0               <- data.frame()
   pmSderr0              <- data.frame()
