@@ -43,17 +43,17 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
     ## Output to XML
     ## http://stackoverflow.com/questions/6256064/how-to-create-xml-from-r-objects-e-g-is-there-a-listtoxml-function
 
-    top = newXMLNode("ion_link")
-    doc = newXMLDoc(node=top)
+    top <- newXMLNode("ion_link")
+    doc <- newXMLDoc(node=top)
 
     # title
-    title      = newXMLNode("title", "iCAP-Q with laser Analysis Data Report", parent = top)
+    title      <- newXMLNode("title", "iCAP-Q with laser Analysis Data Report", parent = top)
     # time stamp
-    time_stamp = newXMLNode("time_stamp", parent = top)
-    ts.data    = newXMLNode("data",  format(Sys.time(), "%a %b %d %X %Y"), parent = time_stamp)
-    ts.info    = newXMLNode("info",  parent = time_stamp)
-    ts.unit    = newXMLNode("unit",  parent = time_stamp)
-    ts.label   = newXMLNode("label", parent = time_stamp)
+    time_stamp <- newXMLNode("time_stamp", parent = top)
+    ts.data    <- newXMLNode("data",  format(Sys.time(), "%a %b %d %X %Y"), parent = time_stamp)
+    ts.info    <- newXMLNode("info",  parent = time_stamp)
+    ts.unit    <- newXMLNode("unit",  parent = time_stamp)
+    ts.label   <- newXMLNode("label", parent = time_stamp)
 
     ## each ion...
     for(ichem in chemlist) {
@@ -61,19 +61,19 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
       ichem <- gsub("([A-Z][a-z]?)([0-9]+)","int_\\2\\1",ichem) # Eu151 -> 151Eu
 
       # target
-      itarget    = newXMLNode("target", parent = top)
+      itarget    <- newXMLNode("target", parent = top)
       ## name
-      iname      = newXMLNode("name", ichem, parent = itarget) # "int_7Li"
+      iname      <- newXMLNode("name", ichem, parent = itarget) # "int_7Li"
       ## unit
-      iunit      = newXMLNode("unit", "cps", parent = itarget)
-      iunit.time = newXMLNode("time", "sec", parent = iunit)
+      iunit      <- newXMLNode("unit", "cps", parent = itarget)
+      iunit.time <- newXMLNode("time", "sec", parent = iunit)
       ## data...
       for(jj in 1:ncycle) {
-        ichem.jdata = newXMLNode("data", pmlame0[jj,ichem], attrs = c(time = pmlame0[jj,"time"]), parent = itarget)
+        ichem.jdata <- newXMLNode("data", pmlame0[jj,ichem], attrs = c(time = pmlame0[jj,"time"]), parent = itarget)
       }
     }
 
-    outfile = saveXML(doc,outfile)
+    outfile <- saveXML(doc,outfile)
   }
   return(outfile)
 }
