@@ -22,9 +22,9 @@ Convert laicpqms-type QTEGRA.CSV by Analyte G2 with
   iCAP-Q to ion-type TBLAME.CSV.  Filter metadata out and append
   column of cycle number.
 
-  This does NOT create IONML but imcomplete IONML that is ion-type
-  TBLAME.CSV.  This program assumes extensions of QTEGRA.CSV and
-  TBLAME.CSV to be `.csv' and `.ion', respectively.
+  This really does NOT create IONML but imcomplete IONML that is
+  ion-type TBLAME.CSV.  This program assumes extensions of
+  QTEGRA.CSV and TBLAME.CSV to be `.csv' and `.ion', respectively.
 }
 \examples{
 acqfile <- cbk.path("ref_cpx_klb1@1.csv")

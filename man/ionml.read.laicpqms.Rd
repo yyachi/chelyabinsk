@@ -33,9 +33,9 @@ Read ion-type TBLAME.CSV originated from Analyte G2
   TBLNAME.CSV with extension `.ion'.
 
   The ion-type TBLNAME.CSV consists of columns of time and ion
-  intensities.  The first column of each line should be cycle
-  number.  Colname of the ion-type TBLNAME.CSV should be `time' and
-  name of element followed by atomic weight (`Si29' instead of
+  intensities.  The first column of each line should be number of
+  `cycle'.  Colname of the ion-type TBLNAME.CSV should be `time'
+  and name of element followed by atomic weight (`Si29' instead of
   `29Si').
 }
 \examples{

@@ -5,6 +5,7 @@
 #'   prepare a canvas in advance.
 #'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
+#' @param imagefile Image shown on background of analyzed spots
 #' @param opts List of further options for plot
 #' @return Dataframe used to plot the diagram
 #' @export
@@ -70,6 +71,7 @@ cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
   ## if (opts$legendp) {
   ##   legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
   ## }
+
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
