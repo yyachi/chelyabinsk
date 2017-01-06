@@ -35,7 +35,7 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
 
     ## Input
     pmlame0    <- cbk.read.tblame(iontblame)
-    ## pmlame0    <- pmlame0[c(1,2,3,4),] # to make data less
+    ## pmlame0    <- pmlame0[c(1,2,3,4,5),] # to make data less
 
     chemlist   <- colnames(pmlame0[,colnames(pmlame0)!="time"])
     ncycle     <- length(pmlame0[,"time"])
@@ -50,26 +50,26 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
     title      <- newXMLNode("title", "iCAP-Q with laser Analysis Data Report", parent = top)
     # time stamp
     time_stamp <- newXMLNode("time_stamp", parent = top)
-    ts.data    <- newXMLNode("data",  format(Sys.time(), "%a %b %d %X %Y"), parent = time_stamp)
-    ts.info    <- newXMLNode("info",  parent = time_stamp)
-    ts.unit    <- newXMLNode("unit",  parent = time_stamp)
-    ts.label   <- newXMLNode("label", parent = time_stamp)
+    xts_data   <- newXMLNode("data",  format(Sys.time(), "%a %b %d %X %Y"), parent = time_stamp)
+    xts_info   <- newXMLNode("info",  parent = time_stamp)
+    xts_unit   <- newXMLNode("unit",  parent = time_stamp)
+    xts_label  <- newXMLNode("label", parent = time_stamp)
 
     ## each ion...
     for(ichem in chemlist) {
       # for compatibility, name should be int_151Eu instead of Eu151
-      ichem <- gsub("([A-Z][a-z]?)([0-9]+)","int_\\2\\1",ichem) # Eu151 -> 151Eu
+      isoname      <- gsub("([A-Z][a-z]?)([0-9]+)","int_\\2\\1",ichem) # Eu151 -> 151Eu
 
       # target
-      itarget    <- newXMLNode("target", parent = top)
+      target       <- newXMLNode("target", parent = top)
       ## name
-      iname      <- newXMLNode("name", ichem, parent = itarget) # "int_7Li"
+      xt_name      <- newXMLNode("name", isoname, parent = target) # "int_7Li"
       ## unit
-      iunit      <- newXMLNode("unit", "cps", parent = itarget)
-      iunit.time <- newXMLNode("time", "sec", parent = iunit)
+      xt_unit      <- newXMLNode("unit", "cps", parent = target)
+      xt_unit_time <- newXMLNode("time", "sec", parent = xt_unit)
       ## data...
       for(jj in 1:ncycle) {
-        ichem.jdata <- newXMLNode("data", pmlame0[jj,ichem], attrs = c(time = pmlame0[jj,"time"]), parent = itarget)
+        xt_data    <- newXMLNode("data", pmlame0[jj,ichem], attrs = c(time = pmlame0[jj,"time"]), parent = target)
       }
     }
 
