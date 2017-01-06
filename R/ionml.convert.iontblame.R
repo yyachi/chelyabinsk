@@ -47,10 +47,10 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
     doc <- newXMLDoc(node=top)
 
     # title
-    title      <- newXMLNode("title", "iCAP-Q with laser Analysis Data Report", parent = top)
+    title      <- newXMLNode("title", "Analysis Data Report", parent = top)
     # time stamp
     time_stamp <- newXMLNode("time_stamp", parent = top)
-    xts_data   <- newXMLNode("data",  format(Sys.time(), "%a %b %d %X %Y"), parent = time_stamp)
+    xts_data   <- newXMLNode("data",  format(Sys.time(), "%m/%d/%Y %b %X"), parent = time_stamp)
     xts_info   <- newXMLNode("info",  parent = time_stamp)
     xts_unit   <- newXMLNode("unit",  parent = time_stamp)
     xts_label  <- newXMLNode("label", parent = time_stamp)
@@ -73,7 +73,7 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
       }
     }
 
-    outfile <- saveXML(doc,outfile)
+    outfile <- saveXML(doc,outfile,encoding="UTF-8") # indent=FALSE
   }
   return(outfile)
 }
