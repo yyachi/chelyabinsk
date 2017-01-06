@@ -24,7 +24,8 @@ Convert laicpqms-type QTEGRA.CSV by Analyte G2 with
 
   This really does NOT create IONML but imcomplete IONML that is
   ion-type TBLAME.CSV.  This program assumes extensions of
-  QTEGRA.CSV and TBLAME.CSV to be `.csv' and `.ion', respectively.
+  laicpqms-type QTEGRA.CSV and ion-type TBLAME.CSV to be `.csv' and
+  `.ion', respectively.
 }
 \examples{
 acqfile <- cbk.path("ref_cpx_klb1@1.csv")

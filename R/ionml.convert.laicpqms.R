@@ -7,7 +7,8 @@
 #' 
 #'   This really does NOT create IONML but imcomplete IONML that is
 #'   ion-type TBLAME.CSV.  This program assumes extensions of
-#'   QTEGRA.CSV and TBLAME.CSV to be `.csv' and `.ion', respectively.
+#'   laicpqms-type QTEGRA.CSV and ion-type TBLAME.CSV to be `.csv' and
+#'   `.ion', respectively.
 #'
 #' @param acqfile Name of laicpqms-type QTEGRA.CSV exported form Qtegra
 #' @param outfile Name of ion-type TBLAME.CSV that will be created
