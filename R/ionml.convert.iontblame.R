@@ -37,7 +37,9 @@ ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
     pmlame0    <- cbk.read.tblame(iontblame)
     ## pmlame0    <- pmlame0[c(1,2,3,4,5),] # to make data less
 
-    chemlist   <- colnames(pmlame0[,colnames(pmlame0)!="time"])
+    chemlist   <- colnames(pmlame0)
+    chemlist   <- chemlist[-which(chemlist %in% "time")]
+    ## chemlist   <- colnames(pmlame0[,colnames(pmlame0)!="time"])
     ncycle     <- length(pmlame0[,"time"])
 
     ## Output to XML
