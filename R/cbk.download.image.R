@@ -5,8 +5,8 @@
 #'   tag in the first spot, and download to local directory. When
 #'   outfile exists, this function does not download a new imagefile.
 #' 
-#' @param surface Unique ID of surface. Really, surface can be
-#'   pmlfile, stone, and bib although only the first image will be
+#' @param pmlfile_or_surface Unique ID of surface. Really, surface can
+#'   be pmlfile, stone, and bib although only the first image will be
 #'   downloaded.
 #' @param outfile Path to save a imagefile. Unless specified,
 #'   imagename of Medusa will be located on current directory.
@@ -20,13 +20,25 @@
 #' @examples
 #' pmlfile <- cbk.download.casteml("20160819165624-372633")
 #' imagefile <- cbk.download.image(pmlfile)
-cbk.download.image <- function(surface,outfile=NULL,force=FALSE) {
+#'
+#' imagefile <- cbk.download.image("20160819165624-372633")
+cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
   library(yaml)
   library(urltools)
   library(XML)
-  cat(file=stderr(),"cbk.download.image:26: surface # =>",pmlfile,"\n")
 
-  doc           <- xmlParse(surface)
+  if (file.exists(pmlfile_or_surface)) { # existing-pmlfile fed
+    pmlfile <- pmlfile_or_surface
+  } else {                             # stone fed
+    surface <- pmlfile_or_surface
+    ## if (opts$Recursivep) {
+    ##   pmlfile  <- cbk.download.casteml(c("-R", surface))
+    ## } else {
+    pmlfile <- cbk.download.casteml(c("-r", surface))
+    ## }
+  }
+  cat(file=stderr(),"cbk.download.image:40: pmlfile # =>",pmlfile,"\n")
+  doc           <- xmlParse(pmlfile)
   nodes         <- getNodeSet(doc, "//acquisition/spot")
   spots         <- lapply(nodes, function(x) xmlToList(x))
   file_path     <- spots[[1]]$attachment_file_path

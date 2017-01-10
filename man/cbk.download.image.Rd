@@ -4,11 +4,11 @@
 \alias{cbk.download.image}
 \title{Download imagefile from a surface}
 \usage{
-cbk.download.image(surface, outfile = NULL, force = FALSE)
+cbk.download.image(pmlfile_or_surface, outfile = NULL, force = FALSE)
 }
 \arguments{
-\item{surface}{Unique ID of surface. Really, surface can be
-pmlfile, stone, and bib although only the first image will be
+\item{pmlfile_or_surface}{Unique ID of surface. Really, surface can
+be pmlfile, stone, and bib although only the first image will be
 downloaded.}
 
 \item{outfile}{Path to save a imagefile. Unless specified,
@@ -29,6 +29,8 @@ Download imagefile from a surface. This function
 \examples{
 pmlfile <- cbk.download.casteml("20160819165624-372633")
 imagefile <- cbk.download.image(pmlfile)
+
+imagefile <- cbk.download.image("20160819165624-372633")
 }
 \seealso{
 \code{casteml download},
