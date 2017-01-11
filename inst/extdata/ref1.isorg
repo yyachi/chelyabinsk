@@ -1,5 +1,5 @@
 Datasets of ref1 are shown in Table \ref{dflame1}.  Note that these
-are not in notation of oxide but metal.  "Wasson.1988",
+are in notation of metal not in oxide.  "Wasson.1988",
 "McDonough.1995", "Boynton.1989", "Palme.2014", and "Anders.1989" are
 from [1], [2], [3], [4], and [5], respectively.
 
@@ -10,7 +10,7 @@ from [1], [2], [3], [4], and [5], respectively.
 [5] Anders, E., and Nicolas, G. (1989). Abundances of the elements: Meteoritic and solar. Geochimica et Cosmochimica Acta, 53, 197-214.
 
 #+CAPTION: ref1
-#+TBLNAME: dflame1
+#+TBLNAME: dflame0
 |    | unit | Wasson.1988 | McDonough.1995 | Boynton.1989 | Palme.2014 | Anders.1989 |
 |----+------+-------------+----------------+--------------+------------+-------------|
 | H  | ppm  |       20000 |                |              |      19700 |       20200 |
