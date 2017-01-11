@@ -4,16 +4,16 @@
 #'   This function does not save the created diagram.  You should
 #'   prepare a canvas in advance.
 #'
-#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
+#' @param pmlfile_or_surface A CASTEML file that exits locally or stone-ID (or pmlame)
 #' @param imagefile Image shown on background of analyzed spots
 #' @param opts List of further options for plot
 #' @return Dataframe used to plot the diagram
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
-#' pmlfile <- cbk.path("20130528105235-594267.pml")
+#' pmlfile <- cbk.download.casteml("20160819165624-372633")
 #' cbk.plot.spots(pmlfile)
-cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
+cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   library(jpeg) # install.packages('jpeg')
   library(png) # install.packages('png')
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)
@@ -23,7 +23,7 @@ cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
-  pmlame0   <- cbk.read.casteml(pmlfile_or_stone,opts)
+  pmlame0   <- cbk.read.casteml(pmlfile_or_surface,opts)
   pmlame1   <- pmlame0[,c("x_image","y_image")]
   pmlame1   <- cbk.filter.drop.dharma(pmlame1)
 
@@ -39,7 +39,10 @@ cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
   ## ----------------
   ##* PLOT
   ## ----------------
-  if (!is.null(imagefile)){
+  if (is.null(imagefile)) {
+    imagefile=try(cbk.download.image(pmlfile_or_surface))
+  }
+  if (class(imagefile) != "try-error"){
     ext <- tools::file_ext(imagefile)
     if (grepl(ext,"png")){
       img <- readPNG(imagefile)
@@ -48,7 +51,6 @@ cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
     } else {
       stop("Such image type is not supported")
     }
-
     plot(XX,YY,type="n",axes=FALSE,asp=1,
          xlim=c(-50,50), ylim=c(-50,50),
          xlab="",ylab="")
@@ -62,7 +64,6 @@ cbk.plot.spots <- function(pmlfile_or_stone,imagefile=NULL,opts=NULL) {
     rasterImage(img, -xmax, -ymax, xmax, ymax) # (image, xleft, ybottom, xright, ytop)
     par(new=T)
   }
-  ## rasterImage(img, -50, -50, 50, 50)
   plot(XX,YY,type="p",asp=1,
        xlim=c(-50,50), ylim=c(-50,50),
        ## pch=stoneindex,col=stoneindex,

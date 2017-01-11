@@ -4,14 +4,14 @@
 \alias{cbk.plot.spots}
 \title{Read CASTEML file and create spots diagram}
 \usage{
-cbk.plot.spots(pmlfile_or_stone, imagefile = NULL, opts = NULL)
+cbk.plot.spots(pmlfile_or_stone, opts = NULL, imagefile = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
 
-\item{imagefile}{Image shown on background of analyzed spots}
-
 \item{opts}{List of further options for plot}
+
+\item{imagefile}{Image shown on background of analyzed spots}
 }
 \value{
 Dataframe used to plot the diagram
@@ -22,7 +22,7 @@ Read CASTEML dataframe and create spots diagram.
   prepare a canvas in advance.
 }
 \examples{
-pmlfile <- cbk.path("20130528105235-594267.pml")
+pmlfile <- cbk.download.casteml("20160819165624-372633")
 cbk.plot.spots(pmlfile)
 }
 \seealso{
