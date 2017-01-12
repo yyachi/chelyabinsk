@@ -6,7 +6,7 @@
 #' @param density Vector of density of phases with label
 #' @return Element abundances with rows of remainder and series of
 #'   quantity, and columns of density and mode
-#' @seealso \code{\link{cbk.normalize}}
+#' @seealso \code{\link{cbk.filter.divide}}
 #' @export
 cbk.balance <- function(datain,element,phase,mode,density){
   ## EXAMPLES
@@ -35,7 +35,7 @@ cbk.balance <- function(datain,element,phase,mode,density){
   ##  ol pig  WR
   ## 3.3 3.4 3.3
   ## QQ <- cbk.balance(datain,element,phase,mode,density)
-  ## QQzCI <- cbk.normalize(QQ,ref0)
+  ## QQzCI <- cbk.filter.divide(QQ,ref0)
 
   ## pre process
   phase_meas <- datain[phase,element]
