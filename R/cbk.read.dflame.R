@@ -35,19 +35,22 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none"){
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
   qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(qmlame)) {
-    qmlame1               <- qmlame[rownames(qmlame) != 'file_path',]
-    qmlame2               <- qmlame[rownames(qmlame) == 'file_path',]
-    ## factor <- cbk.convector(qmlame[,'unit'])
-    ## names(factor) <- rownames(qmlame)
-    factor                <- cbk.convector(qmlame1[,'unit'])
-    names(factor)         <- rownames(qmlame1)
-    factor[is.na(factor)] <- 1
-    qmlame3               <- apply(qmlame1,2,function(x) as.numeric(x) / factor * cbk.convector(tableunit))
-    ## pmlame <- as.data.frame(t(qmlame[colnames(qmlame) != 'unit'] / factor)) * cbk.convector(tableunit)
-
-    pmlame0               <- as.data.frame(t(qmlame3))
-    pmlame1               <- cbind(pmlame0,t(qmlame2))
-    pmlame                <- pmlame1[rownames(pmlame1) != 'unit',]
+    rowSTR                <- intersect(rownames(qmlame),c("file_path","remark"))
+    if (length(rowSTR)==0) {
+      factor                <- cbk.convector(qmlame[,'unit'])
+      names(factor)         <- rownames(qmlame)
+      factor[is.na(factor)] <- 1
+      pmlame                <- as.data.frame(t(qmlame[colnames(qmlame) != 'unit'] / factor)) * cbk.convector(tableunit)  
+    } else {
+      qmlameSTR             <- qmlame[rowSTR,]
+      qmlameNUM             <- qmlame[rownames(qmlame) != rowSTR,]
+      factor                <- cbk.convector(qmlameNUM[,'unit'])
+      names(factor)         <- rownames(qmlameNUM)
+      factor[is.na(factor)] <- 1
+      pmlameNUM             <- as.data.frame(t(apply(qmlameNUM,2,function(x) as.numeric(x) / factor * cbk.convector(tableunit))))
+      pmlame0               <- cbind(pmlameNUM,t(qmlameSTR))
+      pmlame                <- pmlame0[rownames(pmlame0) != 'unit',]
+    }
   } else { # without unit column
     pmlame <- as.data.frame(t(qmlame))
   }
