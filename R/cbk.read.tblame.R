@@ -22,11 +22,22 @@ cbk.read.tblame <- function(tblame,tableunit="none"){
 
   pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% rownames(pmlame)) {
-    factor                <- cbk.convector(as.matrix(pmlame['unit',]))
-    names(factor)         <- colnames(pmlame)
-    factor[is.na(factor)] <- 1
-    pmlame                <- as.data.frame(t(apply(pmlame[rownames(pmlame) != 'unit',],1,function(x) as.numeric(x) / factor ))* cbk.convector(tableunit))
+    colSTR <- intersect(colnames(pmlame),c("image_path","sample_id","image_id","remark"))
+    if (length(rowSTR)==0) {
+      factor                <- cbk.convector(as.matrix(pmlame['unit',]))
+      names(factor)         <- colnames(pmlame)
+      factor[is.na(factor)] <- 1
+      pmlame                <- as.data.frame(t(apply(pmlame[rownames(pmlame) != 'unit',],1,function(x) as.numeric(x) / factor ))* cbk.convector(tableunit))
+    } else {
+      pmlameSTR             <- pmlame[,colSTR,drop=FALSE]
+      pmlameNUM             <- pmlame[,colnames(pmlame) != colSTR,drop=FALSE]
+      factor                <- cbk.convector(as.matrix(pmlameNUM['unit',]))
+      names(factor)         <- colnames(pmlameNUM)
+      factor[is.na(factor)] <- 1
+      pmlameNUM             <- as.data.frame(t(apply(pmlameNUM,1,function(x) as.numeric(x) / factor )* cbk.convector(tableunit)))
+      pmlame0               <- cbind(pmlameNUM,pmlameSTR)
+      pmlame                <- pmlame0[rownames(pmlame0) != 'unit',]
+    }
   }
-  
   return(pmlame)
 }
