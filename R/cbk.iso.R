@@ -15,6 +15,23 @@
 #' cbk.iso('Li7','ratio')
 cbk.iso <- function(isomeas=NULL,property='mass'){
   isolame0 <- cbk.read.tblame(cbk.path("isotope-tblame0.csv"))
+
+  if (property %in% c('atomicnumber','Z','proton')) {
+    property <- 'proton'
+  }
+
+  if (property %in% c('iso','isonum','nucleon')) {
+    property <- 'nucleon'
+  }
+
+  if (property %in% c('m','mass','weight')) {
+    property <- 'mass'
+  }
+
+  if (property %in% c('ab','abundance','r','ratio')) {
+    property <- 'ratio'
+  }
+
   if (is.null(isomeas)) {
     return(isolame0)
   } else {
