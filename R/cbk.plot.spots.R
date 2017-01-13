@@ -44,9 +44,9 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   }
   if (class(imagefile) != "try-error"){
     ext <- tools::file_ext(imagefile)
-    if (grepl(ext,"png")){
+    if (grepl(tolower(ext),"png")){
       img <- readPNG(imagefile)
-    } else if (grepl(ext,"jpg")) {
+    } else if (grepl(tolower(ext),"jpg")) {
       img <- readJPEG(imagefile)
     } else {
       stop("Such image type is not supported")

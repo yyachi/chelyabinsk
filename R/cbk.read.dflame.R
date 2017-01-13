@@ -35,7 +35,7 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none"){
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
   qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
   if ('unit' %in% colnames(qmlame)) {
-    rowSTR                <- intersect(rownames(qmlame),c("file_path","remark"))
+    rowSTR <- intersect(rownames(qmlame),c("image_path","sample_id","image_id","remark"))
     if (length(rowSTR)==0) {
       factor                <- cbk.convector(qmlame[,'unit'])
       names(factor)         <- rownames(qmlame)

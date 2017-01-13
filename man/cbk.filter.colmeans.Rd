@@ -16,7 +16,8 @@ A dataframe with mean value of each column
 Return mean value of each element
 }
 \examples{
-pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"))
-cbk.filter.colmeans(pmlame)
+pmlame  <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"))
+pmlame0 <- pmlame[,colnames(pmlame) != "sample_id"]
+pmlame1 <- cbk.filter.colmeans(pmlame0)
 }
 
