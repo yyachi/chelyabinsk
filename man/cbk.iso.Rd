@@ -2,21 +2,29 @@
 % Please edit documentation in R/cbk.iso.R
 \name{cbk.iso}
 \alias{cbk.iso}
-\title{Return isotope information}
+\title{Return properties of isotope}
 \usage{
-cbk.iso()
+cbk.iso(isomeas = NULL, property = "mass")
+}
+\arguments{
+\item{isomeas}{A name of isotope such as `Li7' and `Rb87'.}
+
+\item{property}{A name of PROPERTY that is one of `proton',
+`nucleon', `mass', or `ratio'}
 }
 \value{
-A pmlame of isotope information
+A scalar of property or pmlame of isotope table
 }
 \description{
-Return isotope information.  It is in a form of pmlame.
+Return properties of isotope.  It is in a form of
+  pmlame.
 }
 \examples{
-cbk.iso()['Li7','ratio']
-cbk.iso()['Li7','weight']
+cbk.iso()
+cbk.iso('Li7')
+cbk.iso('Li7','ratio')
 }
 \seealso{
-\code{\link{cbk.periodic}}
+\code{\link{cbk.periodic}}, isotope.m, isotope_constant.m
 }
 
