@@ -7,10 +7,10 @@
 cbk.filter.reduce(pmlame)
 }
 \arguments{
-\item{pmlame}{A dataframe with columns of stone and rows of chem}
+\item{pmlame}{A pmlame of element abundances (with columns of stone and rows of chem)}
 }
 \value{
-A dataframe with converted columns
+A pmlame with converted columns
 }
 \description{
 Convert major-element concentration as oxide to one as metal
