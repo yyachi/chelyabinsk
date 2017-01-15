@@ -10,10 +10,10 @@
 #' @param analysis A name of reference that is one of "Wasson.1988",
 #'   "McDonough.1995", and "Boynton.1989".
 #' @param property A numeric vector of element property with label
-#'   that serves as sort key (default=NULL).  You can feed output from
+#'   that serves as sort key (default: NULL).  You can feed output from
 #'   `cbk.periodic'
 #' @param tableunit Output unit that will be resolved by
-#'   `cbk.convector' (default="ppm")
+#'   `cbk.convector' (default: "ppm")
 #' @return A pmlame of element abundances
 #' @seealso \code{\link{cbk.periodic}}
 #' @export

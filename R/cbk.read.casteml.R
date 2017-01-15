@@ -7,7 +7,7 @@
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID
 #' @param tableunit Output unit that will be resolved by
-#'   cbk.convector() (default="none")
+#'   cbk.convector() (default: "none")
 #' @param category category to pass to `cbk.convert.casteml'
 #' @param opts List of further options for plot
 #' @return A dataframe with unit organized
