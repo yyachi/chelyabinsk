@@ -1,6 +1,6 @@
 #' Convert major-element concentration as oxide to one as metal
-#' @param pmlame A dataframe with columns of stone and rows of chem
-#' @return A dataframe with converted columns
+#' @param pmlame A pmlame of element abundances (with columns of stone and rows of chem)
+#' @return A pmlame with converted columns
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
@@ -34,7 +34,7 @@ cbk.filter.reduce <- function(pmlame) {
 
   periodic             <- cbk.periodic()
   oxidelist <- rownames(detoxtable)    # "SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"
-  chemlist  <- colnames(pmlame)          # "SiO2","Al2O3","La","Ce"
+  chemlist  <- colnames(pmlame)        # "SiO2","Al2O3","La","Ce"
   oxygenweight <- 15.9994
   for(ii in 1:length(oxidelist)) {
     ### replace columns of "SiO2" and "Al2O3" by "Si" and "Al"
@@ -43,7 +43,7 @@ cbk.filter.reduce <- function(pmlame) {
       metal   <- detoxtable[oxide,"metal"]    # Si
       noxygen <- detoxtable[oxide,"noxygen"]  # 2
 
-      metalweight <- periodic[metal,"atomicmass"] # 28.0855
+      metalweight <- periodic[metal,"mass"]   # 28.0855
       oxideweight <- metalweight + oxygenweight * noxygen # 60.0843
       chem_in_oxide <- pmlame[,oxide]
       chem_in_metal <- chem_in_oxide * metalweight / oxideweight

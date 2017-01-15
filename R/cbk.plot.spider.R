@@ -17,7 +17,6 @@
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 #' cbk.plot.spider(pmlame)
 cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="atomicnumber",reference="Wasson.1988") {
-  ## cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL) {
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
@@ -44,7 +43,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property
   ##     objnum      <- as.numeric(convector[,oxidelist[ii]][2])
   ##     oxynum      <- as.numeric(convector[,oxidelist[ii]][3])
 
-  ##     objmass     <- periodic[obj,"atomicmass"]
+  ##     objmass     <- periodic[obj,"mass"]
   ##     oxideweight <- objmass * objnum + oxygen * oxynum
   ##     pmlame[,obj]  <- pmlame[,oxidelist[ii]] * objmass * objnum / oxideweight
   ##   }
