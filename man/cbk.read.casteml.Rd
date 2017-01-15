@@ -14,7 +14,7 @@ stone-ID}
 \item{opts}{List of further options for plot}
 
 \item{tableunit}{Output unit that will be resolved by
-cbk.convector() (default="none")}
+cbk.convector() (default: "none")}
 
 \item{category}{category to pass to `cbk.convert.casteml'}
 }

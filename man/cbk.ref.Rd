@@ -11,10 +11,10 @@ cbk.ref(analysis, tableunit = "ppm", property = NULL)
 "McDonough.1995", and "Boynton.1989".}
 
 \item{tableunit}{Output unit that will be resolved by
-`cbk.convector' (default="ppm")}
+`cbk.convector' (default: "ppm")}
 
 \item{property}{A numeric vector of element property with label
-that serves as sort key (default=NULL).  You can feed output from
+that serves as sort key (default: NULL).  You can feed output from
 `cbk.periodic'}
 }
 \value{

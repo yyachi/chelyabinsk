@@ -4,13 +4,13 @@
 \alias{cbk.iso}
 \title{Return properties of isotope}
 \usage{
-cbk.iso(isomeas = NULL, property = "mass")
+cbk.iso(isomeas = NULL, property = "weight")
 }
 \arguments{
 \item{isomeas}{A name of isotope such as `Li7' and `Rb87'.}
 
 \item{property}{A name of PROPERTY that is one of `proton',
-`nucleon', `mass', or `ratio'}
+`nucleon', `weight', `ratio', or `symbol'.}
 }
 \value{
 A scalar of property or pmlame of isotope table

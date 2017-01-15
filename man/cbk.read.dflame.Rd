@@ -11,7 +11,7 @@ cbk.read.dflame(dflame.csv, tableunit = "none")
 abundances, with 2nd column `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
-cbk.convector() (default="none")}
+cbk.convector() (default: "none")}
 }
 \value{
 A dataframe with unit organized

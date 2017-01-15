@@ -4,14 +4,16 @@
 \alias{cbk.read.tblame}
 \title{Read csvfile created by casteml convert with column `unit'}
 \usage{
-cbk.read.tblame(tblame, tableunit = "none")
+cbk.read.tblame(tblame, tableunit = "none", verbose = TRUE)
 }
 \arguments{
 \item{tblame}{A csvfile with columns of element abundances and rows
 of stones, with 2nd row `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
-cbk.convector() (default="none")}
+cbk.convector() (default: "none")}
+
+\item{verbose}{Output debug info (default: TRUE)}
 }
 \value{
 A dataframe with unit organized
