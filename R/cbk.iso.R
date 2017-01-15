@@ -5,7 +5,7 @@
 #'
 #' @param isomeas A name of isotope such as `Li7' and `Rb87'.
 #' @param property A name of PROPERTY that is one of `proton',
-#'   `nucleon', `weight', `ratio', or `element'.
+#'   `nucleon', `weight', `ratio', or `symbol'.
 #' @return A scalar of property or pmlame of isotope table
 #' @seealso \code{\link{cbk.periodic}}, isotope.m, isotope_constant.m
 #' @export
@@ -32,8 +32,8 @@ cbk.iso <- function(isomeas=NULL,property='weight'){
     property <- 'ratio'
   }
 
-  if (property %in% c('sym','symbol','element')) {
-    property <- 'element'
+  if (property %in% c('element','sym','symbol')) {
+    property <- 'symbol'
   }
   
   if (is.null(isomeas)) {
