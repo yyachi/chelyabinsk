@@ -17,14 +17,16 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
-cbk.plot <- function(pmlfile_or_stone,opts=NULL,category="default") {
+#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),opts=list(legendp=FALSE))
+cbk.plot <- function(pmlfile_or_stone,opts=NULL,category=NULL) {
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared option
   opts <- c(opts,opts_default)
 
   ans <- -1
   tryCatch({
-    if (category == "default") {
+    ## if (category == "default") {
+    if (is.null(category)) {
       category <- cbk.category(pmlfile_or_stone)[1]
     }
 

@@ -4,7 +4,7 @@
 \alias{cbk.plot}
 \title{Plot Analyses with descendants of a stone}
 \usage{
-cbk.plot(pmlfile_or_stone, opts = NULL, category = "default")
+cbk.plot(pmlfile_or_stone, opts = NULL, category = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
@@ -28,6 +28,7 @@ cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
 cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
 cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
+cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),opts=list(legendp=FALSE))
 }
 \seealso{
 \code{\link{cbk.plot.trace}}
