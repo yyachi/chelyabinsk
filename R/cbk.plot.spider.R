@@ -4,12 +4,14 @@
 #'   This function does not save the created diagram.  You should
 #'   prepare a canvas in advance.
 #'
-#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
-#' @param tableunit Unit to toss to cbk.read.casteml()
+#' @param pmlfile_or_stone A CASTEML file that exits locally or
+#'   stone-ID (or pmlame).
+#' @param tableunit Unit to toss to \link{cbk.read.casteml}.
 #' @param property Property to align x-axis
 #' @param reference Reference of element abundance
-#' @param opts List of further options for plot
-#' @return Dataframe used to plot the diagram
+#' @param opts List of further options for plot.  See
+#'   \code{\link{cbk.plot}}.
+#' @return A pmlmae used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples

@@ -8,18 +8,19 @@ cbk.plot.ree(pmlfile_or_stone, opts = NULL, tableunit = "ug/g",
   property = "atomicnumber", reference = "Wasson.1988")
 }
 \arguments{
-\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame).}
 
-\item{opts}{List of further options for plot}
+\item{opts}{List of further options for plot.  See
+\code{\link{cbk.plot}}.}
 
-\item{tableunit}{Unit to toss to cbk.read.casteml()}
+\item{tableunit}{Unit to toss to cbk.read.casteml().}
 
-\item{property}{Property to align x-axis}
+\item{property}{Property to align x-axis.}
 
-\item{reference}{Reference of element abundance}
+\item{reference}{Reference of element abundance.}
 }
 \value{
-Dataframe used to plot the diagram
+@return A pmlmae used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create REE diagram.  This

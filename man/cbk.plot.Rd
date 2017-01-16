@@ -7,14 +7,17 @@
 cbk.plot(pmlfile_or_stone, opts = NULL, category = NULL)
 }
 \arguments{
-\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (or pmlame).}
 
-\item{opts}{List of further options for plot}
+\item{opts}{List of further options for plot.  Two options such as
+`list(legendp=TRUE, Recursivep=FALSE)' are available.}
 
-\item{category}{Category filter that is passed to `casteml convert'}
+\item{category}{Category filter that is passed to `casteml
+convert'.}
 }
 \value{
-Dataframe used to plot the diagram
+A pmlame used to plot the diagram.
 }
 \description{
 Plot Analyses with descendants of a stone.  This

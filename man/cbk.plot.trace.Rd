@@ -7,12 +7,14 @@
 cbk.plot.trace(pmlfile_or_stone, opts = NULL)
 }
 \arguments{
-\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (or pmlame).}
 
-\item{opts}{List of further options for plot}
+\item{opts}{List of further options for plot.  See
+\code{\link{cbk.plot}}.}
 }
 \value{
-Dataframe used to plot the diagram
+A pmlame used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create trace diagram.  This

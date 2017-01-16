@@ -7,14 +7,16 @@
 cbk.plot.spots(pmlfile_or_surface, opts = NULL, imagefile = NULL)
 }
 \arguments{
-\item{pmlfile_or_surface}{A CASTEML file that exits locally or stone-ID (or pmlame)}
+\item{pmlfile_or_surface}{A CASTEML file that exits locally or
+stone-ID (or pmlame).}
 
-\item{opts}{List of further options for plot}
+\item{opts}{List of further options for plot.  See
+\code{\link{cbk.plot}}.}
 
-\item{imagefile}{Image shown on background of analyzed spots}
+\item{imagefile}{Image shown on background of analyzed spots.}
 }
 \value{
-Dataframe used to plot the diagram
+A pmlmae used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create spots diagram.

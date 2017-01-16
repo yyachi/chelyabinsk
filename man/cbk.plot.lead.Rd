@@ -7,12 +7,13 @@
 cbk.plot.lead(pmlfile_or_stone, opts = NULL)
 }
 \arguments{
-\item{pmlfile_or_stone}{A dataframe of element abundances (or pmlfile or stone-ID)}
+\item{pmlfile_or_stone}{A dataframe of element abundances (or pmlfile or stone-ID).}
 
-\item{opts}{List of further options for plot}
+\item{opts}{List of further options for plot.  See
+\code{\link{cbk.plot}}.}
 }
 \value{
-Dataframe used to plot the diagram
+A pmlmae used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create lead diagram.  This

@@ -4,10 +4,13 @@
 #'   function downloads CASTEML file associated with a stone and
 #'   creates geochemical diagram depending on category specified.
 #'
-#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame)
-#' @param category Category filter that is passed to `casteml convert'
-#' @param opts List of further options for plot
-#' @return Dataframe used to plot the diagram
+#' @param pmlfile_or_stone A CASTEML file that exits locally or
+#'   stone-ID (or pmlame).
+#' @param category Category filter that is passed to `casteml
+#'   convert'.
+#' @param opts List of further options for plot.  Two options such as
+#'   `list(legendp=TRUE, Recursivep=FALSE)' are available.
+#' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \code{\link{cbk.plot.trace}}
 #' @examples
