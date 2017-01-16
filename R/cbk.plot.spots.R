@@ -25,7 +25,7 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
   pmlame0   <- cbk.read.casteml(pmlfile_or_surface,opts)
   pmlame1   <- pmlame0[,c("x_image","y_image")]
-  pmlame1   <- cbk.filter.drop.dharma(pmlame1)
+  pmlame1   <- cbk.lame.drop.dharma(pmlame1)
 
   ## stonelist  <- rownames(pmlame1)
   ## stoneindex <- 1:nrow(pmlame1)

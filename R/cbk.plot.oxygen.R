@@ -22,7 +22,7 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="oxygen")
   pmlame0   <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit="permil")
   pmlame1   <- pmlame0[,c("d18O","d17O")]
-  pmlame1   <- cbk.filter.drop.dharma(pmlame1)
+  pmlame1   <- cbk.lame.drop.dharma(pmlame1)
 
   stonelist  <- rownames(pmlame1)
   stoneindex <- 1:nrow(pmlame1)

@@ -6,8 +6,8 @@
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-#' pmlame1 <- cbk.filter.drop.dharma(pmlame)
-cbk.filter.drop.dharma <- function(pmlame,column=FALSE) {
+#' pmlame1 <- cbk.lame.drop.dharma(pmlame)
+cbk.lame.drop.dharma <- function(pmlame,column=FALSE) {
   ## repalce space by NA
   pmlame0   <- apply(pmlame, c(1,2), function(x) gsub("^$|^ $", NA, x))
   

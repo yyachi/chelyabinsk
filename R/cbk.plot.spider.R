@@ -47,7 +47,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property
   ##     oxideweight <- objmass * objnum + oxygen * oxynum
   ##     pmlame[,obj]  <- pmlame[,oxidelist[ii]] * objmass * objnum / oxideweight
   ##   }
-  pmlame1  <- cbk.filter.reduce(pmlame)
+  pmlame1  <- cbk.lame.reduce(pmlame)
   ###
   ###
   ## stonelist   <- rownames(pmlame1)
@@ -62,7 +62,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property
   XX0              <- sort(property0)
   XX               <- 1:length(XX0)
   ZZ0              <- pmlame1[,names(XX0),drop=FALSE]
-  ZZ               <- cbk.filter.drop.dharma(ZZ0)
+  ZZ               <- cbk.lame.drop.dharma(ZZ0)
   CI               <- cbk.vector(ref1[names(XX0)])
   YY               <- t(ZZ) / CI
   ## ind              <- apply(YY, 2, function(x) all(is.na(x)))

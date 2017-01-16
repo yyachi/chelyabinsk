@@ -5,8 +5,8 @@
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
-#' pmlame1 <- cbk.filter.reduce(pmlame)
-cbk.filter.reduce <- function(pmlame) {
+#' pmlame1 <- cbk.lame.reduce(pmlame)
+cbk.lame.reduce <- function(pmlame) {
 
   comment.datain <- "
 #+TBLNAME: detoxtable

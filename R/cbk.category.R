@@ -21,7 +21,7 @@ cbk.category <- function(pmlfile_or_stone=NULL) {
       "spots")
   } else {
     pmlame0   <- cbk.read.casteml(pmlfile_or_stone)
-    pmlame    <- cbk.filter.drop.dharma(pmlame0,column=TRUE)
+    pmlame    <- cbk.lame.drop.dharma(pmlame0,column=TRUE)
     ChemList  <- colnames(pmlame)
     REEList   <- c("La","Ce","Pr","Nd","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu")
     OxyList   <- c("d18O","d17O")
