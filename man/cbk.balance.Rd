@@ -25,6 +25,6 @@ Element abundances with rows of remainder and series of
 Do mass balance calculation
 }
 \seealso{
-\code{\link{cbk.lame.divide}}
+\code{\link{cbk.lame.normalize}}
 }
 

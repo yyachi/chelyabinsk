@@ -14,14 +14,14 @@
 #' @examples
 #' pmlame <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
 #' ref    <- cbk.ref("Boynton.1989","ppm")
-#' cbk.lame.divide(pmlame,ref)
-cbk.lame.divide <- function(pmlame,ref,suffix_after_name_of_element=NULL){
+#' cbk.lame.normalize(pmlame,ref)
+cbk.lame.normalize <- function(pmlame,ref,suffix_after_name_of_element=NULL){
   ## EXAMPLES
   ## > property <- cbk.periodic("atomicnumber")
   ## > ref      <- cbk.ref("Boynton.1989","ppm")
   ## > sample   <- read.table("sazava.tsv",sep="\t",header=T,row.names=1)
   ## >
-  ## > yyy      <- cbk.lame.divide(sample,ref) # normalized values
+  ## > yyy      <- cbk.lame.normalize(sample,ref) # normalized values
   ## > xxx      <- property[names(ref)]
   ## >
   ## > plot(xxx,yyy[,"Po-1"],type="o",log="y",axes=FALSE,xlab="",ylab="REE/chondrite",ylim=c(0.1,100),col="darkgreen")
