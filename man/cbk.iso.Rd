@@ -10,7 +10,7 @@ cbk.iso(isomeas = NULL, property = "weight")
 \item{isomeas}{A name of isotope such as `Li7' and `Rb87'.}
 
 \item{property}{A name of PROPERTY that is one of `proton',
-`nucleon', `weight', `ratio', or `symbol'.}
+`nucleon', `weight', `ratio', `symbol', or `pseudo.atomic.weight'.}
 }
 \value{
 A scalar of property or pmlame of isotope table
