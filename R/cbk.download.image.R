@@ -47,7 +47,8 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
   if (is.null(outfile)) {
     file_basename <- strsplit(basename(file_path),'[.?]')[[1]][1]
     file_ext      <- strsplit(basename(file_path),'[.?]')[[1]][2]
-    outfile       <- paste(file_basename, file_ext,sep=".")
+    ## outfile       <- paste(file_basename, file_ext,sep=".")
+    outfile     <- file.path(tempdir(),paste(file_basename, file_ext,sep="."))
   }
   if (force || !file.exists(outfile)) {
     download.file(file_url, outfile)

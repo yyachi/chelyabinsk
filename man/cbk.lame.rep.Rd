@@ -11,9 +11,9 @@ cbk.lame.rep(pmlame, times, direction = NULL)
 
 \item{times}{Number of replication}
 
-\item{direction}{direction to make replicate (`c' or `r').  This
-function guesses the direction to be replicated when pmlame is
-with single row or column.}
+\item{direction}{Direction to make replicate (`h' or `v').  This
+function guesses direction to be replicated when pmlame is single
+row or column.}
 }
 \value{
 A pmlame with repeated column or row.
