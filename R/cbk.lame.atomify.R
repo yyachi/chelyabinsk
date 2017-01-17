@@ -6,14 +6,16 @@
 #'   internal-reference element, ionic_ratio, and ion_yield.
 #' 
 #' @details
-#'   ion_yield     ≡ ionic_ratio / atomic_ratio
-#'   ionic_ratio   ≡ I(Li7+)      / I(Si29+)
-#'   atomic_ratio  ≡ [Li7]        / [Si29]
-#'   [Li7]         ≡ [Li]/m*(Li7)
-#'   [Si29]        ≡ [Si]/m*(Si29)
-#'   m*(Li7)       ≡ m(Li)/R(Li7)
-#'   m*(Si9)       ≡ m(Si)/R(Si29)
-#'   [Li]          <- ionic_ratio/ion_yield * [Si]/m*(Si29) * m*(Li7)
+#' \itemize{
+#'   \item{ion_yield    = ionic_ratio / atomic_ratio}
+#'   \item{ionic_ratio  = I(Li7+)      / I(Si29+)}
+#'   \item{atomic_ratio = [Li7]        / [Si29]}
+#'   \item{[Li7]        = [Li]/m*(Li7)}
+#'   \item{[Si29]       = [Si]/m*(Si29)}
+#'   \item{m*(Li7)      = m(Li)/R(Li7)}
+#'   \item{m*(Si9)      = m(Si)/R(Si29)}
+#'   \item{[Li]         <- ionic_ratio/ion_yield * [Si]/m*(Si29) * m*(Li7)}
+#' }
 #' 
 #' @param pmlame0 A pmlame with internal-referene element such for Si
 #'   and Ca.  Note that you have to reduce SiO2 in advance.
