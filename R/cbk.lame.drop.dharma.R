@@ -1,7 +1,7 @@
 #' Remove rows where all values are NA
-#' @param pmlame A dataframe with rows of stone and columns of chem
+#' @param pmlame A pmlame with rows of stone and columns of chem
 #' @param column Flag to remove columns
-#' @return A dataframe without removed rows
+#' @return A pmlame without removed rows
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")

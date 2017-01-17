@@ -7,10 +7,10 @@
 cbk.lame.colMeans(pmlame)
 }
 \arguments{
-\item{pmlame}{A dataframe with rows of stone and columns of chem}
+\item{pmlame}{A pmlame with rows of stone and columns of chem}
 }
 \value{
-A dataframe with mean value of each column
+A pmlame with mean value of each column
 }
 \description{
 Return mean value of each element

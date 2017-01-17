@@ -3,8 +3,8 @@
 #' @description Return normalized element abundances.  Note that only
 #'   elements that exist both in pmlame and ref are processed.  See
 #'   also "Geochemical Modelling..." by Janousek et al. (2015)
-#' @param pmlame A dataframe of element abundances of sample
-#' @param ref A dataframe of element abundances of reference
+#' @param pmlame A pmlame of element abundances of sample
+#' @param ref A pmlame of element abundances of reference
 #' @param suffix_after_name_of_element String to recognize column of
 #'   errors.  Feed "_error" when necessary (default: NULL)
 #' @return A ref-normalized daraframe with only elements defined in

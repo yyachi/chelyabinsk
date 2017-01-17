@@ -1,6 +1,6 @@
 #' Return mean value of each element
-#' @param pmlame A dataframe with rows of stone and columns of chem
-#' @return A dataframe with mean value of each column
+#' @param pmlame A pmlame with rows of stone and columns of chem
+#' @return A pmlame with mean value of each column
 #' @export
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"))

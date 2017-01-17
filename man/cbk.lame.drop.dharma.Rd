@@ -7,12 +7,12 @@
 cbk.lame.drop.dharma(pmlame, column = FALSE)
 }
 \arguments{
-\item{pmlame}{A dataframe with rows of stone and columns of chem}
+\item{pmlame}{A pmlame with rows of stone and columns of chem}
 
 \item{column}{Flag to remove columns}
 }
 \value{
-A dataframe without removed rows
+A pmlame without removed rows
 }
 \description{
 Remove rows where all values are NA
