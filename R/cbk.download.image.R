@@ -27,23 +27,29 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
   library(urltools)
   library(XML)
 
-  if (file.exists(pmlfile_or_surface)) { # existing-pmlfile fed
-    pmlfile <- pmlfile_or_surface
-  } else {                             # stone fed
-    surface <- pmlfile_or_surface
-    ## if (opts$Recursivep) {
-    ##   pmlfile  <- cbk.download.casteml(c("-R", surface))
-    ## } else {
-    pmlfile <- cbk.download.casteml(c("-r", surface))
-    ## }
+  cat(file=stderr(),"cbk.download.image:30: pmlfile_or_surface # =>",
+      ifelse(is.data.frame(pmlfile_or_surface),"#<pmlame>",pmlfile_or_surface),"\n")
+  if (!is.data.frame(pmlfile_or_surface)) { # pmlame fed
+    if (file.exists(pmlfile_or_surface)) { # existing-pmlfile fed
+      pmlfile <- pmlfile_or_surface
+    } else {                             # stone fed
+      surface <- pmlfile_or_surface
+      ## if (opts$Recursivep) {
+      ##   pmlfile  <- cbk.download.casteml(c("-R", surface))
+      ## } else {
+      pmlfile <- cbk.download.casteml(c("-r", surface))
+      ## }
+    }
+    doc           <- xmlParse(pmlfile)
+    nodes         <- getNodeSet(doc, "//acquisition/spot")
+    spots         <- lapply(nodes, function(x) xmlToList(x))
+    file_path     <- spots[[1]]$attachment_file_path
+    orochirc      <- yaml.load_file("~/.orochirc")
+    file_url      <- paste("http://",domain(orochirc$uri),file_path, sep="")
+  } else {
+    pmlame        <- pmlfile_or_surface
+    file_path     <- as.character(pmlame[1,"image_path"])
   }
-  cat(file=stderr(),"cbk.download.image:40: pmlfile # =>",pmlfile,"\n")
-  doc           <- xmlParse(pmlfile)
-  nodes         <- getNodeSet(doc, "//acquisition/spot")
-  spots         <- lapply(nodes, function(x) xmlToList(x))
-  file_path     <- spots[[1]]$attachment_file_path
-  orochirc      <- yaml.load_file("~/.orochirc")
-  file_url      <- paste("http://",domain(orochirc$uri),file_path, sep="")
   if (is.null(outfile)) {
     file_basename <- strsplit(basename(file_path),'[.?]')[[1]][1]
     file_ext      <- strsplit(basename(file_path),'[.?]')[[1]][2]
