@@ -5,16 +5,16 @@
 \title{Estimate element abundances from ion-intensity obtained by
   mass spectrometry.}
 \usage{
-cbk.lame.atomify(pmlame0, ionic_ratio0, ion_yield0)
+cbk.lame.atomify(pmlame, ionic_ratio, ion_yield)
 }
 \arguments{
-\item{pmlame0}{A pmlame with internal-referene element such for Si
+\item{pmlame}{A pmlame with internal-referene element such for Si
 and Ca.  Note that you have to reduce SiO2 in advance.}
 
-\item{ionic_ratio0}{A pmlame-like ion signal intensities relative
+\item{ionic_ratio}{A pmlame-like ion signal intensities relative
 to internal-reference isotope.  For example, I(Li7)/I(Si29).}
 
-\item{ion_yield0}{Sensitivities of element that were determined by
+\item{ion_yield}{Sensitivities of element that were determined by
 analyses of several reference materials.}
 }
 \value{
@@ -30,11 +30,11 @@ Estimate element abundances from ion-intensity
   \item{ion_yield    = ionic_ratio / atomic_ratio}
   \item{ionic_ratio  = I(Li7+)      / I(Si29+)}
   \item{atomic_ratio = [Li7]        / [Si29]}
-  \item{[Li7]        = [Li]/m*(Li7)}
-  \item{[Si29]       = [Si]/m*(Si29)}
-  \item{m*(Li7)      = m(Li)/R(Li7)}
-  \item{m*(Si9)      = m(Si)/R(Si29)}
-  \item{[Li]         <- ionic_ratio/ion_yield * [Si]/m*(Si29) * m*(Li7)}
+  \item{[Li7]        = [Li]/m!(Li7)}
+  \item{[Si29]       = [Si]/m!(Si29)}
+  \item{m!(Li7)      = m(Li)/R(Li7)}
+  \item{m!(Si9)      = m(Si)/R(Si29)}
+  \item{[Li]         <- ionic_ratio/ion_yield * [Si]/m!(Si29) * m!(Li7)}
 }
 }
 
