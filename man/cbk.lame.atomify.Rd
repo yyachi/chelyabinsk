@@ -5,7 +5,7 @@
 \title{Estimate element abundances from ion-intensity obtained by
   mass spectrometry.}
 \usage{
-cbk.lame.atomify(pmlame, ionic_ratio, ion_yield, isoref = "Si29")
+cbk.lame.atomify(pmlame, ionic_ratio, ionic_yield, isoref = "Si29")
 }
 \arguments{
 \item{pmlame}{A pmlame with internal-reference element such for Si
@@ -15,7 +15,7 @@ and Ca.  Reduce SiO2 to Si in advance using
 \item{ionic_ratio}{A pmlame-like ion signal intensities relative to
 internal-reference isotope.  For example, I(Li7)/I(Si29).}
 
-\item{ion_yield}{Relative sensitivities of element that were
+\item{ionic_yield}{Relative sensitivities of element that were
 determined by analyses of several reference materials.}
 
 \item{isoref}{Name of internal-reference isotope such as 'Si29'.}
@@ -26,7 +26,7 @@ A pmlame of element abundances.
 \description{
 Estimate element abundances from ion-intensity
   obtained by mass spectrometry.  Main inputs are element abundance
-  of internal-reference element, ionic_ratio, and ion_yield.
+  of internal-reference element, ionic_ratio, and ionic_yield.
 }
 \details{
 This function estimate trace-element abundances using
@@ -37,21 +37,21 @@ This function estimate trace-element abundances using
   of the isotope remain the same.
 
 \itemize{
-  \item{ion_yield    = ionic_ratio / atomic_ratio}
+  \item{ionic_yield  = ionic_ratio / atomic_ratio}
   \item{ionic_ratio  = I(Li7+)     / I(Si29+)}
   \item{atomic_ratio = [Li7]       / [Si29]}
   \item{[Li7]        = [Li]/m!(Li7)}
   \item{[Si29]       = [Si]/m!(Si29)}
   \item{m!(Li7)      = m(Li)/R(Li7)}
   \item{m!(Si9)      = m(Si)/R(Si29)}
-  \item{[Li]        <- ionic_ratio/ion_yield * [Si]/m!(Si29) * m!(Li7)}
+  \item{[Li]        <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
 }
 }
 \examples{
-ion_yield   <- data.frame(row.names=c("ion_yield"), Li7=c(1.027), B11=c(1.76), Si29=c(1), La139=c(77.6))
+ionic_yield <- data.frame(row.names=c("ionic_yield"), Li7=c(1.027), B11=c(1.76), Si29=c(1), La139=c(77.6))
 ionic_ratio <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),Li7=c(5.56389e-04,4.90334e-04,7.02148e-05),B11=c(5.88269e-05,8.64064e-05,1.44872e-04),Si29=c(1,1,1),La139=c(0.000340813,0.000281243,0.000708434))
 pmlame0     <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 pmlame1     <- cbk.lame.reduce(pmlame0)
-cbk.lame.atomify(pmlame1,ionic_ratio,ion_yield,isoref='Si29')
+cbk.lame.atomify(pmlame1,ionic_ratio,ionic_yield,isoref='Si29')
 }
 
