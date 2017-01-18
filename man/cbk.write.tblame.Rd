@@ -16,8 +16,7 @@ and columns of chem.}
 A dataframe with unit organized
 }
 \seealso{
-\code{\link{cbk.read.dflame}},
-  \url{https://github.com/misasa/casteml}, and
-  \code{\link{cbk.convector}}
+\code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
+  and \url{https://github.com/misasa/casteml}
 }
 

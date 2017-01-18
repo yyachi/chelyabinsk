@@ -4,9 +4,8 @@
 #' @param tblame Path of tblame, which is a csvfile with rows of stone
 #'   and columns of chem.
 #' @return A dataframe with unit organized
-#' @seealso \code{\link{cbk.read.dflame}},
-#'   \url{https://github.com/misasa/casteml}, and
-#'   \code{\link{cbk.convector}}
+#' @seealso \code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
+#'   and \url{https://github.com/misasa/casteml}
 #' @export
 cbk.write.tblame <- function(pmlame,tblame){
   write.csv(pmlame,tblame)
