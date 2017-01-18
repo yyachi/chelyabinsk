@@ -6,8 +6,8 @@
 #' @details This internally calls
 #'   \code{read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)},
 #'   take out row of `unit' and normalized by the `unit' row.
-#' @param tblame A csvfile with columns of element abundances and rows
-#'   of stones, with 2nd row `unit'
+#' @param tblame A csvfile with columns of chem and rows of stone,
+#'   with 2nd row `unit'
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default: "none")
 #' @param verbose Output debug info (default: TRUE)
