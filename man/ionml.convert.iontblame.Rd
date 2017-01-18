@@ -19,7 +19,7 @@ Name of IONML that was created
 \description{
 Convert ion-type TBLAME.CSV to IONML.
 
-  This really create complate IONML.  This program assumes
+  This really create complete IONML.  This program assumes
   extensions of ion-type TBLAME.CSV and IONML to be `.ion' and
   `.xml', respectively.
 }
