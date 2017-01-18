@@ -48,7 +48,7 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="a
   ## ----------------
   ## par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
-  matplot(XX0,YY,log="y",type="o",lty=1,pch=stoneindex,
+  matplot(XX0,YY,log="y",type="o",lty=1,pch=stoneindex,col=stoneindex,
           xlab='',ylab='ZZ/CI',axes=FALSE)
   axis(1,at=XX0,labels=names(XX0),cex.axis=0.9,las=2)
   axis(2,axTicks(2),axTicks(2))
