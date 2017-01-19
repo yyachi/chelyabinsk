@@ -60,5 +60,5 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property="a
   ## ----------------
   ##* CLOSING REMARK
   ## ----------------
-  return(pmlame)
+  return(ZZ)
 }

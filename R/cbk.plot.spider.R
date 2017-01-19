@@ -89,5 +89,5 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="ug/g",property
   ### ----------------
   ###* CLOSING REMARK
   ### ----------------
-  return(pmlame1)
+  return(ZZ)
 }
