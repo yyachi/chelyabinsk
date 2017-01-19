@@ -33,7 +33,10 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none"){
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
   ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dflame
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
-  qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
+
+  ## qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
+  qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
+
   if ('unit' %in% colnames(qmlame)) {
     rowSTR <- intersect(rownames(qmlame),c("image_path","sample_id","image_id","remark"))
     if (length(rowSTR)==0) {

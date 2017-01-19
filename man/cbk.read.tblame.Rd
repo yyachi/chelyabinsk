@@ -23,9 +23,8 @@ Read csvfile with row `unit', that is also referred as
   `tblame'.
 }
 \details{
-This internally calls
-  \code{read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)},
-  take out row of `unit' and normalized by the `unit' row.
+This internally calls \code{\link{read.csv}}, take out row
+  of `unit' and normalized by the `unit' row.
 }
 \seealso{
 \code{\link{cbk.read.dflame}},

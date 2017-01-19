@@ -3,9 +3,8 @@
 #' @description Read csvfile with row `unit', that is also referred as
 #'   `tblame'.
 #'
-#' @details This internally calls
-#'   \code{read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)},
-#'   take out row of `unit' and normalized by the `unit' row.
+#' @details This internally calls \code{\link{read.csv}}, take out row
+#'   of `unit' and normalized by the `unit' row.
 #' @param tblame A csvfile with columns of chem and rows of stone,
 #'   with 2nd row `unit'
 #' @param tableunit Output unit that will be resolved by
@@ -23,7 +22,9 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
     cat(file=stderr(),"cbk.read.tblame:23: tblame # =>",tblame,"\n")
   }
 
-  pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
+  ## pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
+  pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F,check.names=F)
+
   if ('unit' %in% rownames(pmlame)) {
     colSTR <- intersect(colnames(pmlame),c("image_path","sample_id","image_id","remark"))
     if (length(rowSTR)==0) {
