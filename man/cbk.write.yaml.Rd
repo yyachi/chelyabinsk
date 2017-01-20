@@ -19,6 +19,11 @@ A pmlame with columns of chem and rows of stone.
 \description{
 Write a pmlame to yamlfile.
 }
+\details{
+This function uses \link{yaml::as.yaml} to save pmlame.
+  Since \link{yaml::as.yaml} drops rownames, this function stores
+  rownames using a column with label `rownames'.
+}
 \seealso{
 \code{\link{cbk.read.yaml}} and
   \code{\link{cbk.write.casteml}}.

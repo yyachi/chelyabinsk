@@ -1,5 +1,8 @@
 #' Write a pmlame to yamlfile.
 #'
+#' @details This function uses \link{yaml::as.yaml} to save pmlame.
+#'   Since \link{yaml::as.yaml} drops rownames, this function stores
+#'   rownames using a column with label `rownames'.
 #' @param pmlame A pmlame with rows of stone and columns of chem.
 #' @param yamlfile A yamlfile with a pmlame.
 #' @param verbose Output debug info (default: TRUE).

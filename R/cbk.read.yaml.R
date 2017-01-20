@@ -1,5 +1,7 @@
 #' Read a pmlame stored in yamlfile.
 #'
+#' @details This function restores rownames using a column with label
+#'   `rownames'.
 #' @param yamlfile A yamlfile with pmlame, that is with columns of
 #'   chem and rows of stone.
 #' @param verbose Output debug info (default: TRUE).

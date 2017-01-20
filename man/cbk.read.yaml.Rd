@@ -18,6 +18,10 @@ A pmlame with columns of chem and rows of stone.
 \description{
 Read a pmlame stored in yamlfile.
 }
+\details{
+This function restores rownames using a column with label
+  `rownames'.
+}
 \seealso{
 \code{\link{cbk.write.yaml}},
   \code{\link{cbk.read.casteml}}.
