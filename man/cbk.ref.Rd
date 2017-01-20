@@ -4,7 +4,7 @@
 \alias{cbk.ref}
 \title{Return element abundances of reference}
 \usage{
-cbk.ref(analysis, tableunit = "ppm", property = NULL)
+cbk.ref(analysis, tableunit = "none", property = NULL)
 }
 \arguments{
 \item{analysis}{A name of reference that is one of "Wasson.1988",

@@ -4,7 +4,7 @@
 \alias{cbk.plot.spider}
 \title{Read CASTEML file and create spider diagram}
 \usage{
-cbk.plot.spider(pmlfile_or_stone, opts = NULL, tableunit = "ug/g",
+cbk.plot.spider(pmlfile_or_stone, opts = NULL, tableunit = "none",
   property = "atomicnumber", reference = "Wasson.1988")
 }
 \arguments{

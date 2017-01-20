@@ -44,9 +44,9 @@ test_that("cbk.read.dflame(cbk.path('ref1-dflame0.csv')) should return Dataframe
 
 test_that("cbk.ref('Wasson.1988') should return Named num",{
   ref_W1988_none <- cbk.ref("Wasson.1988","none")
-  ref_W1988_ppm  <- cbk.ref("Wasson.1988")
+  ref_W1988_none <- cbk.ref("Wasson.1988")
   ref_M1995_ppm  <- cbk.ref("McDonough.1995","ppm")
   expect_that(as.numeric(ref_W1988_none["H"]), equals(as.numeric(0.02)))
-  expect_that(as.integer(ref_W1988_ppm["H"]),  equals(20000))
+  expect_that(as.numeric(ref_W1988_none["H"]), equals(0.02))
   expect_that(as.numeric(ref_M1995_ppm["Li"]), equals(as.numeric(1.5)))
 })
