@@ -19,7 +19,7 @@ cbk.plot.trace <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* PAGE SETUP
   ## ----------------
-  par(mar=c(4.5,4.5,0.5,0.5),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
+  par(mar=c(2.2,2.2,0.1,0.1),mfrow=c(2,1)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
 
   ## ----------------
   ##* PLOTS

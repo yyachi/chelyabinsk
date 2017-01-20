@@ -12,6 +12,7 @@
 #'   abundances, with 2nd column `unit'
 #' @param tableunit Output unit that will be resolved by
 #'   cbk.convector() (default: "none")
+#' @param verbose Output debug info (default: TRUE)
 #' @return A dataframe with unit organized
 #' @seealso \code{\link{cbk.download.casteml}}, \code{casteml
 #'   convert}, \url{https://github.com/misasa/casteml}, and
@@ -25,9 +26,11 @@
 #' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
 #' pmlame     <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),"ppm")
 #' pmlame     <- cbk.read.dflame(cbk.path("periodic-dflame0.csv"))
-cbk.read.dflame <- function(dflame.csv,tableunit="none"){
+cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
 
-  cat(file=stderr(),"cbk.read.dflame:30: dflame.csv # =>",dflame.csv,"\n")
+  if (verbose) {
+    cat(file=stderr(),"cbk.read.dflame:32: dflame.csv # =>",dflame.csv,"\n")
+  }
 
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
