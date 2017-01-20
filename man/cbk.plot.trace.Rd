@@ -4,7 +4,7 @@
 \alias{cbk.plot.trace}
 \title{Read CASTEML file and create trace diagram}
 \usage{
-cbk.plot.trace(pmlfile_or_stone, opts = NULL)
+cbk.plot.trace(pmlfile_or_stone, opts = NULL, tableunit = "none")
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
@@ -24,7 +24,7 @@ Read CASTEML dataframe and create trace diagram.  This
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
-cbk.plot.trace(pmlame)
+cbk.plot.trace(pmlame,tableunit="ug/g")
 }
 \seealso{
 \url{https://github.com/misasa/casteml}
