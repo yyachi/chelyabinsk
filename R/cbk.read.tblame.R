@@ -8,12 +8,12 @@
 #' @param tblame A csvfile with columns of chem and rows of stone,
 #'   with 2nd row `unit'
 #' @param tableunit Output unit that will be resolved by
-#'   cbk.convector() (default: "none")
-#' @param verbose Output debug info (default: TRUE)
-#' @return A dataframe with unit organized
+#'   \link{cbk.convector} (default: "none").
+#' @param verbose Output debug info (default: TRUE).
+#' @return A pmlame with unit organized.
 #' @seealso \code{\link{cbk.read.dflame}},
 #'   \url{https://github.com/misasa/casteml}, and
-#'   \code{\link{cbk.convector}}
+#'   \code{\link{cbk.convector}}.
 #' @export
 cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
 

@@ -11,12 +11,12 @@ cbk.read.tblame(tblame, tableunit = "none", verbose = TRUE)
 with 2nd row `unit'}
 
 \item{tableunit}{Output unit that will be resolved by
-cbk.convector() (default: "none")}
+\link{cbk.convector} (default: "none").}
 
-\item{verbose}{Output debug info (default: TRUE)}
+\item{verbose}{Output debug info (default: TRUE).}
 }
 \value{
-A dataframe with unit organized
+A pmlame with unit organized.
 }
 \description{
 Read csvfile with row `unit', that is also referred as
@@ -29,6 +29,6 @@ This internally calls \code{\link{read.csv}}, take out row
 \seealso{
 \code{\link{cbk.read.dflame}},
   \url{https://github.com/misasa/casteml}, and
-  \code{\link{cbk.convector}}
+  \code{\link{cbk.convector}}.
 }
 

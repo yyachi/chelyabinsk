@@ -8,15 +8,15 @@ cbk.read.dflame(dflame.csv, tableunit = "none", verbose = TRUE)
 }
 \arguments{
 \item{dflame.csv}{A csvfile with columns of stone and rows of element
-abundances, with 2nd column `unit'}
+abundances, with 2nd column `unit'.}
 
 \item{tableunit}{Output unit that will be resolved by
-cbk.convector() (default: "none")}
+\link{cbk.convector} (default: "none").}
 
-\item{verbose}{Output debug info (default: TRUE)}
+\item{verbose}{Output debug info (default: TRUE).}
 }
 \value{
-A dataframe with unit organized
+A pmlame with unit organized.
 }
 \description{
 Read csvfile with column `unit' created by
@@ -41,6 +41,6 @@ pmlame     <- cbk.read.dflame(cbk.path("periodic-dflame0.csv"))
 \seealso{
 \code{\link{cbk.download.casteml}}, \code{casteml
   convert}, \url{https://github.com/misasa/casteml}, and
-  \code{\link{cbk.convector}}
+  \code{\link{cbk.convector}}.
 }
 

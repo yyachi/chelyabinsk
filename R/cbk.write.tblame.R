@@ -1,6 +1,6 @@
 #' @title Write pmlame as tblame.csv
 #'
-#' @param pmlame A pmlame with rows of stone and columns of chem
+#' @param pmlame A pmlame with rows of stone and columns of chem.
 #' @param tblame Path of tblame, which is a csvfile with rows of stone
 #'   and columns of chem.
 #' @return A dataframe with unit organized

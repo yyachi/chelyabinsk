@@ -9,14 +9,14 @@
 #'   \code{read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)},
 #'   take out column of `unit' and normalized by the `unit' column.
 #' @param dflame.csv A csvfile with columns of stone and rows of element
-#'   abundances, with 2nd column `unit'
+#'   abundances, with 2nd column `unit'.
 #' @param tableunit Output unit that will be resolved by
-#'   cbk.convector() (default: "none")
-#' @param verbose Output debug info (default: TRUE)
-#' @return A dataframe with unit organized
+#'   \link{cbk.convector} (default: "none").
+#' @param verbose Output debug info (default: TRUE).
+#' @return A pmlame with unit organized.
 #' @seealso \code{\link{cbk.download.casteml}}, \code{casteml
 #'   convert}, \url{https://github.com/misasa/casteml}, and
-#'   \code{\link{cbk.convector}}
+#'   \code{\link{cbk.convector}}.
 #' @export
 #' @examples
 #' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
