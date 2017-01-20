@@ -3,11 +3,12 @@
 #' @return A pmlame with mean value of each column
 #' @export
 #' @examples
-#' pmlame  <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"))
-#' pmlame0 <- pmlame[,colnames(pmlame) != "sample_id"]
+#' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+#' pmlame0 <- pmlame[,colnames(pmlame) != c("sample_id","image_id")]
 #' pmlame1 <- cbk.lame.colMeans(pmlame0)
 cbk.lame.colMeans <- function(pmlame) {
-  delimiter <- "[.]"
+  ## delimiter <- "[@|.]"
+  delimiter <- "@|[.]|-[[:alnum:]]*$"
   spotlist0 <- rownames(pmlame)
   spotlist1 <- unlist(lapply(strsplit(spotlist0,delimiter),'[[',1))
   stonelist <- unique(spotlist1)
