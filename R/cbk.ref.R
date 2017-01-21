@@ -28,7 +28,8 @@ cbk.ref <- function(analysis,tableunit="none",property=NULL){
 
   ## read as vector
   ## pmlame     <- read.table(cbk.path("ref.csv"),sep=",",header=T,row.names=1)
-  pmlame        <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),tableunit)
+  ## pmlame        <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),tableunit)
+  pmlame        <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),tableunit,verbose=FALSE)
   ## foo        <- as.numeric(pmlame)
   ## foo        <- as.numeric(pmlame[analysis,]) # conversion to numeric vector
   ## names(foo) <- names(pmlame)
