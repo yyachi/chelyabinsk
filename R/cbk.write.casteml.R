@@ -8,7 +8,7 @@
 #' @examples
 #' pmlame0 <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 #' pmlfile <- cbk.write.casteml(pmlame0,'deleteme.pml')
-cbk.write.casteml <- function(pmlame,pmlfile){
+cbk.write.casteml <- function(pmlame,pmlfile=NULL){
 
   # Transform pmlame to have a first column labeled as `session'
   pmlame <- data.frame(session=rownames(pmlame),pmlame)
@@ -17,6 +17,11 @@ cbk.write.casteml <- function(pmlame,pmlfile){
   # Export pmlame to csvfile
   csvfile <- file.path(tempdir(),paste0(digest::digest(pmlame,algo='md5'),".csv"))
   write.csv(pmlame,csvfile,row.names=F)
+
+  # Determine filename of pmlfile
+  if(is.null(pmlfile)){
+    pmlfile <- file.path(tempdir(),paste0(digest::digest(pmlame,algo='md5'),".pml"))
+  }
 
   # Convert csvfile to pmlfile
   cmd <- paste("convert -f pml",csvfile)

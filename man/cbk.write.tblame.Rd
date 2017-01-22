@@ -2,21 +2,20 @@
 % Please edit documentation in R/cbk.write.tblame.R
 \name{cbk.write.tblame}
 \alias{cbk.write.tblame}
-\title{Write pmlame as tblame.csv}
+\title{Write pmlame as TBLAME.csv}
 \usage{
-cbk.write.tblame(pmlame, tblame)
+cbk.write.tblame(pmlame, tblame = NULL)
 }
 \arguments{
 \item{pmlame}{A pmlame with rows of stone and columns of chem.}
 
-\item{tblame}{Path of tblame, which is a csvfile with rows of stone
+\item{tblame}{Path to TBLAME.csv, which is a csvfile with rows of stone
 and columns of chem.}
 }
 \value{
-A dataframe with unit organized
+Path to TBLAME.csv
 }
 \seealso{
-\code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
-  and \url{https://github.com/misasa/casteml}
+\code{\link{write.csv}} and \code{\link{cbk.read.tblame}}.
 }
 

@@ -4,7 +4,7 @@
 \alias{cbk.write.casteml}
 \title{Write a pmlame to CASTEML file}
 \usage{
-cbk.write.casteml(pmlame, pmlfile)
+cbk.write.casteml(pmlame, pmlfile = NULL)
 }
 \arguments{
 \item{pmlame}{A pmlame with rows of stone and columns of chem}
