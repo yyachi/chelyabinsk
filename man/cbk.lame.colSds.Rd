@@ -16,8 +16,8 @@ A pmlame with standard deviation value of each column
 Return standard deviation value of each element
 }
 \examples{
-pmlame  <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"))
-pmlame0 <- pmlame[,colnames(pmlame) != "sample_id"]
+pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+pmlame0 <- pmlame[,colnames(pmlame) != c("sample_id","image_id")]
 pmlame1 <- cbk.lame.colSds(pmlame0)
 }
 
