@@ -11,7 +11,11 @@
 #' pmlame1           <- cbk.lame.merge.error(pmlame1_mean,pmlame1_error)
 cbk.lame.merge.error <- function(pmlame_mean,pmlame_error) {
 
-  # Add "_error" to colnames of pmlame_error
+  ## chemlist     <- colnames(pmlame_mean)
+  ## stonelist    <- rownames(pmlame_mean)
+  ## pmlame_error <- pmlame_error[stonelist,chemlist]
+  
+  ## Add "_error" to colnames of pmlame_error
   chemlist <- colnames(pmlame_error)
   for(ii in 1:length(chemlist)) {
     if (!grepl("error",chemlist[ii])) {
@@ -19,7 +23,7 @@ cbk.lame.merge.error <- function(pmlame_mean,pmlame_error) {
     }
   }
 
-  # Real work
+  ## Real work
   pmStat1 <- cbind(pmlame_mean,pmlame_error)
   n       <- ncol(pmlame_mean)
   index   <- rep(1:n, each = 2) + (0:1) * n
