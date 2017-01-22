@@ -1,9 +1,9 @@
-#' @title Write pmlame as tblame.csv
+#' @title Write pmlame as TBLAME.csv
 #'
 #' @param pmlame A pmlame with rows of stone and columns of chem.
-#' @param tblame Path of tblame, which is a csvfile with rows of stone
+#' @param tblame Path of TBLAME.csv, which is a csvfile with rows of stone
 #'   and columns of chem.
-#' @return A dataframe with unit organized
+#' @return Path of TBLAME.csv
 #' @seealso \code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
 #'   and \url{https://github.com/misasa/casteml}
 #' @export

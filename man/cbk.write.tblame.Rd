@@ -4,18 +4,19 @@
 \alias{cbk.write.tblame}
 \title{Write pmlame as TBLAME.csv}
 \usage{
-cbk.write.tblame(pmlame, tblame = NULL)
+cbk.write.tblame(pmlame, tblame)
 }
 \arguments{
 \item{pmlame}{A pmlame with rows of stone and columns of chem.}
 
-\item{tblame}{Path to TBLAME.csv, which is a csvfile with rows of stone
+\item{tblame}{Path of TBLAME.csv, which is a csvfile with rows of stone
 and columns of chem.}
 }
 \value{
-Path to TBLAME.csv
+Path of TBLAME.csv
 }
 \seealso{
-\code{\link{write.csv}} and \code{\link{cbk.read.tblame}}.
+\code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
+  and \url{https://github.com/misasa/casteml}
 }
 

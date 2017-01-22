@@ -2,12 +2,12 @@
 % Please edit documentation in R/cbk.lame.merge.error.R
 \name{cbk.lame.merge.error}
 \alias{cbk.lame.merge.error}
-\title{Merge columns of mean and standard-error interleavely}
+\title{Merge columns of mean and error interleavely}
 \usage{
-cbk.lame.merge.error(pmlame, pmlame_error)
+cbk.lame.merge.error(pmlame_mean, pmlame_error)
 }
 \arguments{
-\item{pmlame}{A pmlame of mean values}
+\item{pmlame_mean}{A pmlame of mean values}
 
 \item{pmlame_error}{A pmlame of error values}
 }
@@ -15,13 +15,13 @@ cbk.lame.merge.error(pmlame, pmlame_error)
 A pmlame with merged columns
 }
 \description{
-Merge columns of mean and standard-error interleavely
+Merge columns of mean and error interleavely
 }
 \examples{
 pmlame            <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 pmlame0           <- pmlame[,colnames(pmlame) != c("sample_id","image_id")]
-pmlame1           <- cbk.lame.colMeans(pmlame0)
+pmlame1_mean      <- cbk.lame.colMeans(pmlame0)
 pmlame1_error     <- cbk.lame.colSds(pmlame0)
-pmlame_with_error <- cbk.lame.merge.error(pmlame1,pmlame1_error)
+pmlame1           <- cbk.lame.merge.error(pmlame1_mean,pmlame1_error)
 }
 

@@ -4,9 +4,9 @@
 #'   Since \link{yaml::as.yaml} drops rownames, this function stores
 #'   rownames using a column with label `rownames'.
 #' @param pmlame A pmlame with rows of stone and columns of chem.
-#' @param yamlfile A yamlfile with a pmlame.
+#' @param yamlfile Path to yamlfile with a pmlame.
 #' @param verbose Output debug info (default: TRUE).
-#' @return A pmlame with columns of chem and rows of stone.
+#' @return Path to yamlfile.
 #' @seealso \code{\link{cbk.read.yaml}} and
 #'   \code{\link{cbk.write.casteml}}.
 #' @export
@@ -20,9 +20,9 @@ cbk.write.yaml <- function(pmlame,yamlfile=NULL,verbose=TRUE){
   }
 
   if (verbose) {
-    cat(file=stderr(),"cbk.write.yaml:20: yamlfile # =>",yamlfile,"\n")
+    cat(file=stderr(),"cbk.write.yaml:23: yamlfile # =>",yamlfile,"\n")
   }
-  
+
   write(yaml::as.yaml(pmlame1),file=yamlfile)
 
   return(yamlfile)
