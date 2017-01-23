@@ -11,11 +11,11 @@ cbk.ref(analysis, tableunit = "none", property = NULL)
 "McDonough.1995", and "Boynton.1989".}
 
 \item{tableunit}{Output unit that will be resolved by
-`cbk.convector' (default: "ppm")}
+`cbk.convector'. (default: "none")}
 
 \item{property}{A numeric vector of element property with label
 that serves as sort key (default: NULL).  You can feed output from
-`cbk.periodic'}
+`cbk.periodic'.}
 }
 \value{
 A pmlame of element abundances

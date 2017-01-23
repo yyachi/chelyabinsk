@@ -12,7 +12,7 @@ ionml.read.session(tblame.csv, ref = "Si29")
 \item{ref}{reference ion such as `Si29'}
 }
 \value{
-casteml-type pmlame with average and standard error
+pseudo-pmlame with average and standard error of ionic ratio
 }
 \description{
 Read a session stored as a series of ion-type
