@@ -5,7 +5,7 @@
 #'   `ionml.read.laicpqms' to read the ion-type TBLAME.CSV.
 #' @param tblame.csv paths to ion-type TBLAME.CSV
 #' @param ref reference ion such as `Si29'
-#' @return casteml-type pmlame with average and standard error
+#' @return pseudo-pmlame with average and standard error of ionic ratio
 #' @seealso \code{\link{ionml.read.laicpqms}}
 #' @export
 #' @examples
