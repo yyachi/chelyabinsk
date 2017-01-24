@@ -17,6 +17,13 @@ To install this package issue following command.
     R> library('chelyabinsk')
     R> cbk.path("periodic-dflame1.csv")
 
+When you see message such like below, try following.
+
+    Error in curl::curl_fetch_disk(url, x$path, handle = handle) :   Problem with the SSL CA cert (path? access rights?
+
+    R> install.packages(c("curl", "httr"))
+
+
 # Developer's guide
 
 1. Clone the project from GitHub and install appropriate packages.
