@@ -2,13 +2,14 @@
 #'
 #' @param pmlame A pmlame with rows of stone and columns of chem
 #' @param pmlfile File path to casteml file
+#' @param verbose Output debug info (default: TRUE).
 #' @return File path to a casteml file
 #' @seealso \code{\link{cbk.read.casteml}}
 #' @export
 #' @examples
 #' pmlame0 <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 #' pmlfile <- cbk.write.casteml(pmlame0,'deleteme.pml')
-cbk.write.casteml <- function(pmlame,pmlfile=NULL){
+cbk.write.casteml <- function(pmlame,pmlfile=NULL,verbose=TRUE){
 
   # Transform pmlame to have a first column labeled as `session'
   pmlame <- data.frame(session=rownames(pmlame),pmlame)
@@ -25,6 +26,9 @@ cbk.write.casteml <- function(pmlame,pmlfile=NULL){
 
   # Convert csvfile to pmlfile
   cmd <- paste("convert -f pml",csvfile)
+  if (verbose) {
+    cat(file=stderr(),"cbk.write.casteml:30: casteml # =>",cmd,"\n")
+  }
   system2("casteml",cmd,stdout=pmlfile)
 
   return(pmlfile)

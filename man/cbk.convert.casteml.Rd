@@ -4,7 +4,8 @@
 \alias{cbk.convert.casteml}
 \title{Convert CASTEML file to CSV file}
 \usage{
-cbk.convert.casteml(pmlfile, category = NULL, force = FALSE)
+cbk.convert.casteml(pmlfile, category = NULL, force = FALSE,
+  verbose = TRUE)
 }
 \arguments{
 \item{pmlfile}{File path to CASTEML file}
@@ -12,6 +13,8 @@ cbk.convert.casteml(pmlfile, category = NULL, force = FALSE)
 \item{category}{Category filter that is passed to `casteml convert'}
 
 \item{force}{Flag to force convert again}
+
+\item{verbose}{Output debug info (default: TRUE).}
 }
 \value{
 File path to the converted file

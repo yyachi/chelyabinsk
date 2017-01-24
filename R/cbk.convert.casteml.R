@@ -10,6 +10,7 @@
 #' @param pmlfile File path to CASTEML file
 #' @param category Category filter that is passed to `casteml convert'
 #' @param force Flag to force convert again
+#' @param verbose Output debug info (default: TRUE).
 #' @return File path to the converted file
 #' @export
 #' @seealso \code{casteml convert} and
@@ -20,10 +21,11 @@
 #'
 #' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
 #' dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
-cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
+cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE,verbose=TRUE) {
   ## cat(file=stderr(),"cbk.convert.casteml: pmlfile is |",pmlfile,"|\n")
-  cat(file=stderr(),"cbk.convert.casteml:25: pmlfile # =>",pmlfile,"\n")
-
+  if (verbose) {
+    cat(file=stderr(),"cbk.convert.casteml:25: pmlfile # =>",pmlfile,"\n")
+  }
   ## outfile <- tempfile(pattern = sprintf("%s_%s@",tools::file_path_sans_ext(basename(pmlfile)),category), fileext=".dflame")
   ## outfile <- tempfile(fileext=".dflame")
   if(is.null(category)){
@@ -37,6 +39,9 @@ cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE) {
   if (force || !file.exists(outfile)) {
     ## system(cmd,">",outfile))
     ## cat(system(cmd,intern=TRUE),file=outfile,sep="\n") # intern=T accepts 8095 char max per a line
+    if (verbose) {
+      cat(file=stderr(),"cbk.convert.casteml:40: casteml # =>",cmd,"\n")
+    }
     system2("casteml",cmd,stdout=outfile)
   }
   return(outfile)
