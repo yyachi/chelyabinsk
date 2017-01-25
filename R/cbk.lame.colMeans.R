@@ -23,6 +23,7 @@ cbk.lame.colMeans <- function(pmlame) {
   pmlame2           <- pmlame2[2:nrow(pmlame2),,drop=FALSE] # drop first row
   rownames(pmlame2) <- stonelist
 
+  pmlame2[pmlame2 == "NaN"] <- NA
   ## pmlame0 <- data.frame(t(colMeans(pmlame,na.rm=TRUE)))
   return(pmlame2)
 }
