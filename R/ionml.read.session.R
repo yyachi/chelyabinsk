@@ -19,10 +19,15 @@ ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29") {
   pmMean0               <- data.frame() # summary
   pmSderr0              <- data.frame() # summary
 
+  ## cat(file=stderr(),"ionml.read.session:22: t0 # =>",t0,"\n")
+  ## cat(file=stderr(),"ionml.read.session:23: t1 # =>",t1,"\n")
+  ## cat(file=stderr(),"ionml.read.session:24: t2 # =>",t2,"\n")
+  ## cat(file=stderr(),"ionml.read.session:25: t3 # =>",t3,"\n")
+
   for(acq_ii in tblame.csv){
     acqname             <- tools::file_path_sans_ext(basename(acq_ii))
-    pmStat1             <- ionml.read.laicpqms(acq_ii,ref=ref)
-    ## pmStat1             <- ionml.read.laicpqms(acq_ii,t0=t0,t1=t1,t2=t2,t3=t3,ref=ref)
+    ## pmStat1             <- ionml.read.laicpqms(acq_ii,ref=ref)
+    pmStat1             <- ionml.read.laicpqms(acq_ii,t0=t0,t1=t1,t2=t2,t3=t3,ref=ref)
     pmStat2             <- pmStat1[,colnames(pmStat1)!="time"] # drop column of `time'
 
     pmMean2             <- pmStat2[paste0("mean/",ref),]
