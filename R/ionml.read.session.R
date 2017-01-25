@@ -4,20 +4,25 @@
 #'   TBLAME.CSV.  As of January 5, 2017, this function uses
 #'   `ionml.read.laicpqms' to read the ion-type TBLAME.CSV.
 #' @param tblame.csv paths to ion-type TBLAME.CSV
-#' @param ref reference ion such as `Si29'
+#' @param t0 time when baseline starts (default: 5 s)
+#' @param t1 time when baseline ends (default: 20 s)
+#' @param t2 time when ion starts (default: 25 s)
+#' @param t3 time when ion ends (default: 60 s)
+#' @param ref reference ion such as "Si29"
 #' @return pseudo-pmlame with average and standard error of ionic ratio
 #' @seealso \code{\link{ionml.read.laicpqms}}
 #' @export
 #' @examples
 #' files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
 #' pmlame0 <- ionml.read.session(files)
-ionml.read.session <- function(tblame.csv,ref="Si29") {
+ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29") {
   pmMean0               <- data.frame() # summary
   pmSderr0              <- data.frame() # summary
 
   for(acq_ii in tblame.csv){
     acqname             <- tools::file_path_sans_ext(basename(acq_ii))
-    pmStat1             <- ionml.read.laicpqms(acq_ii,ref=ref)
+    ## pmStat1             <- ionml.read.laicpqms(acq_ii,ref=ref)
+    pmStat1             <- ionml.read.laicpqms(acq_ii,t0=t0,t1=t1,t2=t2,t3=t3,ref=ref)
     pmStat2             <- pmStat1[,colnames(pmStat1)!="time"] # drop column of `time'
 
     pmMean2             <- pmStat2[paste0("mean/",ref),]

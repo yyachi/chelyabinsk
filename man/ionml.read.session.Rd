@@ -4,12 +4,21 @@
 \alias{ionml.read.session}
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
-ionml.read.session(tblame.csv, ref = "Si29")
+ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
+  ref = "Si29")
 }
 \arguments{
 \item{tblame.csv}{paths to ion-type TBLAME.CSV}
 
-\item{ref}{reference ion such as `Si29'}
+\item{t0}{time when baseline starts (default: 5 s)}
+
+\item{t1}{time when baseline ends (default: 20 s)}
+
+\item{t2}{time when ion starts (default: 25 s)}
+
+\item{t3}{time when ion ends (default: 60 s)}
+
+\item{ref}{reference ion such as "Si29"}
 }
 \value{
 pseudo-pmlame with average and standard error of ionic ratio

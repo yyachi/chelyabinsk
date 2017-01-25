@@ -13,11 +13,11 @@
 #'   `29Si').
 #' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.CSV with
 #'   extension `.ion'
+#' @param t0 time when baseline starts (default: 5 s)
+#' @param t1 time when baseline ends (default: 20 s)
+#' @param t2 time when ion starts (default: 25 s)
+#' @param t3 time when ion ends (default: 60 s)
 #' @param ref reference ion such as "Si29"
-#' @param t0 time when baseline starts
-#' @param t1 time when baseline ends
-#' @param t2 time when ion starts
-#' @param t3 time when ion ends
 #' @return The ion-type pmlame of ion/ref online with rows of
 #'   statistical information
 #' @export
