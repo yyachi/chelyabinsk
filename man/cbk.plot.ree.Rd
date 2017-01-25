@@ -13,12 +13,12 @@ cbk.plot.ree(pmlfile_or_stone, opts = NULL, tableunit = "none",
 \item{opts}{List of further options for plot.  See
 \code{\link{cbk.plot}}.}
 
-\item{tableunit}{Unit to toss to cbk.read.casteml().}
+\item{tableunit}{Unit to toss to \code{\link{cbk.read.casteml}}.}
 
 \item{reference}{Reference of element abundance.}
 }
 \value{
-@return A pmlmae used to plot the diagram.
+@return A pmlame used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create REE diagram.  This

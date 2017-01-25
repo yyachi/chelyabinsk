@@ -12,6 +12,8 @@ stone-ID (or pmlame).}
 
 \item{opts}{List of further options for plot.  See
 \code{\link{cbk.plot}}.}
+
+\item{tableunit}{Unit to toss to \code{\link{cbk.read.casteml}}.}
 }
 \value{
 A pmlame used to plot the diagram.

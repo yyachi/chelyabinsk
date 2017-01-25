@@ -6,6 +6,7 @@
 #'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID (or pmlame).
+#' @param tableunit Unit to toss to \code{\link{cbk.read.casteml}}.
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
 #' @return A pmlame used to plot the diagram.

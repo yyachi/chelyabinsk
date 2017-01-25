@@ -13,7 +13,7 @@ cbk.plot.lead(pmlfile_or_stone, opts = NULL)
 \code{\link{cbk.plot}}.}
 }
 \value{
-A pmlmae used to plot the diagram.
+A pmlame used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create lead diagram.  This

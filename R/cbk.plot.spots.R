@@ -9,7 +9,7 @@
 #' @param imagefile Image shown on background of analyzed spots.
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
-#' @return A pmlmae used to plot the diagram.
+#' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples

@@ -16,12 +16,12 @@ stone-ID (or pmlame).}
 
 \item{tableunit}{Unit to toss to \link{cbk.read.casteml}.}
 
-\item{property}{Property to align x-axis}
+\item{property}{Property to align x-axis to pass to \code{\link{cbk.periodic}}.}
 
 \item{reference}{Reference of element abundance}
 }
 \value{
-A pmlmae used to plot the diagram.
+A pmlame used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create spider diagram.

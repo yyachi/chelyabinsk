@@ -5,11 +5,11 @@
 #'   canvas in advance.
 #'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame).
-#' @param tableunit Unit to toss to cbk.read.casteml().
+#' @param tableunit Unit to toss to \code{\link{cbk.read.casteml}}.
 #' @param reference Reference of element abundance.
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
-#' @return @return A pmlmae used to plot the diagram.
+#' @return @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
@@ -36,9 +36,9 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   ## ----------------
   ##* PARSE
   ## ----------------
-  REElist   <- intersect(c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu'), colnames(pmlame1));
-  XX        <- cbk.periodic("atomicnumber")[REElist]
-  pmlame9   <- pmlame1[,REElist,drop=FALSE]
+  chemlist  <- intersect(c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu'), colnames(pmlame1));
+  XX        <- cbk.periodic("atomicnumber")[chemlist]
+  pmlame9   <- pmlame1[,names(XX),drop=FALSE]
   YY        <- t(pmlame9)
 
   ## ----------------

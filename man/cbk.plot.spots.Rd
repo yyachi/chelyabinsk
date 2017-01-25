@@ -16,7 +16,7 @@ stone-ID (or pmlame).}
 \item{imagefile}{Image shown on background of analyzed spots.}
 }
 \value{
-A pmlmae used to plot the diagram.
+A pmlame used to plot the diagram.
 }
 \description{
 Read CASTEML dataframe and create spots diagram.
