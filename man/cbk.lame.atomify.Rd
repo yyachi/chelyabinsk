@@ -27,6 +27,10 @@ A pmlame of element abundances.
 Estimate element abundances from ion-intensity
   obtained by mass spectrometry.  Main inputs are element abundance
   of internal-reference element, ionic_ratio, and ionic_yield.
+  This function accepts a pair of mean and error of ionic ratio
+  such in columns `Li7' and 'Li7_error' and yield a pair of mean
+  and error of element abundance such in columns `Li' and
+  `Li_error'.
 }
 \details{
 This function estimate trace-element abundances using
