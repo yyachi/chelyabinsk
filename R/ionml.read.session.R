@@ -18,18 +18,18 @@
 #' @examples
 #' files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
 #' pmlame0 <- ionml.read.session(files)
-ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=FALSE) {
-  pmMean0               <- data.frame()
-  pmSderr0              <- data.frame()
-
+ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=F) {
   ## cat(file=stderr(),"ionml.read.session:22: t0 # =>",t0,"\n")
   ## cat(file=stderr(),"ionml.read.session:23: t1 # =>",t1,"\n")
   ## cat(file=stderr(),"ionml.read.session:24: t2 # =>",t2,"\n")
   ## cat(file=stderr(),"ionml.read.session:25: t3 # =>",t3,"\n")
 
+  pmMean0               <- data.frame()
+  pmSderr0              <- data.frame()
+
   for(acq_ii in tblame.csv){
     acqname             <- tools::file_path_sans_ext(basename(acq_ii))
-    ## pmStat1             <- ionml.read.laicpqms(acq_ii,ref=ref)
+    ## pmStat1          <- ionml.read.laicpqms(acq_ii,ref=ref)
     pmStat1             <- ionml.read.laicpqms(acq_ii,t0=t0,t1=t1,t2=t2,t3=t3,ref=ref)
     pmStat2             <- pmStat1[,colnames(pmStat1)!="time"] # drop column of `time'
 
@@ -39,11 +39,11 @@ ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=F
 
     pmSderr2            <- pmStat2[paste0("sderr/",ref),] # sderr
 
-    ## if (DL) {
-    ##   pmDL2                   <- pmStat2[paste0("DL/",ref),] # DL
-    ##   idx_overwrite           <- pmDL2 > pmSderr2
-    ##   pmSderr2[,idx_large_DL] <- pmDL2[,idx_large_DL] # DL instead of sderr
-    ## }
+    if (DL) { # Replace stderr by detection limit, if larger
+      pmDL2                    <- pmStat2[paste0("DL/",ref),]
+      idx_overwrite            <- pmDL2 > pmSderr2
+      pmSderr2[,idx_overwrite] <- pmDL2[,idx_overwrite] # DL instead of sderr
+    }
 
     row.names(pmSderr2) <- acqname
     pmSderr0            <- rbind(pmSderr0, pmSderr2)
