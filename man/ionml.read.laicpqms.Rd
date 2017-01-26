@@ -2,41 +2,50 @@
 % Please edit documentation in R/ionml.read.laicpqms.R
 \name{ionml.read.laicpqms}
 \alias{ionml.read.laicpqms}
-\title{Read ion-type TBLAME.CSV originated from Analyte G2 with
+\title{Read ion-type TBLAME.csv originated from Analyte G2 with
   iCAP-Q}
 \usage{
 ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
   ref = "Si29")
 }
 \arguments{
-\item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.CSV with
-extension `.ion'}
+\item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.csv with
+extension `.ion'.}
 
-\item{t0}{time when baseline starts (default: 5 s)}
+\item{t0}{time when baseline starts (default: 5 s).}
 
-\item{t1}{time when baseline ends (default: 20 s)}
+\item{t1}{time when baseline ends (default: 20 s).}
 
-\item{t2}{time when ion starts (default: 25 s)}
+\item{t2}{time when ion starts (default: 25 s).}
 
-\item{t3}{time when ion ends (default: 60 s)}
+\item{t3}{time when ion ends (default: 60 s).}
 
-\item{ref}{reference ion such as "Si29"}
+\item{ref}{reference ion such as `Si29'.}
 }
 \value{
-The ion-type pmlame of ion/ref online with rows of
-  statistical information
+The ion-type pmlame of ion-to-ref ratio online with rows of
+  statistical information.
 }
 \description{
-Read ion-type TBLAME.CSV originated from Analyte G2
-  with iCAP-Q.  The original QTEGRA.CSV (CSV file exported from
+Read ion-type TBLAME.csv originated from Analyte G2
+  with iCAP-Q.  The original QTEGRA.csv (CSV file exported from
   Qtegra) should be processed in advance to have ion-type
-  TBLNAME.CSV with extension `.ion'.
+  TBLNAME.csv with extension `.ion'.
 
-  The ion-type TBLNAME.CSV consists of columns of time and ion
+  The ion-type TBLNAME.csv consists of columns of time and ion
   intensities.  The first column of each line should be number of
-  `cycle'.  Colname of the ion-type TBLNAME.CSV should be `time'
+  `cycle'.  Colname of the ion-type TBLNAME.csv should be `time'
   and name of element followed by atomic weight (`Si29' instead of
   `29Si').
+}
+\details{
+Signal between `t2' and `t3' is regarded as main signal
+  from a sample (online).  Signal between `t0' and `t1' is regarded
+  as background.  Mean of latter is calculated as BASELINE.  Then
+  the BASELINE is subtracted from the main signal.  The main signal
+  is normalized by `ref'.  This function returns the BASELINE
+  subtracted and reference normalized `ionic-ratio' with
+  statistical information at the bottom of the table.
 }
 \examples{
 file <- cbk.path("ref_cpx_klb1@1.ion")

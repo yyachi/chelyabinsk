@@ -2,25 +2,25 @@
 % Please edit documentation in R/ionml.convert.iontblame.R
 \name{ionml.convert.iontblame}
 \alias{ionml.convert.iontblame}
-\title{Convert ion-type TBLAME.CSV to IONML}
+\title{Convert ion-type TBLAME.csv to IONML}
 \usage{
 ionml.convert.iontblame(iontblame, outfile = NULL, force = FALSE)
 }
 \arguments{
-\item{iontblame}{Name of ion-type TBLAME.CSV}
+\item{iontblame}{Name of ion-type TBLAME.csv.}
 
-\item{outfile}{Name of IONML that will be created}
+\item{outfile}{Name of IONML that will be created.}
 
-\item{force}{Flag to force convert again}
+\item{force}{Flag to force convert again.}
 }
 \value{
-Name of IONML that was created
+Name of IONML that was created.
 }
 \description{
-Convert ion-type TBLAME.CSV to IONML.
+Convert ion-type TBLAME.csv to IONML.
 
   This really create complete IONML.  This program assumes
-  extensions of ion-type TBLAME.CSV and IONML to be `.ion' and
+  extensions of ion-type TBLAME.csv and IONML to be `.ion' and
   `.xml', respectively.
 }
 \examples{
@@ -28,6 +28,6 @@ iontblame <- cbk.path("ref_cpx_klb1@1.ion")
 ionml.convert.iontblame(iontblame,outfile=tempfile(fileext=".xml"))
 }
 \seealso{
-ionml.convert.laicpqms
+\code{ionml.convert.laicpqms}
 }
 
