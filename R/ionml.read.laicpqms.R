@@ -4,22 +4,31 @@
 #' @description Read ion-type TBLAME.csv originated from Analyte G2
 #'   with iCAP-Q.  The original QTEGRA.csv (CSV file exported from
 #'   Qtegra) should be processed in advance to have ion-type
-#'   TBLNAME.CSV with extension `.ion'.
+#'   TBLNAME.csv with extension `.ion'.
 #'
-#'   The ion-type TBLNAME.CSV consists of columns of time and ion
+#'   The ion-type TBLNAME.csv consists of columns of time and ion
 #'   intensities.  The first column of each line should be number of
-#'   `cycle'.  Colname of the ion-type TBLNAME.CSV should be `time'
+#'   `cycle'.  Colname of the ion-type TBLNAME.csv should be `time'
 #'   and name of element followed by atomic weight (`Si29' instead of
 #'   `29Si').
+#'
+#' @details Signal between `t2' and `t3' is regarded as main signal
+#'   from a sample.  Signal between `t0' and `t1' is regarded as
+#'   background.  Mean of latter is calculated as BASELINE.  Then the
+#'   BASELINE is subtracted from the main signal.  The main signal is
+#'   normalized by `ref'.  This function returns the BASELINE
+#'   subtracted and reference normalized `ionic-ratio' with
+#'   statistical information at the bottom of the table.
+#'
 #' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.csv with
-#'   extension `.ion'
-#' @param t0 time when baseline starts (default: 5 s)
-#' @param t1 time when baseline ends (default: 20 s)
-#' @param t2 time when ion starts (default: 25 s)
-#' @param t3 time when ion ends (default: 60 s)
-#' @param ref reference ion such as "Si29"
-#' @return The ion-type pmlame of ion/ref online with rows of
-#'   statistical information
+#'   extension `.ion'.
+#' @param t0 time when baseline starts (default: 5 s).
+#' @param t1 time when baseline ends (default: 20 s).
+#' @param t2 time when ion starts (default: 25 s).
+#' @param t3 time when ion ends (default: 60 s).
+#' @param ref reference ion such as "Si29".
+#' @return The ion-type pmlame of ion-to-ref ratio online with rows of
+#'   statistical information.
 #' @export
 #' @seealso \code{\link{ionml.convert.laicpqms}}
 #' @examples
@@ -55,7 +64,10 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   pmlame1             <- filter(pmlame0, time >t0 & time <t1) # baseline
   pmMean1             <- summarise_each(pmlame1, funs(mean))
   pmMean1$time        <- NA
-  row.names(pmMean1)  <- "base/cps"
+  row.names(pmMean1)  <- "base(mean)/cps"
+  pmSd1               <- summarise_each(pmlame1, funs(sd))
+  pmSd1$time          <- NA
+  row.names(pmSd1)    <- "base(sd)/cps"
 
   ## Subtract
   pmlame2             <- sweep(pmlame0, 2, as.numeric(pmMean1)) # baseline subtracted from raw signal
@@ -74,15 +86,15 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   ## Stat ion/ref online
   pmMean5             <- summarize_each(pmlame5, funs(mean))
   row.names(pmMean5)  <- paste0("mean/",ref)
-  pmStdev5            <- summarize_each(pmlame5, funs(sd))
-  row.names(pmStdev5) <- paste0("stdev/",ref)
+  pmSd5               <- summarize_each(pmlame5, funs(sd))
+  row.names(pmSd5)    <- paste0("sd/",ref)
   pmSderr5            <- summarize_each(pmlame5, funs(sd)) / sqrt(nrow(pmlame5))
   row.names(pmSderr5) <- paste0("sderr/",ref)
-  pmSrel5             <- pmSderr5 / pmMean5 * 100
-  row.names(pmSrel5)  <- "sderr%"
+  Sdrel5              <- pmSderr5 / pmMean5 * 100
+  row.names(Sdrel5)   <- "sderr%"
 
   ## Summarize stats
-  pmStat5             <- rbind(pmMean1,pmMean3,pmMean5,pmStdev5,pmSderr5,pmSrel5)
+  pmStat5             <- rbind(pmMean1,pmSd1,pmMean3,pmMean5,pmSd5,pmSderr5,Sdrel5)
   pmStat5$time        <- NA
 
   ## Make up for output
