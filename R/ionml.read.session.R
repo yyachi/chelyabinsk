@@ -1,9 +1,9 @@
 #' @title Read a session stored as a series of ion-type TBLAME.csv
 #'
 #' @description Read a session stored as a series of ion-type
-#'   TBLAME.CSV.  As of January 5, 2017, this function uses
-#'   `ionml.read.laicpqms' to read the ion-type TBLAME.CSV.
-#' @param tblame.csv paths to ion-type TBLAME.CSV
+#'   TBLAME.csv.  As of January 5, 2017, this function uses
+#'   `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
+#' @param tblame.csv paths to ion-type TBLAME.csv
 #' @param t0 time when baseline starts (default: 5 s)
 #' @param t1 time when baseline ends (default: 20 s)
 #' @param t2 time when ion starts (default: 25 s)

@@ -1,8 +1,8 @@
-#' @title Read ion-type TBLAME.CSV originated from Analyte G2 with
+#' @title Read ion-type TBLAME.csv originated from Analyte G2 with
 #'   iCAP-Q
 #'
-#' @description Read ion-type TBLAME.CSV originated from Analyte G2
-#'   with iCAP-Q.  The original QTEGRA.CSV (CSV file exported from
+#' @description Read ion-type TBLAME.csv originated from Analyte G2
+#'   with iCAP-Q.  The original QTEGRA.csv (CSV file exported from
 #'   Qtegra) should be processed in advance to have ion-type
 #'   TBLNAME.CSV with extension `.ion'.
 #'
@@ -11,7 +11,7 @@
 #'   `cycle'.  Colname of the ion-type TBLNAME.CSV should be `time'
 #'   and name of element followed by atomic weight (`Si29' instead of
 #'   `29Si').
-#' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.CSV with
+#' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.csv with
 #'   extension `.ion'
 #' @param t0 time when baseline starts (default: 5 s)
 #' @param t1 time when baseline ends (default: 20 s)

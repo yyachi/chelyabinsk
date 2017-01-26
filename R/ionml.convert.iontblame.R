@@ -1,16 +1,16 @@
-#' @title Convert ion-type TBLAME.CSV to IONML
+#' @title Convert ion-type TBLAME.csv to IONML
 #'
-#' @description Convert ion-type TBLAME.CSV to IONML.
+#' @description Convert ion-type TBLAME.csv to IONML.
 #' 
 #'   This really create complete IONML.  This program assumes
-#'   extensions of ion-type TBLAME.CSV and IONML to be `.ion' and
+#'   extensions of ion-type TBLAME.csv and IONML to be `.ion' and
 #'   `.xml', respectively.
 #'
-#' @param iontblame Name of ion-type TBLAME.CSV
-#' @param outfile Name of IONML that will be created
-#' @param force Flag to force convert again
-#' @return Name of IONML that was created
-#' @seealso ionml.convert.laicpqms
+#' @param iontblame Name of ion-type TBLAME.csv.
+#' @param outfile Name of IONML that will be created.
+#' @param force Flag to force convert again.
+#' @return Name of IONML that was created.
+#' @seealso \code{ionml.convert.laicpqms}
 #' @export
 #' @examples
 #' iontblame <- cbk.path("ref_cpx_klb1@1.ion")

@@ -1,19 +1,19 @@
-#' @title Convert laicpqms-type QTEGRA.CSV by Analyte G2 with iCAP-Q
-#'   to ion-type TBLAME.CSV
+#' @title Convert laicpqms-type QTEGRA.csv by Analyte G2 with iCAP-Q
+#'   to ion-type TBLAME.csv
 #'
-#' @description Convert laicpqms-type QTEGRA.CSV by Analyte G2 with
-#'   iCAP-Q to ion-type TBLAME.CSV.  Filter metadata out and append
+#' @description Convert laicpqms-type QTEGRA.csv by Analyte G2 with
+#'   iCAP-Q to ion-type TBLAME.csv.  Filter metadata out and append
 #'   column of cycle number.
 #' 
 #'   This really does NOT create IONML but incomplete IONML that is
-#'   ion-type TBLAME.CSV.  This program assumes extensions of
-#'   laicpqms-type QTEGRA.CSV and ion-type TBLAME.CSV to be `.csv' and
+#'   ion-type TBLAME.csv.  This program assumes extensions of
+#'   laicpqms-type QTEGRA.csv and ion-type TBLAME.csv to be `.csv' and
 #'   `.ion', respectively.
 #'
-#' @param acqfile Name of laicpqms-type QTEGRA.CSV exported form Qtegra
-#' @param outfile Name of ion-type TBLAME.CSV that will be created
+#' @param acqfile Name of laicpqms-type QTEGRA.csv exported form Qtegra
+#' @param outfile Name of ion-type TBLAME.csv that will be created
 #' @param force Flag to force convert again
-#' @return Name of ion-type TBLAME.CSV that was created
+#' @return Name of ion-type TBLAME.csv that was created
 #' @seealso ionml-laicpqms.plx
 #' @export
 #' @examples
