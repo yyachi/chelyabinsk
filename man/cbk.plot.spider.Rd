@@ -32,6 +32,13 @@ Read CASTEML dataframe and create spider diagram.
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 cbk.plot.spider(pmlame)
+
+pmlame        <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
+pmlame0       <- pmlame[,colnames(pmlame) != c("sample_id","image_id","image_path")]
+pmlame0_mean  <- cbk.lame.colMeans(pmlame0)
+pmlame0_error <- cbk.lame.colSds(pmlame0)
+pmlame1       <- cbk.lame.merge.error(pmlame0_mean,pmlame0_error)
+cbk.plot.spider(pmlame1)
 }
 \seealso{
 \url{https://github.com/misasa/casteml}

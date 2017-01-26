@@ -15,6 +15,13 @@
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.ree(pmlfile)
+#'
+#' pmlame        <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
+#' pmlame0       <- pmlame[,colnames(pmlame) != c("sample_id","image_id","image_path")]
+#' pmlame0_mean  <- cbk.lame.colMeans(pmlame0)
+#' pmlame0_error <- cbk.lame.colSds(pmlame0)
+#' pmlame1       <- cbk.lame.merge.error(pmlame0_mean,pmlame0_error)
+#' cbk.plot.ree(pmlame1)
 cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988") {
   ## ----------------
   ##* PARSE OPTION
@@ -34,7 +41,7 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   pmlame1              <- cbk.lame.normalize(pmlame0,reflame)
 
   errorlist            <- grep("_error",colnames(pmlame0),value=T)
-  errorlame0           <- pmlame0[errorlist]
+  errorlame0           <- pmlame0[,errorlist]
   colnames(errorlame0) <- unlist(lapply(strsplit(errorlist,"_error"),'[[',1))
   errorlame1           <- cbk.lame.normalize(errorlame0,reflame)
 
@@ -68,7 +75,7 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
           xlab='',ylab='ZZ/CI',axes=FALSE)
   if (length(errorlist) != 0) {
-    errorbar.y <- function(x,y,err,w,col=1){x0=x;y0=y-err;x1=x;y1=y+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=w,col=col);}
+    errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
     for(ii in 1:length(stonelist)) {
       errorbar.y(XX,YY[,ii],YY_sd[,ii],
                  0.05,col=col[ii])
