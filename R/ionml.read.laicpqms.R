@@ -13,10 +13,10 @@
 #'   `29Si').
 #'
 #' @details Signal between `t2' and `t3' is regarded as main signal
-#'   from a sample.  Signal between `t0' and `t1' is regarded as
-#'   background.  Mean of latter is calculated as BASELINE.  Then the
-#'   BASELINE is subtracted from the main signal.  The main signal is
-#'   normalized by `ref'.  This function returns the BASELINE
+#'   from a sample (online).  Signal between `t0' and `t1' is regarded
+#'   as background.  Mean of latter is calculated as BASELINE.  Then
+#'   the BASELINE is subtracted from the main signal.  The main signal
+#'   is normalized by `ref'.  This function returns the BASELINE
 #'   subtracted and reference normalized `ionic-ratio' with
 #'   statistical information at the bottom of the table.
 #'
@@ -26,7 +26,7 @@
 #' @param t1 time when baseline ends (default: 20 s).
 #' @param t2 time when ion starts (default: 25 s).
 #' @param t3 time when ion ends (default: 60 s).
-#' @param ref reference ion such as "Si29".
+#' @param ref reference ion such as `Si29'.
 #' @return The ion-type pmlame of ion-to-ref ratio online with rows of
 #'   statistical information.
 #' @export
@@ -62,21 +62,34 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
 
   ## Stat baseline
   pmlame1             <- filter(pmlame0, time >t0 & time <t1) # baseline
+  n_baseline          <- nrow(pmlame1)
+
   pmMean1             <- summarise_each(pmlame1, funs(mean))
   pmMean1$time        <- NA
-  row.names(pmMean1)  <- "base(mean)/cps"
-  pmSd1               <- summarise_each(pmlame1, funs(sd))
-  pmSd1$time          <- NA
-  row.names(pmSd1)    <- "base(sd)/cps"
+  row.names(pmMean1)  <- "mean(base)/cps"
 
-  ## Subtract
+  ## Subtract baseline from main signal
   pmlame2             <- sweep(pmlame0, 2, as.numeric(pmMean1)) # baseline subtracted from raw signal
   pmlame2$time        <- pmlame0$time
 
-  ## Stat ion online
+  ## Stat main signal online
   pmlame3             <- filter(pmlame2, time >t2 & time <t3) # ion online
+  n_online            <- nrow(pmlame3)
+
   pmMean3             <- summarize_each(pmlame3, funs(mean))
   row.names(pmMean3)  <- "mean/cps"
+
+  pmSd3               <- summarize_each(pmlame3, funs(sd))
+  row.names(pmSd3)    <- "sd/cps"
+
+  ## Detection limit defined as 3 x Sd(base) / ref / sqrt(n) during background period
+  pmSd1               <- summarise_each(pmlame1, funs(sd))
+  pmSd1$time          <- NA
+  row.names(pmSd1)    <- "sd(base)/cps"
+
+  refOverallMean      <- pmMean3["mean/cps",ref] # one number for one DL
+  pmDL3               <- pmSd1*3/ refOverallMean / sqrt(n_baseline)
+  row.names(pmDL3)    <- paste0("DL/",ref)
 
   ## Normalize
   pmlame4             <- pmlame2 / pmlame2[,ref] # ion normaized by ref
@@ -94,7 +107,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   row.names(Sdrel5)   <- "sderr%"
 
   ## Summarize stats
-  pmStat5             <- rbind(pmMean1,pmSd1,pmMean3,pmMean5,pmSd5,pmSderr5,Sdrel5)
+  pmStat5             <- rbind(pmMean1,pmSd1,pmMean3,pmSd3,pmMean5,pmSd5,pmSderr5,pmDL3,Sdrel5)
   pmStat5$time        <- NA
 
   ## Make up for output
