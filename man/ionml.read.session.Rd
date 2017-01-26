@@ -5,7 +5,7 @@
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", DL = F)
+  ref = "Si29", DL = FALSE)
 }
 \arguments{
 \item{tblame.csv}{Paths to ion-type TBLAME.csv.}
