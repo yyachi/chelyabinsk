@@ -43,16 +43,22 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29') {
   ## Reduce SiO2 to Si
   ## pmlame        <- cbk.lame.reduce(pmlame)
 
-  isomeas           <- intersect(colnames(ionic_ratio),colnames(ionic_yield))
   ## isomeas        <- c('Li7','B11','Si29','La139')
+  isomeas           <- intersect(colnames(ionic_ratio),colnames(ionic_yield))
+
   pseudowt          <- cbk.iso(isomeas,'pseudo.atomic.weight') # m(Li)/R(Li7) or m(Si)/R(Si29)
-  stonelist         <- intersect(rownames(ionic_ratio),rownames(pmlame))
   ## stonelist      <- c('ref_gl_tahiti@2','ref_gl_tahiti@3','ref_gl_tahiti@4','trc_meso_allende@10')
+  stonelist         <- intersect(rownames(ionic_ratio),rownames(pmlame))
 
   ## Setup lames and estimate atomic ratio
   ionic_yield1      <- ionic_yield[,isomeas]
   ionic_ratio1      <- ionic_ratio[stonelist,isomeas]
   atomic_ratio1     <- cbk.lame.normalize(ionic_ratio1,ionic_yield1)
+
+  ## isomeas_err       <- paste0(isomeas,"_error")
+  ## ionic_ratio1_err  <- ionic_ratio[stonelist,isomeas_err]
+  ## colnames(isonic_ratio1_err) <- isomeas
+  ## atomic_ratio1_err <- cbk.lame.normalize(ionic_ratio1_err,ionic_yield1)
 
   ## Format chem-data of reference element
   concref           <- pmlame[stonelist,cbk.iso(isoref,'symbol'),drop=FALSE]
