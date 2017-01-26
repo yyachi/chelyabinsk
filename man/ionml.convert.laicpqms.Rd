@@ -2,29 +2,29 @@
 % Please edit documentation in R/ionml.convert.laicpqms.R
 \name{ionml.convert.laicpqms}
 \alias{ionml.convert.laicpqms}
-\title{Convert laicpqms-type QTEGRA.CSV by Analyte G2 with iCAP-Q
-  to ion-type TBLAME.CSV}
+\title{Convert laicpqms-type QTEGRA.csv by Analyte G2 with iCAP-Q
+  to ion-type TBLAME.csv}
 \usage{
 ionml.convert.laicpqms(acqfile, outfile = NULL, force = FALSE)
 }
 \arguments{
-\item{acqfile}{Name of laicpqms-type QTEGRA.CSV exported form Qtegra}
+\item{acqfile}{Name of laicpqms-type QTEGRA.csv exported form Qtegra}
 
-\item{outfile}{Name of ion-type TBLAME.CSV that will be created}
+\item{outfile}{Name of ion-type TBLAME.csv that will be created}
 
 \item{force}{Flag to force convert again}
 }
 \value{
-Name of ion-type TBLAME.CSV that was created
+Name of ion-type TBLAME.csv that was created
 }
 \description{
-Convert laicpqms-type QTEGRA.CSV by Analyte G2 with
-  iCAP-Q to ion-type TBLAME.CSV.  Filter metadata out and append
+Convert laicpqms-type QTEGRA.csv by Analyte G2 with
+  iCAP-Q to ion-type TBLAME.csv.  Filter metadata out and append
   column of cycle number.
 
   This really does NOT create IONML but incomplete IONML that is
-  ion-type TBLAME.CSV.  This program assumes extensions of
-  laicpqms-type QTEGRA.CSV and ion-type TBLAME.CSV to be `.csv' and
+  ion-type TBLAME.csv.  This program assumes extensions of
+  laicpqms-type QTEGRA.csv and ion-type TBLAME.csv to be `.csv' and
   `.ion', respectively.
 }
 \examples{

@@ -5,28 +5,32 @@
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29")
+  ref = "Si29", DL = F)
 }
 \arguments{
-\item{tblame.csv}{paths to ion-type TBLAME.CSV}
+\item{tblame.csv}{Paths to ion-type TBLAME.csv.}
 
-\item{t0}{time when baseline starts (default: 5 s)}
+\item{t0}{Time when baseline starts (default: 5 s).}
 
-\item{t1}{time when baseline ends (default: 20 s)}
+\item{t1}{Time when baseline ends (default: 20 s).}
 
-\item{t2}{time when ion starts (default: 25 s)}
+\item{t2}{Time when ion starts (default: 25 s).}
 
-\item{t3}{time when ion ends (default: 60 s)}
+\item{t3}{Time when ion ends (default: 60 s).}
 
-\item{ref}{reference ion such as "Si29"}
+\item{ref}{Reference ion such as `Si29'.}
+
+\item{DL}{Overwrite `stderr' by delection limit (DL) when DL is
+larger than `stderr'.}
 }
 \value{
-pseudo-pmlame with average and standard error of ionic ratio
+Pseudo-pmlame with average and standard error of ionic
+  ratio
 }
 \description{
 Read a session stored as a series of ion-type
-  TBLAME.CSV.  As of January 5, 2017, this function uses
-  `ionml.read.laicpqms' to read the ion-type TBLAME.CSV.
+  TBLAME.csv.  As of January 5, 2017, this function uses
+  `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
 }
 \examples{
 files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
