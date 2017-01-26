@@ -40,33 +40,43 @@
 #' pmlame1     <- cbk.lame.reduce(pmlame0)
 #' cbk.lame.atomify(pmlame1,ionic_ratio,ionic_yield,isoref='Si29')
 cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29') {
-  ## Reduce SiO2 to Si
-  ## pmlame        <- cbk.lame.reduce(pmlame)
+  ##* Reduce SiO2 to Si
+  ## pmlame         <- cbk.lame.reduce(pmlame)
 
+  ##* Obtain list of items
   ## isomeas        <- c('Li7','B11','Si29','La139')
-  isomeas           <- intersect(colnames(ionic_ratio),colnames(ionic_yield))
+  isomeas           <- grep("_error",colnames(ionic_ratio),value=T,invert=T) # exclude _error
+  isomeas           <- intersect(isomeas,colnames(ionic_yield))
 
   pseudowt          <- cbk.iso(isomeas,'pseudo.atomic.weight') # m(Li)/R(Li7) or m(Si)/R(Si29)
   ## stonelist      <- c('ref_gl_tahiti@2','ref_gl_tahiti@3','ref_gl_tahiti@4','trc_meso_allende@10')
   stonelist         <- intersect(rownames(ionic_ratio),rownames(pmlame))
 
-  ## Setup lames and estimate atomic ratio
+  ##* Setup lames and estimate atomic ratio
   ionic_yield1      <- ionic_yield[,isomeas]
   ionic_ratio1      <- ionic_ratio[stonelist,isomeas]
   atomic_ratio1     <- cbk.lame.normalize(ionic_ratio1,ionic_yield1)
 
-  ## isomeas_err       <- paste0(isomeas,"_error")
-  ## ionic_ratio1_err  <- ionic_ratio[stonelist,isomeas_err]
-  ## colnames(isonic_ratio1_err) <- isomeas
-  ## atomic_ratio1_err <- cbk.lame.normalize(ionic_ratio1_err,ionic_yield1)
-
-  ## Format chem-data of reference element
+  ##* Format chem-data of reference element
   concref           <- pmlame[stonelist,cbk.iso(isoref,'symbol'),drop=FALSE]
   concref1          <- cbk.lame.rep(concref,length(isomeas))
 
-  ## Estimate element-abundance from atomic-ratio
+  ##* Estimate element-abundance from atomic-ratio
   pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt) * concref1 / pseudowt[isoref]
+
+  ##* Rename label from Li7 (incorrect) to Li (correct)
   colnames(pmlame1) <- cbk.iso(colnames(pmlame1),'symbol') # element-name instead of iso-name
 
+  ##* Do similar thing for error if exists
+  if (length(grep("_error",colnames(ionic_ratio))) > 0) {
+    ionic_ratio1_err           <- ionic_ratio[stonelist,paste0(isomeas,"_error")]
+    colnames(ionic_ratio1_err) <- isomeas
+    atomic_ratio1_err          <- cbk.lame.normalize(ionic_ratio1_err,ionic_yield1)
+    pmlame1_err                <- cbk.lame.normalize(atomic_ratio1_err, 1/pseudowt) * concref1 / pseudowt[isoref]
+    colnames(pmlame1_err)      <- cbk.iso(colnames(pmlame1_err),'symbol')
+
+    pmlame1                    <- cbk.lame.merge.error(pmlame1,pmlame1_err)
+  }
+  
   return(pmlame1)
 }
