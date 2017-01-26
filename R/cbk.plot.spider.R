@@ -36,18 +36,16 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  ## pmlame            <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
-  pmlame0              <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
-  stonelist            <- rownames(pmlame0)
+  ## pmlame  <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
+  pmlame0    <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
+  stonelist  <- rownames(pmlame0)
 
-  reflame              <- cbk.ref(reference,tableunit)
-  pmlame1              <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
-  pmlame2              <- cbk.lame.normalize(pmlame1,reflame)
+  reflame    <- cbk.ref(reference,tableunit)
+  pmlame1    <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
+  pmlame2    <- cbk.lame.normalize(pmlame1,reflame)
 
-  errorlist            <- grep("_error",colnames(pmlame1),value=T)
-  errorlame0           <- pmlame1[,errorlist]
-  colnames(errorlame0) <- unlist(lapply(strsplit(errorlist,"_error"),'[[',1))
-  errorlame1           <- cbk.lame.normalize(errorlame0,reflame)
+  errorlame0 <- cbk.lame.fetch.error(pmlame0)
+  errorlame1 <- cbk.lame.normalize(errorlame0,reflame)
 
   ## ----------------
   ##* PARSE
@@ -61,7 +59,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
 
   YY         <- t(pmlame9)
 
-  if (length(errorlist) != 0) {
+  if (length(errorlame0) != 0) {
     errorlame9 <- errorlame1[,names(XX),drop=FALSE]
     YY_sd      <- t(errorlame9)
   }
@@ -82,7 +80,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
 
   matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
           xlab='',ylab='ZZ/CI',axes=FALSE)
-  if (length(errorlist) != 0) {
+  if (length(errorlame0) != 0) {
     errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
     for(ii in 1:length(stonelist)) {
       errorbar.y(XX,YY[,ii],YY_sd[,ii],
