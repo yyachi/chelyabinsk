@@ -25,25 +25,47 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
   ## pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
   pmlame0 <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F,check.names=F)
 
+  ## pattern_colname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
+  ## chemlist        <- colnames(pmlame0)
+  ## isomeas         <- gsub(pattern_colname,"\\1",chemlist) # Li (ppm) -> Li
+  ## unit            <- gsub(pattern_colname,"\\2",chemlist) # Li (ppm) -> (ppm)
+  ## isomeas         <- gsub(" ","",isomeas) # remove empty space
+  ## if (any(grepl("_error",unit))) {
+  ##   for(ii in 1:length(chemlist)) {
+  ##     if (unit[ii] == "_error") {
+  ##       unit[ii]     <- unit[which(grepl(isomeas[ii], chemlist)[-ii])]
+  ##     } else {
+  ##       chemlist[ii] <- isomeas[ii]
+  ##     }
+  ##   }
+  ##   colnames(pmlame0) <- chemlist
+  ##   pmlame            <- rbind(pmlame0, unit=gsub("[()]","",unit))
+  ## } else {
+  ##   pmlame <- pmlame0
+  ## }
+  isomeas_in      <- colnames(pmlame0)
   pattern_colname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
-  chemlist        <- colnames(pmlame0)
-  isomeas         <- gsub(pattern_colname,"\\1",chemlist) # Li (ppm) -> Li
-  unit            <- gsub(pattern_colname,"\\2",chemlist) # Li (ppm) -> (ppm)
-  isomeas         <- gsub(" ","",isomeas) # remove empty space
+  isomeas         <- gsub(pattern_colname,"\\1",isomeas_in) # Li (ppm) -> Li
+  isomeas         <- gsub("[ ]","",isomeas)
+  unit_in         <- gsub(pattern_colname,"\\2",isomeas_in) # Li (ppm) -> (ppm)
+  unit_in         <- gsub("[()]","",unit_in)
 
-  if (any(grepl("_error",unit))) {
-    for(ii in 1:length(chemlist)) {
-      if (unit[ii] == "_error") {
-        unit[ii]     <- unit[which(grepl(isomeas[ii], chemlist)[-ii])]
-      } else {
-        chemlist[ii] <- isomeas[ii]
-      }
-    }
-    colnames(pmlame0) <- chemlist
-    pmlame            <- rbind(pmlame0, unit=gsub("[()]","",unit))
+  if (any(grepl("_error",unit_in))) {
+    ## Create lookup-table
+    datap           <- !grepl("_error$",isomeas_in)
+    tblunit         <- unit_in[datap]
+    names(tblunit)  <- isomeas[datap]
+
+    ## Have unit for isomeas
+    unit            <- tblunit[isomeas]
+    names(unit)     <- isomeas_in
+
+    colnames(pmlame0)[datap] <- isomeas[datap]
+    pmlame                   <- rbind(pmlame0, unit=unit)
   } else {
     pmlame <- pmlame0
   }
+  
   if ('unit' %in% rownames(pmlame)) {
     colSTR <- intersect(colnames(pmlame),c("image_path","sample_id","image_id","remark"))
     if (length(colSTR)==0) {
