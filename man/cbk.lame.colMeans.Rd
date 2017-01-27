@@ -17,7 +17,7 @@ Return mean value of each element
 }
 \examples{
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-pmlame0 <- pmlame[,colnames(pmlame) != c("sample_id","image_id")]
+pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
 pmlame1 <- cbk.lame.colMeans(pmlame0)
 }
 

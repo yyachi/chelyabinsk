@@ -23,11 +23,30 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
   }
 
   ## pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
-  pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F,check.names=F)
+  pmlame0 <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F,check.names=F)
 
+  pattern_colname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
+  chemlist        <- colnames(pmlame0)
+  isomeas         <- gsub(pattern_colname,"\\1",chemlist) # Li (ppm) -> Li
+  unit            <- gsub(pattern_colname,"\\2",chemlist) # Li (ppm) -> (ppm)
+  isomeas         <- gsub(" ","",isomeas) # remove empty space
+
+  if (any(grepl("_error",unit))) {
+    for(ii in 1:length(chemlist)) {
+      if (unit[ii] == "_error") {
+        unit[ii]     <- unit[which(grepl(isomeas[ii], chemlist)[-ii])]
+      } else {
+        chemlist[ii] <- isomeas[ii]
+      }
+    }
+    colnames(pmlame0) <- chemlist
+    pmlame            <- rbind(pmlame0, unit=gsub("[()]","",unit))
+  } else {
+    pmlame <- pmlame0
+  }
   if ('unit' %in% rownames(pmlame)) {
     colSTR <- intersect(colnames(pmlame),c("image_path","sample_id","image_id","remark"))
-    if (length(rowSTR)==0) {
+    if (length(colSTR)==0) {
       factor                <- cbk.convector(as.matrix(pmlame['unit',]))
       names(factor)         <- colnames(pmlame)
       factor[is.na(factor)] <- 1

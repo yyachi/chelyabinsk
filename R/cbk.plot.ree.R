@@ -16,12 +16,8 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.ree(pmlfile)
 #'
-#' pmlame        <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
-#' pmlame0       <- pmlame[,colnames(pmlame) != c("sample_id","image_id","image_path")]
-#' pmlame0_mean  <- cbk.lame.colMeans(pmlame0)
-#' pmlame0_error <- cbk.lame.colSds(pmlame0)
-#' pmlame1       <- cbk.lame.merge.error(pmlame0_mean,pmlame0_error)
-#' cbk.plot.ree(pmlame1)
+#' pmlame  <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
+#' cbk.plot.ree(pmlame)
 cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988") {
   ## ----------------
   ##* PARSE OPTION
@@ -52,7 +48,9 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   YY         <- t(pmlame9)
 
   if (length(errorlame0) != 0) {
-    errorlame9 <- errorlame1[,names(XX),drop=FALSE]
+    pmlame8    <- cbk.lame.merge.error(pmlame9,errorlame1)
+    errorlame9 <- cbk.lame.fetch.error(pmlame8)
+    ## errorlame9 <- errorlame1[,names(XX),drop=FALSE]
     YY_sd      <- t(errorlame9)
   }
 

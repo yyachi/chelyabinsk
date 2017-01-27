@@ -16,15 +16,12 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
+#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 #' cbk.plot.spider(pmlame)
 #'
-#' pmlame        <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
-#' pmlame0       <- pmlame[,colnames(pmlame) != c("sample_id","image_id","image_path")]
-#' pmlame0_mean  <- cbk.lame.colMeans(pmlame0)
-#' pmlame0_error <- cbk.lame.colSds(pmlame0)
-#' pmlame1       <- cbk.lame.merge.error(pmlame0_mean,pmlame0_error)
-#' cbk.plot.spider(pmlame1)
+#' pmlfile <- cbk.path("20160921173604-511857.pml")
+#' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
+#' cbk.plot.spider(pmlame)
 cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Wasson.1988") {
   ## ----------------
   ##* PARSE OPTION
@@ -44,7 +41,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
   pmlame1    <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
   pmlame2    <- cbk.lame.normalize(pmlame1,reflame)
 
-  errorlame0 <- cbk.lame.fetch.error(pmlame0)
+  errorlame0 <- cbk.lame.fetch.error(pmlame1)
   errorlame1 <- cbk.lame.normalize(errorlame0,reflame)
 
   ## ----------------
@@ -60,7 +57,9 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
   YY         <- t(pmlame9)
 
   if (length(errorlame0) != 0) {
-    errorlame9 <- errorlame1[,names(XX),drop=FALSE]
+    pmlame8    <- cbk.lame.merge.error(pmlame9,errorlame1)
+    errorlame9 <- cbk.lame.fetch.error(pmlame8)
+    ## errorlame9 <- errorlame2[,names(XX),drop=FALSE]
     YY_sd      <- t(errorlame9)
   }
 
