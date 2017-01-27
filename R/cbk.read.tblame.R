@@ -50,7 +50,7 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
   unit_in         <- gsub(pattern_colname,"\\2",isomeas_in) # Li (ppm) -> (ppm)
   unit_in         <- gsub("[()]","",unit_in)
 
-  if (any(grepl("_error",unit_in))) {
+  if (any(grepl("_error",unit_in)) && !('unit' %in% rownames(pmlame0))) {
     ## Create lookup-table
     datap           <- !grepl("_error$",isomeas_in)
     tblunit         <- unit_in[datap]

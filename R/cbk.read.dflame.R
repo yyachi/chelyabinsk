@@ -38,19 +38,42 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
 
   ## qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
-  qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
+  qmlame0 <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
+
+  isomeas_in      <- rownames(qmlame0)
+  pattern_rowname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
+  isomeas         <- gsub(pattern_rowname,"\\1",isomeas_in) # Li (ppm) -> Li
+  isomeas         <- gsub("[ ]","",isomeas)
+  unit_in         <- gsub(pattern_rowname,"\\2",isomeas_in) # Li (ppm) -> (ppm)
+  unit_in         <- gsub("[()]","",unit_in)
+
+  if (any(grepl("_error",unit_in)) && !('unit' %in% colnames(qmlame0))) {
+    ## Create lookup-table
+    datap           <- !grepl("_error$",isomeas_in)
+    tblunit         <- unit_in[datap]
+    names(tblunit)  <- isomeas[datap]
+
+    ## Have unit for isomeas
+    unit            <- tblunit[isomeas]
+    names(unit)     <- isomeas_in
+
+    rownames(qmlame0)[datap] <- isomeas[datap]
+    qmlame                   <- cbind(qmlame0, unit=unit)
+  } else {
+    qmlame <- qmlame0
+  }
 
   if ('unit' %in% colnames(qmlame)) {
     rowSTR <- intersect(rownames(qmlame),c("image_path","sample_id","image_id","remark"))
     if (length(rowSTR)==0) {
-      factor                <- cbk.convector(qmlame[,'unit'])
+      factor                <- cbk.convector(as.character(qmlame[,'unit']))
       names(factor)         <- rownames(qmlame)
       factor[is.na(factor)] <- 1
       pmlame                <- as.data.frame(t(qmlame[colnames(qmlame) != 'unit'] / factor)) * cbk.convector(tableunit)  
     } else {
       qmlameSTR             <- qmlame[rowSTR,]
       qmlameNUM             <- qmlame[rownames(qmlame) != rowSTR,]
-      factor                <- cbk.convector(qmlameNUM[,'unit'])
+      factor                <- cbk.convector(as.character(qmlameNUM[,'unit']))
       names(factor)         <- rownames(qmlameNUM)
       factor[is.na(factor)] <- 1
       pmlameNUM             <- as.data.frame(t(apply(qmlameNUM,2,function(x) as.numeric(x) / factor * cbk.convector(tableunit))))
