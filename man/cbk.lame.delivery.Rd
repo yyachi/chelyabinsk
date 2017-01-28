@@ -4,8 +4,7 @@
 \alias{cbk.lame.delivery}
 \title{Estimate delivery rate of ion from a pit by laser abbration}
 \usage{
-cbk.lame.delivery(pmlame, intlame, radius = 1.25e-05, density = 3,
-  depth = 3e-05, t = 40)
+cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -13,26 +12,26 @@ cbk.lame.delivery(pmlame, intlame, radius = 1.25e-05, density = 3,
 \item{intlame}{A pseudo-pmlame of ion intensity with row of stone
 and column of isomeas [cps].}
 
-\item{radius}{Radius of a pit [m] (default: 12.5e-6).}
-
-\item{density}{Density of solid target [g/cc] (default: 3).}
-
-\item{depth}{Depth of a pit [m] (default: 30e-6).}
-
-\item{t}{Period of irradiation [s] (default: 40).}
+\item{sputter.rate}{Sputter rate [g/s] (default: 1.1e-9 that
+corresponds to abbration of 40 s to produce a pit with radius of
+12.5 micron, depth of 30 micron, and density of 3 g/cc).}
 }
 \value{
 Delivery rate from solid target to detector.
 }
 \description{
 Estimate delivery rate of ion from a pit by laser
-  abbration.  Although dimension of a pit is on meter [m],
-  internaly, they are are converted into centi-meter [cm].
+  abbration.  Calculation is made in dimension of CGS.
 }
 \examples{
-intlame0 <- data.frame(row.names=c("ref_gl_tahiti@1","ref_cpx_klb1@1"),Si29=c(3.85e+05,3.95e+05),Li7=c(1.87e+03,1.73e+02),Sr88=c(3.24e+04,1.50e+04))
-pmlame0 <- data.frame(row.names=c("ref-gl-tahiti","ref-cpx-klb1"),SiO2=c(0.590,0.520),Li=c(20.8e-06,1.37e-06),Sr=c(107e-06,36.1e-06))
-pmlame1 <- cbk.lame.reduce(pmlame0)
-cbk.lame.delivery(pmlame1,intlame0)
+intlame0     <- data.frame(row.names=c("ref_gl_tahiti@1","ref_cpx_klb1@1"),Si29=c(3.85e+05,3.95e+05),Li7=c(1.87e+03,1.73e+02),Sr88=c(3.24e+04,1.50e+04))
+pmlame0      <- data.frame(row.names=c("ref-gl-tahiti","ref-cpx-klb1"),SiO2=c(0.590,0.520),Li=c(20.8e-06,1.37e-06),Sr=c(107e-06,36.1e-06))
+pmlame1      <- cbk.lame.reduce(pmlame0)
+radius       <- 12.5e-6 # Radius of a pit [m]
+depth        <- 30e-6   # Depth of a pit [m]
+t            <- 40      # Period of irradiation [s]
+density      <- 3       # Density of solid target [g/cc]
+sputter.rate <- 3.14 * (radius * 100)^2 * (depth * 100) * density / t # [g/s]
+cbk.lame.delivery(pmlame1,intlame0,sputter.rate)
 }
 
