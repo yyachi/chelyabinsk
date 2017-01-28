@@ -7,7 +7,7 @@
 cbk.write.tblame(pmlame, tblame)
 }
 \arguments{
-\item{pmlame}{A pmlame with row of stone and column of chem.}
+\item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{tblame}{Path of TBLAME.csv, which is a csvfile with rows of stone
 and columns of chem.}

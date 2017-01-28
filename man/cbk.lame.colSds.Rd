@@ -7,7 +7,7 @@
 cbk.lame.colSds(pmlame)
 }
 \arguments{
-\item{pmlame}{A pmlame with row of stone and column of chem}
+\item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 }
 \value{
 A pmlame with standard deviation value of each column

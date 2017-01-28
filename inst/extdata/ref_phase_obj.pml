@@ -1670,7 +1670,7 @@
       20170117151118-683875
     </global_id>
     <name>
-      ref_gl_bhvo2
+      ref-gl-bhvo2
     </name>
     <device/>
     <technique/>

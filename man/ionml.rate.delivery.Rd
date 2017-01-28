@@ -2,31 +2,37 @@
 % Please edit documentation in R/ionml.rate.delivery.R
 \name{ionml.rate.delivery}
 \alias{ionml.rate.delivery}
-\title{Rate delivery of ion from a pit by laser abbration}
+\title{Estimate delivery rate of ion from a pit by laser abbration}
 \usage{
 ionml.rate.delivery(pmlame, intlame, radius = 1.25e-05, density = 3,
   depth = 3e-05, t = 40)
 }
 \arguments{
-\item{pmlame}{A pmlame with row of stone and column of chem}
+\item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{intlame}{A pseudo-pmlame of ion intensity with row of stone
-and column of isomeas [cps]}
+and column of isomeas [cps].}
 
-\item{radius}{radius of a pit [m] (default: 12.5e-6)}
+\item{radius}{Radius of a pit [m] (default: 12.5e-6).}
 
-\item{density}{density of solid target [g/cc] (default: 3)}
+\item{density}{Density of solid target [g/cc] (default: 3).}
 
-\item{depth}{depth of a pit [m] (default: 30e-6)}
+\item{depth}{Depth of a pit [m] (default: 30e-6).}
 
-\item{t}{period of irradiation [s] (default: 40)}
+\item{t}{Period of irradiation [s] (default: 40).}
 }
 \value{
-Yield from solid target to detector
+Delivery rate from solid target to detector.
 }
 \description{
-Rate delivery of ion from a pit by laser abbration.
-  Although dimension of a pit is on meter [m], internaly, they are
-  are converted into centi meter.
+Estimate delivery rate of ion from a pit by laser
+  abbration.  Although dimension of a pit is on meter [m],
+  internaly, they are are converted into centi-meter [cm].
+}
+\examples{
+intlame0 <- data.frame(row.names=c("ref_gl_tahiti@1","ref_cpx_klb1@1"),Si29=c(3.85e+05,3.95e+05),Li7=c(1.87e+03,1.73e+02),Sr88=c(3.24e+04,1.50e+04))
+pmlame0 <- data.frame(row.names=c("ref-gl-tahiti","ref-cpx-klb1"),SiO2=c(0.590,0.520),Li=c(20.8e-06,1.37e-06),Sr=c(107e-06,36.1e-06))
+pmlame1 <- cbk.lame.reduce(pmlame0)
+ionml.rate.delivery(pmlame1,intlame0)
 }
 

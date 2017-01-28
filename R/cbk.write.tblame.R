@@ -1,6 +1,6 @@
 #' Write pmlame as TBLAME.csv
 #'
-#' @param pmlame A pmlame with row of stone and column of chem.
+#' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param tblame Path of TBLAME.csv, which is a csvfile with rows of stone
 #'   and columns of chem.
 #' @return Path of TBLAME.csv

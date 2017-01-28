@@ -7,7 +7,7 @@
 cbk.lame.colMeans(pmlame)
 }
 \arguments{
-\item{pmlame}{A pmlame with row of stone and column of chem}
+\item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 }
 \value{
 A pmlame with mean value of each column

@@ -7,7 +7,7 @@
 cbk.write.casteml(pmlame, pmlfile = NULL, verbose = TRUE)
 }
 \arguments{
-\item{pmlame}{A pmlame with row of stone and column of chem}
+\item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{pmlfile}{File path to casteml file}
 
