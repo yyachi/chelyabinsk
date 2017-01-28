@@ -27,8 +27,8 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   acqlist0          <- rownames(intlame)
 
   ##* Rename rownames to be with "_" but "-" within this function
-  rownames(pmlame)  <- gsub("-","_",rownames(pmlame))
-  rownames(intlame) <- gsub("-","_",rownames(intlame))
+  row.names(pmlame)  <- gsub("-","_",row.names(pmlame))
+  row.names(intlame) <- gsub("-","_",row.names(intlame))
 
   ##* Setup
   isomeas           <- grep(isomeas_regexp,colnames(intlame),value=T)
@@ -42,6 +42,8 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
     cat(file=stderr(),"cbk.lame.delivery:42: chemlist # =>",chemlist,"\n")
     cat(file=stderr(),"cbk.lame.delivery:43: acqlist # =>",acqlist,"\n")
     cat(file=stderr(),"cbk.lame.delivery:44: stonelist # =>",stonelist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:45: rownames(intlame) # =>",rownames(intlame),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:46: colnames(intlame) # =>",colnames(intlame),"\n")
   }
 
   ##* Generate pmlame with dimension that matches with that of intlame
@@ -51,6 +53,15 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   ##* Have pseudo.atomic.weight with same dimension as pmlame
   pseudo.wt         <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),
                                     length(stonelist),'v')
+
+  ##* Console
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.delivery:64: str(intlame1) # =>",str(intlame1),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:65: str(pmlame1) # =>",str(pmlame1),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:66: str(pseudo.wt) # =>",str(pseudo.wt),"\n")
+  }
+
+  cat(file=stderr(),"cbk.lame.delivery:69:\n")
 
   ##* Real work
   yield             <- intlame1 / (sputter.rate * pmlame1 / pseudo.wt * num_a)
