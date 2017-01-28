@@ -4,13 +4,14 @@
 \alias{ionml.rate.delivery}
 \title{Rate delivery of ion from a pit by laser abbration}
 \usage{
-ionml.rate.delivery(intensity, iso = "Si29", ab = 0.23, radius = 1.25e-05,
-  density = 3, depth = 3e-05, t = 40)
+ionml.rate.delivery(pmlame, intlame, radius = 1.25e-05, density = 3,
+  depth = 3e-05, t = 40)
 }
 \arguments{
-\item{iso}{name of ion (default: 'Si29')}
+\item{pmlame}{A pmlame with row of stone and column of chem}
 
-\item{ab}{chem abundance [g/g] (default: 0.23)}
+\item{intlame}{A pseudo-pmlame of ion intensity with row of stone
+and column of isomeas [cps]}
 
 \item{radius}{radius of a pit [m] (default: 12.5e-6)}
 
@@ -19,18 +20,13 @@ ionml.rate.delivery(intensity, iso = "Si29", ab = 0.23, radius = 1.25e-05,
 \item{depth}{depth of a pit [m] (default: 30e-6)}
 
 \item{t}{period of irradiation [s] (default: 40)}
-
-\item{ion}{intensity of ion [cps]}
 }
 \value{
-Rate of delivery
+Yield from solid target to detector
 }
 \description{
 Rate delivery of ion from a pit by laser abbration.
   Although dimension of a pit is on meter [m], internaly, they are
   are converted into centi meter.
-}
-\examples{
-ionml.rate.delivery(intensity=3.84e5)
 }
 

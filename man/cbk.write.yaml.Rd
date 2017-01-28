@@ -7,7 +7,7 @@
 cbk.write.yaml(pmlame, yamlfile = NULL, verbose = TRUE)
 }
 \arguments{
-\item{pmlame}{A pmlame with rows of stone and columns of chem.}
+\item{pmlame}{A pmlame with row of stone and column of chem.}
 
 \item{yamlfile}{Path to yamlfile with a pmlame.}
 
