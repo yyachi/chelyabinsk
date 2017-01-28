@@ -15,8 +15,8 @@
 #' intlame0 <- data.frame(row.names=c("ref_gl_tahiti@1","ref_cpx_klb1@1"),Si29=c(3.85e+05,3.95e+05),Li7=c(1.87e+03,1.73e+02),Sr88=c(3.24e+04,1.50e+04))
 #' pmlame0 <- data.frame(row.names=c("ref-gl-tahiti","ref-cpx-klb1"),SiO2=c(0.590,0.520),Li=c(20.8e-06,1.37e-06),Sr=c(107e-06,36.1e-06))
 #' pmlame1 <- cbk.lame.reduce(pmlame0)
-#' ionml.rate.delivery(pmlame1,intlame0)
-ionml.rate.delivery <- function(pmlame,intlame,radius=12.5e-6,density=3,depth=30e-6,t=40){
+#' cbk.lame.delivery(pmlame1,intlame0)
+cbk.lame.delivery <- function(pmlame,intlame,radius=12.5e-6,density=3,depth=30e-6,t=40){
 
   ##* Estimate sputter rate
   radius1      <- radius * 100                  # radius of a pit [cm]
