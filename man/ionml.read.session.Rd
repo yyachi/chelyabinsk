@@ -5,7 +5,7 @@
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", DL = FALSE)
+  ref = "Si29", DL = FALSE, intensityp = FALSE)
 }
 \arguments{
 \item{tblame.csv}{Paths to ion-type TBLAME.csv.}
@@ -20,8 +20,11 @@ ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
 
 \item{ref}{Reference ion such as `Si29'.}
 
-\item{DL}{Overwrite `stderr' by delection limit (DL) when DL is
-larger than `stderr'.}
+\item{DL}{Use delection limit (DL) instead of `sderr' when DL is
+larger than `sderr'.}
+
+\item{intensityp}{Have mean and sd of intensity instead of mean and
+sderr of ionic ratio}
 }
 \value{
 Pseudo-pmlame with average and standard error of ionic
