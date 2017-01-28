@@ -46,22 +46,18 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
     cat(file=stderr(),"cbk.lame.delivery:46: colnames(intlame) # =>",colnames(intlame),"\n")
   }
 
-  ##* Generate pmlame with dimension that matches with that of intlame
+  ##* Have intlame, pmlame, and pseudo.t with the same dimension
   intlame1          <- intlame[acqlist,isomeas]
   pmlame1           <- pmlame[stonelist,chemlist]
-
-  ##* Have pseudo.atomic.weight with same dimension as pmlame
   pseudo.wt         <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),
                                     length(stonelist),'v')
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:64: str(intlame1) # =>",str(intlame1),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:65: str(pmlame1) # =>",str(pmlame1),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:66: str(pseudo.wt) # =>",str(pseudo.wt),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:57: str(intlame1) # =>",str(intlame1),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:58: str(pmlame1) # =>",str(pmlame1),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:59: str(pseudo.wt) # =>",str(pseudo.wt),"\n")
   }
-
-  cat(file=stderr(),"cbk.lame.delivery:69:\n")
 
   ##* Real work
   yield             <- intlame1 / (sputter.rate * pmlame1 / pseudo.wt * num_a)
