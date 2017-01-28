@@ -24,9 +24,9 @@ Estimate delivery rate of ion from a pit by laser
   abbration.  Calculation is made in dimension of CGS.
 }
 \examples{
-intlame0     <- data.frame(row.names=c("ref_gl_tahiti@1","ref_cpx_klb1@1"),Si29=c(3.85e+05,3.95e+05),Li7=c(1.87e+03,1.73e+02),Sr88=c(3.24e+04,1.50e+04))
 pmlame0      <- data.frame(row.names=c("ref-gl-tahiti","ref-cpx-klb1"),SiO2=c(0.590,0.520),Li=c(20.8e-06,1.37e-06),Sr=c(107e-06,36.1e-06))
 pmlame1      <- cbk.lame.reduce(pmlame0)
+intlame0     <- data.frame(row.names=c("ref_gl_tahiti@1","ref_cpx_klb1@1"),Si29=c(3.85e+05,3.95e+05),Li7=c(1.87e+03,1.73e+02),Sr88=c(3.24e+04,1.50e+04))
 radius       <- 12.5e-6 # Radius of a pit [m]
 depth        <- 30e-6   # Depth of a pit [m]
 t            <- 40      # Period of irradiation [s]
