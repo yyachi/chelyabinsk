@@ -3,7 +3,7 @@
 #' @details This function uses \code{yaml::as.yaml} to save pmlame.
 #'   Since \code{yaml::as.yaml} drops rownames, this function stores
 #'   rownames using a column with label `rownames'.
-#' @param pmlame A pmlame with rows of stone and columns of chem.
+#' @param pmlame A pmlame with row of stone and column of chem.
 #' @param yamlfile Path to yamlfile with a pmlame.
 #' @param verbose Output debug info (default: TRUE).
 #' @return Path to yamlfile.

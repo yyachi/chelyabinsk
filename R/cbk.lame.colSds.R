@@ -1,5 +1,5 @@
 #' Return standard deviation value of each element
-#' @param pmlame A pmlame with rows of stone and columns of chem
+#' @param pmlame A pmlame with row of stone and column of chem
 #' @return A pmlame with standard deviation value of each column
 #' @export
 #' @examples

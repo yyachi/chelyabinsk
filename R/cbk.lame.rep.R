@@ -11,6 +11,14 @@
 #' cbk.lame.rep(pmlame0,3)
 cbk.lame.rep <- function(pmlame,times,direction=NULL) {
 
+  # Accept vector
+  if (is.vector(pmlame)) {
+    pmlame <- as.data.frame(pmlame)
+    if (ncol(pmlame) == 1){ # Regard 1D vector to be horizontal vector
+      pmlame <- as.data.frame(t(pmlame))
+    }
+  }
+
   # Guess direction
   if(is.null(direction)){
     if (ncol(pmlame) == 1) {

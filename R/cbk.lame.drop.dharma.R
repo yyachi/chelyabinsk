@@ -1,5 +1,5 @@
 #' Remove rows where all values are NA
-#' @param pmlame A pmlame with rows of stone and columns of chem
+#' @param pmlame A pmlame with row of stone and column of chem
 #' @param column Flag to remove columns
 #' @return A pmlame without removed rows
 #' @export

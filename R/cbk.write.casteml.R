@@ -1,6 +1,6 @@
 #' Write a pmlame to CASTEML file
 #'
-#' @param pmlame A pmlame with rows of stone and columns of chem
+#' @param pmlame A pmlame with row of stone and column of chem
 #' @param pmlfile File path to casteml file
 #' @param verbose Output debug info (default: TRUE).
 #' @return File path to a casteml file
