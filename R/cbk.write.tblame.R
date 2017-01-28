@@ -1,4 +1,4 @@
-#' @title Write pmlame as TBLAME.csv
+#' Write pmlame as TBLAME.csv
 #'
 #' @param pmlame A pmlame with rows of stone and columns of chem.
 #' @param tblame Path of TBLAME.csv, which is a csvfile with rows of stone
