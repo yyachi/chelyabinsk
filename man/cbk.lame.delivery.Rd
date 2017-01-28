@@ -4,7 +4,7 @@
 \alias{cbk.lame.delivery}
 \title{Estimate delivery rate of ion from a pit by laser abbration}
 \usage{
-cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09)
+cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09, verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -15,6 +15,8 @@ and column of isomeas [cps].}
 \item{sputter.rate}{Sputter rate [g/s] (default: 1.1e-9 that
 corresponds to abbration of 40 s to produce a pit with radius of
 12.5 micron, depth of 30 micron, and density of 3 g/cc).}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 Delivery rate from solid target to detector.

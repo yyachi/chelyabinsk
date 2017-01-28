@@ -7,6 +7,7 @@
 #' @param sputter.rate Sputter rate [g/s] (default: 1.1e-9 that
 #'   corresponds to abbration of 40 s to produce a pit with radius of
 #'   12.5 micron, depth of 30 micron, and density of 3 g/cc).
+#' @param verbose Output debug info (default: FALSE).
 #' @return Delivery rate from solid target to detector.
 #' @export
 #' @examples
@@ -19,32 +20,43 @@
 #' density      <- 3       # Density of solid target [g/cc]
 #' sputter.rate <- 3.14 * (radius * 100)^2 * (depth * 100) * density / t # [g/s]
 #' cbk.lame.delivery(pmlame1,intlame0,sputter.rate)
-cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09){
-
-  ##* Rename rownames to be with "_" but "-"
+cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE){
+  ##* Constant
+  isomeas_regexp    <- "^[A-Z][a-z]?[0-9]+$"
+  num_a             <- 6.022e23 # Avogadro number [/mol]
   acqlist0          <- rownames(intlame)
+
+  ##* Rename rownames to be with "_" but "-" within this function
   rownames(pmlame)  <- gsub("-","_",rownames(pmlame))
   rownames(intlame) <- gsub("-","_",rownames(intlame))
 
   ##* Setup
-  num_a        <- 6.022e23 # Avogadro constant [/mol]
-  isomeas      <- colnames(intlame)
-  chemlist     <- cbk.iso(isomeas,'symbol')
-  acqlist      <- rownames(intlame)
-  stonelist    <- gsub("@[0-9]+$","",acqlist) # remove number after at mark
+  isomeas           <- grep(isomeas_regexp,colnames(intlame),value=T)
+  chemlist          <- cbk.iso(isomeas,'symbol')
+  acqlist           <- rownames(intlame)
+  stonelist         <- gsub("@[0-9]+$","",acqlist) # remove number after at mark
+
+  ##* Console
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.delivery:41: isomeas # =>",isomeas,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:42: chemlist # =>",chemlist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:43: acqlist # =>",acqlist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:44: stonelist # =>",stonelist,"\n")
+  }
 
   ##* Generate pmlame with dimension that matches with that of intlame
-  pmlame1      <- pmlame[stonelist,chemlist]
+  intlame1          <- intlame[acqlist,isomeas]
+  pmlame1           <- pmlame[stonelist,chemlist]
 
-  ##* Have pseudo.atomic.weight with same dimensionas pmlame
-  pseudo.wt    <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),
-                               length(stonelist),'v')
+  ##* Have pseudo.atomic.weight with same dimension as pmlame
+  pseudo.wt         <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),
+                                    length(stonelist),'v')
 
   ##* Real work
-  yield <- intlame / (sputter.rate * pmlame1 / pseudo.wt * num_a)
+  yield             <- intlame1 / (sputter.rate * pmlame1 / pseudo.wt * num_a)
 
   ##* Restore rownames
-  rownames(yield) <- acqlist0
+  rownames(yield)   <- acqlist0
 
   return(yield)
 }
