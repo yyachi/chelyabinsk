@@ -53,5 +53,12 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
   property0[is.na(property0)] <- 999
   property1                   <- sort(property0)
   pmlame                      <- pmlame[,names(property1),drop=FALSE]
+
+  errorp                      <- grepl("_error",colnames(pmlame))
+  if (any(errorp)) {
+    datalame  <- pmlame[,!errorp]
+    errorlame <- cbk.lame.fetch.error(pmlame)
+    pmlame    <- cbk.lame.merge.error(datalame,errorlame)
+  }
   return(pmlame)
 }
