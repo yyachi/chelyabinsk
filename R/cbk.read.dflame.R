@@ -39,26 +39,27 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
 
   ## qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
   qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
-
-  isomeas_in               <- rownames(qmlame)
-  unit_in                  <- qmlame[,"unit"]
-
-  ## Create lookup-table
-  datap                    <- !grepl("_error$",isomeas_in)
-  tblunit                  <- unit_in[datap]
-  names(tblunit)           <- isomeas_in[datap]
-
-  ## Have unit for isomeas
-  chemeas                  <- gsub("_error","",isomeas_in)
-  names(chemeas)           <-isomeas_in
-  unit                     <- tblunit[chemeas]
-  names(unit)              <-isomeas_in
-
-  rownames(qmlame)[datap] <- chemeas[datap]
-  qmlame[,"unit"]         <- unit
-  ## qmlame                   <- cbind(qmlame, unit=unit)
+  qmlame <- qmlame[unique(colnames(qmlame))]
 
   if ('unit' %in% colnames(qmlame)) {
+    isomeas_in               <- rownames(qmlame)
+    unit_in                  <- qmlame[,"unit"]
+
+    ## Create lookup-table
+    datap                    <- !grepl("_error$",isomeas_in)
+    tblunit                  <- unit_in[datap]
+    names(tblunit)           <- isomeas_in[datap]
+
+    ## Have unit for isomeas
+    chemeas                  <- gsub("_error","",isomeas_in)
+    names(chemeas)           <-isomeas_in
+    unit                     <- tblunit[chemeas]
+    names(unit)              <-isomeas_in
+
+    rownames(qmlame)[datap] <- chemeas[datap]
+    qmlame[,"unit"]         <- unit
+    ## qmlame                   <- cbind(qmlame, unit=unit)
+
     rowSTR <- intersect(rownames(qmlame),c("image_path","sample_id","image_id","remark"))
     if (length(rowSTR)==0) {
       factor                <- cbk.convector(as.character(qmlame[,'unit']))
