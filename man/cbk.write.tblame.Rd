@@ -15,6 +15,9 @@ and columns of chem.}
 \value{
 Path of TBLAME.csv
 }
+\description{
+Write pmlame as TBLAME.csv
+}
 \seealso{
 \code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
   and \url{https://github.com/misasa/casteml}

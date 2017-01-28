@@ -38,35 +38,25 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
 
   ## qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
-  qmlame0 <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
+  qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
 
-  isomeas_in      <- rownames(qmlame0)
-  pattern_rowname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
-  isomeas         <- gsub(pattern_rowname,"\\1",isomeas_in) # Li (ppm) -> Li
-  isomeas         <- gsub("[ ]","",isomeas)
-  unit_in         <- gsub(pattern_rowname,"\\2",isomeas_in) # Li (ppm) -> (ppm)
-  unit_in         <- gsub("[()]","",unit_in)
+  isomeas_in               <- rownames(qmlame)
+  unit_in                  <- qmlame[,"unit"]
 
-  if ('unit' %in% colnames(qmlame0)) {
-    unit_in <- qmlame0[,"unit"]
-    qmlame0 <- qmlame0[,setdiff(colnames(qmlame0), "unit")]
-  }
-  ## if (any(grepl("_error",unit_in)) && !('unit' %in% colnames(qmlame0))) {
-  if (any(!is.na(cbk.convector(unit_in)))) {
-    ## Create lookup-table
-    datap           <- !grepl("_error$",isomeas_in)
-    tblunit         <- unit_in[datap]
-    names(tblunit)  <- isomeas[datap]
+  ## Create lookup-table
+  datap                    <- !grepl("_error$",isomeas_in)
+  tblunit                  <- unit_in[datap]
+  names(tblunit)           <- isomeas_in[datap]
 
-    ## Have unit for isomeas
-    unit            <- tblunit[isomeas]
-    names(unit)     <- isomeas_in
+  ## Have unit for isomeas
+  chemeas                  <- gsub("_error","",isomeas_in)
+  names(chemeas)           <-isomeas_in
+  unit                     <- tblunit[chemeas]
+  names(unit)              <-isomeas_in
 
-    rownames(qmlame0)[datap] <- isomeas[datap]
-    qmlame                   <- cbind(qmlame0, unit=unit)
-  } else {
-    qmlame <- qmlame0
-  }
+  rownames(qmlame)[datap] <- chemeas[datap]
+  qmlame[,"unit"]         <- unit
+  ## qmlame                   <- cbind(qmlame, unit=unit)
 
   if ('unit' %in% colnames(qmlame)) {
     rowSTR <- intersect(rownames(qmlame),c("image_path","sample_id","image_id","remark"))
