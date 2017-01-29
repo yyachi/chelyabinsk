@@ -28,6 +28,6 @@ cbk.lame.texfy <- function(pmlame,chem,ncol=11,outfile) {
     texfile <- cbk.lame.texfy1(pmlame0,ichem,outfile=outfile)
     texfiles <- append(texfiles,texfile)
   }
-
+  
   return(texfiles)
 }

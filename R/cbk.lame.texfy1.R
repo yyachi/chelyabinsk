@@ -8,9 +8,9 @@
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("ref_phase_obj.pml")
-#' pmlame0 <- cbk.read.casteml(pmlfile)
-#' chem1   <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
-#' cbk.lame.texfy1(pmlame0,chem1)
+#' pmlame <- cbk.read.casteml(pmlfile)
+#' chem <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
+#' cbk.lame.texfy1(pmlame,chem)
 cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL) {
 
   chem_error <- paste0(chem,"_error")
@@ -25,8 +25,8 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL) {
 
   if (!is.null(outfile)) {
     file.copy(texfile,outfile)
-    return(outfile)
   } else {
-    return(texfile)
+    outfile <- texfile
   }
+  return(outfile)
 }
