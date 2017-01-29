@@ -72,6 +72,7 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
       factor                <- cbk.convector(as.character(qmlameNUM[,'unit']))
       names(factor)         <- rownames(qmlameNUM)
       factor[is.na(factor)] <- 1
+      qmlameNUM[,'unit']    <- NA
       pmlameNUM             <- as.data.frame(t(apply(qmlameNUM,2,function(x) as.numeric(x) / factor * cbk.convector(tableunit))))
       pmlame0               <- cbind(pmlameNUM,t(qmlameSTR))
       pmlame                <- pmlame0[rownames(pmlame0) != 'unit',]

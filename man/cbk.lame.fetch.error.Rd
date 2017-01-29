@@ -4,10 +4,12 @@
 \alias{cbk.lame.fetch.error}
 \title{Extract error columns from pmlame}
 \usage{
-cbk.lame.fetch.error(pmlame)
+cbk.lame.fetch.error(pmlame, chem = NULL)
 }
 \arguments{
 \item{pmlame}{A pmlame with values of both mean and error}
+
+\item{chem}{Target element you want to extract}
 }
 \value{
 A pmlame of error values
