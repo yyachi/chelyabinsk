@@ -34,7 +34,7 @@ ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=F
     acqName                    <- tools::file_path_sans_ext(basename(acq_ii))
     ## ionlame0                <- ionml.read.laicpqms(acq_ii,ref=ref)
     ionlame0                   <- ionml.read.laicpqms(acq_ii,t0=t0,t1=t1,t2=t2,t3=t3,ref=ref)
-    ionlame                   <- ionlame0[,colnames(ionlame0)!="time"] # drop column of `time'
+    ionlame                    <- ionlame0[,colnames(ionlame0)!="time"] # drop column of `time'
 
     ##* Deal mean
     acqMean                    <- ionlame[paste0("mean/",ref),] # normalized intensity
