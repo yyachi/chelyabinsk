@@ -6,6 +6,11 @@
 #' @param outfile File path to texfile
 #' @return File path to texfile
 #' @export
+#' @examples
+#' pmlfile <- cbk.path("ref_phase_obj.pml")
+#' pmlame0 <- cbk.read.casteml(pmlfile)
+#' chem1   <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
+#' cbk.lame.texfy(pmlame0,chem1)
 cbk.lame.texfy <- function(pmlame,chem,outfile=NULL) {
 
   chem_error <- paste0(chem,"_error")
