@@ -4,6 +4,7 @@
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param chem List of chem such as c("Li","Si","Ca","Ca.1","Rb").
 #' @param outfile File path to texfile.
+#' @param verbose Output debug info.
 #' @return File path to texfile.
 #' @export
 #' @examples
@@ -11,7 +12,10 @@
 #' pmlame <- cbk.read.casteml(pmlfile)
 #' chem <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
 #' cbk.lame.texfy1(pmlame,chem)
-cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL) {
+cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.texfy1:17: chem # =>",chem,"\n")
+  }
 
   chem_error <- paste0(chem,"_error")
   meanlame   <- pmlame[,chem]
@@ -23,10 +27,10 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL) {
   pmlfile    <- cbk.write.casteml(pmlame1)
   texfile    <- cbk.convert.casteml(pmlfile,format="tex")
 
-  if (!is.null(outfile)) {
-    file.copy(texfile,outfile)
-  } else {
+  if (is.null(outfile)) {
     outfile <- texfile
+  } else {
+    file.copy(texfile,outfile)
   }
   return(outfile)
 }
