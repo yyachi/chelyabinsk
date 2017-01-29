@@ -7,7 +7,7 @@
 cbk.read.dflame(dflame.csv, tableunit = "none", verbose = TRUE)
 }
 \arguments{
-\item{dflame.csv}{A csvfile with columns of stone and rows of element
+\item{dflame.csv}{A csvfile with columns of stone and rows of element.
 abundances, with 2nd column `unit'.}
 
 \item{tableunit}{Output unit that will be resolved by

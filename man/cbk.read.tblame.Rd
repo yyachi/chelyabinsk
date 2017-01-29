@@ -8,7 +8,7 @@ cbk.read.tblame(tblame, tableunit = "none", verbose = TRUE)
 }
 \arguments{
 \item{tblame}{A csvfile with columns of chem and rows of stone,
-with 2nd row `unit'}
+with 2nd row `unit'.}
 
 \item{tableunit}{Output unit that will be resolved by
 \link{cbk.convector} (default: "none").}

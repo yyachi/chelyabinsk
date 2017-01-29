@@ -6,7 +6,7 @@
 #' @details This internally calls \code{\link{read.csv}}, take out row
 #'   of `unit' and normalized by the `unit' row.
 #' @param tblame A csvfile with columns of chem and rows of stone,
-#'   with 2nd row `unit'
+#'   with 2nd row `unit'.
 #' @param tableunit Output unit that will be resolved by
 #'   \link{cbk.convector} (default: "none").
 #' @param verbose Output debug info (default: TRUE).
@@ -43,11 +43,12 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
   ## } else {
   ##   pmlame <- pmlame0
   ## }
+  chem_regexp <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
+
   isomeas_in      <- colnames(pmlame0)
-  pattern_colname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
-  isomeas         <- gsub(pattern_colname,"\\1",isomeas_in) # Li (ppm) -> Li
+  isomeas         <- gsub(chem_regexp,"\\1",isomeas_in) # Li (ppm) -> Li
   isomeas         <- gsub("[ ]","",isomeas)
-  unit_in         <- gsub(pattern_colname,"\\2",isomeas_in) # Li (ppm) -> (ppm)
+  unit_in         <- gsub(chem_regexp,"\\2",isomeas_in) # Li (ppm) -> (ppm)
   unit_in         <- gsub("[()]","",unit_in)
 
   if ('unit' %in% rownames(pmlame0)) {

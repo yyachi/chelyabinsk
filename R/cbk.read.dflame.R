@@ -8,7 +8,7 @@
 #' @details This internally calls
 #'   \code{read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)},
 #'   take out column of `unit' and normalized by the `unit' column.
-#' @param dflame.csv A csvfile with columns of stone and rows of element
+#' @param dflame.csv A csvfile with columns of stone and rows of element.
 #'   abundances, with 2nd column `unit'.
 #' @param tableunit Output unit that will be resolved by
 #'   \link{cbk.convector} (default: "none").
