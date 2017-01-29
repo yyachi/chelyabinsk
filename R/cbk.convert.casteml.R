@@ -8,10 +8,12 @@
 #'   cbk.read.casteml().
 #'
 #' @param pmlfile File path to CASTEML file.
-#' @param category Category filter that is passed to `casteml convert'.
+#' @param category Category specifier that is passed to \code{casteml
+#'   convert}.
 #' @param force Flag to force convert again.
 #' @param verbose Output debug info (default: TRUE).
-#' @param format Output format (default: dataframe).
+#' @param format Format specifier that is passed to \code{casteml
+#'   convert}.
 #' @return Path of the converted file.
 #' @export
 #' @seealso \code{casteml convert} and

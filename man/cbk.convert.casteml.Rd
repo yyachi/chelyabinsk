@@ -10,13 +10,15 @@ cbk.convert.casteml(pmlfile, category = NULL, force = FALSE,
 \arguments{
 \item{pmlfile}{File path to CASTEML file.}
 
-\item{category}{Category filter that is passed to `casteml convert'.}
+\item{category}{Category specifier that is passed to \code{casteml
+convert}.}
 
 \item{force}{Flag to force convert again.}
 
 \item{verbose}{Output debug info (default: TRUE).}
 
-\item{format}{Output format (default: dataframe).}
+\item{format}{Format specifier that is passed to \code{casteml
+convert}.}
 }
 \value{
 Path of the converted file.

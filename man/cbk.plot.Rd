@@ -13,8 +13,8 @@ stone-ID (or pmlame).}
 \item{opts}{List of further options for plot.  Two options such as
 `list(legendp=TRUE, Recursivep=FALSE)' are available.}
 
-\item{category}{Category filter that is passed to `casteml
-convert'.}
+\item{category}{Category specifier that is passed to \code{casteml
+convert}.}
 }
 \value{
 A pmlame used to plot the diagram.

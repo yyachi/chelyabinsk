@@ -25,6 +25,11 @@ Delivery rate from solid target to detector.
 Estimate delivery rate of ion from a pit by laser
   abbration.  Calculation is made in dimension of CGS.
 }
+\details{
+With ion Si29 intensity 3.85e+05 [cps], element SiO2
+  abundance 59 wt%, and sputter rate 1.1 ng/s, the delivery rate is
+  estimated to be 1.25 ppm.
+}
 \examples{
 pmlame0      <- data.frame(row.names=c("ref-gl-tahiti","ref-cpx-klb1"),SiO2=c(0.590,0.520),Li=c(20.8e-06,1.37e-06),Sr=c(107e-06,36.1e-06))
 pmlame1      <- cbk.lame.reduce(pmlame0)

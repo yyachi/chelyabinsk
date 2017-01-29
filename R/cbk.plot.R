@@ -6,8 +6,8 @@
 #'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID (or pmlame).
-#' @param category Category filter that is passed to `casteml
-#'   convert'.
+#' @param category Category specifier that is passed to \code{casteml
+#'   convert}.
 #' @param opts List of further options for plot.  Two options such as
 #'   `list(legendp=TRUE, Recursivep=FALSE)' are available.
 #' @return A pmlame used to plot the diagram.

@@ -5,12 +5,13 @@
 #' @details This function converts a CASTEML file to a csvfile by
 #'   `cbk.convert.casteml()' and read it by `cbk.read.dflame()'.
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
-#'   stone-ID
+#'   stone-ID.
 #' @param tableunit Output unit that will be resolved by
-#'   cbk.convector() (default: "none")
-#' @param category category to pass to `cbk.convert.casteml'
-#' @param opts List of further options for plot
-#' @return A dataframe with unit organized
+#'   cbk.convector() (default: "none").
+#' @param category Category specifier that is passed to \code{casteml
+#'   convert}.
+#' @param opts List of further options for plot.
+#' @return A dataframe with unit organized.
 #' @seealso \code{\link{cbk.convert.casteml}},
 #'   \code{\link{cbk.read.dflame}}, and
 #'   \url{https://github.com/misasa/casteml}

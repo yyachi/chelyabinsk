@@ -1,6 +1,9 @@
 #' @title Estimate delivery rate of ion from a pit by laser abbration
 #' @description Estimate delivery rate of ion from a pit by laser
 #'   abbration.  Calculation is made in dimension of CGS.
+#' @details With ion Si29 intensity 3.85e+05 [cps], element SiO2
+#'   abundance 59 wt%, and sputter rate 1.1 ng/s, the delivery rate is
+#'   estimated to be 1.25 ppm.
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param intlame A pseudo-pmlame of ion intensity with row of stone
 #'   and column of isomeas [cps].

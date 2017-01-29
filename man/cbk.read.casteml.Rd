@@ -9,17 +9,18 @@ cbk.read.casteml(pmlfile_or_stone, opts = NULL, tableunit = "none",
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
-stone-ID}
+stone-ID.}
 
-\item{opts}{List of further options for plot}
+\item{opts}{List of further options for plot.}
 
 \item{tableunit}{Output unit that will be resolved by
-cbk.convector() (default: "none")}
+cbk.convector() (default: "none").}
 
-\item{category}{category to pass to `cbk.convert.casteml'}
+\item{category}{Category specifier that is passed to \code{casteml
+convert}.}
 }
 \value{
-A dataframe with unit organized
+A dataframe with unit organized.
 }
 \description{
 Read CASTEML file and return a pmlame.
