@@ -22,7 +22,7 @@ cbk.lame.stringfy <- function(pmlame,format=NULL,show=TRUE) {
     file.show(tempfile)
   }
   ## textlame <- paste(readLines(tempfile), collapse="\n")
-  textlame <- readChar(tempfile,nchars=1e9) # read until 1 GB
+  textlame <- readChar(tempfile,nchars=1e6) # read until 1 MB
   ## writeClipboard(textlame, format=1)
 
   ## return(pmlame)
