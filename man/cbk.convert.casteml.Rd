@@ -2,25 +2,27 @@
 % Please edit documentation in R/cbk.convert.casteml.R
 \name{cbk.convert.casteml}
 \alias{cbk.convert.casteml}
-\title{Convert CASTEML file to CSV file}
+\title{Convert CASTEML file to certain file}
 \usage{
 cbk.convert.casteml(pmlfile, category = NULL, force = FALSE,
-  verbose = TRUE)
+  verbose = TRUE, format = "dataframe")
 }
 \arguments{
-\item{pmlfile}{File path to CASTEML file}
+\item{pmlfile}{File path to CASTEML file.}
 
-\item{category}{Category filter that is passed to `casteml convert'}
+\item{category}{Category filter that is passed to `casteml convert'.}
 
-\item{force}{Flag to force convert again}
+\item{force}{Flag to force convert again.}
 
 \item{verbose}{Output debug info (default: TRUE).}
+
+\item{format}{Output format (default: dataframe).}
 }
 \value{
-File path to the converted file
+Path of the converted file.
 }
 \description{
-Convert CASTEML file to CSV file.  This function
+Convert CASTEML file to certain file.  This function
   returns path to the converted file.  The converted file is stored
   in a temporary directory.  Note with the same arguments, this
   function convert file only once per a R session.  This is
@@ -32,7 +34,7 @@ pmlfile    <- cbk.path("20081202172326.hkitagawa.pml")
 dflame.csv <- cbk.convert.casteml(pmlfile)
 
 pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
-dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
+texfile    <- cbk.convert.casteml(pmlfile,format="tex")
 }
 \seealso{
 \code{casteml convert} and
