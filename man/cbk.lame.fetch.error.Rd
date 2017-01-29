@@ -20,5 +20,7 @@ Extract error columns from pmlame
 \examples{
 pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 pmlame_error  <- cbk.lame.fetch.error(pmlame)
+
+pmlame_error  <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
 }
 
