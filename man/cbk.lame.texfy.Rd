@@ -2,27 +2,27 @@
 % Please edit documentation in R/cbk.lame.texfy.R
 \name{cbk.lame.texfy}
 \alias{cbk.lame.texfy}
-\title{Convert pmlame to texfile}
+\title{Convert pmlame to multple texfiles}
 \usage{
-cbk.lame.texfy(pmlame, chem, outfile = NULL)
+cbk.lame.texfy(pmlame, chem, ncol = 11, outfile)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{chem}{List of chem such as c("Li","Si","Ca","Ca.1","Rb")}
+\item{chem}{List of chem such as c("Li","Si","Ca","Ca.1","Rb").}
 
-\item{outfile}{File path to texfile}
+\item{ncol}{Number of columns per a table.}
+
+\item{outfile}{File path to texfile.}
 }
 \value{
-File path to texfile
+Vector of file path to texfiles.
 }
 \description{
-Convert pmlame to texfile
+Convert pmlame to multple texfiles.  This function
+  split chem and parse the datasets separatedly.
 }
-\examples{
-pmlfile <- cbk.path("ref_phase_obj.pml")
-pmlame0 <- cbk.read.casteml(pmlfile)
-chem1   <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
-cbk.lame.texfy(pmlame0,chem1)
+\seealso{
+\code{\link{cbk.lame.texfy1}}
 }
 

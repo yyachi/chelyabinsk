@@ -1,32 +1,33 @@
-#' @title Convert pmlame to texfile
+#' @title Convert pmlame to multple texfiles
 #'
-#' @description Convert pmlame to texfile
+#' @description Convert pmlame to multple texfiles.  This function
+#'   split chem and parse the datasets separatedly.
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param chem List of chem such as c("Li","Si","Ca","Ca.1","Rb")
-#' @param outfile File path to texfile
-#' @return File path to texfile
+#' @param chem List of chem such as c("Li","Si","Ca","Ca.1","Rb").
+#' @param ncol Number of columns per a table.
+#' @param outfile File path to texfile.
+#' @return Vector of file path to texfiles.
+#' @seealso \code{\link{cbk.lame.texfy1}}
 #' @export
-#' @examples
-#' pmlfile <- cbk.path("ref_phase_obj.pml")
-#' pmlame0 <- cbk.read.casteml(pmlfile)
-#' chem1   <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
-#' cbk.lame.texfy(pmlame0,chem1)
-cbk.lame.texfy <- function(pmlame,chem,outfile=NULL) {
+cbk.lame.texfy <- function(pmlame,chem,ncol=11,outfile) {
 
-  chem_error <- paste0(chem,"_error")
-  meanlame   <- pmlame[,chem]
+  outbase  <- tools::file_path_sans_ext(outfile)
+  outext   <- tools::file_ext(texfile)
+  ## outfile <- paste0(outbase,outext)
 
-  # this is pseudo-errorlame with label "Li7_error" instead of "Li7"
-  errorlame  <- pmlame[,chem_error]
+  texfiles <- c()
+  
+  chemlist <- split(chem, ceiling(seq_along(chem)/ncol))
 
-  pmlame1    <- cbk.lame.merge.error(meanlame,errorlame)
-  pmlfile    <- cbk.write.casteml(pmlame1)
-  texfile    <- cbk.convert.casteml(pmlfile,format="tex")
+  for(ii in 1:length(chemlist)) {
+    if (ii!=1) {
+      outfile <- sprintf("%s-%d.%s",outbase,ii,outext)
+    }
 
-  if (!is.null(outfile)) {
-    file.copy(texfile,outfile)
-    return(outfile)
-  } else {
-    return(texfile)
+    ichem <- unlist(chemlist[ii])
+    texfile <- cbk.lame.texfy1(pmlame0,ichem,outfile=outfile)
+    texfiles <- append(texfiles,texfile)
   }
+
+  return(texfiles)
 }
