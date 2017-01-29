@@ -4,7 +4,7 @@
 \alias{cbk.lame.texfy1}
 \title{Convert pmlame to texfile}
 \usage{
-cbk.lame.texfy1(pmlame, chem, outfile = NULL)
+cbk.lame.texfy1(pmlame, chem, outfile = NULL, verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -12,6 +12,8 @@ cbk.lame.texfy1(pmlame, chem, outfile = NULL)
 \item{chem}{List of chem such as c("Li","Si","Ca","Ca.1","Rb").}
 
 \item{outfile}{File path to texfile.}
+
+\item{verbose}{Output debug info.}
 }
 \value{
 File path to texfile.

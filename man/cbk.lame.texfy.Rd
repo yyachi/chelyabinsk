@@ -4,19 +4,19 @@
 \alias{cbk.lame.texfy}
 \title{Convert pmlame to multple texfiles}
 \usage{
-cbk.lame.texfy(pmlame, chem, ncol = 11, outfile)
+cbk.lame.texfy(pmlame, chem, outfile, ncol = 11, verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{chem}{List of chem such as c("Li","Si","Ca","Ca.1","Rb").}
 
+\item{outfile}{File path to texfile.}
+
 \item{ncol}{Number of columns per a table.}
 
-\item{outfile}{File path to texfile.}
-}
-\value{
-Vector of file path to texfiles.
+\item{verbose}{Output debug info.
+#' @return Vector of file path to texfiles.}
 }
 \description{
 Convert pmlame to multple texfiles.  This function
