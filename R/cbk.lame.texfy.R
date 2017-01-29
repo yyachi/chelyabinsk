@@ -15,7 +15,7 @@ cbk.lame.texfy <- function(pmlame,chem,outfile,ncol=11,verbose=FALSE) {
   if (verbose) {
     cat(file=stderr(),"cbk.lame.texfy:16: outfile # =>",outfile,"\n")
   }
-  
+
   outbase  <- tools::file_path_sans_ext(outfile)
   outext   <- tools::file_ext(outfile)
   ## outfile <- paste0(outbase,outext)
@@ -28,7 +28,7 @@ cbk.lame.texfy <- function(pmlame,chem,outfile,ncol=11,verbose=FALSE) {
       outfile <- sprintf("%s-%d.%s",outbase,ii,outext)
     }
     ichem <- unlist(chemlist[ii])
-    texfile <- cbk.lame.texfy1(pmlame0,ichem,outfile=outfile)
+    texfile <- cbk.lame.texfy1(pmlame,ichem,outfile=outfile)
     texfiles <- append(texfiles,texfile)
   }
 

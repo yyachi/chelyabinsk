@@ -8,8 +8,7 @@
 #' @return File path to texfile.
 #' @export
 #' @examples
-#' pmlfile <- cbk.path("ref_phase_obj.pml")
-#' pmlame <- cbk.read.casteml(pmlfile)
+#' pmlame <- cbk.read.casteml(cbk.path("ref_phase_obj.pml"))
 #' chem <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
 #' cbk.lame.texfy1(pmlame,chem)
 cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
@@ -19,6 +18,11 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
 
   chem_error <- paste0(chem,"_error")
   meanlame   <- pmlame[,chem]
+
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.texfy1:23: chem # =>",chem,"\n")
+    cat(file=stderr(),"cbk.lame.texfy1:24: chem_error # =>",chem_error,"\n")
+  }
 
   # this is pseudo-errorlame with label "Li7_error" instead of "Li7"
   errorlame  <- pmlame[,chem_error]

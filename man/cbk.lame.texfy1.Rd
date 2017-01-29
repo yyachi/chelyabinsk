@@ -22,8 +22,7 @@ File path to texfile.
 Convert pmlame to texfile.
 }
 \examples{
-pmlfile <- cbk.path("ref_phase_obj.pml")
-pmlame <- cbk.read.casteml(pmlfile)
+pmlame <- cbk.read.casteml(cbk.path("ref_phase_obj.pml"))
 chem <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
 cbk.lame.texfy1(pmlame,chem)
 }
