@@ -25,6 +25,11 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
   ## pmlame <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F)
   pmlame0 <- read.csv(tblame,row.names=1,header=T,stringsAsFactors=F,check.names=F)
 
+  if (any(duplicated(rownames(pmlame0)))){
+    dupstone <- rownames(pmlame0)[duplicated(rownames(pmlame0))]
+    stop(cat(file=stderr(),"Error: Duplicated stone is found: stone # =>",dupstone,"\n"))
+  }
+
   ## pattern_colname <- "^([A-Za-z].*) ?(_error|\\(.*\\))"
   ## chemlist        <- colnames(pmlame0)
   ## isomeas         <- gsub(pattern_colname,"\\1",chemlist) # Li (ppm) -> Li

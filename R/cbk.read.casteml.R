@@ -48,8 +48,7 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
   }
 
   chemlist                    <- colnames(pmlame)
-  periodic                    <- cbk.periodic()
-  property0                   <- periodic[chemlist,"atomicnumber"] # atomicnumber, volatility, compatibility
+  property0                   <- cbk.periodic("atomicnumber")[chemlist] # atomicnumber, volatility, compatibility
   names(property0)            <- chemlist
   property0[is.na(property0)] <- 999
   property1                   <- sort(property0)
@@ -57,9 +56,11 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
 
   errorp                      <- grepl("_error",colnames(pmlame))
   if (any(errorp)) {
-    datalame  <- pmlame[,!errorp]
+    chemlame  <- cbk.lame.regulate(pmlame,error=FALSE)
+    extralame <- cbk.lame.regulate(pmlame,chem=FALSE,error=FALSE,extra=TRUE)
     errorlame <- cbk.lame.fetch.error(pmlame)
-    pmlame    <- cbk.lame.merge.error(datalame,errorlame)
+    pmlame    <- cbk.lame.merge.error(chemlame,errorlame)
+    pmlame    <- cbind(pmlame, extralame)
   }
   return(pmlame)
 }

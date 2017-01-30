@@ -4,10 +4,16 @@
 \alias{cbk.lame.regulate}
 \title{Regulate pmlame to remove non-chem components}
 \usage{
-cbk.lame.regulate(pmlame)
+cbk.lame.regulate(pmlame, chem = TRUE, error = TRUE, extra = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
+
+\item{chem}{Flag to extract chem columns (default: TRUE)}
+
+\item{error}{Flag to extract error columns (default: TRUE)}
+
+\item{extra}{Flag to extract extra columns (default: FALSE)}
 }
 \value{
 A pmlame with only chem
