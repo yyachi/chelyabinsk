@@ -7,12 +7,12 @@
 cbk.lame.merge.error(meanlame, errorlame)
 }
 \arguments{
-\item{meanlame}{A pmlame of mean values}
+\item{meanlame}{A pmlame of mean values.}
 
-\item{errorlame}{A pmlame of error values}
+\item{errorlame}{A pmlame of error values.}
 }
 \value{
-A pmlame with values of both mean and error
+A pmlame with values of both mean and error.
 }
 \description{
 Merge columns of mean and error interleavely

@@ -2,27 +2,27 @@
 % Please edit documentation in R/cbk.lame.regulate.R
 \name{cbk.lame.regulate}
 \alias{cbk.lame.regulate}
-\title{Regulate pmlame to remove non-chem components}
+\title{Regulate pmlame to extract chem, error, or extra columns}
 \usage{
 cbk.lame.regulate(pmlame, chem = TRUE, error = TRUE, extra = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{chem}{Flag to extract chem columns (default: TRUE)}
+\item{chem}{Flag to extract chem columns (default: TRUE).}
 
-\item{error}{Flag to extract error columns (default: TRUE)}
+\item{error}{Flag to extract error columns (default: TRUE).}
 
-\item{extra}{Flag to extract extra columns (default: FALSE)}
+\item{extra}{Flag to extract extra columns (default: FALSE).}
 }
 \value{
-A pmlame with only chem
+A pmlame with columns of concern
 }
 \description{
-Regulate pmlame to remove non-chem components
+Regulate pmlame to extract chem, error, or extra columns
 }
 \examples{
-pmlame0 <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-pmlame  <- cbk.lame.regulate(pmlame0)
+pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+pmlame1 <- cbk.lame.regulate(pmlame)
 }
 
