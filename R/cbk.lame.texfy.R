@@ -3,17 +3,23 @@
 #' @description Convert pmlame to multple texfiles.  This function
 #'   split chem and parse the datasets separatedly.
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param chem List of chem such as c("Li","Si","Ca","Ca.1","Rb").
 #' @param outfile File path to texfile.
+#' @param chem List of chem such as c("Li","Si","Ca","Ca.1","Rb").
 #' @param ncol Number of columns per a table.
 #' @param verbose Output debug info.
 #' #' @return Vector of file path to texfiles.
 #' @seealso \code{\link{cbk.lame.texfy1}}
 #' @export
-cbk.lame.texfy <- function(pmlame,chem,outfile,ncol=11,verbose=FALSE) {
+cbk.lame.texfy <- function(pmlame,outfile="table-auto.tex",chem=NULL,ncol=11,verbose=FALSE) {
 
   if (verbose) {
     cat(file=stderr(),"cbk.lame.texfy:16: outfile # =>",outfile,"\n")
+  }
+
+  pmlame <- cbk.lame.regulate(pmlame)
+
+  if (is.null(chem)) {
+    chem <- grep("_error$",colnames(pmlame),value=T,invert=T)
   }
 
   outbase  <- tools::file_path_sans_ext(outfile)
