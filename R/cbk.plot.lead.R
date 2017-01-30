@@ -21,12 +21,12 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="lead")
-  pmlame0   <- cbk.read.casteml(pmlfile_or_stone,opts)
-  pmlame1   <- pmlame0[,c("Pb206zPb204","Pb207zPb204","Pb208zPb204")]
-  pmlame1   <- cbk.lame.drop.dharma(pmlame1)
+  pmlame0    <- cbk.read.casteml(pmlfile_or_stone,opts)
+  pmlame1    <- pmlame0[,c("Pb206zPb204","Pb207zPb204","Pb208zPb204")]
+  pmlame1    <- cbk.lame.drop.dharma(pmlame1)
 
-  stonelist  <- rownames(pmlame0)
-  stoneindex <- 1:nrow(pmlame0)
+  stonelist  <- rownames(pmlame1)
+  stoneindex <- 1:nrow(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -34,6 +34,12 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   XX         <- pmlame1[,'Pb206zPb204']
   YY1        <- pmlame1[,'Pb207zPb204']
   YY2        <- pmlame1[,'Pb208zPb204']
+
+  if (any(c("Pb206zPb204_error","Pb207zPb204_error","Pb208zPb204_error") %in% colnames(pmlame0))) {
+    XX_sd      <- pmlame0[stonelist,"Pb206zPb204_error"]
+    YY1_sd     <- pmlame0[stonelist,"Pb207zPb204_error"]
+    YY2_sd     <- pmlame0[stonelist,"Pb208zPb204_error"]
+  }
 
   ## ----------------
   ##* PLOT
@@ -45,6 +51,12 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   plot(XX,YY1,type="p",
        col=stoneindex,pch=stoneindex,asp=1,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^207*"Pb/"*{}^204*"Pb"))
+  errorbar.x <- function(XX,YY,err,WW,col=1){x0=XX-err;y0=YY;x1=XX+err;y1=YY;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+  errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+  if (any(c("Pb206zPb204_error","Pb207zPb204_error","Pb208zPb204_error") %in% colnames(pmlame0))) {
+    errorbar.x(XX,YY1,XX_sd,0.05,col=stoneindex)
+    errorbar.y(XX,YY1,YY1_sd,0.05,col=stoneindex)
+  }
   if (opts$legendp) {
     legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
   }
@@ -56,6 +68,10 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   plot(XX,YY2,type="p",asp=1,
        col=stoneindex,pch=stoneindex,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^208*"Pb/"*{}^204*"Pb"))
+  if (any(c("Pb206zPb204_error","Pb207zPb204_error","Pb208zPb204_error") %in% colnames(pmlame0))) {
+    errorbar.x(XX,YY2,XX_sd,0.05,col=stoneindex)
+    errorbar.y(XX,YY2,YY2_sd,0.05,col=stoneindex)
+  }
   if (opts$legendp) {
     legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
   }

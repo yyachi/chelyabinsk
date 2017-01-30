@@ -34,11 +34,23 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   XX         <- pmlame1[,'d18O']
   YY         <- pmlame1[,'d17O']
 
+  if (any(c("d18O_error","d17O_error") %in% colnames(pmlame0))) {
+    XX_sd     <- pmlame0[stonelist,"d18O_error"]
+    YY_sd     <- pmlame0[stonelist,"d17O_error"]
+  }
+
   ## ----------------
   ##* PLOT
   ## ----------------
   plot(XX,YY,type="p",pch=stoneindex,col=stoneindex,
        xlab=expression(paste(delta,{}^18*O)), ylab=expression(paste(delta,{}^17*O)), asp=1)
+  if (any(c("d18O_error","d17O_error") %in% colnames(pmlame0))) {
+    errorbar.x <- function(XX,YY,err,WW,col=1){x0=XX-err;y0=YY;x1=XX+err;y1=YY;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+    errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+
+    errorbar.x(XX,YY,XX_sd,0.05,col=stoneindex)
+    errorbar.y(XX,YY,YY_sd,0.05,col=stoneindex)
+  }
   if (opts$legendp) {
     legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
   }
