@@ -1,7 +1,7 @@
 #' Merge columns of mean and error interleavely
-#' @param meanlame A pmlame of mean values
-#' @param errorlame A pmlame of error values
-#' @return A pmlame with values of both mean and error
+#' @param meanlame A pmlame of mean values.
+#' @param errorlame A pmlame of error values.
+#' @return A pmlame with values of both mean and error.
 #' @export
 #' @examples
 #' pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
