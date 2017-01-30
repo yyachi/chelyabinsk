@@ -26,6 +26,12 @@ cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
   pmlame1   <- cbk.lame.drop.dharma(pmlame1)
   XX         <- pmlame1[,'Li']
   YY         <- pmlame1[,'d7Li']
+  stonelist  <- rownames(pmlame1)
+
+  if (any(c("d7Li_error","Li_error") %in% colnames(pmlame0))) {
+    XX_sd      <- pmlame0[stonelist,'Li_error']
+    YY_sd      <- pmlame0[stonelist,'d7Li_error']
+  }
 
   ## ----------------
   ##* Constant setup
@@ -39,6 +45,13 @@ cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   plot(XX,YY*1000,xlab="[Li]",ylab=expression(paste(delta,{}^7*Li)),log="x")
   # Really, delta value should be controlled by argument `tableunit'
+  if (any(c("d7Li_error","Li_error") %in% colnames(pmlame0))) {
+    errorbar.x <- function(XX,YY,err,WW,col=1){x0=XX-err;y0=YY;x1=XX+err;y1=YY;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+    errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+
+    errorbar.x(XX,YY*1000,XX_sd,0.05,col=1)
+    errorbar.y(XX,YY*1000,YY_sd*1000,0.05,col=1)
+  }
 
   ## ----------------
   ##* Closing remark

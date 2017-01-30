@@ -39,7 +39,12 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
 
   ## qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)
   qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
-  qmlame <- qmlame[unique(colnames(qmlame))]
+  ## qmlame <- qmlame[unique(colnames(qmlame))]
+
+  if (any(duplicated(colnames(qmlame)))){
+    dupstone <- colnames(qmlame)[duplicated(colnames(qmlame))]
+    stop(cat(file=stderr(),"Error: Duplicated stone is found: stone # =>",dupstone,"\n"))
+  }
 
   if ('unit' %in% colnames(qmlame)) {
     isomeas_in               <- rownames(qmlame)
