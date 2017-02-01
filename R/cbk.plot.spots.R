@@ -18,7 +18,7 @@
 cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   library(jpeg) # install.packages('jpeg')
   library(png) # install.packages('png')
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -30,7 +30,7 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   pmlame1   <- cbk.lame.drop.dharma(pmlame1)
 
   stonelist  <- rownames(pmlame1)
-  stoneindex <- 1:nrow(pmlame1)
+  ## stoneindex <- 1:nrow(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -41,6 +41,17 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   ## ----------------
   ##* PLOT
   ## ----------------
+  if (opts$pch) {
+    pch <- opts$pch
+  } else {
+    pch <- 1:length(stonelist)
+  }
+  if (opts$col) {
+    col <- opts$col
+  } else {
+    col  <- 1:length(stonelist)
+  }
+
   if (is.null(imagefile)) {
     imagefile=try(cbk.download.image(pmlfile_or_surface))
   }
@@ -68,11 +79,11 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   }
   plot(XX,YY,type="p",asp=1,
        xlim=c(-50,50), ylim=c(-50,50),
-       pch=stoneindex,col=stoneindex,
+       pch=pch,col=col,
        xlab="",ylab="")
 
   if (opts$legendp) {
-    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
+    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=pch,col=col)
   }
 
   ## ----------------

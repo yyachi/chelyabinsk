@@ -14,7 +14,7 @@
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.oxygen(pmlfile)
 cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -26,7 +26,7 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   pmlame1   <- cbk.lame.drop.dharma(pmlame1)
 
   stonelist  <- rownames(pmlame1)
-  stoneindex <- 1:nrow(pmlame1)
+  ## stoneindex <- 1:nrow(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -42,17 +42,28 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* PLOT
   ## ----------------
-  plot(XX,YY,type="p",pch=stoneindex,col=stoneindex,
+  if (opts$pch) {
+    pch <- opts$pch
+  } else {
+    pch <- 1:length(stonelist)
+  }
+  if (opts$col) {
+    col <- opts$col
+  } else {
+    col  <- 1:length(stonelist)
+  }
+
+  plot(XX,YY,type="p",pch=pch,col=col,
        xlab=expression(paste(delta,{}^18*O)), ylab=expression(paste(delta,{}^17*O)), asp=1)
   if (any(c("d18O_error","d17O_error") %in% colnames(pmlame0))) {
     errorbar.x <- function(XX,YY,err,WW,col=1){x0=XX-err;y0=YY;x1=XX+err;y1=YY;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
     errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
 
-    errorbar.x(XX,YY,XX_sd,0.05,col=stoneindex)
-    errorbar.y(XX,YY,YY_sd,0.05,col=stoneindex)
+    errorbar.x(XX,YY,XX_sd,0.05,col=col)
+    errorbar.y(XX,YY,YY_sd,0.05,col=col)
   }
   if (opts$legendp) {
-    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=stoneindex,col=stoneindex)
+    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=pch,col=col)
   }
   ## ----------------
   ##* Draw reference lines

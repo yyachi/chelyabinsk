@@ -14,7 +14,7 @@
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.lithium(pmlfile)
 cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -43,16 +43,29 @@ cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* Plot
   ## ----------------
-  plot(XX,YY*1000,xlab="[Li]",ylab=expression(paste(delta,{}^7*Li)),log="x")
+  if (opts$pch) {
+    pch <- opts$pch
+  } else {
+    pch <- 1:length(stonelist)
+  }
+  if (opts$col) {
+    col <- opts$col
+  } else {
+    col  <- 1:length(stonelist)
+  }
+
+  plot(XX,YY*1000,xlab="[Li]",ylab=expression(paste(delta,{}^7*Li)),pch=pch,col=col,log="x")
   # Really, delta value should be controlled by argument `tableunit'
   if (any(c("d7Li_error","Li_error") %in% colnames(pmlame0))) {
     errorbar.x <- function(XX,YY,err,WW,col=1){x0=XX-err;y0=YY;x1=XX+err;y1=YY;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
     errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
 
-    errorbar.x(XX,YY*1000,XX_sd,0.05,col=1)
-    errorbar.y(XX,YY*1000,YY_sd*1000,0.05,col=1)
+    errorbar.x(XX,YY*1000,XX_sd,0.05,col=col)
+    errorbar.y(XX,YY*1000,YY_sd*1000,0.05,col=col)
   }
-
+  if (opts$legendp) {
+    legend('bottomright',stonelist,lty=0,pch=pch,col=col,ncol=4,cex=0.5)
+  }
   ## ----------------
   ##* Closing remark
   ## ----------------

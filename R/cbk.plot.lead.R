@@ -14,7 +14,7 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.lead(pmlfile)
 cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -26,7 +26,7 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   pmlame1    <- cbk.lame.drop.dharma(pmlame1)
 
   stonelist  <- rownames(pmlame1)
-  stoneindex <- 1:nrow(pmlame1)
+  ## stoneindex <- 1:nrow(pmlame1)
 
   ## ----------------
   ##* PARSE
@@ -44,21 +44,32 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* PLOT
   ## ----------------
+  if (opts$pch) {
+    pch <- opts$pch
+  } else {
+    pch <- 1:length(stonelist)
+  }
+  if (opts$col) {
+    col <- opts$col
+  } else {
+    col  <- 1:length(stonelist)
+  }
+
   par(mfrow=c(2,1),oma=c(0.5,0.5,0.5,0.5)) # c(row,col) c(1,1); c(b,l,t,r) c(0,0,0,0)
 
   # Pb206zPb204_vs_Pb207zPb204
   par(mar=c(2.5,4.5,0.0,0.5)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
   plot(XX,YY1,type="p",
-       col=stoneindex,pch=stoneindex,asp=1,
+       col=col,pch=pch,asp=1,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^207*"Pb/"*{}^204*"Pb"))
   errorbar.x <- function(XX,YY,err,WW,col=1){x0=XX-err;y0=YY;x1=XX+err;y1=YY;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
   errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
   if (any(c("Pb206zPb204_error","Pb207zPb204_error","Pb208zPb204_error") %in% colnames(pmlame0))) {
-    errorbar.x(XX,YY1,XX_sd,0.05,col=stoneindex)
-    errorbar.y(XX,YY1,YY1_sd,0.05,col=stoneindex)
+    errorbar.x(XX,YY1,XX_sd,0.05,col=col)
+    errorbar.y(XX,YY1,YY1_sd,0.05,col=col)
   }
   if (opts$legendp) {
-    legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
+    legend("bottomright",stonelist,col=col,pch=pch,ncol=2,cex=0.5)
   }
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(0.1084*x + 13.491,type="l",lty=1,add=TRUE)
@@ -66,14 +77,14 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   # Pb206zPb204_vs_Pb208zPb204
   par(mar=c(4.0,4.5,0.0,0.5)) # c(bottom,left,top,right) c(5.1,4.1,4.1,2.1)
   plot(XX,YY2,type="p",asp=1,
-       col=stoneindex,pch=stoneindex,
+       col=col,pch=pch,
        xlab=expression({}^206*"Pb/"*{}^204*"Pb"),ylab=expression({}^208*"Pb/"*{}^204*"Pb"))
   if (any(c("Pb206zPb204_error","Pb207zPb204_error","Pb208zPb204_error") %in% colnames(pmlame0))) {
-    errorbar.x(XX,YY2,XX_sd,0.05,col=stoneindex)
-    errorbar.y(XX,YY2,YY2_sd,0.05,col=stoneindex)
+    errorbar.x(XX,YY2,XX_sd,0.05,col=col)
+    errorbar.y(XX,YY2,YY2_sd,0.05,col=col)
   }
   if (opts$legendp) {
-    legend("bottomright",stonelist,col=stoneindex,pch=stoneindex,ncol=2,cex=0.5)
+    legend("bottomright",stonelist,col=col,pch=pch,ncol=2,cex=0.5)
   }
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(1.209*x + 15.627,type="l",lty=1,add=TRUE)
