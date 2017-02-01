@@ -73,7 +73,8 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
       pmlame                <- as.data.frame(t(qmlame[colnames(qmlame) != 'unit'] / factor)) * cbk.convector(tableunit)  
     } else {
       qmlameSTR             <- qmlame[rowSTR,]
-      qmlameNUM             <- qmlame[rownames(qmlame) != rowSTR,]
+      ## qmlameNUM             <- qmlame[rownames(qmlame) != rowSTR,]
+      qmlameNUM             <- qmlame[setdiff(rownames(qmlame),rowSTR),]
       factor                <- cbk.convector(as.character(qmlameNUM[,'unit']))
       names(factor)         <- rownames(qmlameNUM)
       factor[is.na(factor)] <- 1
