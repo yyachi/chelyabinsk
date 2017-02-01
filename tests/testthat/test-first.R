@@ -14,10 +14,11 @@ test_that("cbk.read.casteml(stone, ...) should return Dataframe",{
 })
 
 test_that("cbk.read.casteml(pmlfile, ...) should return Dataframe",{
-  pmlfile <- cbk.path('20081202172326.hkitagawa.pml')
-  tbl0 <- cbk.read.casteml(pmlfile,tableunit='ppm',category='trace')
+  pmlfile <- cbk.path("20160921173604-511857.pml")
+  tbl0    <- cbk.read.casteml(pmlfile,tableunit='ppm',category='trace')
   expect_true(is.data.frame(tbl0))
-  expect_that(as.numeric(tbl0["analysis of I1502","Li"]), equals(as.numeric(4.02)))
+  expect_that(as.numeric(tbl0["ys_opx_ok10vma@2572","Li"]), equals(as.numeric(0.046300)))
+  expect_that(as.numeric(tbl0["ys_opx_ok10vma@2572","Li_error"]), equals(as.numeric(3.90e-03)))
 })
 
 test_that("cbk.read.dflame(pmlcsv) should return Dataframe of periodic table",{
