@@ -6,6 +6,9 @@
 #' @seealso \code{cbk.lame.merge.error} and \code{merge}
 #' @export
 #' @examples
+#' pmlame1 <- data.frame(row.names=c("stone@1","stone@2"), SiO2=c(0.525,0.420), fo=c(0.353,3.400), d7Li=c(1.0,3.3))
+#' pmlame2 <- structure(list(fo = c(0.98,0.74), d18O = c(4.8,2.5)), row.names = c("ol_chd1@5","cpx_chd1@6"), .Names = c("fo","d18O"), class = "data.frame")
+#' cbk.lame.merge(pmlame1,pmlame2)
 cbk.lame.merge <- function(pmlame1,pmlame2,verbose=FALSE) {
 
   if(verbose){
