@@ -20,28 +20,27 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
     cbk.lame.stringfy(errorlame)
   }
 
-  chemlist  <- colnames(meanlame)
-  errorlist <- colnames(errorlame)
-  stonelist <- rownames(meanlame)
+  chemlist          <- colnames(meanlame)
+  stonelist         <- rownames(meanlame)
+  chem_error_regexp <- "^([A-Za-z].*)_error"
+  errorlist         <- gsub(chem_error_regexp,"\\1",colnames(errorlame)) # Li_error -> Li
 
   ## Add NA to stone without error
   errorlame0           <- data.frame(match(stonelist,rownames(errorlame)))
   rownames(errorlame0) <- stonelist
-  errorlame0           <- cbk.lame.rep(errorlame0, length(errorlist))
+  errorlame0           <- cbk.lame.rep(errorlame0,length(errorlist),direction='col')
   colnames(errorlame0) <- errorlist
   for(ii in 1:length(stonelist)) {
-    if (!is.na(errorlame0[ii,1])) {
-      errorlame0[ii,] <- errorlame[errorlame0[ii,1],]
+    index <- errorlame0[ii,1]
+    if (!is.na(index)) {
+      errorlame0[ii,] <- errorlame[index,]
     }
   }
 
   ## Add NA to element without error
-  chem_shared <- match(chemlist,errorlist)
-  if (all(is.na(chem_shared))) {
-    chem_shared <- match(paste0(chemlist,"_error"),errorlist)
-  }
+  chem_shared          <- match(chemlist,errorlist)
   errorlame1           <- data.frame(t(chem_shared))
-  errorlame1           <- cbk.lame.rep(errorlame1, length(stonelist))
+  errorlame1           <- cbk.lame.rep(errorlame1, length(stonelist),direction='row')
   rownames(errorlame1) <- stonelist
   for(ii in 1:length(chemlist)) {
     index <- errorlame1[1,ii]
@@ -54,12 +53,7 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
   }
 
   ## Add "_error" to colnames of errorlame
-  errorlist <- colnames(errorlame1)
-  for(ii in 1:length(errorlist)) {
-    if (!grepl("_error",errorlist[ii])) {
-      colnames(errorlame1)[ii] <- paste0(errorlist[ii],"_error")
-    }
-  }
+  colnames(errorlame1) <- paste0(colnames(errorlame1),"_error")
 
   ## Real work
   pmStat1 <- cbind(meanlame,errorlame1)
