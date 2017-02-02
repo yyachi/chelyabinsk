@@ -17,11 +17,10 @@ ionml.convert.iontblame(iontblame, outfile = NULL, force = FALSE)
 Name of IONML that was created.
 }
 \description{
-Convert ion-type TBLAME.csv to IONML.
-
-  This really create complete IONML.  This program assumes
-  extensions of ion-type TBLAME.csv and IONML to be `.ion' and
-  `.xml', respectively.
+Convert ion-type TBLAME.csv to IONML.  This really
+  create complete IONML.  This program assumes extensions of
+  ion-type TBLAME.csv and IONML to be `.ion' and `.xml',
+  respectively.
 }
 \examples{
 iontblame <- cbk.path("ref_cpx_klb1@1.ion")

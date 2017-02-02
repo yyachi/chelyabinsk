@@ -1,10 +1,9 @@
 #' @title Convert ion-type TBLAME.csv to IONML
 #'
-#' @description Convert ion-type TBLAME.csv to IONML.
-#' 
-#'   This really create complete IONML.  This program assumes
-#'   extensions of ion-type TBLAME.csv and IONML to be `.ion' and
-#'   `.xml', respectively.
+#' @description Convert ion-type TBLAME.csv to IONML.  This really
+#'   create complete IONML.  This program assumes extensions of
+#'   ion-type TBLAME.csv and IONML to be `.ion' and `.xml',
+#'   respectively.
 #'
 #' @param iontblame Name of ion-type TBLAME.csv.
 #' @param outfile Name of IONML that will be created.
