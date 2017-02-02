@@ -26,6 +26,6 @@ The path in \code{file} is interpreted relative to the
 cbk.exec(".")
 }
 \seealso{
-\code{\link{shell.exec}} and \code{\link{system}}
+\code{shell.exec} and \code{system}
 }
 
