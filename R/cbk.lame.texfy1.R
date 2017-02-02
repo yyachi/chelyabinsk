@@ -28,15 +28,15 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   errorlame  <- pmlame[,chem_error,drop=FALSE]
 
   if(verbose){
-    cat(file=stderr(),"cbk.lame.texfy1:31: meanlame # =>\n")
+    cat(file=stderr(),"cbk.lame.texfy1:31: meanlame <-\n")
     cbk.lame.stringfy(meanlame)
-    cat(file=stderr(),"cbk.lame.texfy1:33: errorlame # =>\n")
+    cat(file=stderr(),"cbk.lame.texfy1:33: errorlame <-\n")
     cbk.lame.stringfy(errorlame)
   }
 
   pmlame1    <- cbk.lame.merge.error(meanlame,errorlame,verbose)
   if(verbose){
-    cat(file=stderr(),"cbk.lame.texfy1:39: pmlame1 # =>\n")
+    cat(file=stderr(),"cbk.lame.texfy1:39: pmlame1 <-\n")
     cbk.lame.stringfy(pmlame1)
   }
 
