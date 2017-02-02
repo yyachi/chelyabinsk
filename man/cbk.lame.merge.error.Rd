@@ -2,14 +2,14 @@
 % Please edit documentation in R/cbk.lame.merge.error.R
 \name{cbk.lame.merge.error}
 \alias{cbk.lame.merge.error}
-\title{Merge columns of mean and error interleavely}
+\title{Merge errorlame to pmlame interleavely}
 \usage{
 cbk.lame.merge.error(meanlame, errorlame, verbose = FALSE)
 }
 \arguments{
-\item{meanlame}{A pmlame of mean values.}
+\item{meanlame}{A pmlame of mean values with colname of chem.}
 
-\item{errorlame}{A pmlame of error values.}
+\item{errorlame}{An errorlame of error values with colname of chem.}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }
@@ -17,7 +17,7 @@ cbk.lame.merge.error(meanlame, errorlame, verbose = FALSE)
 A pmlame with values of both mean and error.
 }
 \description{
-Merge columns of mean and error interleavely
+Merge errorlame to pmlame interleavely
 }
 \examples{
 pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

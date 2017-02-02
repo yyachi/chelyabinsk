@@ -1,6 +1,6 @@
-#' Merge columns of mean and error interleavely
-#' @param meanlame A pmlame of mean values.
-#' @param errorlame A pmlame of error values.
+#' Merge errorlame to pmlame interleavely
+#' @param meanlame A pmlame of mean values with colname of chem.
+#' @param errorlame An errorlame of error values with colname of chem.
 #' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame with values of both mean and error.
 #' @export
@@ -14,9 +14,9 @@
 cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   if(verbose){
-    cat(file=stderr(),"cbk.lame.merge.error:17: meanlame <-\n")
+    cat(file=stderr(),"cbk.lame.merge.error:17: meanlame <- ")
     cbk.lame.stringfy(meanlame)
-    cat(file=stderr(),"cbk.lame.merge.error:17: errorlame <-\n")
+    cat(file=stderr(),"cbk.lame.merge.error:17: errorlame <- ")
     cbk.lame.stringfy(errorlame)
   }
 
