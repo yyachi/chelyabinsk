@@ -20,6 +20,6 @@ A combined pmlame with row of stone and column of chem
 Merge to two pmlames
 }
 \seealso{
-\code{cbk.lame.merge.error}
+\code{cbk.lame.merge.error} and \code{merge}
 }
 
