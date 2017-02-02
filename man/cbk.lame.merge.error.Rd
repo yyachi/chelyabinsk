@@ -4,12 +4,14 @@
 \alias{cbk.lame.merge.error}
 \title{Merge columns of mean and error interleavely}
 \usage{
-cbk.lame.merge.error(meanlame, errorlame)
+cbk.lame.merge.error(meanlame, errorlame, verbose = FALSE)
 }
 \arguments{
 \item{meanlame}{A pmlame of mean values.}
 
 \item{errorlame}{A pmlame of error values.}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 A pmlame with values of both mean and error.
