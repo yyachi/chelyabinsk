@@ -3,6 +3,7 @@
 #' @param errorlame An errorlame of error values with colname of chem.
 #' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame with values of both mean and error.
+#' @seealso \code{cbk.lame.error}
 #' @export
 #' @examples
 #' pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

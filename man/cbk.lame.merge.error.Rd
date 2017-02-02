@@ -27,4 +27,7 @@ pmlame1_mean  <- cbk.lame.colMeans(pmlame1)
 pmlame1_error <- cbk.lame.colSds(pmlame1)
 pmlame2       <- cbk.lame.merge.error(pmlame1_mean,pmlame1_error)
 }
+\seealso{
+\code{cbk.lame.error}
+}
 
