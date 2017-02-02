@@ -17,7 +17,7 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   }
 
   chem_error <- paste0(chem,"_error")
-  meanlame   <- pmlame[,chem]
+  meanlame   <- pmlame[,chem,drop=FALSE]
 
   if (verbose) {
     cat(file=stderr(),"cbk.lame.texfy1:23: chem # =>",chem,"\n")
@@ -25,11 +25,30 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   }
 
   # this is pseudo-errorlame with label "Li7_error" instead of "Li7"
-  errorlame  <- pmlame[,chem_error]
+  errorlame  <- pmlame[,chem_error,drop=FALSE]
 
-  pmlame1    <- cbk.lame.merge.error(meanlame,errorlame)
+  if(verbose){
+    cat(file=stderr(),"cbk.lame.texfy1:31: meanlame # =>\n")
+    cbk.lame.stringfy(meanlame)
+    cat(file=stderr(),"cbk.lame.texfy1:33: errorlame # =>\n")
+    cbk.lame.stringfy(errorlame)
+  }
+
+  pmlame1    <- cbk.lame.merge.error(meanlame,errorlame,verbose)
+  if(verbose){
+    cat(file=stderr(),"cbk.lame.texfy1:39: pmlame1 # =>\n")
+    cbk.lame.stringfy(pmlame1)
+  }
+
   pmlfile    <- cbk.write.casteml(pmlame1)
+  if(verbose){
+    cat(file=stderr(),"cbk.lame.texfy1:45: pmlfile # =>",pmlfile,"\n")
+  }
+
   texfile    <- cbk.convert.casteml(pmlfile,format="tex")
+  if(verbose){
+    cat(file=stderr(),"cbk.lame.texfy1:50: texfile # =>",texfile,"\n")
+  }
 
   if (is.null(outfile)) {
     outfile <- texfile

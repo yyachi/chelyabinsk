@@ -36,7 +36,7 @@ cbk.texfy <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=1
       outfile <- sprintf("%s-%d.%s",outbase,ii,outext)
     }
     ichem <- unlist(chemlist[ii])
-    texfile <- cbk.lame.texfy1(pmlame,ichem,outfile=outfile)
+    texfile <- cbk.lame.texfy1(pmlame,ichem,outfile=outfile,verbose=verbose)
     texfiles <- append(texfiles,texfile)
   }
 
