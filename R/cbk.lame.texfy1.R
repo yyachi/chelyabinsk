@@ -53,7 +53,7 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   if (is.null(outfile)) {
     outfile <- texfile
   } else {
-    file.copy(texfile,outfile)
+    file.copy(texfile,outfile,overwrite=TRUE)
   }
   return(outfile)
 }
