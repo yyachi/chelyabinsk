@@ -4,17 +4,15 @@
 \alias{cbk.lame.merge}
 \title{Merge to two pmlames}
 \usage{
-cbk.lame.merge(pmlame1, pmlame2, verbose = FALSE)
+cbk.lame.merge(..., verbose = FALSE)
 }
 \arguments{
-\item{pmlame1}{A pmlame with row of stone and column of chem [g/g].}
-
-\item{pmlame2}{Another pmlame.}
+\item{...}{Multiple pmlames with row of stone and column of chem [g/g].}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
-A combined pmlame with row of stone and column of chem
+A merged pmlame with row of stone and column of chem.
 }
 \description{
 Merge to two pmlames
