@@ -4,12 +4,12 @@
 \alias{cbk.write.tblame}
 \title{Write pmlame as TBLAME.csv}
 \usage{
-cbk.write.tblame(pmlame, tblame)
+cbk.write.tblame(pmlame, outfile)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{tblame}{Path of TBLAME.csv, which is a csvfile with rows of stone
+\item{outfile}{Path of TBLAME.csv, which is a csvfile with rows of stone
 and columns of chem.}
 }
 \value{

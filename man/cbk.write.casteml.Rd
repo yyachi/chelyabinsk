@@ -4,12 +4,12 @@
 \alias{cbk.write.casteml}
 \title{Write a pmlame to CASTEML file}
 \usage{
-cbk.write.casteml(pmlame, pmlfile = NULL, verbose = TRUE)
+cbk.write.casteml(pmlame, outfile = NULL, verbose = TRUE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{pmlfile}{File path to casteml file}
+\item{outfile}{File path to casteml file}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }

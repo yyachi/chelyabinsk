@@ -1,7 +1,7 @@
 #' Write a pmlame to CASTEML file
 #'
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param pmlfile File path to casteml file
+#' @param outfile File path to casteml file
 #' @param verbose Output debug info (default: TRUE).
 #' @return File path to a casteml file
 #' @seealso \code{\link{cbk.read.casteml}}
@@ -9,7 +9,7 @@
 #' @examples
 #' pmlame0 <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 #' pmlfile <- cbk.write.casteml(pmlame0,'deleteme.pml')
-cbk.write.casteml <- function(pmlame,pmlfile=NULL,verbose=TRUE){
+cbk.write.casteml <- function(pmlame,outfile=NULL,verbose=TRUE){
 
   # Transform pmlame to have a first column labeled as `session'
   pmlame <- data.frame(session=rownames(pmlame),pmlame)
@@ -20,8 +20,8 @@ cbk.write.casteml <- function(pmlame,pmlfile=NULL,verbose=TRUE){
   write.csv(pmlame,csvfile,row.names=F)
 
   # Determine filename of pmlfile
-  if(is.null(pmlfile)){
-    pmlfile <- file.path(tempdir(),paste0(digest::digest(pmlame,algo='md5'),".pml"))
+  if(is.null(outfile)){
+    outfile <- file.path(tempdir(),paste0(digest::digest(pmlame,algo='md5'),".pml"))
   }
 
   # Convert csvfile to pmlfile
@@ -29,9 +29,9 @@ cbk.write.casteml <- function(pmlame,pmlfile=NULL,verbose=TRUE){
   if (verbose) {
     cat(file=stderr(),"cbk.write.casteml:30: casteml # =>",cmd,"\n")
   }
-  system2("casteml",cmd,stdout=pmlfile)
+  system2("casteml",cmd,stdout=outfile)
 
-  return(pmlfile)
+  return(outfile)
 }
 
 ## > casteml convert table-element-abundance0.pml > table-element-abundance0.csv

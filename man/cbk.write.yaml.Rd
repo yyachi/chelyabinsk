@@ -4,12 +4,12 @@
 \alias{cbk.write.yaml}
 \title{Write a pmlame to yamlfile.}
 \usage{
-cbk.write.yaml(pmlame, yamlfile = NULL, verbose = TRUE)
+cbk.write.yaml(pmlame, outfile = NULL, verbose = TRUE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{yamlfile}{Path to yamlfile with a pmlame.}
+\item{outfile}{Path to yamlfile with a pmlame.}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }
