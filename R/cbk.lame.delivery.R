@@ -6,7 +6,8 @@
 #'   estimated to be 1.25 ppm.
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param intlame A pseudo-pmlame of ion intensity with row of stone
-#'   and column of isomeas [cps].
+#'   and column of isomeas [cps].  Typically rowname is with
+#'   `@acq-number'.
 #' @param sputter.rate Sputter rate [g/s] (default: 1.1e-9 that
 #'   corresponds to abbration of 40 s to produce a pit with radius of
 #'   12.5 micron, depth of 30 micron, and density of 3 g/cc).
