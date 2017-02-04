@@ -26,10 +26,12 @@ cbk.lame.stringfy <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=de
     cat(file=stderr(),"cbk.lame.stringfy:25: tempfile # =>",tempfile,"\n")
   }
 
+  ## textlame <- readChar(tempfile,nchars=1e6) # read until 1 MB
   ## textlame <- paste(readLines(tempfile), collapse="\n")
-  textlame <- readChar(tempfile,nchars=1e6) # read until 1 MB
   if (dumpp) {
-    textlame <- gsub("[\r\n]", "", textlame)
+    textlame <- paste(trimws(readLines(tempfile),which="left"),collapse="")
+  } else {
+    textlame <- paste((readLines(tempfile)),collapse="\n")
   }
 
   if (show) {
