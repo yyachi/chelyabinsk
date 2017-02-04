@@ -2,29 +2,44 @@
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param format Format specifier that is passed to \code{casteml
 #'   convert}.
-#' @param show Show string in display using \code{file.show}.
+#' @param show Show string in console.
+#' @param verbose Output debug info (default: FALSE).
+#' @param name Name of the pmlame used with option `show'.
 #' @return A pmlame expressed in text
 #' @export
 #' @examples
 #' pmlame0 <- structure(list(SiO2 = c(0.59, 0.52), Li = c(2.08e-05, 1.37e-06), Sr = c(0.000107, 3.61e-05)), row.names = c("ref-gl-tahiti", "ref-cpx-klb1"), .Names = c("SiO2", "Li", "Sr"), class = "data.frame")
 #' cbk.lame.stringfy(pmlame0)
 #' cbk.lame.stringfy(pmlame0,'isorg')
-cbk.lame.stringfy <- function(pmlame,format=NULL,show=TRUE) {
-  if (is.null(format)){
+cbk.lame.stringfy <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=deparse(substitute(pmlame0))) {
+  dumpp <- is.null(format)
+
+  if (dumpp) {
     ## page(pmlame) # via dput
     tempfile <- tempfile()
     dput(pmlame,file=tempfile)
   } else {
-    pmlfile <- cbk.write.casteml(pmlame)
+    pmlfile  <- cbk.write.casteml(pmlame)
     tempfile <- cbk.convert.casteml(pmlfile,format=format)
   }
-  if (show) {
-    file.show(tempfile)
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.stringfy:25: tempfile # =>",tempfile,"\n")
   }
+
   ## textlame <- paste(readLines(tempfile), collapse="\n")
   textlame <- readChar(tempfile,nchars=1e6) # read until 1 MB
-  ## writeClipboard(textlame, format=1)
+  if (dumpp) {
+    textlame <- gsub("[\r\n]", "", textlame)
+  }
 
-  ## return(pmlame)
+  if (show) {
+    if (dumpp) {
+      ## http://stackoverflow.com/questions/24309910/how-to-get-name-of-variable-in-r-substitute
+      cat(file=stderr(),name,"<-",textlame,"\n")
+    } else {
+      file.show(tempfile)
+    }
+  }
+
   return(textlame)
 }

@@ -4,7 +4,8 @@
 \alias{cbk.lame.stringfy}
 \title{Show pmlame as string}
 \usage{
-cbk.lame.stringfy(pmlame, format = NULL, show = TRUE)
+cbk.lame.stringfy(pmlame, format = NULL, show = TRUE, verbose = FALSE,
+  name = deparse(substitute(pmlame0)))
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -12,7 +13,11 @@ cbk.lame.stringfy(pmlame, format = NULL, show = TRUE)
 \item{format}{Format specifier that is passed to \code{casteml
 convert}.}
 
-\item{show}{Show string in display using \code{file.show}.}
+\item{show}{Show string in console.}
+
+\item{verbose}{Output debug info (default: FALSE).}
+
+\item{name}{Name of the pmlame used with option `show'.}
 }
 \value{
 A pmlame expressed in text
