@@ -29,15 +29,15 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
 
   if(verbose){
     cat(file=stderr(),"cbk.lame.texfy1:31: meanlame <- ")
-    cbk.lame.stringfy(meanlame)
+    cbk.lame.dump(meanlame)
     cat(file=stderr(),"cbk.lame.texfy1:33: errorlame <- ")
-    cbk.lame.stringfy(errorlame)
+    cbk.lame.dump(errorlame)
   }
 
   pmlame1    <- cbk.lame.merge.error(meanlame,errorlame,verbose)
   if(verbose){
     cat(file=stderr(),"cbk.lame.texfy1:39: pmlame1 <- ")
-    cbk.lame.stringfy(pmlame1)
+    cbk.lame.dump(pmlame1)
   }
 
   pmlfile    <- cbk.write.casteml(pmlame1)

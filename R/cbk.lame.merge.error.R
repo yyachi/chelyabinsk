@@ -16,9 +16,9 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   if(verbose){
     cat(file=stderr(),"cbk.lame.merge.error:17: meanlame <- ")
-    cbk.lame.stringfy(meanlame)
+    cbk.lame.dump(meanlame)
     cat(file=stderr(),"cbk.lame.merge.error:17: errorlame <- ")
-    cbk.lame.stringfy(errorlame)
+    cbk.lame.dump(errorlame)
   }
 
   chemlist          <- colnames(meanlame)

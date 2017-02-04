@@ -1,4 +1,4 @@
-#' Show pmlame as string
+#' Dump pmlame as string
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param format Format specifier that is passed to \code{casteml
 #'   convert}.
@@ -9,9 +9,9 @@
 #' @export
 #' @examples
 #' pmlame0 <- structure(list(SiO2 = c(0.59, 0.52), Li = c(2.08e-05, 1.37e-06), Sr = c(0.000107, 3.61e-05)), row.names = c("ref-gl-tahiti", "ref-cpx-klb1"), .Names = c("SiO2", "Li", "Sr"), class = "data.frame")
-#' cbk.lame.stringfy(pmlame0)
-#' cbk.lame.stringfy(pmlame0,'isorg')
-cbk.lame.stringfy <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=deparse(substitute(pmlame0))) {
+#' cbk.lame.dump(pmlame0)
+#' cbk.lame.dump(pmlame0,'isorg')
+cbk.lame.dump <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=deparse(substitute(pmlame0))) {
   dumpp <- is.null(format)
 
   if (dumpp) {
@@ -23,7 +23,7 @@ cbk.lame.stringfy <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=de
     tempfile <- cbk.convert.casteml(pmlfile,format=format)
   }
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.stringfy:25: tempfile # =>",tempfile,"\n")
+    cat(file=stderr(),"cbk.lame.dump:25: tempfile # =>",tempfile,"\n")
   }
 
   ## textlame <- readChar(tempfile,nchars=1e6) # read until 1 MB

@@ -14,7 +14,7 @@ cbk.lame.merge <- function(...,verbose=FALSE) {
   if(verbose){
     for(ii in 1:length(pmlames)) {
       cat(file=stderr(),sprintf("cbk.lame.merge:16: pmlames[[%d]] <- ",ii))
-      cbk.lame.stringfy(pmlames[[ii]])
+      cbk.lame.dump(pmlames[[ii]])
     }
   }
 
