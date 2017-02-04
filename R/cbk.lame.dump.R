@@ -11,7 +11,7 @@
 #' pmlame0 <- structure(list(SiO2 = c(0.59, 0.52), Li = c(2.08e-05, 1.37e-06), Sr = c(0.000107, 3.61e-05)), row.names = c("ref-gl-tahiti", "ref-cpx-klb1"), .Names = c("SiO2", "Li", "Sr"), class = "data.frame")
 #' cbk.lame.dump(pmlame0)
 #' cbk.lame.dump(pmlame0,'isorg')
-cbk.lame.dump <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=deparse(substitute(pmlame0))) {
+cbk.lame.dump <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=deparse(substitute(pmlame))) {
   dumpp <- is.null(format)
 
   if (dumpp) {
