@@ -7,7 +7,9 @@
 #' pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
 #' pmlame1 <- cbk.lame.colSds(pmlame0)
 cbk.lame.colSds <- function(pmlame) {
-  delim_regexp <- "@|[.]|-[[:alnum:]]*$"
+  ## delim_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
+  delim_regexp    <- "@[[:alnum:]]+$"
+
   spotlist0    <- rownames(pmlame)
   spotlist1    <- unlist(lapply(strsplit(spotlist0,delim_regexp),'[[',1))
   stonelist    <- unique(spotlist1)
