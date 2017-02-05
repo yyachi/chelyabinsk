@@ -30,4 +30,3 @@ pmlame2       <- cbk.lame.merge.error(pmlame1_mean,pmlame1_error)
 \seealso{
 \code{cbk.lame.error}
 }
-

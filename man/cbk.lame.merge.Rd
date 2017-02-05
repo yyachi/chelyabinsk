@@ -25,4 +25,3 @@ cbk.lame.merge(pmlame1,pmlame2)
 \seealso{
 \code{cbk.lame.merge.error} and \code{merge}
 }
-

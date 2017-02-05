@@ -37,4 +37,3 @@ imagefile <- cbk.download.image("20160819165624-372633")
   \url{https://github.com/misasa/casteml}, and
   \code{\link{cbk.convert.casteml}}
 }
-

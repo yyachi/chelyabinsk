@@ -28,4 +28,3 @@ cbk.exec(".")
 \seealso{
 \code{shell.exec} and \code{system}
 }
-

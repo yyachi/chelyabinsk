@@ -36,4 +36,3 @@ cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),opts=list(legendp=FALSE))
 \seealso{
 \code{\link{cbk.plot.trace}}
 }
-

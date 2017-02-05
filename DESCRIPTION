@@ -7,5 +7,5 @@ Author: Tak Kunihiro
 Maintainer: Tak Kunihiro <tkk@misasa.okayama-u.ac.jp>
 Description: R package for geochemical datasets
 License: GPL (>= 2)
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.0
 Imports: testthat, roxygen2, dplyr, jpeg, png, XML, yaml, urltools

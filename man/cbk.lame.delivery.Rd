@@ -42,4 +42,3 @@ density      <- 3       # Density of solid target [g/cc]
 sputter.rate <- 3.14 * (radius * 100)^2 * (depth * 100) * density / t # [g/s]
 cbk.lame.delivery(pmlame1,intlame0,sputter.rate)
 }
-

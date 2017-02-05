@@ -25,4 +25,3 @@ Replicate pmlame in horizontal or vertical direction
 pmlame0 <- data.frame(row.names=c("stone.1","stone.2"), SiO2=c(0.525,0.420))
 cbk.lame.rep(pmlame0,3)
 }
-

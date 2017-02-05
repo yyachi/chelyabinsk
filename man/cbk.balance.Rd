@@ -27,4 +27,3 @@ Do mass balance calculation
 \seealso{
 \code{\link{cbk.lame.normalize}}
 }
-

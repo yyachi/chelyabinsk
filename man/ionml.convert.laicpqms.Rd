@@ -34,4 +34,3 @@ ionml.convert.laicpqms(acqfile,outfile=tempfile(fileext=".ion"))
 \seealso{
 ionml-laicpqms.plx
 }
-

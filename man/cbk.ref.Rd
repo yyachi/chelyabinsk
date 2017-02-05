@@ -37,4 +37,3 @@ cbk.ref("McDonough.1995","ppm",cbk.periodic('volatility'))
 \seealso{
 \code{\link{cbk.periodic}}
 }
-

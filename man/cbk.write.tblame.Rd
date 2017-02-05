@@ -22,4 +22,3 @@ Write pmlame as TBLAME.csv
 \code{\link{write.csv}}, \code{\link{cbk.read.tblame}},
   and \url{https://github.com/misasa/casteml}
 }
-

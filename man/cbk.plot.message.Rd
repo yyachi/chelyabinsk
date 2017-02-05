@@ -23,4 +23,3 @@ Display message on a diagram.
 pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
 cbk.plot.message(pmlame,sQuote("Hello, world!"))
 }
-

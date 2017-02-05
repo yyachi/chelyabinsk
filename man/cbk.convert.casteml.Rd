@@ -42,4 +42,3 @@ texfile    <- cbk.convert.casteml(pmlfile,format="tex")
 \code{casteml convert} and
   \url{https://github.com/misasa/casteml}
 }
-

@@ -28,4 +28,3 @@ This function uses \code{yaml::as.yaml} to save pmlame.
 \code{\link{cbk.read.yaml}} and
   \code{\link{cbk.write.casteml}}.
 }
-

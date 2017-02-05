@@ -31,4 +31,3 @@ cbk.lame.normalize(pmlame,ref)
 \seealso{
 \code{\link{cbk.ref}} and \code{\link{cbk.periodic}}
 }
-

@@ -25,4 +25,3 @@ Regulate pmlame to extract chem, error, or extra columns
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 pmlame1 <- cbk.lame.regulate(pmlame)
 }
-

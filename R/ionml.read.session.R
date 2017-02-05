@@ -13,6 +13,7 @@
 #'   larger than `sderr'.
 #' @param intensityp Have mean and sd of intensity instead of mean and
 #'   sderr of ionic ratio
+#' @param verbose Output debug info (default: FALSE).
 #' @return Pseudo-pmlame with average and standard error of ionic
 #'   ratio
 #' @seealso \code{\link{ionml.read.laicpqms}}
@@ -20,20 +21,34 @@
 #' @examples
 #' files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
 #' pmlame0 <- ionml.read.session(files)
-ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=FALSE,intensityp=FALSE) {
-  ## cat(file=stderr(),"ionml.read.session:22: t0 # =>",t0,"\n")
-  ## cat(file=stderr(),"ionml.read.session:23: t1 # =>",t1,"\n")
-  ## cat(file=stderr(),"ionml.read.session:24: t2 # =>",t2,"\n")
-  ## cat(file=stderr(),"ionml.read.session:25: t3 # =>",t3,"\n")
+ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=FALSE,intensityp=FALSE,verbose=FALSE) {
+  if (verbose) {
+    cat(file=stderr(),"ionml.read.session:26: t0 # =>",t0,"\n")
+    cat(file=stderr(),"ionml.read.session:27: t1 # =>",t1,"\n")
+    cat(file=stderr(),"ionml.read.session:28: t2 # =>",t2,"\n")
+    cat(file=stderr(),"ionml.read.session:29: t3 # =>",t3,"\n")
+  }
 
   meanlame                     <- data.frame()
   errorlame                    <- data.frame()
 
+  t0_ii <- t0
+  t1_ii <- t1
+  t2_ii <- t2
+  t3_ii <- t3
+
   for(acq_ii in tblame.csv){
+    ##* Set individual time when input is vector
+    idx <- which(tblame.csv==acq_ii)
+    if (length(t0)!=1) {t0_ii <- t0[idx]}
+    if (length(t1)!=1) {t1_ii <- t1[idx]}
+    if (length(t2)!=1) {t2_ii <- t2[idx]}
+    if (length(t3)!=1) {t3_ii <- t3[idx]}
+
     ##* Load data
     acqName                    <- tools::file_path_sans_ext(basename(acq_ii))
     ## ionlame0                <- ionml.read.laicpqms(acq_ii,ref=ref)
-    ionlame0                   <- ionml.read.laicpqms(acq_ii,t0=t0,t1=t1,t2=t2,t3=t3,ref=ref)
+    ionlame0                   <- ionml.read.laicpqms(acq_ii,t0=t0_ii,t1=t1_ii,t2=t2_ii,t3=t3_ii,ref=ref,verbose=verbose)
     ionlame                    <- ionlame0[,colnames(ionlame0)!="time"] # drop column of `time'
 
     ##* Deal mean

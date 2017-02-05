@@ -58,4 +58,3 @@ pmlame0     <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_mes
 pmlame1     <- cbk.lame.reduce(pmlame0)
 cbk.lame.atomify(pmlame1,ionic_ratio,ionic_yield,isoref='Si29')
 }
-

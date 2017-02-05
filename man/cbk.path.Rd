@@ -21,4 +21,3 @@ dflame.csv <- cbk.path("ref1-dflame0.csv")
 pmlfile    <- cbk.path("20081202172326.hkitagawa.pml")
 dflame.csv <- cbk.path("20081202172326.hkitagawa_trace.dflame")
 }
-

@@ -26,4 +26,3 @@ pmlfile <- cbk.write.casteml(pmlame0,'deleteme.pml')
 \seealso{
 \code{\link{cbk.read.casteml}}
 }
-

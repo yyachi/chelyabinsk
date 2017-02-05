@@ -27,6 +27,7 @@
 #' @param t2 time when ion starts (default: 25 s).
 #' @param t3 time when ion ends (default: 60 s).
 #' @param ref reference ion such as `Si29'.
+#' @param verbose Output debug info (default: FALSE).
 #' @return The ion-type pmlame of ion-to-ref ratio online with rows of
 #'   statistical information.
 #' @export
@@ -34,13 +35,15 @@
 #' @examples
 #' file <- cbk.path("ref_cpx_klb1@1.ion")
 #' pmlfile0 <- ionml.read.laicpqms(file)
-ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29") {
+ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29",verbose=FALSE) {
   library(dplyr)
 
-  ## cat(file=stderr(),"ionml.read.laicpqms:31: t0 # =>",t0,"\n")
-  ## cat(file=stderr(),"ionml.read.laicpqms:32: t1 # =>",t1,"\n")
-  ## cat(file=stderr(),"ionml.read.laicpqms:33: t2 # =>",t2,"\n")
-  ## cat(file=stderr(),"ionml.read.laicpqms:34: t3 # =>",t3,"\n")
+  if (verbose) {
+    cat(file=stderr(),"ionml.read.laicpqms:42: t0 # =>",t0,"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:43: t1 # =>",t1,"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:44: t2 # =>",t2,"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:45: t3 # =>",t3,"\n")
+  }
 
   ## Setup I/O
   if (is.data.frame(pmlame_or_file)) { # pmlame fed

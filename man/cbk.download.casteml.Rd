@@ -36,4 +36,3 @@ pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
   \url{https://github.com/misasa/casteml}, and
   \code{\link{cbk.convert.casteml}}
 }
-

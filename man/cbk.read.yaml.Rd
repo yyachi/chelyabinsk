@@ -26,4 +26,3 @@ This function restores rownames using a column with label
 \code{\link{cbk.write.yaml}},
   \code{\link{cbk.read.casteml}}.
 }
-

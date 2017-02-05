@@ -27,4 +27,3 @@ cbk.iso('Li7','ratio')
 \seealso{
 \code{\link{cbk.periodic}}, isotope.m, isotope_constant.m
 }
-

@@ -31,4 +31,3 @@ cbk.plot.trace(pmlame,tableunit="ug/g")
 \seealso{
 \url{https://github.com/misasa/casteml}
 }
-

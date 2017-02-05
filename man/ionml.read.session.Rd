@@ -5,7 +5,7 @@
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", DL = FALSE, intensityp = FALSE)
+  ref = "Si29", DL = FALSE, intensityp = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{tblame.csv}{Paths to ion-type TBLAME.csv.}
@@ -25,6 +25,8 @@ larger than `sderr'.}
 
 \item{intensityp}{Have mean and sd of intensity instead of mean and
 sderr of ionic ratio}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 Pseudo-pmlame with average and standard error of ionic
@@ -42,4 +44,3 @@ pmlame0 <- ionml.read.session(files)
 \seealso{
 \code{\link{ionml.read.laicpqms}}
 }
-

@@ -26,4 +26,3 @@ pmlame <- cbk.read.casteml(cbk.path("ref_phase_obj.pml"))
 chem <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
 cbk.lame.texfy1(pmlame,chem)
 }
-

@@ -22,4 +22,3 @@ pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
 pmlame1 <- cbk.lame.drop.dharma(pmlame)
 }
-

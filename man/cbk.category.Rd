@@ -22,4 +22,3 @@ pmlfile  <- cbk.path("20081202172326.hkitagawa.pml")
 category <- cbk.category(pmlfile)
 category <- cbk.category()
 }
-

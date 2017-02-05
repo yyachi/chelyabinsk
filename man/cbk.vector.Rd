@@ -23,4 +23,3 @@ This is written at initial stage of development.  May be
 \examples{
 cbk.vector(data.frame(row.names=c("density"), ol=c(3.300), pig=c(3.400), WR=c(3.3)))
 }
-

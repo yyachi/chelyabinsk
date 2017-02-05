@@ -25,4 +25,3 @@ cbk.periodic("atomicnumber")
 cbk.periodic("volatility")
 cbk.periodic("compatibility")
 }
-

@@ -29,4 +29,3 @@ ionml.convert.iontblame(iontblame,outfile=tempfile(fileext=".xml"))
 \seealso{
 \code{ionml.convert.laicpqms}
 }
-

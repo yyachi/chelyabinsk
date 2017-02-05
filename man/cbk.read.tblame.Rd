@@ -31,4 +31,3 @@ This internally calls \code{\link{read.csv}}, take out row
   \url{https://github.com/misasa/casteml}, and
   \code{\link{cbk.convector}}.
 }
-

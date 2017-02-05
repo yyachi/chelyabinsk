@@ -5,7 +5,7 @@
 \title{Dump pmlame as string}
 \usage{
 cbk.lame.dump(pmlame, format = NULL, show = TRUE, verbose = FALSE,
-  name = deparse(substitute(pmlame0)))
+  name = deparse(substitute(pmlame)))
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -30,4 +30,3 @@ pmlame0 <- structure(list(SiO2 = c(0.59, 0.52), Li = c(2.08e-05, 1.37e-06), Sr =
 cbk.lame.dump(pmlame0)
 cbk.lame.dump(pmlame0,'isorg')
 }
-

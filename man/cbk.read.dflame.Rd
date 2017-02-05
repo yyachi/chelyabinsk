@@ -43,4 +43,3 @@ pmlame     <- cbk.read.dflame(cbk.path("periodic-dflame0.csv"))
   convert}, \url{https://github.com/misasa/casteml}, and
   \code{\link{cbk.convector}}.
 }
-
