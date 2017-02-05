@@ -33,24 +33,24 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   num_a               <- 6.022e23 # Avogadro number [/mol]
   acqlist0            <- rownames(intlame)
 
-  ##* Rename rownames to be with "_" but "-" within this function
+  ##* Rename all rownames to be with "_" but "-" within this function
   row.names(pmlame)   <- gsub("-","_",row.names(pmlame))
   row.names(intlame)  <- gsub("-","_",row.names(intlame))
 
   ##* Setup
-  isomeas             <- grep(isomeas_regexp,colnames(intlame),value=T)
-  chemlist            <- cbk.iso(isomeas,'symbol')
   acqlist             <- rownames(intlame)
   stonelist           <- gsub(stonelist_regexp,"",acqlist) # remove letters after the first `at mark'
+  isomeas             <- grep(isomeas_regexp,colnames(intlame),value=T)
+  chemlist            <- cbk.iso(isomeas,'symbol')
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:45: isomeas # =>",isomeas,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:46: chemlist # =>",chemlist,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:47: acqlist # =>",acqlist,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:48: stonelist # =>",stonelist,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:49: rownames(intlame) # =>",rownames(intlame),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:50: colnames(intlame) # =>",colnames(intlame),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:48: acqlist # =>",acqlist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:49: stonelist # =>",stonelist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:50: isomeas # =>",isomeas,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:51: chemlist # =>",chemlist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:52: rownames(intlame) # =>",rownames(intlame),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:53: colnames(intlame) # =>",colnames(intlame),"\n")
   }
 
   ##* Have intlame, pmlame, and pseudo.t with the same dimension
@@ -65,17 +65,17 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:61: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:62: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:63: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:64: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:68: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:69: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:70: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:71: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
   }
 
   ##* Real work
   yield             <- intlame1 / (sputter.rate * pmlame1 / pseudo.wt * num_a)
 
   ##* Restore rownames
-  rownames(yield)   <- acqlist0
+  rownames(yield)   <- acqlist0 # Restore including "-" or "_"
 
   return(yield)
 }
