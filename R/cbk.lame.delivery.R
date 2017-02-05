@@ -41,7 +41,7 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   isomeas             <- grep(isomeas_regexp,colnames(intlame),value=T)
   chemlist            <- cbk.iso(isomeas,'symbol')
   acqlist             <- rownames(intlame)
-  stonelist           <- gsub(stonelist_regexp,"",acqlist) # remove number after at mark
+  stonelist           <- gsub(stonelist_regexp,"",acqlist) # remove letters after the first `at mark'
 
   ##* Console
   if (verbose) {
@@ -54,10 +54,14 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   }
 
   ##* Have intlame, pmlame, and pseudo.t with the same dimension
-  intlame1          <- intlame[acqlist,isomeas,drop=FALSE]
+  intlame1          <- intlame[,isomeas,drop=FALSE]
   pmlame1           <- pmlame[stonelist,chemlist,drop=FALSE]
   rownames(pmlame1) <- acqlist
   pseudo.wt         <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),length(stonelist),'v')
+  ## if (length(sputter.rate) > 1) {
+  ##   if (length(sputter.rate) != nrow(intlame1)) { stop("Invalid length of sputter.rate") }
+  ##   sputter.rate    <- cbk.lame.rep(as.data.frame(sputter.rate),length(chemlist),'h')
+  ## }
 
   ##* Console
   if (verbose) {

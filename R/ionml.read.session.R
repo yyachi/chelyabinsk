@@ -37,10 +37,10 @@ ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=F
   for(acq_ii in tblame.csv){
     ##* Set individual time when input is vector
     idx <- which(tblame.csv==acq_ii)
-    if (length(t0)!=1) {t0_ii <- t0[idx]}
-    if (length(t1)!=1) {t1_ii <- t1[idx]}
-    if (length(t2)!=1) {t2_ii <- t2[idx]}
-    if (length(t3)!=1) {t3_ii <- t3[idx]}
+    if (length(t0) > 1) {t0_ii <- t0[idx]}
+    if (length(t1) > 1) {t1_ii <- t1[idx]}
+    if (length(t2) > 1) {t2_ii <- t2[idx]}
+    if (length(t3) > 1) {t3_ii <- t3[idx]}
 
     ##* Load data
     acqName                    <- tools::file_path_sans_ext(basename(acq_ii))
