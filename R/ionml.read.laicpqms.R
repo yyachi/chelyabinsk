@@ -39,10 +39,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   library(dplyr)
 
   if (verbose) {
-    cat(file=stderr(),"ionml.read.laicpqms:42: t0 # =>",t0,"\n")
-    cat(file=stderr(),"ionml.read.laicpqms:43: t1 # =>",t1,"\n")
-    cat(file=stderr(),"ionml.read.laicpqms:44: t2 # =>",t2,"\n")
-    cat(file=stderr(),"ionml.read.laicpqms:45: t3 # =>",t3,"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:42: t0 t1 t2 t3 # =>",t0,t1,t2,t3,"\n")
   }
 
   ## Setup I/O
