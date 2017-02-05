@@ -34,9 +34,10 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   acqlist0            <- rownames(intlame)
 
   ##* Rename all rownames to be with "_" but "-" within this function
-  row.names(pmlame)   <- gsub("-","_",row.names(pmlame))
-  row.names(intlame)  <- gsub("-","_",row.names(intlame))
+  rownames(pmlame)   <- gsub("-","_",rownames(pmlame))
+  rownames(intlame)  <- gsub("-","_",rownames(intlame))
 
+  
   ##* Setup
   acqlist             <- rownames(intlame)
   stonelist           <- gsub(stonelist_regexp,"",acqlist) # remove letters after the first `at mark'
@@ -66,10 +67,11 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:68: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:69: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:70: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:71: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:69: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:70: sputter.rate <-",cbk.lame.dump(sputter.rate,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:71: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:72: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:73: num_a <-",num_a,"\n")
   }
 
   ##* Real work
