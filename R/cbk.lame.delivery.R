@@ -54,8 +54,8 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   }
 
   ##* Have intlame, pmlame, and pseudo.t with the same dimension
-  intlame1          <- intlame[acqlist,isomeas]
-  pmlame1           <- pmlame[stonelist,chemlist]
+  intlame1          <- intlame[acqlist,isomeas,drop=FALSE]
+  pmlame1           <- pmlame[stonelist,chemlist,drop=FALSE]
   pseudo.wt         <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),length(stonelist),'v')
 
   ##* Console
