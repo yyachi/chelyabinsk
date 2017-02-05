@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.lame.delivery.R
 \name{cbk.lame.delivery}
 \alias{cbk.lame.delivery}
-\title{Estimate delivery rate of ion from a pit by laser abbration}
+\title{Estimate delivery rate of element from sputter rate}
 \usage{
 cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09, verbose = FALSE)
 }
@@ -14,17 +14,17 @@ and column of isomeas [cps].  Typically rowname is with
 `@acq-number'.}
 
 \item{sputter.rate}{Sputter rate [g/s] (default: 1.1e-9 that
-corresponds to abbration of 40 s to produce a pit with radius of
-12.5 micron, depth of 30 micron, and density of 3 g/cc).}
+corresponds to abbration of 40 s to produce a pit with diameter
+of 25 micron, depth of 30 micron, and density of 3 g/cc).}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
-Delivery rate from solid target to detector.
+Delivery rate of element from solid target to detector.
 }
 \description{
-Estimate delivery rate of ion from a pit by laser
-  abbration.  Calculation is made in dimension of CGS.
+Estimate delivery rate of element from sputter rate.
+  Calculation is made in dimension of CGS.
 }
 \details{
 With ion Si29 intensity 3.85e+05 [cps], element SiO2

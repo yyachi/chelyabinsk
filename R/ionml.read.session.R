@@ -4,10 +4,10 @@
 #'   TBLAME.csv.  As of January 5, 2017, this function uses
 #'   `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
 #' @param tblame.csv Paths to ion-type TBLAME.csv.
-#' @param t0 Time when baseline starts (default: 5 s).
-#' @param t1 Time when baseline ends (default: 20 s).
-#' @param t2 Time when ion starts (default: 25 s).
-#' @param t3 Time when ion ends (default: 60 s).
+#' @param t0 Time when baseline starts (default: 5 s, scalar or vector)
+#' @param t1 Time when baseline ends (default: 20 s, scalar or vector).
+#' @param t2 Time when ion starts (default: 25 s, scalar or vector).
+#' @param t3 Time when ion ends (default: 60 s, scalar or vector).
 #' @param ref Reference ion such as `Si29'.
 #' @param DL Use delection limit (DL) instead of `sderr' when DL is
 #'   larger than `sderr'.

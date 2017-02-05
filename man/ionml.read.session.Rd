@@ -10,13 +10,13 @@ ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
 \arguments{
 \item{tblame.csv}{Paths to ion-type TBLAME.csv.}
 
-\item{t0}{Time when baseline starts (default: 5 s).}
+\item{t0}{Time when baseline starts (default: 5 s, scalar or vector)}
 
-\item{t1}{Time when baseline ends (default: 20 s).}
+\item{t1}{Time when baseline ends (default: 20 s, scalar or vector).}
 
-\item{t2}{Time when ion starts (default: 25 s).}
+\item{t2}{Time when ion starts (default: 25 s, scalar or vector).}
 
-\item{t3}{Time when ion ends (default: 60 s).}
+\item{t3}{Time when ion ends (default: 60 s, scalar or vector).}
 
 \item{ref}{Reference ion such as `Si29'.}
 
