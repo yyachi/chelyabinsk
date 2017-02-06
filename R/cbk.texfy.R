@@ -14,7 +14,7 @@
 cbk.texfy <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=11,verbose=FALSE) {
 
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.texfy:16: outfile # =>",outfile,"\n")
+    cat(file=stderr(),"cbk.texfy:17: outfile # =>",outfile,"\n")
   }
 
   ## pmlame <- cbk.lame.regulate(pmlame)
