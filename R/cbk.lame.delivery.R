@@ -37,7 +37,18 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   rownames(pmlame)   <- gsub("-","_",rownames(pmlame))
   rownames(intlame)  <- gsub("-","_",rownames(intlame))
 
-  
+  ##* Check names of vector
+  if ((length(sputter.rate) > 1) && (is.null(names(sputter.rate)))) {
+    cat(file=stderr(),"Warning: Consider giving names to sputter.rate\n")
+  }
+  ## else {
+  ##   names(sputter.rate) <- gsub("-","_",names(intlame))
+  ##   sputter.rate <- sputter.rate[rownames(intlame)]
+  ##   if (!(all(names(sputter.rate) == rownames(intlame)))) {
+  ##     stop("Inconsistent between rownames(intlame) and names(sputter.rate)")
+  ##   }
+  ## }
+
   ##* Setup
   acqlist             <- rownames(intlame)
   stonelist           <- gsub(stonelist_regexp,"",acqlist) # remove letters after the first `at mark'

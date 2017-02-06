@@ -29,10 +29,10 @@ ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=F
     cat(file=stderr(),"ionml.read.session:29: t3 # =>",t3,"\n")
   }
 
-  meanlame                     <- data.frame()
-  errorlame                    <- data.frame()
+  meanlame <- data.frame()
+  errorlame <- data.frame()
 
-  t0_ii <- t0; t1_ii <- t1; t2_ii <- t2; t3_ii <- t3
+  t0_ii <- t0; t1_ii <- t1; t2_ii <- t2; t3_ii <- t3 # use same value on schalar
 
   for(acq_ii in tblame.csv){
     ##* Set individual time when input is vector
