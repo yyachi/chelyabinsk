@@ -1,13 +1,14 @@
 #' Extract error columns from pmlame
-#' @param pmlame A pmlame with values of both mean and error
+#' @param pmlame A pmlame with both mean and error
 #' @param chem Target element you want to extract
-#' @return A pmlame of error values
+#' @return An errorlame that is a pmlame o fonly error values with
+#'   label of chem
 #' @export
 #' @examples
-#' pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-#' pmlame_error  <- cbk.lame.fetch.error(pmlame)
+#' pmlame       <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+#' pmlame_error <- cbk.lame.fetch.error(pmlame)
 #'
-#' pmlame_error  <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
+#' pmlame_error <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
 cbk.lame.fetch.error <- function(pmlame,chem=NULL) {
   chem_error_regexp <- "^([A-Za-z].*)_error"
   if (!is.null(chem)) {
