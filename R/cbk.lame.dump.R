@@ -37,7 +37,7 @@ cbk.lame.dump <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=depars
   if (show) {
     if (dumpp) {
       ## http://stackoverflow.com/questions/24309910/how-to-get-name-of-variable-in-r-substitute
-      cat(file=stderr(),name,"<-",textlame,"\n")
+      cat(file=stderr(),"#",name,"<-",textlame,"\n")
     } else {
       file.show(tempfile)
     }
