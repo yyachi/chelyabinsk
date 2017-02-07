@@ -1,6 +1,6 @@
 #' Merge errorlame to pmlame interleavely
-#' @param meanlame A pmlame of mean values with colname of chem.
-#' @param errorlame An errorlame of error values with colname of chem.
+#' @param meanlame A pmlame of mean values with colname of chem ('Li7').
+#' @param errorlame A pmlame of error values with colname of chem ('Li7' instead of 'Li7_error').
 #' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame with values of both mean and error.
 #' @seealso \code{cbk.lame.error}

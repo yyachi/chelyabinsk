@@ -1,7 +1,7 @@
 #' Extract error columns from pmlame
 #' @param pmlame A pmlame with both mean and error
 #' @param chem Target element you want to extract
-#' @return An errorlame that is a pmlame o fonly error values with
+#' @return An errorlame that is a pmlame of only error values with
 #'   label of chem
 #' @export
 #' @examples
@@ -10,7 +10,7 @@
 #'
 #' pmlame_error <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
 cbk.lame.fetch.error <- function(pmlame,chem=NULL) {
-  chem_error_regexp <- "^([A-Za-z].*)_error"
+  chem_error_regexp <- "^([A-Za-z].*)_error$"
   if (!is.null(chem)) {
     chemlist  <- gsub(chem_error_regexp,"\\1",chem) # Li_error -> Li
     errorlist <- paste0(chemlist, "_error")
