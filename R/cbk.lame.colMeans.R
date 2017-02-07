@@ -1,4 +1,4 @@
-#' Return mean value of each element
+#' Return mean of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @return A pmlame with mean value of each column
 #' @export

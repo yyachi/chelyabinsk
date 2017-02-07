@@ -1,4 +1,4 @@
-#' Return standard deviation value of each element
+#' Return standard deviation of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @return A pmlame with standard deviation value of each column
 #' @export
