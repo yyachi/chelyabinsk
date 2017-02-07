@@ -10,7 +10,9 @@
 #'   `@acq-number'.
 #' @param sputter.rate Sputter rate [g/s] (default: 1.1e-9 that
 #'   corresponds to abbration of 40 s to produce a pit with diameter
-#'   of 25 micron, depth of 30 micron, and density of 3 g/cc).
+#'   of 25 micron, depth of 30 micron, and density of 3 g/cc).  This
+#'   can be vector with name of acqlist, that should be consistent
+#'   with intlame.
 #' @param verbose Output debug info (default: FALSE).
 #' @return Delivery rate of element from solid target to detector.
 #' @export
@@ -25,6 +27,10 @@
 #' sputter.rate <- 3.14 * (radius * 100)^2 * (depth * 100) * density / t # [g/s]
 #' cbk.lame.delivery(pmlame1,intlame0,sputter.rate)
 cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE){
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.delivery:30: names(sputter.rate) # =>",names(sputter.rate),"\n")
+  }
+
   ##* Constant
   isomeas_regexp      <- "^[A-Z][a-z]?[0-9]+$"
   ## stonelist_regexp <- "@[0-9]+$"        # ref_gl_tahiti@10um@5Hz@x200(@11)
@@ -39,15 +45,16 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Check names of vector
   if ((length(sputter.rate) > 1) && (is.null(names(sputter.rate)))) {
-    cat(file=stderr(),"Warning: Consider giving names to sputter.rate\n")
+    cat(file=stderr(),"Warning: cbk.lame.delivery:47: Consider giving name to sputter.rate\n")
+  } else {
+    names(sputter.rate) <- gsub("-","_",names(sputter.rate)) # rename to be "_" within this function
+    if (!all(sort(names(sputter.rate)) == sort(rownames(intlame)))) {
+      cat(file=stderr(),"cbk.lame.delivery:51: names(sputter.rate) # =>",names(sputter.rate),"\n")
+      cat(file=stderr(),"cbk.lame.delivery:52: rownames(intlame) # =>",rownames(intlame),"\n")
+      stop("Inconsistent of rownames(intlame) and names(sputter.rate)")
+    }
+    sputter.rate <- sputter.rate[rownames(intlame)]
   }
-  ## else {
-  ##   names(sputter.rate) <- gsub("-","_",names(intlame))
-  ##   sputter.rate <- sputter.rate[rownames(intlame)]
-  ##   if (!(all(names(sputter.rate) == rownames(intlame)))) {
-  ##     stop("Inconsistent between rownames(intlame) and names(sputter.rate)")
-  ##   }
-  ## }
 
   ##* Setup
   acqlist             <- rownames(intlame)
@@ -57,12 +64,12 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:48: acqlist # =>",acqlist,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:49: stonelist # =>",stonelist,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:50: isomeas # =>",isomeas,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:51: chemlist # =>",chemlist,"\n")
-    cat(file=stderr(),"cbk.lame.delivery:52: rownames(intlame) # =>",rownames(intlame),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:53: colnames(intlame) # =>",colnames(intlame),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:66: acqlist # =>",acqlist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:67: stonelist # =>",stonelist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:68: isomeas # =>",isomeas,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:69: chemlist # =>",chemlist,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:70: rownames(intlame) # =>",rownames(intlame),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:71: colnames(intlame) # =>",colnames(intlame),"\n")
   }
 
   ##* Have intlame, pmlame, and pseudo.t with the same dimension
@@ -78,11 +85,11 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:69: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:70: sputter.rate <-",cbk.lame.dump(sputter.rate,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:71: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:72: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:73: num_a <-",num_a,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:87: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:88: sputter.rate <-",cbk.lame.dump(sputter.rate,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:89: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:90: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:91: num_a <-",num_a,"\n")
   }
 
   ##* Real work
