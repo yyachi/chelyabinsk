@@ -4,7 +4,7 @@
 \alias{cbk.lame.colMeans}
 \title{Return mean of each chem}
 \usage{
-cbk.lame.colMeans(pmlame, stonelist_regexp = NULL)
+cbk.lame.colMeans(pmlame, stonelist_regexp = "@[[:alnum:]]+$")
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}

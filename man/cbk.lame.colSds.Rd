@@ -4,7 +4,7 @@
 \alias{cbk.lame.colSds}
 \title{Return standard deviation of each chem}
 \usage{
-cbk.lame.colSds(pmlame, stonelist_regexp = NULL)
+cbk.lame.colSds(pmlame, stonelist_regexp = "@[[:alnum:]]+$")
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
