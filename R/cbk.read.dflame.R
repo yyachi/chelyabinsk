@@ -1,7 +1,7 @@
 #' @title Read csvfile created by casteml convert with column `unit'
 #'
 #' @description Read csvfile with column `unit' created by
-#'   \code{casteml convert --format dataframe}.  This is low-level
+#'   \code{casteml convert --format dflame}.  This is low-level
 #'   function and users are not encourage to call this but
 #'   cbk.read.casteml().
 #'
@@ -34,7 +34,7 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
 
   ## EXAMPLES
   ## $ casteml download -R 20130528105235-594267 > 20130528105235-594267.pml
-  ## $ casteml convert -f dataframe -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dflame
+  ## $ casteml convert -f dflame -c trace 20130528105235-594267.pml > 20081202172326.hkitagawa_trace.dflame
   ## R> pmlame <- cbk.read.dflame("20130528105235-594267.dflame","ppm")
 
   ## qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)

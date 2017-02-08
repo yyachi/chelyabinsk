@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.lame.colSds.R
 \name{cbk.lame.colSds}
 \alias{cbk.lame.colSds}
-\title{Return standard deviation value of each element}
+\title{Return standard deviation of each chem}
 \usage{
 cbk.lame.colSds(pmlame)
 }
@@ -13,7 +13,7 @@ cbk.lame.colSds(pmlame)
 A pmlame with standard deviation value of each column
 }
 \description{
-Return standard deviation value of each element
+Return standard deviation of each chem
 }
 \examples{
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

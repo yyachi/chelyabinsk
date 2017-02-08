@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.lame.delivery.R
 \name{cbk.lame.delivery}
 \alias{cbk.lame.delivery}
-\title{Estimate delivery rate of element from sputter rate}
+\title{Estimate delivery rate of chem}
 \usage{
 cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09, verbose = FALSE)
 }
@@ -15,7 +15,9 @@ and column of isomeas [cps].  Typically rowname is with
 
 \item{sputter.rate}{Sputter rate [g/s] (default: 1.1e-9 that
 corresponds to abbration of 40 s to produce a pit with diameter
-of 25 micron, depth of 30 micron, and density of 3 g/cc).}
+of 25 micron, depth of 30 micron, and density of 3 g/cc).  This
+also can be vector with name of acqlist, that should be
+consistent with rownames of intlame.}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }
@@ -23,12 +25,12 @@ of 25 micron, depth of 30 micron, and density of 3 g/cc).}
 Delivery rate of element from solid target to detector.
 }
 \description{
-Estimate delivery rate of element from sputter rate.
-  Calculation is made in dimension of CGS.
+Estimate delivery rate of chem.  Calculation is made
+  in dimension of CGS.
 }
 \details{
 With ion Si29 intensity 3.85e+05 [cps], element SiO2
-  abundance 59 wt%, and sputter rate 1.1 ng/s, the delivery rate is
+  abundance 59 wt%, and sputter rate 1.1 ng/s, delivery rate is
   estimated to be 1.25 ppm.
 }
 \examples{

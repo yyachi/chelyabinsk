@@ -7,9 +7,9 @@
 cbk.lame.merge.error(meanlame, errorlame, verbose = FALSE)
 }
 \arguments{
-\item{meanlame}{A pmlame of mean values with colname of chem.}
+\item{meanlame}{A pmlame of mean values with colname of chem ('Li7').}
 
-\item{errorlame}{An errorlame of error values with colname of chem.}
+\item{errorlame}{A pmlame of error values with colname of chem ('Li7' instead of 'Li7_error').}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }

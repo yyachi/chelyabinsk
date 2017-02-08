@@ -15,9 +15,9 @@
 cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   if(verbose){
-    cat(file=stderr(),"cbk.lame.merge.error:17: meanlame <- ")
+    cat(file=stderr(),"cbk.lame.merge.error:18: meanlame <- ")
     cbk.lame.dump(meanlame)
-    cat(file=stderr(),"cbk.lame.merge.error:17: errorlame <- ")
+    cat(file=stderr(),"cbk.lame.merge.error:20: errorlame <- ")
     cbk.lame.dump(errorlame)
   }
 

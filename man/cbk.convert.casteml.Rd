@@ -5,7 +5,7 @@
 \title{Convert CASTEML file to certain file}
 \usage{
 cbk.convert.casteml(pmlfile, category = NULL, force = FALSE,
-  verbose = TRUE, format = "dataframe")
+  verbose = TRUE, format = "dflame")
 }
 \arguments{
 \item{pmlfile}{File path to CASTEML file.}

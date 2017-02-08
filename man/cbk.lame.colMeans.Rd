@@ -2,7 +2,7 @@
 % Please edit documentation in R/cbk.lame.colMeans.R
 \name{cbk.lame.colMeans}
 \alias{cbk.lame.colMeans}
-\title{Return mean value of each element}
+\title{Return mean of each chem}
 \usage{
 cbk.lame.colMeans(pmlame)
 }
@@ -13,7 +13,7 @@ cbk.lame.colMeans(pmlame)
 A pmlame with mean value of each column
 }
 \description{
-Return mean value of each element
+Return mean of each chem
 }
 \examples{
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

@@ -24,7 +24,7 @@
 #'
 #' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
 #' texfile    <- cbk.convert.casteml(pmlfile,format="tex")
-cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE,verbose=TRUE,format="dataframe") {
+cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE,verbose=TRUE,format="dflame") {
 
   ##* Console
   if (verbose) {
@@ -33,7 +33,7 @@ cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE,verbose=TRUE,f
 
   ##* Set extension list
   extlist        <- c(".dflame",".tex")
-  names(extlist) <- c("dataframe","tex")
+  names(extlist) <- c("dflame","tex")
   ext            <- extlist[format]
 
   ##* Prepare output file

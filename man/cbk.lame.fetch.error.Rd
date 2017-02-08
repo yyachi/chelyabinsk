@@ -7,19 +7,20 @@
 cbk.lame.fetch.error(pmlame, chem = NULL)
 }
 \arguments{
-\item{pmlame}{A pmlame with values of both mean and error}
+\item{pmlame}{A pmlame with both mean and error}
 
 \item{chem}{Target element you want to extract}
 }
 \value{
-A pmlame of error values
+An errorlame that is a pmlame of only error values with
+  label of chem
 }
 \description{
 Extract error columns from pmlame
 }
 \examples{
-pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-pmlame_error  <- cbk.lame.fetch.error(pmlame)
+pmlame       <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+pmlame_error <- cbk.lame.fetch.error(pmlame)
 
-pmlame_error  <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
+pmlame_error <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
 }

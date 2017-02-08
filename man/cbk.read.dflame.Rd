@@ -20,7 +20,7 @@ A pmlame with unit organized.
 }
 \description{
 Read csvfile with column `unit' created by
-  \code{casteml convert --format dataframe}.  This is low-level
+  \code{casteml convert --format dflame}.  This is low-level
   function and users are not encourage to call this but
   cbk.read.casteml().
 }
