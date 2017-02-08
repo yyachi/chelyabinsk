@@ -4,10 +4,12 @@
 \alias{cbk.lame.colSds}
 \title{Return standard deviation of each chem}
 \usage{
-cbk.lame.colSds(pmlame)
+cbk.lame.colSds(pmlame, stonelist_regexp = NULL)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
+
+\item{stonelist_regexp}{A regexp string to split stone name}
 }
 \value{
 A pmlame with standard deviation value of each column

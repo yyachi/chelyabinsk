@@ -4,10 +4,12 @@
 \alias{cbk.lame.colMeans}
 \title{Return mean of each chem}
 \usage{
-cbk.lame.colMeans(pmlame)
+cbk.lame.colMeans(pmlame, stonelist_regexp = NULL)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
+
+\item{stonelist_regexp}{A regexp string to split stone name}
 }
 \value{
 A pmlame with mean value of each column

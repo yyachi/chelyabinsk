@@ -1,18 +1,20 @@
 #' Return mean of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
+#' @param stonelist_regexp A regexp string to split stone name
 #' @return A pmlame with mean value of each column
 #' @export
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 #' pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
 #' pmlame1 <- cbk.lame.colMeans(pmlame0)
-cbk.lame.colMeans <- function(pmlame) {
-  ## delim_regexp <- "[@|.]"
-  ## delim_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
-  delim_regexp    <- "@[[:alnum:]]+$"
-
+cbk.lame.colMeans <- function(pmlame,stonelist_regexp=NULL) {
+  if (is.null(stonelist_regexp)) {
+    ## stonelist_regexp <- "[@|.]"
+    ## stonelist_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
+    stonelist_regexp    <- "@[[:alnum:]]+$"
+  }
   spotlist0       <- rownames(pmlame)
-  spotlist1       <- unlist(lapply(strsplit(spotlist0,delim_regexp),'[[',1))
+  spotlist1       <- unlist(lapply(strsplit(spotlist0,stonelist_regexp),'[[',1))
   stonelist       <- unique(spotlist1)
 
   pmlame2 <- NaN

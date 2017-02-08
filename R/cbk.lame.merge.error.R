@@ -11,7 +11,7 @@
 #' pmlame1    <- pmlame0[,setdiff(colnames(pmlame0), c("sample_id","image_id"))]
 #' meanlame1  <- cbk.lame.colMeans(pmlame1)
 #' errorlame1 <- cbk.lame.colSds(pmlame1)
-#' pmlame2    <- cbk.lame.merge.error(meanlame,errorlame)
+#' pmlame2    <- cbk.lame.merge.error(meanlame1,errorlame1)
 cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   if(verbose){
@@ -23,11 +23,13 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   chemlist          <- colnames(meanlame)
   stonelist         <- rownames(meanlame)
-  chem_error_regexp <- "^([A-Za-z].*)_error"
-  errorlist         <- gsub(chem_error_regexp,"\\1",colnames(errorlame)) # Li_error -> Li
+  ## chem_error_regexp <- "^([A-Za-z].*)_error"
+  ## errorlist         <- gsub(chem_error_regexp,"\\1",colnames(errorlame)) # Li_error -> Li
+  errorlist         <- colnames(errorlame)
 
   ## Add NA to stone without error
-  errorlame0           <- data.frame(match(stonelist,rownames(errorlame)))
+  stone_shared         <- match(stonelist,rownames(errorlame))
+  errorlame0           <- data.frame(stone_shared)
   rownames(errorlame0) <- stonelist
   errorlame0           <- cbk.lame.rep(errorlame0,length(errorlist),direction='col')
   colnames(errorlame0) <- errorlist

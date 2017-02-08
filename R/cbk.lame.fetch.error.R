@@ -10,12 +10,14 @@
 #'
 #' errorlame <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
 cbk.lame.fetch.error <- function(pmlame,chem=NULL) {
-  chem_error_regexp <- "^([A-Za-z].*)_error$"
   if (!is.null(chem)) {
-    chemlist  <- gsub(chem_error_regexp,"\\1",chem) # Li_error -> Li
-    errorlist <- paste0(chemlist, "_error")
+    ## chem_error_regexp <- "^([A-Za-z].*)_error$"
+    ## chemlist          <- gsub(chem_error_regexp,"\\1",chem) # Li_error -> Li
+    errorlist         <- paste0(chem,"_error")
   } else {
-    errorlist <- grep("_error",colnames(pmlame),value=T)
+    ## errorlist <- grep("_error$",colnames(pmlame),value=T)
+    errorlame <- cbk.lame.regulate(pmlame,chem=FALSE)
+    errorlist <- colnames(errorlame)
   }
   errorlame0           <- pmlame[,errorlist]
   colnames(errorlame0) <- unlist(lapply(strsplit(errorlist,"_error"),'[[',1))
