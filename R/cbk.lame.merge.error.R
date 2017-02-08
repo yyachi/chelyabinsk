@@ -1,17 +1,17 @@
-#' Merge errorlame to pmlame interleavely
+#' Merge meanlame and errorlame to pmlame interleavely
 #' @param meanlame A pmlame of mean values with colname of chem ('Li7').
-#' @param errorlame A pmlame of error values with colname of chem ('Li7' instead of 'Li7_error').
+#' @param errorlame An errorlame, that is pmlame of error values with colname of chem ('Li7' instead of 'Li7_error').
 #' @param verbose Output debug info (default: FALSE).
-#' @return A pmlame with values of both mean and error.
+#' @return A proper pmlame with both mean and error columns.
 #' @seealso \code{cbk.lame.error}
 #' @export
 #' @examples
-#' pmlame        <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-#' pmlame0       <- pmlame[,!grepl("_error",colnames(pmlame))]
-#' pmlame1       <- pmlame0[,setdiff(colnames(pmlame0), c("sample_id","image_id"))]
-#' pmlame1_mean  <- cbk.lame.colMeans(pmlame1)
-#' pmlame1_error <- cbk.lame.colSds(pmlame1)
-#' pmlame2       <- cbk.lame.merge.error(pmlame1_mean,pmlame1_error)
+#' pmlame     <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+#' pmlame0    <- pmlame[,!grepl("_error",colnames(pmlame))]
+#' pmlame1    <- pmlame0[,setdiff(colnames(pmlame0), c("sample_id","image_id"))]
+#' meanlame1  <- cbk.lame.colMeans(pmlame1)
+#' errorlame1 <- cbk.lame.colSds(pmlame1)
+#' pmlame2    <- cbk.lame.merge.error(meanlame,errorlame)
 cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   if(verbose){
