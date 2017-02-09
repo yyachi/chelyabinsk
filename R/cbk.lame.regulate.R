@@ -12,7 +12,7 @@ cbk.lame.regulate <- function(pmlame,chem=TRUE,error=TRUE,extra=FALSE) {
 
   col0     <- colnames(pmlame)
   colError <- grep("_error$",col0,value=T)
-  colExtra <- c("x_image","y_image","x_vs","y_vs","image_path","sample_id","image_id","remark")
+  colExtra <- c("x_image","y_image","x_vs","y_vs","image_path","sample_id","image_id","remark","latitude","longitude","elevation")
   colChem  <- setdiff(setdiff(col0,colError),colExtra)
 
   colDrop <- NULL
