@@ -4,12 +4,14 @@
 \alias{cbk.lame.colMeans}
 \title{Return mean of each chem}
 \usage{
-cbk.lame.colMeans(pmlame, stonelist_regexp = "@[[:alnum:]]+$")
+cbk.lame.colMeans(pmlame, groupfy_stone_regexp = "@[[:digit:]]+$")
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{stonelist_regexp}{A regexp string to split stone name}
+\item{groupfy_stone_regexp}{A regexp string to groupfy
+stones. Actually it splits stone names to group name and sub-name
+that would be ignored}
 }
 \value{
 A pmlame with mean value of each column

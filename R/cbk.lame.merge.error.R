@@ -21,15 +21,14 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
     cbk.lame.dump(errorlame)
   }
 
-  chemlist          <- colnames(meanlame)
+  meanlist          <- colnames(meanlame)
   stonelist         <- rownames(meanlame)
   ## chem_error_regexp <- "^([A-Za-z].*)_error"
   ## errorlist         <- gsub(chem_error_regexp,"\\1",colnames(errorlame)) # Li_error -> Li
   errorlist         <- colnames(errorlame)
 
   ## Add NA to stone without error
-  stone_shared         <- match(stonelist,rownames(errorlame))
-  errorlame0           <- data.frame(stone_shared)
+  errorlame0           <- data.frame(match(stonelist,rownames(errorlame)))
   rownames(errorlame0) <- stonelist
   errorlame0           <- cbk.lame.rep(errorlame0,length(errorlist),direction='col')
   colnames(errorlame0) <- errorlist
@@ -41,17 +40,16 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
   }
 
   ## Add NA to element without error
-  chem_shared          <- match(chemlist,errorlist)
-  errorlame1           <- data.frame(t(chem_shared))
+  errorlame1           <- data.frame(t(match(meanlist,errorlist)))
   errorlame1           <- cbk.lame.rep(errorlame1, length(stonelist),direction='row')
   rownames(errorlame1) <- stonelist
-  for(ii in 1:length(chemlist)) {
+  for(ii in 1:length(meanlist)) {
     index <- errorlame1[1,ii]
     if (!is.na(index)) {
       colnames(errorlame1)[ii] <- errorlist[index]
       errorlame1[,ii]          <- errorlame0[,index]
     } else{
-      colnames(errorlame1)[ii] <- chemlist[ii]
+      colnames(errorlame1)[ii] <- meanlist[ii]
     }
   }
 
