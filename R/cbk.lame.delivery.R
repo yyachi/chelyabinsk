@@ -32,35 +32,38 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   }
 
   ##* Constant
-  isomeas_regexp      <- "^[A-Z][a-z]?[0-9]+$"
-  ## stonelist_regexp <- "@[0-9]+$"        # ref_gl_tahiti@10um@5Hz@x200(@11)
-  stonelist_regexp    <- "@[@[:alnum:]]+$" # ref_gl_tahiti(@10um@5Hz@x200@11)
+  ## isomeas_regexp <- "^[A-Z][a-z]?[0-9]+$"
+  ## stonefy_regexp <- "@[0-9]+$"        # ref_gl_tahiti@10um@5Hz@x200(@11)
+  stonefy_regexp    <- "@[@[:alnum:]]+$" # ref_gl_tahiti(@10um@5Hz@x200@11)
 
-  num_a               <- 6.022e23 # Avogadro number [/mol]
-  acqlist0            <- rownames(intlame)
+  num_a             <- 6.022e23 # Avogadro number [/mol]
+  acqlist0          <- rownames(intlame)
 
   ##* Rename all rownames to be with "_" but "-" within this function
-  rownames(pmlame)   <- gsub("-","_",rownames(pmlame))
-  rownames(intlame)  <- gsub("-","_",rownames(intlame))
+  rownames(pmlame)  <- gsub("-","_",rownames(pmlame))
+  rownames(intlame) <- gsub("-","_",rownames(intlame))
 
   ##* Check names of vector
-  if ((length(sputter.rate) > 1) && (is.null(names(sputter.rate)))) {
-    cat(file=stderr(),"Warning: cbk.lame.delivery:47: Consider giving name to sputter.rate\n")
-  } else {
-    names(sputter.rate) <- gsub("-","_",names(sputter.rate)) # rename to be "_" within this function
-    if (!all(sort(names(sputter.rate)) == sort(rownames(intlame)))) {
-      cat(file=stderr(),"cbk.lame.delivery:51: names(sputter.rate) # =>",names(sputter.rate),"\n")
-      cat(file=stderr(),"cbk.lame.delivery:52: rownames(intlame) # =>",rownames(intlame),"\n")
-      stop("Inconsistent of rownames(intlame) and names(sputter.rate)")
+  if (length(sputter.rate) > 1) {
+    if (is.null(names(sputter.rate))) {
+      cat(file=stderr(),"Warning: cbk.lame.delivery:47: Consider giving names to sputter.rate\n")
+    } else {
+      names(sputter.rate) <- gsub("-","_",names(sputter.rate)) # rename to be "_" within this function
+      if (!all(sort(names(sputter.rate)) == sort(rownames(intlame)))) {
+        cat(file=stderr(),"cbk.lame.delivery:51: names(sputter.rate) # =>",names(sputter.rate),"\n")
+        cat(file=stderr(),"cbk.lame.delivery:52: rownames(intlame) # =>",rownames(intlame),"\n")
+        stop("Inconsistent of rownames(intlame) and names(sputter.rate)")
+      }
+      sputter.rate <- sputter.rate[rownames(intlame)]
     }
-    sputter.rate <- sputter.rate[rownames(intlame)]
   }
 
   ##* Setup
-  acqlist             <- rownames(intlame)
-  stonelist           <- gsub(stonelist_regexp,"",acqlist) # remove letters after the first `at mark'
-  isomeas             <- grep(isomeas_regexp,colnames(intlame),value=T)
-  chemlist            <- cbk.iso(isomeas,'symbol')
+  acqlist    <- rownames(intlame)
+  stonelist  <- gsub(stonefy_regexp,"",acqlist) # remove letters after the first `at mark'
+  ## isomeas <- grep(isomeas_regexp,colnames(intlame),value=T)
+  isomeas    <- colnames(cbk.lame.regulate(intlame,mean=T,error=F,extra=F))
+  chemlist   <- cbk.iso(isomeas,'symbol')
 
   ##* Console
   if (verbose) {
@@ -78,18 +81,14 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
   rownames(pmlame1)   <- acqlist
   pseudo.wt           <- cbk.lame.rep(cbk.iso(isomeas,'pseudo.atomic.weight'),length(stonelist),'v')
   rownames(pseudo.wt) <- acqlist
-  ## if (length(sputter.rate) > 1) {
-  ##   if (length(sputter.rate) != nrow(intlame1)) { stop("Invalid length of sputter.rate") }
-  ##   sputter.rate    <- cbk.lame.rep(as.data.frame(sputter.rate),length(chemlist),'h')
-  ## }
 
   ##* Console
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.delivery:87: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:88: sputter.rate <-",cbk.lame.dump(sputter.rate,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:89: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:90: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.delivery:91: num_a <-",num_a,"\n")
+    cat(file=stderr(),"cbk.lame.delivery:89: intlame1 <-",cbk.lame.dump(intlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:90: sputter.rate <-",cbk.lame.dump(sputter.rate,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:91: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:92: pseudo.wt <-",cbk.lame.dump(pseudo.wt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.delivery:93: num_a <-",num_a,"\n")
   }
 
   ##* Real work
