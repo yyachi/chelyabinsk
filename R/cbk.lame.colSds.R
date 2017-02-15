@@ -1,19 +1,19 @@
 #' Return standard deviation of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param groupfy_stone_regexp A regexp string to groupfy
-#'   stones. Actually it splits stone names to group name and sub-name
-#'   that would be ignored
+#' @param groupfy_regexp A regexp string to groupfy stones. Actually
+#'   it splits stone names to group name and sub-name that would be
+#'   ignored
 #' @return A pmlame with standard deviation value of each column
 #' @export
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 #' pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
 #' pmlame1 <- cbk.lame.colSds(pmlame0)
-cbk.lame.colSds <- function(pmlame,groupfy_stone_regexp="@[[:digit:]]+$") {
-  ## groupfy_stone_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
+cbk.lame.colSds <- function(pmlame,groupfy_regexp="@[[:digit:]]+$") {
+  ## groupfy_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
 
   spotlist0    <- rownames(pmlame)
-  spotlist1    <- unlist(lapply(strsplit(spotlist0,groupfy_stone_regexp),'[[',1))
+  spotlist1    <- unlist(lapply(strsplit(spotlist0,groupfy_regexp),'[[',1))
   stonelist    <- unique(spotlist1)
 
   pmlame2 <- NaN
