@@ -41,7 +41,7 @@ cbk.lame.merge.error <- function(meanlame,errorlame,verbose=FALSE) {
 
   ## Add NA to element without error
   errorlame1           <- data.frame(t(match(meanlist,errorlist)))
-  errorlame1           <- cbk.lame.rep(errorlame1, length(stonelist),direction='row')
+  errorlame1           <- cbk.lame.rep(errorlame1,length(stonelist),direction='row')
   rownames(errorlame1) <- stonelist
   for(ii in 1:length(meanlist)) {
     index <- errorlame1[1,ii]
