@@ -21,7 +21,8 @@ cbk.texfy <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=1
   pmlame <- cbk.lame.regulate(cbk.read.casteml(pmlfile_or_stone))
 
   if (is.null(chem)) {
-    chem <- grep("_error$",colnames(pmlame),value=T,invert=T)
+    ## chem <- grep("_error$",colnames(pmlame),value=T,invert=T)
+    chem <- colnames(cbk.lame.regulate(pmlame,mean=T,error=F,extra=F))
   }
 
   outbase  <- tools::file_path_sans_ext(outfile)
