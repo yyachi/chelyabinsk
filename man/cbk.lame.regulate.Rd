@@ -12,11 +12,16 @@ cbk.lame.regulate(pmlame, mean = TRUE, error = TRUE, extra = FALSE,
 
 \item{mean}{Flag to extract mean columns (default: TRUE).}
 
-\item{error}{Flag to extract error columns (default: TRUE).}
+\item{error}{Flag to extract error columns (default: TRUE).  Note
+that dataframe return by option(mean=F,error=T,extra=F) is NOT
+errorlame.  To get errorlame, use \code{cbk.lame.fetch.error}
+instead.}
 
 \item{extra}{Flag to extract extra columns (default: FALSE).}
 
-\item{chem}{Target chem you want to extract}
+\item{chem}{Select only certain chem for mean and error.  With chem
+c('Li','Sr88'), columns of 'Li','Li_error','Sr88','Sr88_error'
+are selected.}
 }
 \value{
 A pmlame with columns of concern
@@ -27,4 +32,7 @@ Regulate pmlame to extract mean, error, or extra columns
 \examples{
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 pmlame1 <- cbk.lame.regulate(pmlame)
+}
+\seealso{
+\code{\link{cbk.lame.fetch.error}}
 }
