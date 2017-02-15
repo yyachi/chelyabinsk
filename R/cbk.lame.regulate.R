@@ -1,9 +1,13 @@
 #' Regulate pmlame to extract mean, error, or extra columns
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param mean Flag to extract mean columns (default: TRUE).
-#' @param error Flag to extract error columns (default: TRUE).
+#' @param error Flag to extract error columns (default: TRUE).  Note
+#'   that dataframe return by option(mean=F,error=T,extra=F) is NOT
+#'   errorlame.  To get errorlame, use \code{cbk.lame.fetch.error}
+#'   instead.
 #' @param extra Flag to extract extra columns (default: FALSE).
 #' @return A pmlame with columns of concern
+#' @seealso \code{\link{cbk.lame.fetch.error}}
 #' @export
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

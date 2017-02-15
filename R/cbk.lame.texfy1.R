@@ -13,41 +13,39 @@
 #' cbk.lame.texfy1(pmlame,chem)
 cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.texfy1:17: chem # =>",chem,"\n")
+    cat(file=stderr(),"cbk.lame.texfy1:16: chem # =>",chem,"\n")
   }
 
-  chem_error <- paste0(chem,"_error")
-  meanlame   <- pmlame[,chem,drop=FALSE]
+  ## meanlame   <- pmlame[,chem,drop=FALSE]
+  ## chem_error <- paste0(chem,"_error")
+  ### The errorlame is with label "Li7" instead of "Li7_error"
+  ### Below is incorrect errorlame.
+  ## errorlame  <- pmlame[,chem_error,drop=FALSE]
 
-  if (verbose) {
-    cat(file=stderr(),"cbk.lame.texfy1:23: chem # =>",chem,"\n")
-    cat(file=stderr(),"cbk.lame.texfy1:24: chem_error # =>",chem_error,"\n")
-  }
-
-  # this is pseudo-errorlame with label "Li7_error" instead of "Li7"
-  errorlame  <- pmlame[,chem_error,drop=FALSE]
+  meanlame      <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)[,chem,drop=FALSE]
+  errorlame     <- cbk.lame.fetch.error(pmlame,chem=chem)
 
   if(verbose){
-    cat(file=stderr(),"cbk.lame.texfy1:31: meanlame <- ")
+    cat(file=stderr(),"cbk.lame.texfy1:28: meanlame <- ")
     cbk.lame.dump(meanlame)
-    cat(file=stderr(),"cbk.lame.texfy1:33: errorlame <- ")
+    cat(file=stderr(),"cbk.lame.texfy1:30: errorlame <- ")
     cbk.lame.dump(errorlame)
   }
 
   pmlame1    <- cbk.lame.merge.error(meanlame,errorlame,verbose)
   if(verbose){
-    cat(file=stderr(),"cbk.lame.texfy1:39: pmlame1 <- ")
+    cat(file=stderr(),"cbk.lame.texfy1:36: pmlame1 <- ")
     cbk.lame.dump(pmlame1)
   }
 
   pmlfile    <- cbk.write.casteml(pmlame1)
   if(verbose){
-    cat(file=stderr(),"cbk.lame.texfy1:45: pmlfile # =>",pmlfile,"\n")
+    cat(file=stderr(),"cbk.lame.texfy1:42: pmlfile # =>",pmlfile,"\n")
   }
 
   texfile    <- cbk.convert.casteml(pmlfile,format="tex")
   if(verbose){
-    cat(file=stderr(),"cbk.lame.texfy1:50: texfile # =>",texfile,"\n")
+    cat(file=stderr(),"cbk.lame.texfy1:47: texfile # =>",texfile,"\n")
   }
 
   if (is.null(outfile)) {
