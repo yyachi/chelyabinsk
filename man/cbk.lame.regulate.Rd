@@ -4,7 +4,8 @@
 \alias{cbk.lame.regulate}
 \title{Regulate pmlame to extract mean, error, or extra columns}
 \usage{
-cbk.lame.regulate(pmlame, mean = TRUE, error = TRUE, extra = FALSE)
+cbk.lame.regulate(pmlame, mean = TRUE, error = TRUE, extra = FALSE,
+  chem = NULL)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -14,6 +15,8 @@ cbk.lame.regulate(pmlame, mean = TRUE, error = TRUE, extra = FALSE)
 \item{error}{Flag to extract error columns (default: TRUE).}
 
 \item{extra}{Flag to extract extra columns (default: FALSE).}
+
+\item{chem}{Target chem you want to extract}
 }
 \value{
 A pmlame with columns of concern

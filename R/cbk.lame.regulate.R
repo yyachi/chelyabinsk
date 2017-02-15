@@ -3,12 +3,13 @@
 #' @param mean Flag to extract mean columns (default: TRUE).
 #' @param error Flag to extract error columns (default: TRUE).
 #' @param extra Flag to extract extra columns (default: FALSE).
+#' @param chem Target chem you want to extract
 #' @return A pmlame with columns of concern
 #' @export
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 #' pmlame1 <- cbk.lame.regulate(pmlame)
-cbk.lame.regulate <- function(pmlame,mean=TRUE,error=TRUE,extra=FALSE) {
+cbk.lame.regulate <- function(pmlame,mean=TRUE,error=TRUE,extra=FALSE,chem=NULL) {
 
   col0     <- colnames(pmlame)
   colError <- grep("_error$",col0,value=T)
@@ -28,5 +29,11 @@ cbk.lame.regulate <- function(pmlame,mean=TRUE,error=TRUE,extra=FALSE) {
 
   col1 <- setdiff(col0,colDrop)
   pmlame1 <- pmlame[,col1,drop=FALSE]
+
+  if (!is.null(chem)) {
+    col2    <- c(chem,paste0(chem,"_error"))
+    colidx  <- match(col2,colnames(pmlame1))
+    pmlame1 <- pmlame1[,sort(colidx),drop=FALSE]
+  }
   return(pmlame1)
 }
