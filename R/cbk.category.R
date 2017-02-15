@@ -47,16 +47,16 @@ cbk.category <- function(pmlfile_or_stone=NULL) {
     if (any(REEList %in% ChemList)) {
       category <- append(category, c("trace", "REE", "spider"))
     }
-    if (any(OxyList %in% ChemList)) {
+    if (all(OxyList %in% ChemList)) {
       category <- append(category, "oxygen")
     }
-    if (any(LiList %in% ChemList)) {
+    if (all(LiList %in% ChemList)) {
       category <- append(category, "lithium")
     }
-    if (any(PbList %in% ChemList)) {
+    if (all(PbList %in% ChemList)) {
       category <- append(category, "lead")
     }
-    if (any(SpotsList %in% ChemList)) {
+    if (all(SpotsList %in% ChemList)) {
       category <- append(category, "spots")
     }
   }

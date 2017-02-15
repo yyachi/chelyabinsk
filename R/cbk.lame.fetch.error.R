@@ -19,7 +19,7 @@ cbk.lame.fetch.error <- function(pmlame,chem=NULL) {
     errorlame <- cbk.lame.regulate(pmlame,mean=FALSE,error=TRUE,extra=FALSE)
     errorlist <- colnames(errorlame)
   }
-  errorlame0           <- pmlame[,errorlist]
+  errorlame0           <- pmlame[,errorlist,drop=F]
   colnames(errorlame0) <- unlist(lapply(strsplit(errorlist,"_error"),'[[',1))
   return(errorlame0)
 }
