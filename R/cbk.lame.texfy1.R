@@ -22,7 +22,7 @@ cbk.lame.texfy1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   ### Below is incorrect errorlame.
   ## errorlame  <- pmlame[,chem_error,drop=FALSE]
 
-  meanlame      <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)[,chem,drop=FALSE]
+  meanlame      <- cbk.lame.regulate(pmlame,chem=chem,mean=T,error=F,extra=F)
   errorlame     <- cbk.lame.fetch.error(pmlame,chem=chem)
 
   if(verbose){
