@@ -1,6 +1,6 @@
-#' Regulate pmlame to extract chem, error, or extra columns
+#' Regulate pmlame to extract mean, error, or extra columns
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param chem Flag to extract chem columns (default: TRUE).
+#' @param mean Flag to extract mean columns (default: TRUE).
 #' @param error Flag to extract error columns (default: TRUE).
 #' @param extra Flag to extract extra columns (default: FALSE).
 #' @return A pmlame with columns of concern
@@ -8,16 +8,16 @@
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 #' pmlame1 <- cbk.lame.regulate(pmlame)
-cbk.lame.regulate <- function(pmlame,chem=TRUE,error=TRUE,extra=FALSE) {
+cbk.lame.regulate <- function(pmlame,mean=TRUE,error=TRUE,extra=FALSE) {
 
   col0     <- colnames(pmlame)
   colError <- grep("_error$",col0,value=T)
   colExtra <- c("x_image","y_image","x_vs","y_vs","image_path","sample_id","image_id","remark","latitude","longitude","elevation")
-  colChem  <- setdiff(setdiff(col0,colError),colExtra)
+  colMean  <- setdiff(setdiff(col0,colError),colExtra)
 
   colDrop <- NULL
-  if (!chem) {
-    colDrop <- c(colDrop,colChem)
+  if (!mean) {
+    colDrop <- c(colDrop,colMean)
   }
   if (!error) {
     colDrop <- c(colDrop,colError)

@@ -57,7 +57,7 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
   errorp                      <- grepl("_error",colnames(pmlame))
   if (any(errorp)) {
     chemlame  <- cbk.lame.regulate(pmlame,error=FALSE)
-    extralame <- cbk.lame.regulate(pmlame,chem=FALSE,error=FALSE,extra=TRUE)
+    extralame <- cbk.lame.regulate(pmlame,mean=FALSE,error=FALSE,extra=TRUE)
     errorlame <- cbk.lame.fetch.error(pmlame)
     pmlame    <- cbk.lame.merge.error(chemlame,errorlame)
     pmlame    <- cbind(pmlame, extralame)

@@ -2,14 +2,14 @@
 % Please edit documentation in R/cbk.lame.regulate.R
 \name{cbk.lame.regulate}
 \alias{cbk.lame.regulate}
-\title{Regulate pmlame to extract chem, error, or extra columns}
+\title{Regulate pmlame to extract mean, error, or extra columns}
 \usage{
-cbk.lame.regulate(pmlame, chem = TRUE, error = TRUE, extra = FALSE)
+cbk.lame.regulate(pmlame, mean = TRUE, error = TRUE, extra = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{chem}{Flag to extract chem columns (default: TRUE).}
+\item{mean}{Flag to extract mean columns (default: TRUE).}
 
 \item{error}{Flag to extract error columns (default: TRUE).}
 
@@ -19,7 +19,7 @@ cbk.lame.regulate(pmlame, chem = TRUE, error = TRUE, extra = FALSE)
 A pmlame with columns of concern
 }
 \description{
-Regulate pmlame to extract chem, error, or extra columns
+Regulate pmlame to extract mean, error, or extra columns
 }
 \examples{
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

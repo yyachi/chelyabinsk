@@ -16,7 +16,7 @@ cbk.lame.fetch.error <- function(pmlame,chem=NULL) {
     errorlist         <- paste0(chem,"_error")
   } else {
     ## errorlist <- grep("_error$",colnames(pmlame),value=T)
-    errorlame <- cbk.lame.regulate(pmlame,chem=FALSE,error=TRUE,extra=FALSE)
+    errorlame <- cbk.lame.regulate(pmlame,mean=FALSE,error=TRUE,extra=FALSE)
     errorlist <- colnames(errorlame)
   }
   errorlame0           <- pmlame[,errorlist]
