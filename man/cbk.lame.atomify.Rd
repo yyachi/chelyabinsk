@@ -11,10 +11,13 @@ cbk.lame.atomify(pmlame, ionic_ratio, ionic_yield, isoref = "Si29",
 \arguments{
 \item{pmlame}{A pmlame with internal-reference element such for Si
 and Ca.  Reduce SiO2 to Si in advance using
-\link{cbk.lame.reduce}.}
+\link{cbk.lame.reduce}.  Rownames of pmlame is `acqlist' instead
+of `stonelist'.}
 
 \item{ionic_ratio}{A pmlame-like ion signal intensities relative to
-internal-reference isotope.  For example, I(Li7)/I(Si29).}
+internal-reference isotope.  For example, I(Li7)/I(Si29).
+Rownames of `ionic_ratio' should be identical to that of
+`pmlame.'}
 
 \item{ionic_yield}{Relative sensitivities of element that were
 determined by analyses of several reference materials.}
