@@ -4,29 +4,32 @@
 \alias{cbk.lame.normalize}
 \title{Return normalized element abundances}
 \usage{
-cbk.lame.normalize(pmlame, ref, suffix_after_name_of_element = NULL)
+cbk.lame.normalize(pmlame, reflame, suffix_after_chem = NULL,
+  verbose = FALSE)
 }
 \arguments{
-\item{pmlame}{A pmlame of element abundances of sample}
+\item{pmlame}{A pmlame of element abundances of sample.}
 
-\item{ref}{A pmlame of element abundances of reference}
+\item{reflame}{A pmlame of element abundances of reference.}
 
-\item{suffix_after_name_of_element}{String to recognize column of
-errors.  Feed "_error" when necessary (default: NULL)}
+\item{suffix_after_chem}{String to recognize column of errors.
+Feed "_error" when necessary (default: NULL).}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 A ref-normalized daraframe with only elements defined in
-  ref
+  ref.
 }
 \description{
 Return normalized element abundances.  Note that only
-  elements that exist both in pmlame and ref are processed.  See
-  also "Geochemical Modelling..." by Janousek et al. (2015)
+  elements that exist both in pmlame and reflame are processed.
+  See also "Geochemical Modelling..." by Janousek et al. (2015)
 }
 \examples{
-pmlame <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
-ref    <- cbk.ref("Boynton.1989","ppm")
-cbk.lame.normalize(pmlame,ref)
+pmlame  <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
+reflame <- cbk.ref("Boynton.1989","ppm")
+cbk.lame.normalize(pmlame,reflame)
 }
 \seealso{
 \code{\link{cbk.ref}} and \code{\link{cbk.periodic}}
