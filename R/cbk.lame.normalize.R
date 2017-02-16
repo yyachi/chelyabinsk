@@ -26,7 +26,7 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_name_of_element=NULL)
   if(is.null(suffix_after_name_of_element)){
     normtbl              <- t(pmlame[,names(reflame1)])/cbk.vector(reflame1)
   } else {
-    names_with_suffix    <- paste(names(reflame1),suffix_after_name_of_element,sep="")
+    names_with_suffix    <- paste0(names(reflame1),suffix_after_name_of_element)
     ## normtbl           <- t(pmlame[,names_with_suffix])/cbk.vector(reflame1)
     ## rownames(normtbl) <- names.share
     normtbl              <- t(pmlame[,names(reflame1)])/cbk.vector(reflame1)
