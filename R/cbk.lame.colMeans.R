@@ -1,6 +1,6 @@
 #' Return mean of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param groupfy_regexp A regexp string to groupfy stones. Actually
+#' @param stonefy_regexp A regexp string to groupfy stones. Actually
 #'   it splits stone name to group-name and sub-name.  Latter would be
 #'   ignored.
 #' @return A pmlame with mean value of each column
@@ -9,12 +9,13 @@
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
 #' pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
 #' pmlame1 <- cbk.lame.colMeans(pmlame0)
-cbk.lame.colMeans <- function(pmlame,groupfy_regexp="@[[:digit:]]+$") {
-  ## groupfy_regexp <- "[@|.]"
-  ## groupfy_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
+cbk.lame.colMeans <- function(pmlame,stonefy_regexp="@[[:digit:]]+$") {
+  ## stonefy_regexp <- "[@|.]"
+  ## stonefy_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
 
   spotlist0       <- rownames(pmlame)
-  spotlist1       <- unlist(lapply(strsplit(spotlist0,groupfy_regexp),'[[',1))
+  ## spotlist1       <- unlist(lapply(strsplit(spotlist0,stonefy_regexp),'[[',1))
+  spotlist1       <- gsub(stonefy_regexp,"",spotlist0)
   stonelist       <- unique(spotlist1)
 
   pmlame2 <- NaN

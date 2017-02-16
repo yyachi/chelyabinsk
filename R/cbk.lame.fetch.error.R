@@ -11,16 +11,18 @@
 #'
 #' errorlame <- cbk.lame.fetch.error(pmlame,c("Li","Lu"))
 cbk.lame.fetch.error <- function(pmlame,chem=NULL) {
-  if (!is.null(chem)) {
-    ## chem_error_regexp <- "^([A-Za-z].*)_error$"
-    ## chemlist          <- gsub(chem_error_regexp,"\\1",chem) # Li_error -> Li
-    errorlist         <- paste0(chem,"_error")
-  } else {
+  ## if (!is.null(chem)) {
+  ##   ## chem_error_regexp <- "^([A-Za-z].*)_error$"
+  ##   ## chemlist          <- gsub(chem_error_regexp,"\\1",chem) # Li_error -> Li
+  ##   errorlist         <- paste0(chem,"_error")
+  ## } else {
     ## errorlist <- grep("_error$",colnames(pmlame),value=T)
-    errorlame <- cbk.lame.regulate(pmlame,mean=FALSE,error=TRUE,extra=FALSE)
-    errorlist <- colnames(errorlame)
-  }
-  errorlame0           <- pmlame[,errorlist,drop=F]
-  colnames(errorlame0) <- unlist(lapply(strsplit(errorlist,"_error"),'[[',1))
-  return(errorlame0)
+    ## errorlame <- cbk.lame.regulate(pmlame,mean=FALSE,error=TRUE,extra=FALSE)
+  errorlame <- cbk.lame.regulate(pmlame,mean=FALSE,error=TRUE,extra=FALSE,chem=chem)
+  ## errorlist  <- colnames(errorlame)
+  ## }
+  ## errorlame           <- pmlame[,errorlist,drop=F]
+  ## colnames(errorlame) <- unlist(lapply(strsplit(errorlist,"_error"),'[[',1))
+  colnames(errorlame) <- gsub("_error$","",colnames(errorlame))
+  return(errorlame)
 }

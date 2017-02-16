@@ -4,12 +4,12 @@
 \alias{cbk.lame.colSds}
 \title{Return standard deviation of each chem}
 \usage{
-cbk.lame.colSds(pmlame, groupfy_regexp = "@[[:digit:]]+$")
+cbk.lame.colSds(pmlame, stonefy_regexp = "@[[:digit:]]+$")
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{groupfy_regexp}{A regexp string to groupfy stones. Actually
+\item{stonefy_regexp}{A regexp string to groupfy stones. Actually
 it splits stone name to group-name and sub-name.  Latter would be
 ignored.}
 }
