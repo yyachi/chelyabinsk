@@ -1,8 +1,8 @@
 #' Return mean of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param groupfy_regexp A regexp string to groupfy stones. Actually
-#'   it splits stone names to group name and sub-name that would be
-#'   ignored
+#'   it splits stone name to group-name and sub-name.  Latter would be
+#'   ignored.
 #' @return A pmlame with mean value of each column
 #' @export
 #' @examples

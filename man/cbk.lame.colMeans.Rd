@@ -10,8 +10,8 @@ cbk.lame.colMeans(pmlame, groupfy_regexp = "@[[:digit:]]+$")
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{groupfy_regexp}{A regexp string to groupfy stones. Actually
-it splits stone names to group name and sub-name that would be
-ignored}
+it splits stone name to group-name and sub-name.  Latter would be
+ignored.}
 }
 \value{
 A pmlame with mean value of each column
