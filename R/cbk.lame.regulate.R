@@ -18,7 +18,10 @@
 cbk.lame.regulate <- function(pmlame,mean=TRUE,error=TRUE,extra=FALSE,chem=NULL) {
 
   if (!is.null(chem)) {
-    pmlame <- pmlame[,c(chem,paste0(chem,"_error")),drop=FALSE]
+    colChem <- c(chem,paste0(chem,"_error"))
+    colidx  <- match(colChem,colnames(pmlame))
+    pmlame  <- pmlame[,sort(colidx),drop=FALSE]
+    ## pmlame <- pmlame[,c(chem,paste0(chem,"_error")),drop=FALSE]
   }
 
   col0     <- colnames(pmlame)
