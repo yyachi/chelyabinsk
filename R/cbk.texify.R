@@ -9,12 +9,12 @@
 #' @param ncol Number of columns per a table.
 #' @param verbose Output debug info.
 #' @return Vector of file path to texfiles.
-#' @seealso \code{\link{cbk.lame.texfy1}}
+#' @seealso \code{\link{cbk.lame.texify1}}
 #' @export
-cbk.texfy <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=11,verbose=FALSE) {
+cbk.texify <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=11,verbose=FALSE) {
 
   if (verbose) {
-    cat(file=stderr(),"cbk.texfy:17: outfile # =>",outfile,"\n")
+    cat(file=stderr(),"cbk.texify:17: outfile # =>",outfile,"\n")
   }
 
   ## pmlame <- cbk.lame.regulate(pmlame)
@@ -37,7 +37,7 @@ cbk.texfy <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=1
       outfile <- sprintf("%s-%d.%s",outbase,ii,outext)
     }
     ichem <- unlist(chemlist[ii])
-    texfile <- cbk.lame.texfy1(pmlame,ichem,outfile=outfile,verbose=verbose)
+    texfile <- cbk.lame.texify1(pmlame,ichem,outfile=outfile,verbose=verbose)
     texfiles <- append(texfiles,texfile)
   }
 

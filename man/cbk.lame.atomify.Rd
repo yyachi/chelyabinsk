@@ -17,7 +17,7 @@ of `stonelist'.}
 \item{ionic_ratio}{A pmlame-like ion signal intensities relative to
 internal-reference isotope.  For example, I(Li7)/I(Si29).
 Rownames of `ionic_ratio' should be identical to that of
-`pmlame.'}
+`pmlame'.}
 
 \item{ionic_yield}{Relative sensitivities of element that were
 determined by analyses of several reference materials.}
