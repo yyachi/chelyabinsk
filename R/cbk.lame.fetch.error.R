@@ -1,8 +1,9 @@
 #' Extract error columns from pmlame as errorlame
-#' @param pmlame A pmlame with both mean and error
-#' @param chem Target chem you want to extract
+#' @param pmlame A pmlame with both mean and error.
+#' @param chem Target chem you want to extract.
 #' @return An errorlame that is a pmlame of only error colums with
-#'   label of chem
+#'   label of `chem' such as `Li7' instead of `Li7_error'.  Note that
+#'   columns that exist in input will be returned.
 #' @export
 #' @examples
 #' pmlame    <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))

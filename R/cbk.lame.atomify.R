@@ -24,7 +24,7 @@
 #'   \item{[Si29]       = [Si]/m!(Si29)}
 #'   \item{m!(Li7)      = m(Li)/R(Li7)}
 #'   \item{m!(Si9)      = m(Si)/R(Si29)}
-#'   \item{[Li]        <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
+#'   \item{[Li]         <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
 #' }
 #'
 #' @param pmlame A pmlame with internal-reference element such for Si
@@ -35,6 +35,7 @@
 #' @param ionic_yield Relative sensitivities of element that were
 #'   determined by analyses of several reference materials.
 #' @param isoref Name of internal-reference isotope such as 'Si29'.
+#' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame of element abundances.
 #' @export
 #' @examples
@@ -43,13 +44,14 @@
 #' pmlame0     <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 #' pmlame1     <- cbk.lame.reduce(pmlame0)
 #' cbk.lame.atomify(pmlame1,ionic_ratio,ionic_yield,isoref='Si29')
-cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29') {
+cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=FALSE) {
   ##* Reduce SiO2 to Si
   ## pmlame         <- cbk.lame.reduce(pmlame)
 
   ##* Obtain list of items
   ## isomeas        <- c('Li7','B11','Si29','La139')
-  isomeas           <- grep("_error",colnames(ionic_ratio),value=T,invert=T) # exclude _error
+  ## isomeas        <- grep("_error",colnames(ionic_ratio),value=T,invert=T) # exclude _error
+  isomeas           <- colnames(cbk.lame.regulate(ionic_ratio,mean=T,error=F,extra=F))
   isomeas           <- intersect(isomeas,colnames(ionic_yield))
 
   pseudowt          <- cbk.iso(isomeas,'pseudo.atomic.weight') # m(Li)/R(Li7) or m(Si)/R(Si29)
@@ -81,6 +83,6 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29') {
 
     pmlame1                    <- cbk.lame.merge.error(pmlame1,pmlame1_err)
   }
-  
+
   return(pmlame1)
 }

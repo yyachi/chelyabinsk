@@ -7,13 +7,14 @@
 cbk.lame.fetch.error(pmlame, chem = NULL)
 }
 \arguments{
-\item{pmlame}{A pmlame with both mean and error}
+\item{pmlame}{A pmlame with both mean and error.}
 
-\item{chem}{Target chem you want to extract}
+\item{chem}{Target chem you want to extract.}
 }
 \value{
 An errorlame that is a pmlame of only error colums with
-  label of chem
+  label of `chem' such as `Li7' instead of `Li7_error'.  Note that
+  columns that exist in input will be returned.
 }
 \description{
 Extract error columns from pmlame as errorlame

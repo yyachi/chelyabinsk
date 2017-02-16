@@ -5,7 +5,8 @@
 \title{Estimate element abundances from ion-intensity obtained by
   mass spectrometry.}
 \usage{
-cbk.lame.atomify(pmlame, ionic_ratio, ionic_yield, isoref = "Si29")
+cbk.lame.atomify(pmlame, ionic_ratio, ionic_yield, isoref = "Si29",
+  verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with internal-reference element such for Si
@@ -19,6 +20,8 @@ internal-reference isotope.  For example, I(Li7)/I(Si29).}
 determined by analyses of several reference materials.}
 
 \item{isoref}{Name of internal-reference isotope such as 'Si29'.}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 A pmlame of element abundances.
@@ -48,7 +51,7 @@ This function estimate trace-element abundances using
   \item{[Si29]       = [Si]/m!(Si29)}
   \item{m!(Li7)      = m(Li)/R(Li7)}
   \item{m!(Si9)      = m(Si)/R(Si29)}
-  \item{[Li]        <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
+  \item{[Li]         <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
 }
 }
 \examples{
