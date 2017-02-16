@@ -48,6 +48,10 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   ##* Reduce SiO2 to Si
   ## pmlame         <- cbk.lame.reduce(pmlame)
 
+  ##* Make letter consistent. Refer to `ref_cpx_klb1@1' instead of `ref-cpx-klb1@1'
+  rownames(pmlame) <- gsub("-","_",rownames(pmlame))
+  rownames(ionic_ratio) <- gsub("-","_",rownames(ionic_ratio))
+
   ##* Obtain list of items
   ## isomeas        <- c('Li7','B11','Si29','La139')
   ## isomeas        <- grep("_error",colnames(ionic_ratio),value=T,invert=T) # exclude _error
@@ -60,7 +64,8 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
 
   ##* Setup lames and estimate atomic ratio
   ionic_yield1      <- ionic_yield[,isomeas]
-  ionic_ratio1      <- ionic_ratio[stonelist,isomeas]
+  ionic_ratio1      <- cbk.lame.regulate(ionic_ratio,mean=T,error=F,extra=F,chem=isomeas)[stonelist,] # ionic_ratio[stonelist,isomeas]
+  ionic_error1      <- cbk.lame.fetch.error(ionic_ratio,chem=isomeas)[stonelist,] # errorlame
   atomic_ratio1     <- cbk.lame.normalize(ionic_ratio1,ionic_yield1)
 
   ##* Format chem-data of reference element
@@ -71,17 +76,19 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt) * concref1 / pseudowt[isoref]
 
   ##* Rename label from Li7 (incorrect) to Li (correct)
-  colnames(pmlame1) <- cbk.iso(colnames(pmlame1),'symbol') # element-name instead of iso-name
+  colnames(pmlame1) <- cbk.iso(colnames(pmlame1),'symbol') # from 'Li7' to 'Li'
 
-  ##* Do similar thing for error if exists
-  if (length(grep("_error",colnames(ionic_ratio))) > 0) {
-    ionic_ratio1_err           <- ionic_ratio[stonelist,paste0(isomeas,"_error")]
-    colnames(ionic_ratio1_err) <- isomeas
-    atomic_ratio1_err          <- cbk.lame.normalize(ionic_ratio1_err,ionic_yield1)
-    pmlame1_err                <- cbk.lame.normalize(atomic_ratio1_err, 1/pseudowt) * concref1 / pseudowt[isoref]
-    colnames(pmlame1_err)      <- cbk.iso(colnames(pmlame1_err),'symbol')
+  ##* Do similar things for error if exists
+  if (ncol(ionic_error1) > 0) {
+    if (verbose) {
+      cat(file=stderr(),"cbk.lame.atomify:80: colnames(ionic_error1) # =>",colnames(ionic_error1),"\n")
+      cat(file=stderr(),"cbk.lame.atomify:81: rownames(ionic_error1) # =>",rownames(ionic_error1),"\n")
+    }
+    atomic_error1        <- cbk.lame.normalize(ionic_error1,ionic_yield1)
+    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * concref1 / pseudowt[isoref]
+    colnames(errorlame1) <- cbk.iso(colnames(errorlame1),'symbol') # from 'Li7' to 'Li'
 
-    pmlame1                    <- cbk.lame.merge.error(pmlame1,pmlame1_err)
+    pmlame1              <- cbk.lame.merge.error(pmlame1,errorlame1)
   }
 
   return(pmlame1)
