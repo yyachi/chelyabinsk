@@ -34,7 +34,7 @@
 #' @param ionic_ratio A pmlame-like ion signal intensities relative to
 #'   internal-reference isotope.  For example, I(Li7)/I(Si29).
 #'   Rownames of `ionic_ratio' should be identical to that of
-#'   `pmlame.'
+#'   `pmlame'.
 #' @param ionic_yield Relative sensitivities of element that were
 #'   determined by analyses of several reference materials.
 #' @param isoref Name of internal-reference isotope such as 'Si29'.
@@ -51,19 +51,18 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   ##* Reduce SiO2 to Si
   ## pmlame         <- cbk.lame.reduce(pmlame)
 
-  ##* Make letter consistent. Refer to `ref_cpx_klb1@1' instead of `ref-cpx-klb1@1'
-  ## rownames(pmlame)      <- gsub("-","_",rownames(pmlame))
-  ## rownames(ionic_ratio) <- gsub("-","_",rownames(ionic_ratio))
-
   ##* Obtain list of items
   ## isomeas        <- c('Li7','B11','Si29','La139')
   ## isomeas        <- grep("_error",colnames(ionic_ratio),value=T,invert=T) # exclude _error
   isomeas           <- colnames(cbk.lame.regulate(ionic_ratio,mean=T,error=F,extra=F))
   isomeas           <- intersect(isomeas,colnames(ionic_yield))
-
   pseudowt          <- cbk.iso(isomeas,'pseudo.atomic.weight') # m(Li)/R(Li7) or m(Si)/R(Si29)
   ## acqlist        <- c('ref_gl_tahiti@2','ref_gl_tahiti@3','ref_gl_tahiti@4','trc_meso_allende@10')
   acqlist           <- intersect(rownames(ionic_ratio),rownames(pmlame))
+
+  ##* Format chem-data of reference element
+  reflame           <- pmlame[acqlist,cbk.iso(isoref,'symbol'),drop=FALSE]
+  reflame1          <- cbk.lame.rep(reflame,length(isomeas))
 
   ##* Setup lames and estimate atomic ratio
   ionic_yield1      <- ionic_yield[,isomeas]
@@ -71,12 +70,8 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   ionic_error1      <- cbk.lame.fetch.error(ionic_ratio,chem=isomeas)[acqlist,] # errorlame
   atomic_ratio1     <- cbk.lame.normalize(ionic_ratio1,ionic_yield1)
 
-  ##* Format chem-data of reference element
-  concref           <- pmlame[acqlist,cbk.iso(isoref,'symbol'),drop=FALSE]
-  concref1          <- cbk.lame.rep(concref,length(isomeas))
-
   ##* Estimate element-abundance from atomic-ratio
-  pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt) * concref1 / pseudowt[isoref]
+  pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt) * reflame1 / pseudowt[isoref]
 
   ##* Rename label from Li7 (incorrect) to Li (correct)
   colnames(pmlame1) <- cbk.iso(colnames(pmlame1),'symbol') # from 'Li7' to 'Li'
@@ -84,11 +79,11 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   ##* Do similar things for error if exists
   if (ncol(ionic_error1) > 0) {
     if (verbose) {
-      cat(file=stderr(),"cbk.lame.atomify:80: colnames(ionic_error1) # =>",colnames(ionic_error1),"\n")
-      cat(file=stderr(),"cbk.lame.atomify:81: rownames(ionic_error1) # =>",rownames(ionic_error1),"\n")
+      cat(file=stderr(),"cbk.lame.atomify:82: colnames(ionic_error1) # =>",colnames(ionic_error1),"\n")
+      cat(file=stderr(),"cbk.lame.atomify:83: rownames(ionic_error1) # =>",rownames(ionic_error1),"\n")
     }
     atomic_error1        <- cbk.lame.normalize(ionic_error1,ionic_yield1)
-    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * concref1 / pseudowt[isoref]
+    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * reflame1 / pseudowt[isoref]
     colnames(errorlame1) <- cbk.iso(colnames(errorlame1),'symbol') # from 'Li7' to 'Li'
 
     pmlame1              <- cbk.lame.merge.error(pmlame1,errorlame1)
