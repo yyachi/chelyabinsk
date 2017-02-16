@@ -29,9 +29,12 @@
 #'
 #' @param pmlame A pmlame with internal-reference element such for Si
 #'   and Ca.  Reduce SiO2 to Si in advance using
-#'   \link{cbk.lame.reduce}.
+#'   \link{cbk.lame.reduce}.  Rownames of pmlame is `acqlist' instead
+#'   of `stonelist'.
 #' @param ionic_ratio A pmlame-like ion signal intensities relative to
 #'   internal-reference isotope.  For example, I(Li7)/I(Si29).
+#'   Rownames of `ionic_ratio' should be identical to that of
+#'   `pmlame.'
 #' @param ionic_yield Relative sensitivities of element that were
 #'   determined by analyses of several reference materials.
 #' @param isoref Name of internal-reference isotope such as 'Si29'.
@@ -49,8 +52,8 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   ## pmlame         <- cbk.lame.reduce(pmlame)
 
   ##* Make letter consistent. Refer to `ref_cpx_klb1@1' instead of `ref-cpx-klb1@1'
-  rownames(pmlame) <- gsub("-","_",rownames(pmlame))
-  rownames(ionic_ratio) <- gsub("-","_",rownames(ionic_ratio))
+  ## rownames(pmlame)      <- gsub("-","_",rownames(pmlame))
+  ## rownames(ionic_ratio) <- gsub("-","_",rownames(ionic_ratio))
 
   ##* Obtain list of items
   ## isomeas        <- c('Li7','B11','Si29','La139')
@@ -59,17 +62,17 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   isomeas           <- intersect(isomeas,colnames(ionic_yield))
 
   pseudowt          <- cbk.iso(isomeas,'pseudo.atomic.weight') # m(Li)/R(Li7) or m(Si)/R(Si29)
-  ## stonelist      <- c('ref_gl_tahiti@2','ref_gl_tahiti@3','ref_gl_tahiti@4','trc_meso_allende@10')
-  stonelist         <- intersect(rownames(ionic_ratio),rownames(pmlame))
+  ## acqlist        <- c('ref_gl_tahiti@2','ref_gl_tahiti@3','ref_gl_tahiti@4','trc_meso_allende@10')
+  acqlist           <- intersect(rownames(ionic_ratio),rownames(pmlame))
 
   ##* Setup lames and estimate atomic ratio
   ionic_yield1      <- ionic_yield[,isomeas]
-  ionic_ratio1      <- cbk.lame.regulate(ionic_ratio,mean=T,error=F,extra=F,chem=isomeas)[stonelist,] # ionic_ratio[stonelist,isomeas]
-  ionic_error1      <- cbk.lame.fetch.error(ionic_ratio,chem=isomeas)[stonelist,] # errorlame
+  ionic_ratio1      <- cbk.lame.regulate(ionic_ratio,mean=T,error=F,extra=F,chem=isomeas)[acqlist,] # ionic_ratio[acqlist,isomeas]
+  ionic_error1      <- cbk.lame.fetch.error(ionic_ratio,chem=isomeas)[acqlist,] # errorlame
   atomic_ratio1     <- cbk.lame.normalize(ionic_ratio1,ionic_yield1)
 
   ##* Format chem-data of reference element
-  concref           <- pmlame[stonelist,cbk.iso(isoref,'symbol'),drop=FALSE]
+  concref           <- pmlame[acqlist,cbk.iso(isoref,'symbol'),drop=FALSE]
   concref1          <- cbk.lame.rep(concref,length(isomeas))
 
   ##* Estimate element-abundance from atomic-ratio
