@@ -61,6 +61,6 @@ This function estimate trace-element abundances using
 ionic_yield <- data.frame(row.names=c("ionic_yield"), Li7=c(1.027), B11=c(1.76), Si29=c(1), La139=c(77.6))
 ionic_ratio <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),Li7=c(5.56389e-04,4.90334e-04,7.02148e-05),B11=c(5.88269e-05,8.64064e-05,1.44872e-04),Si29=c(1,1,1),La139=c(0.000340813,0.000281243,0.000708434))
 pmlame0     <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
-pmlame1     <- cbk.lame.reduce(pmlame0)
-cbk.lame.atomify(pmlame1,ionic_ratio,ionic_yield,isoref='Si29')
+pmlame      <- cbk.lame.reduce(pmlame0)
+cbk.lame.atomify(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=TRUE)
 }

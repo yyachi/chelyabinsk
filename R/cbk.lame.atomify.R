@@ -46,7 +46,7 @@
 #' ionic_ratio <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),Li7=c(5.56389e-04,4.90334e-04,7.02148e-05),B11=c(5.88269e-05,8.64064e-05,1.44872e-04),Si29=c(1,1,1),La139=c(0.000340813,0.000281243,0.000708434))
 #' pmlame0     <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 #' pmlame      <- cbk.lame.reduce(pmlame0)
-#' cbk.lame.atomify(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=T)
+#' cbk.lame.atomify(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=TRUE)
 cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=FALSE) {
   ##* Reduce SiO2 to Si
   ## pmlame         <- cbk.lame.reduce(pmlame)
