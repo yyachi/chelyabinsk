@@ -51,12 +51,18 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   ##* Reduce SiO2 to Si
   ## pmlame         <- cbk.lame.reduce(pmlame)
 
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.atomify:54: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:55: ionic_ratio <-",cbk.lame.dump(ionic_ratio,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:56: ionic_yield <-",cbk.lame.dump(ionic_yield,show=F),"\n")
+  }
+
   ##* Obtain list of items
   ## isomeas        <- c('Li7','B11','Si29','La139')
   ## isomeas        <- grep("_error",colnames(ionic_ratio),value=T,invert=T) # exclude _error
   isomeas           <- colnames(cbk.lame.regulate(ionic_ratio,mean=T,error=F,extra=F))
   isomeas           <- intersect(isomeas,colnames(ionic_yield))
-  pseudowt          <- cbk.iso(isomeas,'pseudo.atomic.weight') # m(Li)/R(Li7) or m(Si)/R(Si29)
+  pseudowt          <- as.data.frame(t(cbk.iso(isomeas,'pseudo.atomic.weight'))) # m(Li)/R(Li7) or m(Si)/R(Si29)
   ## acqlist        <- c('ref_gl_tahiti@2','ref_gl_tahiti@3','ref_gl_tahiti@4','trc_meso_allende@10')
   acqlist           <- intersect(rownames(ionic_ratio),rownames(pmlame))
 
@@ -71,19 +77,25 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
   atomic_ratio1     <- cbk.lame.normalize(ionic_ratio1,ionic_yield1)
 
   ##* Estimate element-abundance from atomic-ratio
-  pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt) * reflame1 / pseudowt[isoref]
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.atomify:81: atomic_ratio1 <-",cbk.lame.dump(atomic_ratio1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:82: pseudowt <-",cbk.lame.dump(pseudowt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:83: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:84: isoref <-",cbk.lame.dump(isoref,show=F),"\n")
+  }
+  pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt, verbose=verbose) * reflame1 / pseudowt[,isoref]
 
   ##* Rename label from Li7 (incorrect) to Li (correct)
   colnames(pmlame1) <- cbk.iso(colnames(pmlame1),'symbol') # from 'Li7' to 'Li'
 
-  ##* Do similar things for error if exists
+  ##* Do similar things for error if any
   if (ncol(ionic_error1) > 0) {
     if (verbose) {
       cat(file=stderr(),"cbk.lame.atomify:82: colnames(ionic_error1) # =>",colnames(ionic_error1),"\n")
       cat(file=stderr(),"cbk.lame.atomify:83: rownames(ionic_error1) # =>",rownames(ionic_error1),"\n")
     }
     atomic_error1        <- cbk.lame.normalize(ionic_error1,ionic_yield1)
-    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * reflame1 / pseudowt[isoref]
+    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * reflame1 / pseudowt[,isoref]
     colnames(errorlame1) <- cbk.iso(colnames(errorlame1),'symbol') # from 'Li7' to 'Li'
 
     pmlame1              <- cbk.lame.merge.error(pmlame1,errorlame1)

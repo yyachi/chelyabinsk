@@ -23,21 +23,25 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
   reflame1            <- reflame[,chem]
 
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.normalize:26: chem <-",cbk.lame.dump(chem,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:26: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:26: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:27: chem <-",cbk.lame.dump(chem,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:28: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
   }
 
   ## extraction and normalization
   if(is.null(suffix_after_chem)){
-    normtbl           <- t(pmlame[,chem])/cbk.vector(reflame1)
+    pmlame1           <- pmlame[,chem]/cbk.vector(reflame1[,chem])
   } else {
     chem_with_suffix  <- paste0(chem,suffix_after_chem)
     if (verbose) {
       cat(file=stderr(),"cbk.lame.normalize:36: chem_with_suffix <-",cbk.lame.dump(chem_with_suffix,show=F),"\n")
     }
-    normtbl           <- t(pmlame[,chem_with_suffix])/cbk.vector(reflame1)
-    rownames(normtbl) <- chem_with_suffix
+    pmlame1           <- pmlame[,chem_with_suffix]/cbk.vector(reflame1[,chem])
   }
 
-  return(as.data.frame(t(normtbl))) # data.frame to be consistent
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.normalize:43: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+  }
+
+  return(pmlame1) # data.frame to be consistent
 }
