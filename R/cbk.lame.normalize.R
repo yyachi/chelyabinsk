@@ -28,20 +28,17 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
     cat(file=stderr(),"cbk.lame.normalize:28: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
   }
 
-  ## extraction and normalization
   if(is.null(suffix_after_chem)){
-    pmlame1           <- pmlame[,chem]/cbk.vector(reflame1[,chem])
+    pmlame1 <- pmlame[,chem]
   } else {
-    chem_with_suffix  <- paste0(chem,suffix_after_chem)
-    if (verbose) {
-      cat(file=stderr(),"cbk.lame.normalize:36: chem_with_suffix <-",cbk.lame.dump(chem_with_suffix,show=F),"\n")
-    }
-    pmlame1           <- pmlame[,chem_with_suffix]/cbk.vector(reflame1[,chem])
+    pmlame1 <- pmlame[,paste0(chem,suffix_after_chem)]
   }
+  pmlame2   <- pmlame1/cbk.lame.rep(reflame,nrow(pmlame1))
 
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.normalize:43: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:39: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:40: pmlame2 <-",cbk.lame.dump(pmlame2,show=F),"\n")
   }
 
-  return(pmlame1) # data.frame to be consistent
+  return(pmlame2) # data.frame to be consistent
 }

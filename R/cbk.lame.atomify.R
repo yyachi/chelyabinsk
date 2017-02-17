@@ -45,8 +45,8 @@
 #' ionic_yield <- data.frame(row.names=c("ionic_yield"), Li7=c(1.027), B11=c(1.76), Si29=c(1), La139=c(77.6))
 #' ionic_ratio <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),Li7=c(5.56389e-04,4.90334e-04,7.02148e-05),B11=c(5.88269e-05,8.64064e-05,1.44872e-04),Si29=c(1,1,1),La139=c(0.000340813,0.000281243,0.000708434))
 #' pmlame0     <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
-#' pmlame1     <- cbk.lame.reduce(pmlame0)
-#' cbk.lame.atomify(pmlame1,ionic_ratio,ionic_yield,isoref='Si29')
+#' pmlame      <- cbk.lame.reduce(pmlame0)
+#' cbk.lame.atomify(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=T)
 cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbose=FALSE) {
   ##* Reduce SiO2 to Si
   ## pmlame         <- cbk.lame.reduce(pmlame)
@@ -78,10 +78,12 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
 
   ##* Estimate element-abundance from atomic-ratio
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.atomify:81: atomic_ratio1 <-",cbk.lame.dump(atomic_ratio1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.atomify:82: pseudowt <-",cbk.lame.dump(pseudowt,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.atomify:83: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.atomify:84: isoref <-",cbk.lame.dump(isoref,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:81: ionic_yield1 <-",cbk.lame.dump(ionic_yield1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:81: ionic_ratio1 <-",cbk.lame.dump(ionic_ratio1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:82: atomic_ratio1 <-",cbk.lame.dump(atomic_ratio1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:83: pseudowt <-",cbk.lame.dump(pseudowt,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:84: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:85: isoref <-",cbk.lame.dump(isoref,show=F),"\n")
   }
   pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt, verbose=verbose) * reflame1 / pseudowt[,isoref]
 
