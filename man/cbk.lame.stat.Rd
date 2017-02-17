@@ -4,12 +4,13 @@
 \alias{cbk.lame.stat}
 \title{Estimate reproducibility of acquisition by each stone}
 \usage{
-cbk.lame.stat(pmlame, stonefy_regexp = "@[[:digit:]]+$", verbose = FALSE)
+cbk.lame.stat(pmlame, stonify_regexp = "@[[:digit:]]+$", verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{stonefy_regexp}{A regexp string to groupfy stones.}
+\item{stonify_regexp}{A regexp string to stonefy analyses. Matched
+string will be stripped off from acqlist to have stonelist.}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }

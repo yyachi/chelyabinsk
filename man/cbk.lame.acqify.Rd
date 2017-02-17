@@ -4,7 +4,7 @@
 \alias{cbk.lame.acqify}
 \title{Convert pmlame with stonelist to that with acqlist}
 \usage{
-cbk.lame.acqify(pmlame, acqlist, stonefy_regexp = "@[[:digit:]]+$",
+cbk.lame.acqify(pmlame, acqlist, stonify_regexp = "@[[:digit:]]+$",
   verbose = FALSE)
 }
 \arguments{
@@ -12,11 +12,10 @@ cbk.lame.acqify(pmlame, acqlist, stonefy_regexp = "@[[:digit:]]+$",
 
 \item{acqlist}{List of analysis such as `ref_cpx_klb1@1'.}
 
-\item{verbose}{Output debug info (default: FALSE).}
+\item{stonify_regexp}{A regexp string to stonefy analyses. Matched
+string will be stripped off from acqlist to have stonelist.}
 
-\item{stonfy_regexp}{A regexp string to stonefy analyses. Actually
-matched string will be stripped off from acqlist to have
-stonelist.}
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 A pmlame with row of analysis and columns of chem [g/g].

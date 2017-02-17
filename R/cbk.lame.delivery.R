@@ -33,8 +33,8 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Constant
   ## isomeas_regexp <- "^[A-Z][a-z]?[0-9]+$"
-  ## stonefy_regexp <- "@[0-9]+$"        # ref_gl_tahiti@10um@5Hz@x200(@11)
-  stonefy_regexp    <- "@[@[:alnum:]]+$" # ref_gl_tahiti(@10um@5Hz@x200@11)
+  ## stonify_regexp <- "@[0-9]+$"        # ref_gl_tahiti@10um@5Hz@x200(@11)
+  stonify_regexp    <- "@[@[:alnum:]]+$" # ref_gl_tahiti(@10um@5Hz@x200@11)
 
   num_a             <- 6.022e23 # Avogadro number [/mol]
   acqlist0          <- rownames(intlame)
@@ -60,7 +60,7 @@ cbk.lame.delivery <- function(pmlame,intlame,sputter.rate=1.1e-09,verbose=FALSE)
 
   ##* Setup
   acqlist    <- rownames(intlame)
-  stonelist  <- gsub(stonefy_regexp,"",acqlist) # remove letters after the first `at mark'
+  stonelist  <- gsub(stonify_regexp,"",acqlist) # remove letters after the first `at mark'
   ## isomeas <- grep(isomeas_regexp,colnames(intlame),value=T)
   isomeas    <- colnames(cbk.lame.regulate(intlame,mean=T,error=F,extra=F))
   chemlist   <- cbk.iso(isomeas,'symbol')

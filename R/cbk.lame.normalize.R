@@ -19,21 +19,27 @@
 cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FALSE){
   ## filter name when number of elements in reflame exceeds those in sample
   ## typically suffix_after_chem is "_error"
-  chem                <- intersect(colnames(reflame),colnames(pmlame))
-  reflame1            <- reflame[,chem]
 
-  if (verbose) {
-    cat(file=stderr(),"cbk.lame.normalize:26: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:27: chem <-",cbk.lame.dump(chem,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:28: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
-  }
+  reflame0   <- cbk.lame.regulate(reflame,mean=T,error=F,extra=F)
+  meanlame0  <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)
+  errorlame0 <- cbk.lame.fetch.error(pmlame)
+
+  chem       <- intersect(colnames(reflame0),colnames(meanlame0))
 
   if(is.null(suffix_after_chem)){
-    pmlame1 <- pmlame[,chem]
+    pmlame1  <- pmlame[,chem]
   } else {
-    pmlame1 <- pmlame[,paste0(chem,suffix_after_chem)]
+    pmlame1  <- pmlame[,paste0(chem,suffix_after_chem)]
   }
-  pmlame2   <- pmlame1/cbk.lame.rep(reflame,nrow(pmlame1))
+  reflame1   <- cbk.lame.rep(reflame[,chem],nrow(pmlame1))
+
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.normalize:37: chem <-",cbk.lame.dump(chem,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:38: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:39: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
+  }
+
+  pmlame2   <- pmlame1 / reflame1
 
   if (verbose) {
     cat(file=stderr(),"cbk.lame.normalize:39: pmlame1 <-",cbk.lame.dump(pmlame1,show=F),"\n")

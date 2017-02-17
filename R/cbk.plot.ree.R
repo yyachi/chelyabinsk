@@ -4,11 +4,12 @@
 #'   function does not save the created diagram.  You should prepare a
 #'   canvas in advance.
 #'
-#' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame).
-#' @param tableunit Unit to toss to \code{\link{cbk.read.casteml}}.
+#' @param pmlfile_or_stone A CASTEML file that exits locally or
+#'   stone-ID (or pmlame).
+#' @param tableunit Unit to toss to \link{cbk.read.casteml}.
 #' @param reference Reference of element abundance.
-#' @param opts List of further options for plot.  See
-#'   \code{\link{cbk.plot}}.
+#' @param opts List of further options for plot.  See \link{cbk.plot}.
+#' @param verbose Output debug info (default: FALSE).
 #' @return @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
@@ -18,7 +19,7 @@
 #'
 #' pmlame  <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
 #' cbk.plot.ree(pmlame)
-cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988") {
+cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988",verbose=FALSE) {
   ## ----------------
   ##* PARSE OPTION
   ## ----------------
@@ -30,14 +31,20 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="trace")
-  pmlame0    <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
-  stonelist  <- rownames(pmlame0)
-
+  pmlame    <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
+  stonelist  <- rownames(pmlame)
   reflame    <- cbk.ref(reference,tableunit)
-  pmlame1    <- cbk.lame.normalize(pmlame0,reflame)
 
-  errorlame0 <- cbk.lame.fetch.error(pmlame0)
-  errorlame1 <- cbk.lame.normalize(errorlame0,reflame)
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.ree:38: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.ree:39: stonelist <-",cbk.lame.dump(stonelist,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.ree:40: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
+  }
+
+  pmlame1    <- cbk.lame.normalize(pmlame,reflame,verbose=verbose)
+  errorlame0 <- cbk.lame.fetch.error(pmlame)
+  errorlame1 <- cbk.lame.normalize(errorlame0,reflame,verbose=verbose)
+
 
   ## ----------------
   ##* PARSE

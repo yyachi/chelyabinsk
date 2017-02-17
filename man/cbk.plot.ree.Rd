@@ -5,17 +5,19 @@
 \title{Read CASTEML file and create REE diagram}
 \usage{
 cbk.plot.ree(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  reference = "Wasson.1988")
+  reference = "Wasson.1988", verbose = FALSE)
 }
 \arguments{
-\item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame).}
+\item{pmlfile_or_stone}{A CASTEML file that exits locally or
+stone-ID (or pmlame).}
 
-\item{opts}{List of further options for plot.  See
-\code{\link{cbk.plot}}.}
+\item{opts}{List of further options for plot.  See \link{cbk.plot}.}
 
-\item{tableunit}{Unit to toss to \code{\link{cbk.read.casteml}}.}
+\item{tableunit}{Unit to toss to \link{cbk.read.casteml}.}
 
 \item{reference}{Reference of element abundance.}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 @return A pmlame used to plot the diagram.

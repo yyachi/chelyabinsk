@@ -4,14 +4,13 @@
 \alias{cbk.lame.colMeans}
 \title{Return mean of each chem}
 \usage{
-cbk.lame.colMeans(pmlame, stonefy_regexp = "@[[:digit:]]+$")
+cbk.lame.colMeans(pmlame, stonify_regexp = "@[[:digit:]]+$")
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{stonefy_regexp}{A regexp string to groupfy stones. Actually
-it splits stone name to group-name and sub-name.  Latter would be
-ignored.}
+\item{stonify_regexp}{A regexp string to stonefy analyses. Matched
+string will be stripped off from acqlist to have stonelist.}
 }
 \value{
 A pmlame with mean value of each column
