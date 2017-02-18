@@ -1,4 +1,4 @@
-#' Convert pmlame with stonelist to that with acqlist
+#' Create pmlame with acqlist from one with stonelist
 #'
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param acqlist List of analysis such as `ref_cpx_klb1@1'.
@@ -13,10 +13,10 @@
 #' pmlame1 <- cbk.lame.acqify(pmlame,acqlist)
 cbk.lame.acqify <- function(pmlame,acqlist,stonify_regexp="@[[:digit:]]+$",verbose=FALSE) {
   acqlist1          <- gsub("-","_",acqlist)
-  stonelist         <- gsub(stonify_regexp,"",acqlist1)
+  stonelist1        <- gsub(stonify_regexp,"",acqlist1)
 
   rownames(pmlame)  <- gsub("-","_",rownames(pmlame))
-  pmlame1           <- pmlame[stonelist,]
+  pmlame1           <- pmlame[stonelist1,]
   rownames(pmlame1) <- acqlist
 
   return(pmlame1)

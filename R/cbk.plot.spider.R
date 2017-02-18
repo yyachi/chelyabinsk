@@ -11,6 +11,7 @@
 #' @param reference Reference of element abundance
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
+#' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
@@ -22,7 +23,7 @@
 #' pmlfile <- cbk.path("20160921173604-511857.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 #' cbk.plot.spider(pmlame)
-cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Wasson.1988") {
+cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Wasson.1988",verbose=FALSE) {
   ## ----------------
   ##* PARSE OPTION
   ## ----------------

@@ -28,7 +28,7 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
 
   if (nrow(reflame) == 1){ # in case divide by CI chondrite
     reflame1   <- cbk.lame.rep(reflame0[,chem],nrow(pmlame))
-  } else if (nrow(pmlame) == nrow(reflame)) {
+  } else if (nrow(pmlame) == nrow(reflame)) { # accept multi-row reflame
     reflame1   <- reflame0[,chem]
   } else {
     stop(cat(file=stderr(),"Error: Inconsistent nrow of pmlame and reflame.\n"))
