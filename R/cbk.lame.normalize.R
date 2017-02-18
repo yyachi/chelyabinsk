@@ -3,10 +3,12 @@
 #' @description Return normalized element abundances.  Note that only
 #'   elements that exist both in pmlame and reflame are processed.
 #'   See also "Geochemical Modelling..." by Janousek et al. (2015)
-#' @param pmlame A pmlame of element abundances of sample.
-#' @param reflame A pmlame of element abundances of reference.
+#' @param pmlame A pmlame with row of stone and column of chem [g/g].
+#' @param reflame A pmlame of a reference.  This can be a pmlame of
+#'   multiple references.
 #' @param suffix_after_chem String to recognize column of errors.
-#'   Feed "_error" when necessary (default: NULL).
+#'   Feed "_error" when necessary.  As of February 18, 2017, this
+#'   exists only for compatibility.
 #' @param verbose Output debug info (default: FALSE).
 #' @return A ref-normalized daraframe with only elements defined in
 #'   ref.
@@ -38,13 +40,14 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
   } else if (nrow(pmlame) == nrow(reflame)) { # accept multi-row reflame
     reflame1   <- reflame0[,chem]
   } else {
-    stop(cat(file=stderr(),"Error: Inconsistent nrow of pmlame and reflame.\n"))
+    stop(cat(file=stderr(),"Error: Inconsistent nrow between pmlame and reflame.\n"))
   }
 
   if(is.null(suffix_after_chem)){
     meanlame1    <- meanlame0[,chem]
     meanlame2    <- meanlame1 / reflame1
 
+    ## when errorlame is significant
     if (nrow(cbk.lame.drop.dharma(errorlame0)) > 0) {
       errorlame1 <- errorlame0[,chem]
       errorlame2 <- errorlame1 / reflame1
