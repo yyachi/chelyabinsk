@@ -40,10 +40,10 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
 
   reflame    <- cbk.ref(reference,tableunit)
   pmlame1    <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
-  pmlame2    <- cbk.lame.normalize(pmlame1,reflame)
+  pmlame2    <- cbk.lame.normalize(pmlame1,reflame,verbose=verbose)
 
   errorlame0 <- cbk.lame.fetch.error(pmlame1)
-  errorlame1 <- cbk.lame.normalize(errorlame0,reflame)
+  errorlame1 <- cbk.lame.normalize(errorlame0,reflame,verbose=verbose)
 
   ## ----------------
   ##* PARSE

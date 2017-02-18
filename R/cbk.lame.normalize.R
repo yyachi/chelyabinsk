@@ -26,6 +26,13 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
 
   chem           <- intersect(colnames(reflame0),colnames(meanlame0))
 
+  if (verbose) {
+    cat(file=stderr(),"cbk.lame.normalize:30: reflame0 <-",cbk.lame.dump(reflame0,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:31: meanlame0 <-",cbk.lame.dump(meanlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:32: errorlame0 <-",cbk.lame.dump(errorlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:33: chem <-",cbk.lame.dump(chem,show=F),"\n")
+  }
+
   if (nrow(reflame) == 1){ # in case divide by CI chondrite
     reflame1   <- cbk.lame.rep(reflame0[,chem],nrow(pmlame))
   } else if (nrow(pmlame) == nrow(reflame)) { # accept multi-row reflame
@@ -38,7 +45,7 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
     meanlame1    <- meanlame0[,chem]
     meanlame2    <- meanlame1 / reflame1
 
-    if (ncol(errorlame0) > 0) {
+    if (nrow(cbk.lame.drop.dharma(errorlame0)) > 0) {
       errorlame1 <- errorlame0[,chem]
       errorlame2 <- errorlame1 / reflame1
       pmlame2    <- cbk.lame.merge.error(meanlame2,errorlame2)
@@ -48,12 +55,6 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
   } else { # This is for backward compatibility
     pmlame1      <- pmlame[,paste0(chem,suffix_after_chem)]
     pmlame2      <- pmlame1 / reflame1
-  }
-
-  if (verbose) {
-    cat(file=stderr(),"cbk.lame.normalize:46: chem <-",cbk.lame.dump(chem,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:47: meanlame0 <-",cbk.lame.dump(meanlame0,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:48: pmlame2 <-",cbk.lame.dump(pmlame2,show=F),"\n")
   }
 
   return(pmlame2) # data.frame to be consistent
