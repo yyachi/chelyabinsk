@@ -18,7 +18,8 @@
 #'   the BASELINE is subtracted from the main signal.  The main signal
 #'   is normalized by `ref'.  This function returns the BASELINE
 #'   subtracted and reference normalized `ionic-ratio' with
-#'   statistical information at the bottom of the table.
+#'   statistical information at the bottom of the table.  Detection
+#'   limit is defined by 3 times standard error of BASELINE measument.
 #'
 #' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.csv with
 #'   extension `.ion'.

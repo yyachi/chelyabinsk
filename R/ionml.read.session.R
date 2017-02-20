@@ -4,13 +4,16 @@
 #'   TBLAME.csv.  As of January 5, 2017, this function uses
 #'   `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
 #' @param tblame.csv Paths to ion-type TBLAME.csv.
-#' @param t0 Time when baseline starts (default: 5 s, scalar or vector)
-#' @param t1 Time when baseline ends (default: 20 s, scalar or vector).
+#' @param t0 Time when baseline starts (default: 5 s, scalar or
+#'   vector)
+#' @param t1 Time when baseline ends (default: 20 s, scalar or
+#'   vector).
 #' @param t2 Time when ion starts (default: 25 s, scalar or vector).
 #' @param t3 Time when ion ends (default: 60 s, scalar or vector).
 #' @param ref Reference ion such as `Si29'.
-#' @param DL Use delection limit (DL) instead of `sderr' when DL is
-#'   larger than `sderr'.
+#' @param error Use `sterr', `DL', or `mix' as error.  When `mix',
+#'   error is delection limit `DL' instead of standard error `sderr'
+#'   when DL is larger than `sderr'.
 #' @param intensityp Have mean and sd of intensity instead of mean and
 #'   sderr of ionic ratio
 #' @param verbose Output debug info (default: FALSE).
@@ -21,7 +24,7 @@
 #' @examples
 #' files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
 #' pmlame0 <- ionml.read.session(files)
-ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=FALSE,intensityp=FALSE,verbose=FALSE) {
+ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",error="sterr",intensityp=FALSE,verbose=FALSE) {
   if (verbose) {
     cat(file=stderr(),"ionml.read.session:26: t0 # =>",t0,"\n")
     cat(file=stderr(),"ionml.read.session:27: t1 # =>",t1,"\n")
@@ -60,11 +63,15 @@ ionml.read.session <- function(tblame.csv,t0=5,t1=20,t2=25,t3=60,ref="Si29",DL=F
     acqError                   <- ionlame[paste0("sderr/",ref),] # sderr
     if (intensityp) {
       acqError                 <- ionlame["sd/cps",]
-    } else if (DL) { # Replace sderr by detection limit, if larger
+    } else if (error=="mix") { # Replace sderr by detection limit, if larger
       acqDL                    <- ionlame[paste0("DL/",ref),]
       idx_overwrite            <- acqDL > acqError
       acqError[,idx_overwrite] <- acqDL[,idx_overwrite] # DL instead of sderr
+    } else if (error=="DL") {  # Replace sderr by detection limit, by any mean
+      acqDL                    <- ionlame[paste0("DL/",ref),]
+      acqError                 <- acqDL
     }
+
     row.names(acqError)        <- acqName
     errorlame                  <- rbind(errorlame, acqError)
   }
