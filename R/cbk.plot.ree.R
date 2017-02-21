@@ -36,9 +36,9 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   reflame    <- cbk.ref(reference,tableunit)
 
   if (verbose) {
-    cat(file=stderr(),"cbk.plot.ree:38: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
-    cat(file=stderr(),"cbk.plot.ree:39: stonelist <-",cbk.lame.dump(stonelist,show=F),"\n")
-    cat(file=stderr(),"cbk.plot.ree:40: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.ree:39: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.ree:40: stonelist <-",cbk.lame.dump(stonelist,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.ree:41: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
   }
 
   pmlame1    <- cbk.lame.normalize(pmlame,reflame,verbose=verbose)
