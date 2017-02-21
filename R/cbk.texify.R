@@ -27,13 +27,13 @@ cbk.texify <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=
 
   outbase  <- tools::file_path_sans_ext(outfile)
   outext   <- tools::file_ext(outfile)
-  ## outfile <- paste0(outbase,outext)
+  outfile  <- sprintf("%s.%s",outbase,outext)    # default
 
   chemlist <- split(chem, ceiling(seq_along(chem)/ncol))
 
   texfiles <- c()
   for(ii in 1:length(chemlist)) {
-    if (ii!=1) {
+    if (length(chemlist) > 1) {
       outfile <- sprintf("%s-%d.%s",outbase,ii,outext)
     }
     ichem <- unlist(chemlist[ii])

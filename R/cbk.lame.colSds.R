@@ -1,20 +1,21 @@
 #' Return standard deviation of each chem
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param stonify_regexp A regexp string to stonefy analyses. Matched
-#'   string will be stripped off from acqlist to have stonelist.
+#' @param stonify_regexp A regexp string to be stripped off to stonefy
+#'   analyses. Matched string will be stripped off from acqlist to
+#'   have stonelist.
 #' @return A pmlame with standard deviation value of each column
 #' @export
 #' @examples
 #' pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-#' pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
+#' pmlame0 <- cbk.lame.regulate(pmlame,mean=TRUE,error=FALSE,extra=FALSE)
 #' pmlame1 <- cbk.lame.colSds(pmlame0)
 cbk.lame.colSds <- function(pmlame,stonify_regexp="@[[:digit:]]+$") {
   ## stonify_regexp <- "@|[.]|-[[:alnum:]]*$" # until February 4, 2017
 
   acqlist0    <- rownames(pmlame)
-  ## acqlist1    <- unlist(lapply(strsplit(acqlist0,stonify_regexp),'[[',1))
+  ## acqlist1 <- unlist(lapply(strsplit(acqlist0,stonify_regexp),'[[',1))
   acqlist1    <- gsub(stonify_regexp,"",acqlist0)
-  stonelist    <- unique(acqlist1)
+  stonelist   <- unique(acqlist1)
 
   pmlame2 <- NaN
   for(ii in 1:length(stonelist)) {
