@@ -29,10 +29,10 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
   chem           <- intersect(colnames(reflame0),colnames(meanlame0))
 
   if (verbose) {
-    cat(file=stderr(),"cbk.lame.normalize:30: reflame0 <-",cbk.lame.dump(reflame0,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:31: meanlame0 <-",cbk.lame.dump(meanlame0,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:32: errorlame0 <-",cbk.lame.dump(errorlame0,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:33: chem <-",cbk.lame.dump(chem,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:32: reflame0 <-",cbk.lame.dump(reflame0,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:33: meanlame0 <-",cbk.lame.dump(meanlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:34: errorlame0 <-",cbk.lame.dump(errorlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:35: chem <-",cbk.lame.dump(chem,show=F),"\n")
   }
 
   if (nrow(reflame) == 1){ # in case divide by CI chondrite
