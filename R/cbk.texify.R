@@ -34,7 +34,7 @@ cbk.texify <- function(pmlfile_or_stone,outfile="table-auto.tex",chem=NULL,ncol=
   texfiles <- c()
   for(ii in 1:length(chemlist)) {
     if (length(chemlist) > 1) {
-      outfile <- sprintf("%s-%d.%s",outbase,ii,outext)
+      outfile <- sprintf("%s%d.%s",outbase,ii,outext)
     }
     ichem <- unlist(chemlist[ii])
     texfile <- cbk.lame.texify1(pmlame,ichem,outfile=outfile,verbose=verbose)
