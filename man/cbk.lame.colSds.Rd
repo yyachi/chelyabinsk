@@ -9,8 +9,9 @@ cbk.lame.colSds(pmlame, stonify_regexp = "@[[:digit:]]+$")
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{stonify_regexp}{A regexp string to stonefy analyses. Matched
-string will be stripped off from acqlist to have stonelist.}
+\item{stonify_regexp}{A regexp string to be stripped off to stonefy
+analyses. Matched string will be stripped off from acqlist to
+have stonelist.}
 }
 \value{
 A pmlame with standard deviation value of each column
@@ -20,6 +21,6 @@ Return standard deviation of each chem
 }
 \examples{
 pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
-pmlame0 <- pmlame[,setdiff(colnames(pmlame), c("sample_id","image_id"))]
+pmlame0 <- cbk.lame.regulate(pmlame,mean=TRUE,error=FALSE,extra=FALSE)
 pmlame1 <- cbk.lame.colSds(pmlame0)
 }

@@ -5,14 +5,16 @@
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", DL = FALSE, intensityp = FALSE, verbose = FALSE)
+  ref = "Si29", error = "sterr", intensityp = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{tblame.csv}{Paths to ion-type TBLAME.csv.}
 
-\item{t0}{Time when baseline starts (default: 5 s, scalar or vector)}
+\item{t0}{Time when baseline starts (default: 5 s, scalar or
+vector)}
 
-\item{t1}{Time when baseline ends (default: 20 s, scalar or vector).}
+\item{t1}{Time when baseline ends (default: 20 s, scalar or
+vector).}
 
 \item{t2}{Time when ion starts (default: 25 s, scalar or vector).}
 
@@ -20,8 +22,9 @@ ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
 
 \item{ref}{Reference ion such as `Si29'.}
 
-\item{DL}{Use delection limit (DL) instead of `sderr' when DL is
-larger than `sderr'.}
+\item{error}{Use `sterr', `DL', or `mix' as error.  When `mix',
+error is delection limit `DL' instead of standard error `sderr'
+when DL is larger than `sderr'.}
 
 \item{intensityp}{Have mean and sd of intensity instead of mean and
 sderr of ionic ratio}

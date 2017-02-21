@@ -22,9 +22,8 @@ cbk.read.ionml <- function(ionml.xml,verbose=TRUE){
 
   meanlame0 <- as.data.frame(sapply(nodes,xpathSApply,"./data",xmlValue),row.names=TRUE)
   timelame0 <- as.data.frame(sapply(nodes,xpathSApply,"./data",xmlAttrs),row.names=TRUE)
-  names     <- sapply(nodes,xpathSApply,"./name",xmlValue)
-  ## isomeas   <- unlist(lapply(strsplit(names,"^int_"),'[[',2))
-  isomeas   <- gsub("^int_","",names)
+  isomeas   <- sapply(nodes,xpathSApply,"./name",xmlValue)
+  ## isomeas   <- gsub("^int_","",isomeas)
 
   colnames(meanlame0) <- isomeas
   colnames(timelame0) <- paste0(isomeas,"_time")

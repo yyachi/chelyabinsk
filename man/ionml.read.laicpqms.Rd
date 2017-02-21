@@ -47,7 +47,8 @@ Signal between `t2' and `t3' is regarded as main signal
   the BASELINE is subtracted from the main signal.  The main signal
   is normalized by `ref'.  This function returns the BASELINE
   subtracted and reference normalized `ionic-ratio' with
-  statistical information at the bottom of the table.
+  statistical information at the bottom of the table.  Detection
+  limit is defined by 3 times standard error of BASELINE measument.
 }
 \examples{
 file <- cbk.path("ref_cpx_klb1@1.ion")
