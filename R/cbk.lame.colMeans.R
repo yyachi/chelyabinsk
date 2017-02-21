@@ -18,17 +18,15 @@ cbk.lame.colMeans <- function(pmlame,stonify_regexp="@[[:digit:]]+$") {
   acqlist1    <- gsub(stonify_regexp,"",acqlist0)
   stonelist   <- unique(acqlist1)
 
-  pmlame2 <- NaN
+  pmlame2 <- data.frame()
   for(ii in 1:length(stonelist)) {
     matched <- grepl(stonelist[ii],acqlist0)
     pmlame0 <- pmlame[matched,,drop=FALSE]
     pmlame1 <- data.frame(t(colMeans(pmlame0,na.rm=TRUE)))
     pmlame2 <- rbind(pmlame2,pmlame1)
   }
-  pmlame2           <- pmlame2[2:nrow(pmlame2),,drop=FALSE] # drop first row
   rownames(pmlame2) <- stonelist
 
-  pmlame2[pmlame2 == "NaN"] <- NA
   ## pmlame0 <- data.frame(t(colMeans(pmlame,na.rm=TRUE)))
   return(pmlame2)
 }
