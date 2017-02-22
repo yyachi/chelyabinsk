@@ -32,26 +32,30 @@ cbk.lame.reduce <- function(pmlame) {
   detoxtable[,'noxygen'] <- c(2,1.5,1,1,1.5,1,0.5,0.5,2,0.5,2.5,1)
   ## END RECEIVE ORGTBL detoxtable:datain
 
-  periodic             <- cbk.periodic()
+  periodic  <- cbk.periodic()
   oxidelist <- rownames(detoxtable)    # "SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"
   chemlist  <- colnames(pmlame)        # "SiO2","Al2O3","La","Ce"
   oxygenweight <- 15.9994
   for(ii in 1:length(oxidelist)) {
     ### replace columns of "SiO2" and "Al2O3" by "Si" and "Al"
-    oxide  <- oxidelist[ii]                   # SiO2
+    oxide  <- oxidelist[ii]                      # SiO2
     if (oxide %in% chemlist) {
-      metal   <- detoxtable[oxide,"metal"]    # Si
-      noxygen <- detoxtable[oxide,"noxygen"]  # 2
-
-      metalweight <- periodic[metal,"mass"]   # 28.0855
+      metal       <- detoxtable[oxide,"metal"]   # Si
+      noxygen     <- detoxtable[oxide,"noxygen"] # 2
+      metalweight <- periodic[metal,"mass"]      # 28.0855
       oxideweight <- metalweight + oxygenweight * noxygen # 60.0843
-      chem_in_oxide <- pmlame[,oxide]
-      chem_in_metal <- chem_in_oxide * metalweight / oxideweight
 
+      ## chem_in_oxide <- pmlame[,oxide]
+      reducep          <- grepl(oxide,chemlist)
+      chem_in_oxide    <- pmlame[,reducep,drop=FALSE]
+      chem_in_metal    <- chem_in_oxide * metalweight / oxideweight
       ## colnames(pmlame)[grep(oxide,chemlist)] <- metal # rename col
-      colnames(pmlame)[which(chemlist == oxide)] <- metal # rename col
-      pmlame[,metal]  <- chem_in_metal # replace value of oxide by metal
+      ## colnames(pmlame)[which(chemlist == oxide)] <- metal # rename col
+      ## pmlame[,metal]  <- chem_in_metal # replace value of oxide by metal
+      pmlame[,reducep] <- chem_in_metal # replace value of oxide by metal
+      chemlist         <- gsub(oxide,metal,chemlist)
     }
   }
+  colnames(pmlame) <- chemlist
   return(pmlame)
 }

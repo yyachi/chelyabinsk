@@ -83,7 +83,7 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
     cat(file=stderr(),"cbk.lame.atomify:82: atomic_ratio1 <-",cbk.lame.dump(atomic_ratio1,show=F),"\n")
     cat(file=stderr(),"cbk.lame.atomify:83: pseudowt <-",cbk.lame.dump(pseudowt,show=F),"\n")
     cat(file=stderr(),"cbk.lame.atomify:84: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.atomify:85: isoref <-",cbk.lame.dump(isoref,show=F),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:85: isoref <-",cbk.lame.dump(isoref,show=F,digit=NULL),"\n")
   }
   pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt, verbose=verbose) * reflame1 / pseudowt[,isoref]
 
