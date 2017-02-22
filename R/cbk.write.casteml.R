@@ -2,6 +2,8 @@
 #'
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param outfile File path to casteml file
+#' @param digit Integer indicating the number of significant digits to
+#'   be used by \code{signif}.
 #' @param verbose Output debug info (default: TRUE).
 #' @return File path to a casteml file
 #' @seealso \code{\link{cbk.read.casteml}}
@@ -9,7 +11,12 @@
 #' @examples
 #' pmlame0 <- data.frame(row.names=c('ref_cpx_klb1@1','ref_cpx_klb1@2','trc_meso_allende@10'),SiO2=c(520000,520000,600000))
 #' pmlfile <- cbk.write.casteml(pmlame0,'deleteme.pml')
-cbk.write.casteml <- function(pmlame,outfile=NULL,verbose=TRUE){
+cbk.write.casteml <- function(pmlame,outfile=NULL,digit=6,verbose=TRUE){
+
+  # Round number
+  if(!is.null(digit)){
+    pmlame <- signif(pmlame,digit)
+  }
 
   # Transform pmlame to have the first column labeled as `session'
   pmlame1 <- data.frame(session=rownames(pmlame),pmlame)
