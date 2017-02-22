@@ -4,13 +4,18 @@
 \alias{cbk.write.tblame}
 \title{Write pmlame as TBLAME.csv}
 \usage{
-cbk.write.tblame(pmlame, outfile)
+cbk.write.tblame(pmlame, outfile, digit = 6, verbose = TRUE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{outfile}{Path of TBLAME.csv, which is a csvfile with rows of stone
-and columns of chem.}
+\item{outfile}{Path of TBLAME.csv, which is a csvfile with rows of
+stone and columns of chem.}
+
+\item{digit}{Integer indicating the number of significant digits to
+be used by \code{signif}.}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 Path of TBLAME.csv

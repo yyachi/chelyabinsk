@@ -4,12 +4,15 @@
 \alias{cbk.write.yaml}
 \title{Write a pmlame to yamlfile.}
 \usage{
-cbk.write.yaml(pmlame, outfile = NULL, verbose = TRUE)
+cbk.write.yaml(pmlame, outfile = NULL, digit = 6, verbose = TRUE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{outfile}{Path to yamlfile with a pmlame.}
+
+\item{digit}{Integer indicating the number of significant digits to
+be used by \code{signif}.}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }
