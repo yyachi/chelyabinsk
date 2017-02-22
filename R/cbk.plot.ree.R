@@ -31,34 +31,43 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   ##* OPENING REMARK
   ## ----------------
   ## pmlame <- cbk.read.casteml(pmlfile,tableunit,category="trace")
-  pmlame    <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
-  stonelist  <- rownames(pmlame)
-  reflame    <- cbk.ref(reference,tableunit)
+  pmlame  <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
+  reflame <- cbk.ref(reference,tableunit)
+  stone   <- rownames(pmlame)
 
   if (verbose) {
     cat(file=stderr(),"cbk.plot.ree:39: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
-    cat(file=stderr(),"cbk.plot.ree:40: stonelist <-",cbk.lame.dump(stonelist,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.ree:40: stone <-",cbk.lame.dump(stone,show=F),"\n")
     cat(file=stderr(),"cbk.plot.ree:41: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
   }
 
   pmlame1    <- cbk.lame.normalize(pmlame,reflame,verbose=verbose)
-  errorlame0 <- cbk.lame.fetch.error(pmlame)
-  errorlame1 <- cbk.lame.normalize(errorlame0,reflame,verbose=verbose)
-
+  meanlame1  <- cbk.lame.regulate(pmlame1,mean=T,error=F,extra=F)
+  errorlame1 <- cbk.lame.fetch.error(pmlame1)
 
   ## ----------------
   ##* PARSE
   ## ----------------
-  chemlist   <- intersect(c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu'), colnames(pmlame1));
-  XX         <- cbk.periodic("atomicnumber")[chemlist]
-  pmlame9    <- pmlame1[,names(XX),drop=FALSE]
-  YY         <- t(pmlame9)
+  chem0      <- intersect(c('La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu'), colnames(meanlame1));
+  XX         <- cbk.periodic("atomicnumber")[chem0]
+  chem       <- names(XX)
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.ree:55: chem <-",cbk.lame.dump(chem,show=F),"\n")
+  }
 
-  if (length(errorlame0) != 0) {
-    pmlame8    <- cbk.lame.merge.error(pmlame9,errorlame1)
-    errorlame9 <- cbk.lame.fetch.error(pmlame8)
-    ## errorlame9 <- errorlame1[,names(XX),drop=FALSE]
-    YY_sd      <- t(errorlame9)
+  ## Deal mean
+  meanlame8  <- meanlame1[,chem,drop=FALSE]
+  YY         <- t(meanlame8)
+  pmlame9    <- meanlame8               # for output
+
+  ## Deal error
+  if (length(errorlame1) != 0) {
+    if (verbose) {
+      cat(file=stderr(),"cbk.plot.ree:66: errorlame1 <-",cbk.lame.dump(errorlame1,show=F),"\n")
+    }
+    errorlame8 <- errorlame1[,chem,drop=FALSE]
+    YY_error   <- t(errorlame8)
+    pmlame9    <- cbk.lame.merge.error(meanlame8,errorlame8) # for output
   }
 
   ## ----------------
@@ -67,30 +76,29 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   if (opts$pch) {
     pch <- opts$pch
   } else {
-    pch <- 1:length(stonelist)
+    pch <- 1:length(stone)
   }
   if (opts$col) {
     col <- opts$col
   } else {
-    col  <- 1:length(stonelist)
+    col  <- 1:length(stone)
   }
 
   matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
           xlab='',ylab='ZZ/CI',axes=FALSE)
-  if (length(errorlame0) != 0) {
+  if (length(errorlame1) != 0) {
     errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
-    for(ii in 1:length(stonelist)) {
-      errorbar.y(XX,YY[,ii],YY_sd[,ii],
-                 0.05,col=col[ii])
+    for(ii in 1:length(stone)) {
+      errorbar.y(XX,YY[,ii],YY_error[,ii],0.05,col=col[ii])
     }
   }
-  axis(1,at=XX,labels=names(XX),cex.axis=0.9,las=2)
+  axis(1,at=XX,labels=chem,cex.axis=0.9,las=2)
   axis(2,axTicks(2),axTicks(2))
   abline(h=1,lty=2)
   box(lwd=1)
 
   if (opts$legendp) {
-    legend('bottomright',stonelist,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
+    legend('bottomright',stone,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
   }
 
   ## ----------------

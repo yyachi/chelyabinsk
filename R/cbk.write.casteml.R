@@ -11,17 +11,17 @@
 #' pmlfile <- cbk.write.casteml(pmlame0,'deleteme.pml')
 cbk.write.casteml <- function(pmlame,outfile=NULL,verbose=TRUE){
 
-  # Transform pmlame to have a first column labeled as `session'
-  pmlame <- data.frame(session=rownames(pmlame),pmlame)
-  ## rownames(pmlame) <- NULL
+  # Transform pmlame to have the first column labeled as `session'
+  pmlame1 <- data.frame(session=rownames(pmlame),pmlame)
+  ## rownames(pmlame1) <- NULL
 
   # Export pmlame to csvfile
-  csvfile <- file.path(tempdir(),paste0(digest::digest(pmlame,algo='md5'),".csv"))
-  write.csv(pmlame,csvfile,row.names=F)
+  csvfile <- file.path(tempdir(),paste0(digest::digest(pmlame1,algo='md5'),".csv"))
+  write.csv(pmlame1,csvfile,row.names=F)
 
   # Determine filename of pmlfile
   if(is.null(outfile)){
-    outfile <- file.path(tempdir(),paste0(digest::digest(pmlame,algo='md5'),".pml"))
+    outfile <- file.path(tempdir(),paste0(digest::digest(pmlame1,algo='md5'),".pml"))
   }
 
   # Convert csvfile to pmlfile

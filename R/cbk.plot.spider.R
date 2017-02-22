@@ -34,57 +34,65 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  ## pmlame  <- cbk.read.casteml(pmlfile,tableunit,category=NULL)
-  pmlame0    <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
-  stonelist  <- rownames(pmlame0)
+  pmlame0      <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
 
-  reflame    <- cbk.ref(reference,tableunit)
-  pmlame1    <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
-  pmlame2    <- cbk.lame.normalize(pmlame1,reflame,verbose=verbose)
+  pmlame       <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
+  reflame      <- cbk.ref(reference,tableunit)
+  stone        <- rownames(pmlame)
 
-  errorlame0 <- cbk.lame.fetch.error(pmlame1)
-  errorlame1 <- cbk.lame.normalize(errorlame0,reflame,verbose=verbose)
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.spider:44: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.spider:45: stone <-",cbk.lame.dump(stone,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.spider:46: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
+  }
+
+  pmlame1      <- cbk.lame.normalize(pmlame,reflame,verbose=verbose)
+  meanlame1    <- cbk.lame.regulate(pmlame1,mean=T,error=F,extra=F)
+  errorlame1   <- cbk.lame.fetch.error(pmlame1)
 
   ## ----------------
   ##* PARSE
   ## ----------------
-  chemlist   <- colnames(pmlame2)
-  XX0        <- sort(cbk.periodic(property)[chemlist])
-  pmlame9    <- pmlame2[,names(XX0),drop=FALSE]
+  chem0        <- colnames(meanlame1)
 
-  XX         <- 1:length(XX0)
-  names(XX)  <- names(XX0)
+  XX0          <- sort(cbk.periodic(property)[chem0])
+  meanlame8    <- meanlame1[,names(XX0),drop=FALSE]
 
-  YY         <- t(pmlame9)
+  XX           <- 1:length(XX0)
+  names(XX)    <- names(XX0)
 
-  if (length(errorlame0) != 0) {
-    pmlame8    <- cbk.lame.merge.error(pmlame9,errorlame1)
-    errorlame9 <- cbk.lame.fetch.error(pmlame8)
-    ## errorlame9 <- errorlame2[,names(XX),drop=FALSE]
-    YY_sd      <- t(errorlame9)
+  YY           <- t(meanlame8)
+  pmlame9      <- meanlame8               # for output
+
+  if (length(errorlame1) != 0) {
+    if (verbose) {
+      cat(file=stderr(),"cbk.plot.spider:69: errorlame1 <-",cbk.lame.dump(errorlame1,show=F),"\n")
+    }
+    errorlame8 <- errorlame1[,names(XX0),drop=FALSE]
+    YY_error   <- t(errorlame8)
+    pmlame9    <- cbk.lame.merge.error(meanlame8,errorlame8) # for output
   }
 
   ## ----------------
-  ##* PLOTS
+  ##* PLOT
   ## ----------------
   if (opts$pch) {
-    pch <- opts$pch
+    pch        <- opts$pch
   } else {
-    pch <- 1:length(stonelist)
+    pch        <- 1:length(stone)
   }
   if (opts$col) {
-    col <- opts$col
+    col        <- opts$col
   } else {
-    col  <- 1:length(stonelist)
+    col        <- 1:length(stone)
   }
 
   matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
           xlab='',ylab='ZZ/CI',axes=FALSE)
-  if (length(errorlame0) != 0) {
+  if (length(errorlame1) != 0) {
     errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
-    for(ii in 1:length(stonelist)) {
-      errorbar.y(XX,YY[,ii],YY_sd[,ii],
-                 0.05,col=col[ii])
+    for(ii in 1:length(stone)) {
+      errorbar.y(XX,YY[,ii],YY_error[,ii],0.05,col=col[ii])
     }
   }
   axis(1,at=XX,labels=names(XX0),cex.axis=0.9,las=2)
@@ -92,7 +100,7 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
   abline(h=1,lty=2)
   box(lwd=1)
   if (opts$legendp) {
-    legend('bottomright',stonelist,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
+    legend('bottomright',stone,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
   }
 
   ### ----------------

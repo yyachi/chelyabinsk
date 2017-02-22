@@ -96,8 +96,8 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
       cat(file=stderr(),"cbk.lame.atomify:82: colnames(ionic_error1) # =>",colnames(ionic_error1),"\n")
       cat(file=stderr(),"cbk.lame.atomify:83: rownames(ionic_error1) # =>",rownames(ionic_error1),"\n")
     }
-    atomic_error1        <- cbk.lame.normalize(ionic_error1,ionic_yield1)
-    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * reflame1 / pseudowt[,isoref]
+    atomic_error1        <- cbk.lame.normalize(ionic_error1,ionic_yield1) # errorlame
+    errorlame1           <- cbk.lame.normalize(atomic_error1, 1/pseudowt) * reflame1 / pseudowt[,isoref] # errorlame
     colnames(errorlame1) <- cbk.iso(colnames(errorlame1),'symbol') # from 'Li7' to 'Li'
 
     pmlame1              <- cbk.lame.merge.error(pmlame1,errorlame1)
