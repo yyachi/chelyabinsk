@@ -8,11 +8,13 @@
 #' @details This internally calls
 #'   \code{read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F)},
 #'   take out column of `unit' and normalized by the `unit' column.
-#' @param dflame.csv A csvfile with columns of stone and rows of element.
-#'   abundances, with 2nd column `unit'.
+#' @param dflame.csv A csvfile with columns of stone and rows of
+#'   element.  abundances, with 2nd column `unit'.
 #' @param tableunit Output unit that will be resolved by
 #'   \link{cbk.convector} (default: "none").
 #' @param verbose Output debug info (default: TRUE).
+#' @param force Force read csvfile with duplicated acquisitions
+#'   (default: FALSE).
 #' @return A pmlame with unit organized.
 #' @seealso \code{\link{cbk.download.casteml}}, \code{casteml
 #'   convert}, \url{https://github.com/misasa/casteml}, and
@@ -26,7 +28,7 @@
 #' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
 #' pmlame     <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),"ppm")
 #' pmlame     <- cbk.read.dflame(cbk.path("periodic-dflame0.csv"))
-cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
+cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=FALSE){
 
   if (verbose) {
     cat(file=stderr(),"cbk.read.dflame:32: dflame.csv # =>",dflame.csv,"\n")
@@ -43,7 +45,17 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE){
 
   if (any(duplicated(colnames(qmlame)))){
     dupstone <- colnames(qmlame)[duplicated(colnames(qmlame))]
-    stop(cat(file=stderr(),"Error: Duplicated stone is found: stone # =>",dupstone,"\n"))
+    if (force) {
+      idx <- which(duplicated(colnames(qmlame)))
+      for(ii in 1:length(dupstone)) {  ## Rename duplicated stones
+        new_name <- paste0(dupstone[ii]," <analysis ",qmlame["sample_id",idx[ii]],">")
+        colnames(qmlame)[idx[ii]] <- new_name
+        cat(file=stderr(),"Warning: There were multiply-defined analyses. `",dupstone[ii],"' was renamed to `",new_name,"'\n")
+      }
+    } else {
+      stop(cat(file=stderr(),"Error: Duplicated stone is found: stone # =>",dupstone,"
+       If desired, force option can rename it automatically.\n"))
+    }
   }
 
   if ('unit' %in% colnames(qmlame)) {

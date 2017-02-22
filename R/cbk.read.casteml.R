@@ -10,6 +10,8 @@
 #'   cbk.convector() (default: "none").
 #' @param category Category specifier that is passed to \code{casteml
 #'   convert}.
+#' @param force Force read pmlfile with duplicated acquisitions
+#'   (default: FALSE).
 #' @param opts List of further options for plot.
 #' @return A dataframe with unit organized.
 #' @seealso \code{\link{cbk.convert.casteml}},
@@ -21,7 +23,7 @@
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #' stone   <- "20081202172326.hkitagawa"
 #' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
-cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL){
+cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL,force=FALSE){
   opts_default <- list(Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
@@ -43,7 +45,7 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
         pmlfile  <- cbk.download.casteml(c("-r", stone))
       }
     }
-    dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
+    dflame.csv <- cbk.convert.casteml(pmlfile,category=category,force=force)
     pmlame     <- cbk.read.dflame(dflame.csv,tableunit)
   }
 

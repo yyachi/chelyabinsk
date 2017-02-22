@@ -5,7 +5,7 @@
 \title{Read CASTEML file and return a pmlame}
 \usage{
 cbk.read.casteml(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  category = NULL)
+  category = NULL, force = FALSE)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
@@ -18,6 +18,9 @@ cbk.convector() (default: "none").}
 
 \item{category}{Category specifier that is passed to \code{casteml
 convert}.}
+
+\item{force}{Force read pmlfile with duplicated acquisitions
+(default: FALSE).}
 }
 \value{
 A dataframe with unit organized.

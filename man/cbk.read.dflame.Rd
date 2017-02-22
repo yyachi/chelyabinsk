@@ -4,16 +4,20 @@
 \alias{cbk.read.dflame}
 \title{Read csvfile created by casteml convert with column `unit'}
 \usage{
-cbk.read.dflame(dflame.csv, tableunit = "none", verbose = TRUE)
+cbk.read.dflame(dflame.csv, tableunit = "none", verbose = TRUE,
+  force = FALSE)
 }
 \arguments{
-\item{dflame.csv}{A csvfile with columns of stone and rows of element.
-abundances, with 2nd column `unit'.}
+\item{dflame.csv}{A csvfile with columns of stone and rows of
+element.  abundances, with 2nd column `unit'.}
 
 \item{tableunit}{Output unit that will be resolved by
 \link{cbk.convector} (default: "none").}
 
 \item{verbose}{Output debug info (default: TRUE).}
+
+\item{force}{Force read csvfile with duplicated acquisitions
+(default: FALSE).}
 }
 \value{
 A pmlame with unit organized.
