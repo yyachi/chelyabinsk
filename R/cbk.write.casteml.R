@@ -30,8 +30,8 @@ cbk.write.casteml <- function(pmlame,outfile=NULL,verbose=TRUE){
   }
 
   ##* Convert csvfile to pmlfile
-  ## cmd <- paste("convert -f pml",csvfile)
-  cmd <- paste("convert --medusa9 -f pml",csvfile)
+  cmd <- paste("convert -f pml",csvfile)
+  ## cmd <- paste("convert --medusa9 -f pml",csvfile)
   if (verbose) {
     cat(file=stderr(),"cbk.write.casteml:30: casteml # =>",cmd,"\n")
   }
