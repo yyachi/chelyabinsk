@@ -32,12 +32,12 @@ cbk.lame.reduce <- function(pmlame) {
   detoxtable[,'noxygen'] <- c(2,1.5,1,1,1.5,1,0.5,0.5,2,0.5,2.5,1)
   ## END RECEIVE ORGTBL detoxtable:datain
 
-  meanlame0  <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)
-  errorlame0 <- cbk.lame.fetch.error(pmlame)
+  meanlame0    <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)
+  errorlame0   <- cbk.lame.fetch.error(pmlame)
 
-  periodic  <- cbk.periodic()
-  oxidelist <- rownames(detoxtable)    # "SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"
-  chemlist  <- colnames(meanlame0)        # "SiO2","Al2O3","La","Ce"
+  periodic     <- cbk.periodic()
+  oxidelist    <- rownames(detoxtable)    # "SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"
+  chemlist     <- colnames(meanlame0)        # "SiO2","Al2O3","La","Ce"
   oxygenweight <- 15.9994
   for(ii in 1:length(oxidelist)) {
     ### replace columns of "SiO2" and "Al2O3" by "Si" and "Al"
@@ -54,15 +54,20 @@ cbk.lame.reduce <- function(pmlame) {
       colnames(meanlame0)[which(chemlist == oxide)]  <- metal # rename col
       meanlame0[,metal]  <- chem_in_metal # replace value of oxide by metal
 
-      error_in_oxide     <- errorlame0[,oxide]
-      error_in_metal     <- error_in_oxide * metalweight / oxideweight
-      colnames(errorlame0)[which(chemlist == oxide)] <- metal # rename col
-      errorlame0[,metal] <- error_in_metal # replace value of oxide by metal
-      ## chemlist          <- gsub(oxide,metal,chemlist)
+      if (oxide %in% colnames(errorlame0)) {
+        error_in_oxide     <- errorlame0[,oxide]
+        error_in_metal     <- error_in_oxide * metalweight / oxideweight
+        colnames(errorlame0)[which(chemlist == oxide)] <- metal # rename col
+        errorlame0[,metal] <- error_in_metal # replace value of oxide by metal
+        ## chemlist          <- gsub(oxide,metal,chemlist)
+      }
     }
   }
   ## colnames(meanlame0) <- chemlist
-
-  pmlame <- cbk.lame.merge.error(meanlame0,errorlame0)
+  if (ncol(errorlame0) > 0) {
+    pmlame <- cbk.lame.merge.error(meanlame0,errorlame0)
+  } else {
+    pmlame <- meanlame0
+  }
   return(pmlame)
 }
