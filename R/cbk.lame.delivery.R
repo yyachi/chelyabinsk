@@ -5,9 +5,9 @@
 #'   abundance 59 wt%, and sputter rate 1.1 ng/s, delivery rate is
 #'   estimated to be 1.25 ppm.
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
-#' @param intlame A pseudo-pmlame of ion intensity with row of stone
-#'   and column of isomeas [cps].  Typically rowname is with
-#'   `@acq-number'.
+#' @param intlame A pseudo-pmlame of ion intensity with row of acq and
+#'   column of isomeas [cps].  Typical rowname is `trc_cpx_klb1@1'.
+#'   This is like array of I(Li7), ..., I(Sr88).
 #' @param sputter.rate Sputter rate [g/s] (default: 1.1e-9 that
 #'   corresponds to abbration of 40 s to produce a pit with diameter
 #'   of 25 micron, depth of 30 micron, and density of 3 g/cc).  This
