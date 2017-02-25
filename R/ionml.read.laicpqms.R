@@ -23,10 +23,10 @@
 #'
 #' @param pmlame_or_file ion-type pmlame or ion-type TBLAME.csv with
 #'   extension `.ion'.
-#' @param t0 time when baseline starts (default: 5 s).
-#' @param t1 time when baseline ends (default: 20 s).
-#' @param t2 time when ion starts (default: 25 s).
-#' @param t3 time when ion ends (default: 60 s).
+#' @param t0 When baseline starts (default: 5 s).
+#' @param t1 When baseline ends (default: 20 s).
+#' @param t2 When ion starts (default: 25 s).
+#' @param t3 When ion ends (default: 60 s).
 #' @param ref reference ion such as `Si29'.
 #' @param verbose Output debug info (default: FALSE).
 #' @return The ion-type pmlame of ion-to-ref ratio online with rows of
