@@ -9,6 +9,9 @@
 #' cbk.lame.drop.stone(pmlame,"stone@1")
 #' cbk.lame.drop.stone(pmlame,c("stone@1","stone@2"))
 cbk.lame.drop.stone <- function(pmlame,stone,verbose=FALSE) {
-  pmlame1 <- pmlame[-which(rownames(pmlame) %in% stone),,drop=FALSE]
-  return(pmlame1)
+  idx <- rownames(pmlame) %in% stone
+  if (any(idx)) {
+    pmlame <- pmlame[-which(idx),,drop=FALSE]
+  }
+  return(pmlame)
 }

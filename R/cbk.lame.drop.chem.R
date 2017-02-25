@@ -9,6 +9,9 @@
 #' cbk.lame.drop.chem(pmlame,"fo")
 #' cbk.lame.drop.chem(pmlame,c("fo","d7Li"))
 cbk.lame.drop.chem <- function(pmlame,chem,verbose=FALSE) {
-  pmlame1 <- pmlame[,-which(colnames(pmlame) %in% chem),drop=FALSE]
-  return(pmlame1)
+  idx <- colnames(pmlame) %in% chem
+  if (any(idx)) {
+    pmlame <- pmlame[,-which(idx),drop=FALSE]
+  }
+  return(pmlame)
 }
