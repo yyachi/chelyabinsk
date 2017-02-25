@@ -40,7 +40,9 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
   } else if (nrow(pmlame) == nrow(reflame)) { # accept multi-row reflame
     reflame1   <- reflame0[,chem]
   } else {
-    stop(cat(file=stderr(),"Error: Inconsistent nrow between pmlame and reflame.\n"))
+    cat(file=stderr(),"cbk.lame.normalize:43: rownames(pmlame) <-",cbk.lame.dump(rownames(pmlame),show=F),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:44: rownames(reflame) <-",cbk.lame.dump(rownames(reflame),show=F),"\n")
+    stop(cat(file=stderr(),"The rownames of pmlame and reflame are inconsistent.\n"))
   }
 
   if(is.null(suffix_after_chem)){
