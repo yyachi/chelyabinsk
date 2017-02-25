@@ -24,8 +24,8 @@ stone-ID (or pmlame).}
 }
 \description{
 Read CASTEML dataframe and create REE diagram.  This
-  function does not save the created diagram.  You should prepare a
-  canvas in advance.
+  function tris to blow errorbar.  If you do not see errorbar,
+  check pmlame that you feed.
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
