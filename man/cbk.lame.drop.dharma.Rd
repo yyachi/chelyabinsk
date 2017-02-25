@@ -4,12 +4,14 @@
 \alias{cbk.lame.drop.dharma}
 \title{Remove rows where all values are NA}
 \usage{
-cbk.lame.drop.dharma(pmlame, column = FALSE)
+cbk.lame.drop.dharma(pmlame, column = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{column}{Flag to remove columns}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 A pmlame without removed rows

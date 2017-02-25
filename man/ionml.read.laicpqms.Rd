@@ -12,13 +12,13 @@ ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
 \item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.csv with
 extension `.ion'.}
 
-\item{t0}{time when baseline starts (default: 5 s).}
+\item{t0}{When baseline starts (default: 5 s).}
 
-\item{t1}{time when baseline ends (default: 20 s).}
+\item{t1}{When baseline ends (default: 20 s).}
 
-\item{t2}{time when ion starts (default: 25 s).}
+\item{t2}{When ion starts (default: 25 s).}
 
-\item{t3}{time when ion ends (default: 60 s).}
+\item{t3}{When ion ends (default: 60 s).}
 
 \item{ref}{reference ion such as `Si29'.}
 
