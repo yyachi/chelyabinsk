@@ -27,14 +27,13 @@
 #'   \item{[Li]         <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
 #' }
 #'
-#' @param pmlame A pmlame with internal-reference element such for Si
-#'   and Ca.  Reduce SiO2 to Si in advance using
-#'   \link{cbk.lame.reduce}.  Rownames of pmlame is `acqlist' instead
-#'   of `stonelist'.
-#' @param ionic_ratio A pmlame-like ion signal intensities relative to
-#'   internal-reference isotope.  For example, I(Li7)/I(Si29).
-#'   Rownames of `ionic_ratio' should be identical to that of
-#'   `pmlame'.
+#' @param pmlame A pmlame that includes internal-reference element
+#'   such for Si with row of acq and column of chem [g/g].  Do not
+#'   forget to reduce in advance using \link{cbk.lame.reduce}.
+#' @param ionic_ratio A pseudo-pmlame of ion intensity relative to
+#'   internal-reference isotope with row of acq and column of isomeas
+#'   [cps/cps].  Rownames should be identical to that of `pmlame'.
+#'   This is like array of I(Li7)/I(Si29), ..., I(Sr88)/I(Si29).
 #' @param ionic_yield Relative sensitivities of element that were
 #'   determined by analyses of several reference materials.
 #' @param isoref Name of internal-reference isotope such as 'Si29'.
@@ -83,7 +82,7 @@ cbk.lame.atomify <- function(pmlame,ionic_ratio,ionic_yield,isoref='Si29',verbos
     cat(file=stderr(),"cbk.lame.atomify:82: atomic_ratio1 <-",cbk.lame.dump(atomic_ratio1,show=F),"\n")
     cat(file=stderr(),"cbk.lame.atomify:83: pseudowt <-",cbk.lame.dump(pseudowt,show=F),"\n")
     cat(file=stderr(),"cbk.lame.atomify:84: reflame1 <-",cbk.lame.dump(reflame1,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.atomify:85: isoref <-",cbk.lame.dump(isoref,show=F,digit=NULL),"\n")
+    cat(file=stderr(),"cbk.lame.atomify:85: isoref <-",cbk.lame.dump(isoref,show=F),"\n")
   }
   pmlame1           <- cbk.lame.normalize(atomic_ratio1, 1/pseudowt, verbose=verbose) * reflame1 / pseudowt[,isoref]
 

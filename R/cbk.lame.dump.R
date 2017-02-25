@@ -3,8 +3,6 @@
 #' @param format Format specifier that is passed to \code{casteml
 #'   convert}.
 #' @param show Show string in console.
-#' @param digit Integer indicating the number of significant digits to
-#'   be used by \code{signif}.
 #' @param verbose Output debug info (default: FALSE).
 #' @param name Name of the pmlame used with option `show'.
 #' @return A pmlame expressed in text
@@ -13,12 +11,12 @@
 #' pmlame0 <- structure(list(SiO2 = c(0.59, 0.52), Li = c(2.08e-05, 1.37e-06), Sr = c(0.000107, 3.61e-05)), row.names = c("ref-gl-tahiti", "ref-cpx-klb1"), .Names = c("SiO2", "Li", "Sr"), class = "data.frame")
 #' cbk.lame.dump(pmlame0)
 #' cbk.lame.dump(pmlame0,'isorg')
-cbk.lame.dump <- function(pmlame,format=NULL,show=TRUE,digit=6,verbose=FALSE,name=deparse(substitute(pmlame))) {
+cbk.lame.dump <- function(pmlame,format=NULL,show=TRUE,verbose=FALSE,name=deparse(substitute(pmlame))) {
 
-  # Round number
-  if(!is.null(digit)){
-    pmlame <- signif(pmlame,digit)
-  }
+  ##* Round number
+  ## if(!is.null(digit)){
+  ##   pmlame <- signif(pmlame,digit)
+  ## }
 
   dumpp <- is.null(format)
 

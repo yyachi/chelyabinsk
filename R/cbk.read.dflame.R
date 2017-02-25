@@ -48,7 +48,11 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=FALSE
     if (force) {
       idx <- which(duplicated(colnames(qmlame)))
       for(ii in 1:length(dupstone)) {  ## Rename duplicated stones
-        new_name <- paste0(dupstone[ii]," <analysis ",qmlame["sample_id",idx[ii]],">")
+        if ("sample_id" %in% rownames(qmlame)) {
+          new_name <- paste0(dupstone[ii]," <stone ",qmlame["sample_id",idx[ii]],">")
+        } else {
+          new_name <- paste0(dupstone[ii]," <",Sys.Date(),">")
+        }
         colnames(qmlame)[idx[ii]] <- new_name
         cat(file=stderr(),"Warning: There were multiply-defined analyses. `",dupstone[ii],"' was renamed to `",new_name,"'\n")
       }

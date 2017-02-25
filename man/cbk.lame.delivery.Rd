@@ -9,9 +9,9 @@ cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09, verbose = FALSE)
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
-\item{intlame}{A pseudo-pmlame of ion intensity with row of stone
-and column of isomeas [cps].  Typically rowname is with
-`@acq-number'.}
+\item{intlame}{A pseudo-pmlame of ion intensity with row of acq and
+column of isomeas [cps].  Typical rowname is `trc_cpx_klb1@1'.
+This is like array of I(Li7), ..., I(Sr88).}
 
 \item{sputter.rate}{Sputter rate [g/s] (default: 1.1e-9 that
 corresponds to abbration of 40 s to produce a pit with diameter

@@ -4,8 +4,8 @@
 \alias{cbk.lame.dump}
 \title{Dump pmlame as string}
 \usage{
-cbk.lame.dump(pmlame, format = NULL, show = TRUE, digit = 6,
-  verbose = FALSE, name = deparse(substitute(pmlame)))
+cbk.lame.dump(pmlame, format = NULL, show = TRUE, verbose = FALSE,
+  name = deparse(substitute(pmlame)))
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
@@ -14,9 +14,6 @@ cbk.lame.dump(pmlame, format = NULL, show = TRUE, digit = 6,
 convert}.}
 
 \item{show}{Show string in console.}
-
-\item{digit}{Integer indicating the number of significant digits to
-be used by \code{signif}.}
 
 \item{verbose}{Output debug info (default: FALSE).}
 

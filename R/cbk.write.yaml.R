@@ -5,19 +5,17 @@
 #'   rownames using a column with label `rownames'.
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param outfile Path to yamlfile with a pmlame.
-#' @param digit Integer indicating the number of significant digits to
-#'   be used by \code{signif}.
 #' @param verbose Output debug info (default: TRUE).
 #' @return Path to yamlfile.
 #' @seealso \code{\link{cbk.read.yaml}} and
 #'   \code{\link{cbk.write.casteml}}.
 #' @export
-cbk.write.yaml <- function(pmlame,outfile=NULL,digit=6,verbose=TRUE){
+cbk.write.yaml <- function(pmlame,outfile=NULL,verbose=TRUE){
 
-  # Round number
-  if(!is.null(digit)){
-    pmlame <- signif(pmlame,digit)
-  }
+  ##* Round number
+  ## if(!is.null(digit)){
+  ##   pmlame <- signif(pmlame,digit)
+  ## }
 
   pmlame1          <- pmlame
   pmlame1$rownames <- rownames(pmlame)

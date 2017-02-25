@@ -32,7 +32,7 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
     cat(file=stderr(),"cbk.lame.normalize:32: reflame0 <-",cbk.lame.dump(reflame0,show=F),"\n")
     cat(file=stderr(),"cbk.lame.normalize:33: meanlame0 <-",cbk.lame.dump(meanlame0,show=F),"\n")
     cat(file=stderr(),"cbk.lame.normalize:34: errorlame0 <-",cbk.lame.dump(errorlame0,show=F),"\n")
-    cat(file=stderr(),"cbk.lame.normalize:35: chem <-",cbk.lame.dump(chem,show=F,digit=NULL),"\n")
+    cat(file=stderr(),"cbk.lame.normalize:35: chem <-",cbk.lame.dump(chem,show=F),"\n")
   }
 
   if (nrow(reflame) == 1){ # in case divide by CI chondrite

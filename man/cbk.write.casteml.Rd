@@ -4,15 +4,12 @@
 \alias{cbk.write.casteml}
 \title{Write a pmlame to CASTEML file}
 \usage{
-cbk.write.casteml(pmlame, outfile = NULL, digit = 6, verbose = TRUE)
+cbk.write.casteml(pmlame, outfile = NULL, verbose = TRUE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{outfile}{File path to casteml file}
-
-\item{digit}{Integer indicating the number of significant digits to
-be used by \code{signif}.}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }
