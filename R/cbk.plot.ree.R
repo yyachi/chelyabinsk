@@ -1,8 +1,8 @@
 #' @title Read CASTEML file and create REE diagram
 #'
 #' @description Read CASTEML dataframe and create REE diagram.  This
-#'   function does not save the created diagram.  You should prepare a
-#'   canvas in advance.
+#'   function tris to blow errorbar.  If you do not see errorbar,
+#'   check pmlame that you feed.
 #'
 #' @param pmlfile_or_stone A CASTEML file that exits locally or
 #'   stone-ID (or pmlame).
