@@ -3,7 +3,7 @@
 #'
 #' @description Read ion-type TBLAME.csv originated from Analyte G2
 #'   with iCAP-Q.  The original QTEGRA.csv (CSV file exported from
-#'   Qtegra) should be processed in advance to have ion-type
+#'   Qtegra) should be processed in advance to be ion-type
 #'   TBLNAME.csv with extension `.ion'.
 #'
 #'   The ion-type TBLNAME.csv consists of columns of time and ion
@@ -88,8 +88,8 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   pmSd1$time          <- NA
   row.names(pmSd1)    <- "sd(base)/cps"
 
-  refOverallMean      <- pmMean3["mean/cps",ref] # one number for one DL
-  pmDL3               <- pmSd1*3/ refOverallMean / sqrt(n_baseline)
+  refOverallIntMean   <- pmMean3["mean/cps",ref] # one number for one DL
+  pmDL3               <- pmSd1*3/ refOverallIntMean / sqrt(n_baseline)
   row.names(pmDL3)    <- paste0("DL/",ref)
 
   ## Normalize

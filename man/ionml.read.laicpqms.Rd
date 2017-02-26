@@ -31,7 +31,7 @@ The ion-type pmlame of ion-to-ref ratio online with rows of
 \description{
 Read ion-type TBLAME.csv originated from Analyte G2
   with iCAP-Q.  The original QTEGRA.csv (CSV file exported from
-  Qtegra) should be processed in advance to have ion-type
+  Qtegra) should be processed in advance to be ion-type
   TBLNAME.csv with extension `.ion'.
 
   The ion-type TBLNAME.csv consists of columns of time and ion
