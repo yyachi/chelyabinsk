@@ -36,6 +36,11 @@ cbk.convert.casteml <- function(pmlfile,category=NULL,force=FALSE,verbose=TRUE,f
   names(extlist) <- c("dflame","tex")
   ext            <- extlist[format]
 
+  ##* Special handling for isorg
+  if(format == "isorg") {
+    format <- "isorg --no-unit"
+  }
+  
   ##* Prepare output file
   if(is.null(category)){
     cmd     <- paste("convert -f",format,pmlfile)
