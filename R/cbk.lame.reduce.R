@@ -54,8 +54,8 @@ cbk.lame.reduce <- function(pmlame) {
       chem_in_oxide      <- meanlame0[,oxide]
       chem_in_metal      <- chem_in_oxide * metalweight / oxideweight
       ## colnames(pmlame)[grep(oxide,chemlist)] <- metal # rename col
+      meanlame0[,oxide]  <- chem_in_metal # replace value of oxide by metal
       colnames(meanlame0)[which(chemlist == oxide)]  <- metal # rename col
-      meanlame0[,metal]  <- chem_in_metal # replace value of oxide by metal
 
       if (oxide %in% colnames(errorlame0)) {
         error_in_oxide     <- errorlame0[,oxide]
