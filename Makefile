@@ -29,5 +29,5 @@ install:
 .PHONY: push
 push:
 	git pull; git commit -a -m "Revision by make"; git push
-	ssh falcon@archive.misasa.okayama-u.ac.jp "sudo Rscript -e \"devtools::install_github('misasa/chelyabinsk')\""
-	ssh falcon@archive.misasa.okayama-u.ac.jp "sudo /etc/init.d/shiny-server restart"
+	ssh falcon@database.misasa.okayama-u.ac.jp "sudo Rscript -e \"devtools::install_github('misasa/chelyabinsk')\""
+	ssh falcon@database.misasa.okayama-u.ac.jp "sudo /etc/init.d/shiny-server restart"
