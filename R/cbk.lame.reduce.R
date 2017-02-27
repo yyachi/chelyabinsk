@@ -41,6 +41,7 @@ cbk.lame.reduce <- function(pmlame) {
   periodic     <- cbk.periodic()
   oxidelist    <- rownames(detoxtable)    # "SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"
   chemlist     <- colnames(meanlame0)        # "SiO2","Al2O3","La","Ce"
+  errorlist    <- colnames(errorlame0)        # "SiO2","Al2O3","La","Ce"
   oxygenweight <- 15.9994
   for(ii in 1:length(oxidelist)) {
     ### replace columns of "SiO2" and "Al2O3" by "Si" and "Al"
@@ -54,17 +55,30 @@ cbk.lame.reduce <- function(pmlame) {
       chem_in_oxide      <- meanlame0[,oxide]
       chem_in_metal      <- chem_in_oxide * metalweight / oxideweight
       ## colnames(pmlame)[grep(oxide,chemlist)] <- metal # rename col
-      meanlame0[,oxide]  <- chem_in_metal # replace value of oxide by metal
-      colnames(meanlame0)[which(chemlist == oxide)]  <- metal # rename col
+      if (metal %in% chemlist) {
+        value_i   <- is.na(meanlame0[,metal])
+        meanlame0[value_i,metal] <- chem_in_metal[value_i]
+        meanlame0 <- meanlame0[,setdiff(chemlist,oxide),drop=FALSE]
+      } else {
+        meanlame0[,oxide]  <- chem_in_metal # replace value of oxide by metal
+        colnames(meanlame0)[which(chemlist == oxide)]  <- metal # rename col
+      }
 
-      if (oxide %in% colnames(errorlame0)) {
-        error_in_oxide     <- errorlame0[,oxide]
-        error_in_metal     <- error_in_oxide * metalweight / oxideweight
-        colnames(errorlame0)[which(chemlist == oxide)] <- metal # rename col
-        errorlame0[,metal] <- error_in_metal # replace value of oxide by metal
-        ## chemlist          <- gsub(oxide,metal,chemlist)
+      if (oxide %in% errorlist) {
+        error_in_oxide <- errorlame0[,oxide]
+        error_in_metal <- error_in_oxide * metalweight / oxideweight
+        if (metal %in% errorlist) {
+          error_i    <- is.na(errorlame0[,metal])
+          errorlame0[error_i,metal] <- chem_in_metal[error_i]
+          errorlame0 <- errorlame0[,setdiff(errorlist,oxide),drop=FALSE]
+        } else {
+          errorlame0[,oxide] <- error_in_metal # replace value of oxide by metal
+          colnames(errorlame0)[which(errorlist == oxide)] <- metal # rename col
+        }
       }
     }
+    chemlist  <- colnames(meanlame0)
+    errorlist <- colnames(errorlame0)
   }
   ## colnames(meanlame0) <- chemlist
   if (ncol(errorlame0) > 0) {
