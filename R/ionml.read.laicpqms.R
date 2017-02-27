@@ -64,6 +64,9 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   ## Stat baseline
   pmlame1             <- filter(pmlame0, time >t0 & time <t1) # baseline
   n_baseline          <- nrow(pmlame1)
+  if (verbose) {
+    cat(file=stderr(),"ionml.read.laicpqms:68: n_baseline <-",cbk.lame.dump(n_baseline,show=F),"\n")
+  }
 
   pmMean1             <- summarise_each(pmlame1, funs(mean))
   pmMean1$time        <- NA
@@ -91,6 +94,9 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   refOverallIntMean   <- pmMean3["mean/cps",ref] # one number for one DL
   pmDL3               <- pmSd1*3/ refOverallIntMean / sqrt(n_baseline)
   row.names(pmDL3)    <- paste0("DL/",ref)
+  if (verbose) {
+    cat(file=stderr(),"ionml.read.laicpqms:99: refOverallIntMean <-",cbk.lame.dump(refOverallIntMean,show=F),"\n")
+  }
 
   ## Normalize
   pmlame4             <- pmlame2 / pmlame2[,ref] # ion normaized by ref
