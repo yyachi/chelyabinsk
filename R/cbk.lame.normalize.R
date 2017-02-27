@@ -22,11 +22,15 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
   ## filter name when number of elements in reflame exceeds those in sample
   ## typically suffix_after_chem is "_error"
 
-  reflame0       <- cbk.lame.regulate(reflame,mean=T,error=F,extra=F)
-  meanlame0      <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)
-  errorlame0     <- cbk.lame.fetch.error(pmlame)
+  stonelist0        <- rownames(pmlame)        # keep original name
+  rownames(pmlame)  <- gsub("-","_",rownames(pmlame))
+  rownames(reflame) <- gsub("-","_",rownames(reflame))
 
-  chem           <- intersect(colnames(reflame0),colnames(meanlame0))
+  meanlame0  <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)
+  errorlame0 <- cbk.lame.fetch.error(pmlame)
+  reflame0   <- cbk.lame.regulate(reflame,mean=T,error=F,extra=F)
+
+  chem       <- intersect(colnames(reflame0),colnames(meanlame0))
 
   if (verbose) {
     cat(file=stderr(),"cbk.lame.normalize:32: reflame0 <-",cbk.lame.dump(reflame0,show=F),"\n")
@@ -62,5 +66,6 @@ cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FAL
     pmlame2      <- pmlame1 / reflame1
   }
 
+  rownames(pmlame2) <- stonelist0       # restore original name
   return(pmlame2) # data.frame to be consistent
 }
