@@ -45,7 +45,7 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   if (opts$pch) {
     pch <- opts$pch
   } else {
-    pch <- 1:length(stonelist)
+    pch <- 1:length(stonelist) %% 26
   }
   if (opts$col) {
     col <- opts$col

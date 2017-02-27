@@ -44,7 +44,7 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   if (opts$pch) {
     pch <- opts$pch
   } else {
-    pch <- 1:length(stonelist)
+    pch <- 1:length(stonelist) %% 26
   }
   if (opts$col) {
     col <- opts$col

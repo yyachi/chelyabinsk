@@ -76,7 +76,7 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   if (opts$pch) {
     pch <- opts$pch
   } else {
-    pch <- 1:length(stone)
+    pch <- 1:length(stone) %% 26
   }
   if (opts$col) {
     col <- opts$col
