@@ -1,4 +1,4 @@
-#' @title Read IONML file and return an ionlame
+#' Read IONML file and return an ionlame
 #'
 #' @param ionml.xml An IONML file created in advance using appropriate
 #'   script dedicated for device.

@@ -10,6 +10,8 @@ cbk.lame.drop.chem(pmlame, chem, verbose = FALSE)
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}
 
 \item{chem}{List of chem to drop from pmlame}
+
+\item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
 A pmlame without the specified chem

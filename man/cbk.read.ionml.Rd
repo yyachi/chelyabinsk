@@ -15,6 +15,9 @@ script dedicated for device.}
 \value{
 A dataframe with mean and time columns.
 }
+\description{
+Read IONML file and return an ionlame
+}
 \examples{
 ionlame    <- cbk.read.ionml(cbk.path("ref_cpx_klb1@1.xml"))
 }

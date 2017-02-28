@@ -1,6 +1,7 @@
 #' Drop chem from pmlame
 #' @param pmlame A pmlame with row of stone and column of chem [g/g].
 #' @param chem List of chem to drop from pmlame
+#' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame without the specified chem
 #' @seealso \code{cbk.lame.drop.chem}
 #' @export
