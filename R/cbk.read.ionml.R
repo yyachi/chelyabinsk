@@ -26,13 +26,18 @@ cbk.read.ionml <- function(ionml.xml,verbose=TRUE){
   ## isomeas   <- gsub("^int_","",isomeas)
 
   colnames(meanlame0) <- isomeas
-  colnames(timelame0) <- paste0(isomeas,"_time")
 
-  ionlame1 <- cbind(timelame0,meanlame0)
-  n        <- ncol(meanlame0)
-  index    <- rep(1:n, each = 2) + (0:1) * n
-  ionlame2 <- ionlame1[index]
+  if (all(apply(timelame0,1,sd)==0)) { # if all columns are identical
+    ## colnames(timelame0)[1] <- "time"
+    ionlame2 <- cbind(time=timelame0[,1],meanlame0)
+  } else {
+    colnames(timelame0) <- paste0(isomeas,"_time")
 
+    ionlame1 <- cbind(timelame0,meanlame0)
+    n        <- ncol(meanlame0)
+    index    <- rep(1:n, each = 2) + (0:1) * n
+    ionlame2 <- ionlame1[index]
+  }
   ionlame3 <- as.data.frame(apply(ionlame2,c(1,2),as.numeric))
   return(ionlame3)
 }
