@@ -56,7 +56,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
         iontblame <- ionml.convert.laicpqms(ionbase,outfile=tempfile(fileext=".ion"))
         xmlfile   <- ionml.convert.iontblame(iontblame,outfile=tempfile(fileext=".xml"))
       }
-      pmlame0     <- cbk.read.ionml(xmlfile)
+      pmlame0     <- cbk.read.ionml(xmlfile,representative_time=TRUE)
     } else {
       ## Force set extension of ionfile
       ionfile <- paste0(ionbase,".ion")

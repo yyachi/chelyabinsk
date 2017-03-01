@@ -4,11 +4,14 @@
 \alias{cbk.read.ionml}
 \title{Read IONML file and return an ionlame}
 \usage{
-cbk.read.ionml(ionml.xml, verbose = TRUE)
+cbk.read.ionml(ionml.xml, representative_time = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{ionml.xml}{An IONML file created in advance using appropriate
 script dedicated for device.}
+
+\item{representative_time}{Flag to compress timelame into single
+column (default: FALSE).}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }
