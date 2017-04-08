@@ -39,7 +39,7 @@ Estimate element abundances from ion-intensity
 }
 \details{
 This function estimate trace-element abundances using
-  following equations.  Note that `m!' denotes `pseudo
+  following equations.  Note that `M' denotes `pseudo
   atomic-weight' that corresponds to atomic-weight of an isotope at
   virtual world where rest of isotopes do not exist (number of
   other isotopes are zero) but total element abundance and number
@@ -49,11 +49,11 @@ This function estimate trace-element abundances using
   \item{ionic_yield  = ionic_ratio / atomic_ratio}
   \item{ionic_ratio  = I(Li7+)     / I(Si29+)}
   \item{atomic_ratio = [Li7]       / [Si29]}
-  \item{[Li7]        = [Li]/m!(Li7)}
-  \item{[Si29]       = [Si]/m!(Si29)}
-  \item{m!(Li7)      = m(Li)/R(Li7)}
-  \item{m!(Si9)      = m(Si)/R(Si29)}
-  \item{[Li]         <- ionic_ratio/ionic_yield * [Si]/m!(Si29) * m!(Li7)}
+  \item{[Li7]        = [Li]/M(Li7)}
+  \item{[Si29]       = [Si]/M(Si29)}
+  \item{M(Li7)       = m(Li)/R(Li7)}
+  \item{M(Si9)       = m(Si)/R(Si29)}
+  \item{[Li]         <- ionic_ratio/ionic_yield * [Si]/M(Si29) * M(Li7)}
 }
 }
 \examples{

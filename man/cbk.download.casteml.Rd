@@ -4,7 +4,8 @@
 \alias{cbk.download.casteml}
 \title{Download analysis records as a CASTEML file}
 \usage{
-cbk.download.casteml(stone, file = NULL, force = FALSE)
+cbk.download.casteml(stone, file = NULL, force = FALSE, useHTTP = TRUE,
+  paramHTTP = NULL)
 }
 \arguments{
 \item{stone}{Unique indentification number of stones in Medusa.
@@ -27,7 +28,7 @@ Download analysis records as a CASTEML file.  This
 }
 \examples{
 stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
-pmlfile <- cbk.download.casteml(stone)
+pmlfiles <- lapply(stone, cbk.download.casteml)
 
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
 }

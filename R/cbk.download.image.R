@@ -37,7 +37,8 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
       ## if (opts$Recursivep) {
       ##   pmlfile  <- cbk.download.casteml(c("-R", surface))
       ## } else {
-      pmlfile <- cbk.download.casteml(c("-r", surface))
+      ## pmlfile <- cbk.download.casteml(c("-r", surface))
+      pmlfile <- cbk.download.casteml(surface,recursive=TRUE)
       ## }
     }
     doc           <- xmlParse(pmlfile)
