@@ -43,10 +43,10 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
     } else {                             # stone fed
       stone    <- pmlfile_or_stone
       if (opts$Recursivep) {
-        #pmlfile  <- cbk.download.casteml(c("-R", stone))
+        # pmlfile  <- cbk.download.casteml(c("-R", stone))
         pmlfile  <- cbk.download.casteml(stone,Recursive=TRUE)
       } else {
-        #pmlfile  <- cbk.download.casteml(c("-r", stone))
+        # pmlfile  <- cbk.download.casteml(c("-r", stone))
         pmlfile  <- cbk.download.casteml(stone,recursive=TRUE)
       }
     }

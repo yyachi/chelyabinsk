@@ -4,33 +4,55 @@
 \alias{cbk.download.casteml}
 \title{Download analysis records as a CASTEML file}
 \usage{
-cbk.download.casteml(stone, file = NULL, force = FALSE, useHTTP = TRUE,
-  paramHTTP = NULL)
+cbk.download.casteml(stone, file = NULL, force = FALSE,
+  directDownload = TRUE, directAuth = NULL, Recursive = FALSE,
+  recursive = FALSE)
 }
 \arguments{
-\item{stone}{Unique indentification number of stones in Medusa.
-Really, those will pass to `casteml download' and thus you can
-include options.}
+\item{stone}{Unique identification number of a stone in Medusa.}
 
-\item{file}{File path to save downloaded CASTEML file}
+\item{file}{File path to save downloaded CASTEML file.  Default is
+a temporary file in a temporary directory.}
 
-\item{force}{Force download CASTEML file}
+\item{force}{Force download CASTEML file.}
+
+\item{directDownload}{Download CASTEML file via HTTP otherwise via
+`casteml download'.}
+
+\item{directAuth}{Parameter for HTTP basic authentication.}
+
+\item{Recursive}{Download a whole family of a stone (equivalent to
+--family in casteml download)}
+
+\item{recursive}{Download descendants of a stone (equivalent to
+--descendant in casteml download).}
 }
 \value{
-Path to CASTEML file that was downloaded in temporary
-  directory.
+Path to CASTEML file that was downloaded.
 }
 \description{
 Download analysis records as a CASTEML file.  This
   function returns path to the file.  The file is stored in a
   temporary directory unless specified.  Note with the same
-  arguments, this function downloads only once per a R session.
+  arguments, this function downloads only once per an R session.
+}
+\details{
+Revision on 2017-04-11 changed interface of the first
+  argument `stone'.  It used be an array consists of stones and
+  option to pass to `casteml download'.  Now this function
+  downloads CASTEML file by its own and the argument `stone' only
+  accepts a stone.  An user should specify Recursive and recursive
+  option not a part of argument `stone' but explicitly.
 }
 \examples{
 stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
 pmlfiles <- lapply(stone, cbk.download.casteml)
 
 pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
+directAuth <- list(uri="dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
+pmlfile <- cbk.download.casteml("20110416134901-075-241",directAuth=directAuth)
+pmlfile <- cbk.download.casteml("20110416134901-075-241",directAuth=directAuth,recursive=TRUE)
+pmlfile <- cbk.download.casteml("20110416134901-075-241",directAuth=directAuth,Recursive=TRUE)
 }
 \seealso{
 \code{casteml download},

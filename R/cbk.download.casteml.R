@@ -3,19 +3,27 @@
 #' @description Download analysis records as a CASTEML file.  This
 #'   function returns path to the file.  The file is stored in a
 #'   temporary directory unless specified.  Note with the same
-#'   arguments, this function downloads only once per a R session.
+#'   arguments, this function downloads only once per an R session.
+#'
+#' @details Revision on 2017-04-11 changed interface of the first
+#'   argument `stone'.  It used be an array consists of stones and
+#'   option to pass to `casteml download'.  Now this function
+#'   downloads CASTEML file by its own and the argument `stone' only
+#'   accepts a stone.  An user should specify Recursive and recursive
+#'   option not a part of argument `stone' but explicitly.
 #' 
-#' @param stone Unique indentification number of stones in Medusa.
-#'   Really, those will pass to `casteml download' and thus you can
-#'   include options.
-#' @param file File path to save downloaded CASTEML file
-#' @param force Force download CASTEML file
-#' @param useHTTP Force download CASTEML file via HTTP
-#' @param paramHTTP Parameter for HTTP basic authentication
-#' @param Recursive With -R option
-#' @param recursive With -r option
-#' @return Path to CASTEML file that was downloaded in temporary
-#'   directory.
+#' @param stone Unique identification number of a stone in Medusa.
+#' @param file File path to save downloaded CASTEML file.  Default is
+#'   a temporary file in a temporary directory.
+#' @param force Force download CASTEML file.
+#' @param directDownload Download CASTEML file via HTTP otherwise via
+#'   `casteml download'.
+#' @param directAuth Parameter for HTTP basic authentication.
+#' @param Recursive Download a whole family of a stone (equivalent to
+#'   --family in casteml download)
+#' @param recursive Download descendants of a stone (equivalent to
+#'   --descendant in casteml download).
+#' @return Path to CASTEML file that was downloaded.
 #' @export
 #' @seealso \code{casteml download},
 #'   \url{https://github.com/misasa/casteml}, and
@@ -25,32 +33,34 @@
 #' pmlfiles <- lapply(stone, cbk.download.casteml)
 #'
 #' pmlfile <- cbk.download.casteml("20081202172326.hkitagawa")
-#' paramHTTP <- list(uri="dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
-#' pmlfile <- cbk.download.casteml("20110416134901-075-241",paramHTTP=paramHTTP)
-#' pmlfile <- cbk.download.casteml("20110416134901-075-241",paramHTTP=paramHTTP,recursive=TRUE)
-#' pmlfile <- cbk.download.casteml("20110416134901-075-241",paramHTTP=paramHTTP,Recursive=TRUE)
-cbk.download.casteml <- function(stone,file=NULL,force=FALSE,useHTTP = TRUE,paramHTTP=NULL,Recursive=FALSE,recursive=FALSE ) {
+#' directAuth <- list(uri="dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
+#' pmlfile <- cbk.download.casteml("20110416134901-075-241",directAuth=directAuth)
+#' pmlfile <- cbk.download.casteml("20110416134901-075-241",directAuth=directAuth,recursive=TRUE)
+#' pmlfile <- cbk.download.casteml("20110416134901-075-241",directAuth=directAuth,Recursive=TRUE)
+cbk.download.casteml <- function(stone,file=NULL,force=FALSE,directDownload = TRUE,directAuth=NULL,Recursive=FALSE,recursive=FALSE ) {
   ## cat(file=stderr(),"cbk.download.casteml: stone is |",stone,"|\n")
   cat(file=stderr(),"cbk.download.casteml:26: stone # =>",stone,"\n")
 
-  if(useHTTP){
+  if(directDownload){
     library(httr)
-    if(is.null(paramHTTP)){
+    if(is.null(directAuth)){
       library(yaml)
       orochirc <- yaml.load_file("~/.orochirc")
-      url <- paste("http://",orochirc$uri, sep="")
+      url <- paste0("http://",orochirc$uri)
       user <- orochirc$user
       password <- orochirc$password
     } else {
-      url <- paste("http://",paramHTTP$uri, sep="")
-      user <- paramHTTP$user
-      password <- paramHTTP$password      
+      url <- paste0("http://",directAuth$uri)
+      user <- directAuth$user
+      password <- directAuth$password
     }
-    my_url <- paste(url,"records/",stone,".pml",sep="")
+    url <- gsub("/$","",url) # take out slash
+    ## cat(file=stderr(),"cbk.download.casteml:50: url <-",cbk.lame.dump(url,show=F),"\n")
+    my_url <- paste0(url,"/records/",stone,".pml")
     if(Recursive){
-      my_url <- paste(url,"records/",stone,"/families.pml",sep="")
+      my_url <- paste0(url,"/records/",stone,"/families.pml")
     } else if(recursive){
-      my_url <- paste(url,"records/",stone,"/self_and_descendants.pml",sep="")
+      my_url <- paste0(url,"/records/",stone,"/self_and_descendants.pml")
     }
     seed <- my_url
   } else {
@@ -60,7 +70,6 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,useHTTP = TRUE,para
     } else if(recursive){
       cmd <- paste(c("casteml download",c('-r', stone)),collapse=" ")
     }
-
     seed <- cmd
   }
   ## file <- tempfile(pattern = paste(stone[1],"@",sep=""), fileext=".pml")
@@ -72,7 +81,7 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,useHTTP = TRUE,para
 
   ## Download file only when it does not exist
   if (force || !file.exists(file)) {
-    if(useHTTP){
+    if(directDownload){
       cat(file=stderr(),"cbk.download.casteml:76: url # =>",my_url,"\n")
       req <- GET(my_url,authenticate(user,password,type="basic"))
       bin <- content(req, "raw")
