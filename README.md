@@ -60,7 +60,18 @@ $ vi ./tests/testthat/test-mytest.R
 $ R CMD check ../chelyabinsk
 ```
 
-5. Push to the server or build/install locally
+5. Update manual
+
+Copy manual automatically created by roxygen to
+http://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf
+when necessary.
+
+```
+$ cp ./chelyabinsk.Rcheck/chelyabinsk-manual.pdf ~/devel-godigo/documentation/
+```
+
+
+6. Push to the server or build/install locally
 
 ```
 $ R CMD build ../chelyabinsk
