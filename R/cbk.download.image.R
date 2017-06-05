@@ -49,6 +49,7 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
     pmlame        <- pmlfile_or_surface
     file_path     <- as.character(pmlame[1,"image_path"])
   }
+  file_path     <- gsub("[\n[:blank:]*]", "", file_path)  # chomp and remove spaces
   orochirc      <- yaml.load_file("~/.orochirc")
   file_url      <- paste("http://",domain(orochirc$uri),file_path, sep="")
 

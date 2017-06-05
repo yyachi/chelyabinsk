@@ -29,6 +29,7 @@
 #' @param t3 When ion ends (default: 60 s).
 #' @param ref reference ion such as `Si29'.
 #' @param verbose Output debug info (default: FALSE).
+#' @param ionml Read IONML file instead of ion-type TBLAME.csv (default: FALSE).
 #' @return The ion-type pmlame of ion-to-ref ratio online with rows of
 #'   statistical information.
 #' @export
@@ -36,7 +37,7 @@
 #' @examples
 #' file <- cbk.path("ref_cpx_klb1@1.ion")
 #' pmlfile0 <- ionml.read.laicpqms(file)
-ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29",verbose=FALSE) {
+ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29",verbose=FALSE,ionml=FALSE) {
   library(dplyr)
 
   if (verbose) {
@@ -51,26 +52,32 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
 
     ## fileext           <- tools::file_ext(pmlame_or_file)
     ## if (fileext == "xml") {
-    ##   xmlfile <- pmlame_or_file
-    ##   if (!file.exists(xmlfile)) {
-    ##     iontblame <- ionml.convert.laicpqms(ionbase,outfile=tempfile(fileext=".ion"))
-    ##     xmlfile   <- ionml.convert.iontblame(iontblame,outfile=tempfile(fileext=".xml"))
-    ##   }
-    ##   pmlame0     <- cbk.read.ionml(xmlfile,representative_time=TRUE)
-    ## } else {
+    ## xmlfile <- pmlame_or_file
+    if (ionml) {
+      xmlfile <- paste0(ionbase,".xml")
+      if (!file.exists(xmlfile)) {
+        iontblame <- ionml.convert.laicpqms(ionbase,outfile=tempfile(fileext=".ion"))
+        ## xmlfile   <- ionml.convert.iontblame(iontblame,outfile=tempfile(fileext=".xml"))
+        ## iontblame <- ionml.convert.laicpqms(ionbase)
+        xmlfile   <- ionml.convert.iontblame(iontblame,outfile=xmlfile)
+      }
+      pmlame0           <- cbk.read.ionml(xmlfile,representative_time=TRUE)
+      ## colnames(pmlame0) <- gsub("^int_","",colnames(pmlame0))
+      colnames(pmlame0) <- gsub("int_([0-9]+)([A-Z][a-z]?)","\\2\\1",colnames(pmlame0)) # int_151Eu -> Eu151
+    } else {
 
-    ## Force set extension of ionfile
-    ionfile <- paste0(ionbase,".ion")
+      ## Force set extension of ionfile
+      ionfile <- paste0(ionbase,".ion")
 
-    ## automatic conversion on miss of ionfile
-    if (!file.exists(ionfile)) {
-      ionfile <- ionml.convert.laicpqms(ionbase)
+      ## automatic conversion on miss of ionfile
+      if (!file.exists(ionfile)) {
+        ionfile <- ionml.convert.laicpqms(ionbase)
+      }
+
+      ## load from ionfile
+      pmlame0           <- cbk.read.tblame(ionfile)
     }
-
-    ## load from ionfile
-    pmlame0           <- cbk.read.tblame(ionfile)
   }
-  ## }
 
   ## Stat baseline
   pmlame1             <- filter(pmlame0, time >t0 & time <t1) # baseline

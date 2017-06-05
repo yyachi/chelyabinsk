@@ -50,8 +50,8 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
         pmlfile  <- cbk.download.casteml(stone,recursive=TRUE)
       }
     }
-    dflame.csv <- cbk.convert.casteml(pmlfile,category=category,force=force)
-    pmlame     <- cbk.read.dflame(dflame.csv,tableunit)
+    dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
+    pmlame     <- cbk.read.dflame(dflame.csv,tableunit,force=force)
   }
 
   chemlist                    <- colnames(pmlame)

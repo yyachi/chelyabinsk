@@ -49,7 +49,7 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=FALSE
       idx <- which(duplicated(colnames(qmlame)))
       for(ii in 1:length(dupstone)) {  ## Rename duplicated stones
         if ("sample_id" %in% rownames(qmlame)) {
-          new_name <- paste0(dupstone[ii]," <stone ",qmlame["sample_id",idx[ii]],">")
+          new_name <- paste0(dupstone[ii]," <stone ",qmlame["sample_id",idx[ii]],">",idx[ii])
         } else {
           new_name <- paste0(dupstone[ii]," <",Sys.Date(),">")
         }

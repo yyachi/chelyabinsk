@@ -6,7 +6,7 @@
   iCAP-Q}
 \usage{
 ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", verbose = FALSE)
+  ref = "Si29", verbose = FALSE, ionml = FALSE)
 }
 \arguments{
 \item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.csv with
@@ -23,6 +23,8 @@ extension `.ion'.}
 \item{ref}{reference ion such as `Si29'.}
 
 \item{verbose}{Output debug info (default: FALSE).}
+
+\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: FALSE).}
 }
 \value{
 The ion-type pmlame of ion-to-ref ratio online with rows of

@@ -42,27 +42,12 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,directDownload = TR
   cat(file=stderr(),"cbk.download.casteml:26: stone # =>",stone,"\n")
 
   if(directDownload){
-    library(httr)
-    if(is.null(directAuth)){
-      library(yaml)
-      orochirc <- yaml.load_file("~/.orochirc")
-      url <- paste0("http://",orochirc$uri)
-      user <- orochirc$user
-      password <- orochirc$password
-    } else {
-      url <- paste0("http://",directAuth$uri)
-      user <- directAuth$user
-      password <- directAuth$password
+    pmlfiles <- c()
+    for(ii in 1:length(stone)) {
+      pmlfiles <- append(pmlfiles,cbk.download.casteml.direct(stone[ii],force=force,directAuth=directAuth,Recursive=Recursive,recursive=recursive))
     }
-    url <- gsub("/$","",url) # take out slash
-    ## cat(file=stderr(),"cbk.download.casteml:50: url <-",cbk.lame.dump(url,show=F),"\n")
-    my_url <- paste0(url,"/records/",stone,".pml")
-    if(Recursive){
-      my_url <- paste0(url,"/records/",stone,"/families.pml")
-    } else if(recursive){
-      my_url <- paste0(url,"/records/",stone,"/self_and_descendants.pml")
-    }
-    seed <- my_url
+    join_cmd <- paste(c("casteml join",pmlfiles),collapse=" ")
+    seed     <- join_cmd
   } else {
     cmd <- paste(c("casteml download",stone),collapse=" ")
     if(Recursive){
@@ -72,8 +57,10 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,directDownload = TR
     }
     seed <- cmd
   }
+
   ## file <- tempfile(pattern = paste(stone[1],"@",sep=""), fileext=".pml")
   ## system(paste("casteml download",stone[ii],">",file))
+
   if(is.null(file)){
     ## file <- tempfile(fileext=".pml")
     file <- file.path(tempdir(),paste0(digest::digest(seed,algo='md5'),".pml"))
@@ -81,16 +68,8 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,directDownload = TR
 
   ## Download file only when it does not exist
   if (force || !file.exists(file)) {
-    if(directDownload){
-      cat(file=stderr(),"cbk.download.casteml:76: url # =>",my_url,"\n")
-      req <- GET(my_url,authenticate(user,password,type="basic"))
-      bin <- content(req, "raw")
-      writeBin(bin, file)
-    } else {
-      cat(file=stderr(),"cbk.download.casteml:81: cmd # =>",cmd,"\n")
-      cat(system(cmd, intern = TRUE),file=file,sep="\n")
-    }
+    cat(file=stderr(),"cbk.download.casteml:81: cmd # =>",seed,"\n")
+    cat(system(seed, intern = TRUE),file=file,sep="\n")
   }
-
   return(file)
 }

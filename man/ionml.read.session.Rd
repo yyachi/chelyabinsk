@@ -5,7 +5,8 @@
 \title{Read a session stored as a series of ion-type TBLAME.csv}
 \usage{
 ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", error = "sterr", intensityp = FALSE, verbose = FALSE)
+  ref = "Si29", error = "sterr", intensityp = FALSE, verbose = FALSE,
+  ionml = FALSE)
 }
 \arguments{
 \item{tblame.csv}{Paths to ion-type TBLAME.csv.}
@@ -30,6 +31,8 @@ when DL is larger than `sderr'.}
 sderr of ionic ratio}
 
 \item{verbose}{Output debug info (default: FALSE).}
+
+\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: FALSE).}
 }
 \value{
 Pseudo-pmlame with average and standard error of ionic
