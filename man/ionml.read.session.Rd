@@ -2,14 +2,14 @@
 % Please edit documentation in R/ionml.read.session.R
 \name{ionml.read.session}
 \alias{ionml.read.session}
-\title{Read a session stored as a series of ion-type TBLAME.csv}
+\title{Read a session stored as a series of IONML}
 \usage{
-ionml.read.session(tblame.csv, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
+ionml.read.session(ionml.xml, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
   ref = "Si29", error = "sterr", intensityp = FALSE, verbose = FALSE,
-  ionml = FALSE)
+  ionml = TRUE)
 }
 \arguments{
-\item{tblame.csv}{Paths to ion-type TBLAME.csv.}
+\item{ionml.xml}{Paths to IONML.}
 
 \item{t0}{When baseline starts (default: 5 s, scalar or
 vector)}
@@ -32,20 +32,22 @@ sderr of ionic ratio}
 
 \item{verbose}{Output debug info (default: FALSE).}
 
-\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: FALSE).}
+\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: TRUE).}
 }
 \value{
 Pseudo-pmlame with average and standard error of ionic
   ratio
 }
 \description{
-Read a session stored as a series of ion-type
-  TBLAME.csv.  As of January 5, 2017, this function uses
-  `ionml.read.laicpqms' to read the ion-type TBLAME.csv.
+Read a session stored as a series of IONML.
+  As of January 5, 2017, this function uses
+  `ionml.read.laicpqms' to read the IONML.
 }
 \examples{
+pmlame0 <- ionml.read.session(cbk.path("ref_cpx_klb1@1.xml"))
+
 files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
-pmlame0 <- ionml.read.session(files)
+pmlame0 <- ionml.read.session(files,ionml=FALSE)
 }
 \seealso{
 \code{\link{ionml.read.laicpqms}}

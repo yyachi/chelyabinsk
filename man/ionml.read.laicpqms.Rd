@@ -2,15 +2,13 @@
 % Please edit documentation in R/ionml.read.laicpqms.R
 \name{ionml.read.laicpqms}
 \alias{ionml.read.laicpqms}
-\title{Read ion-type TBLAME.csv originated from Analyte G2 with
-  iCAP-Q}
+\title{Read IONML originated from Analyte G2 with iCAP-Q}
 \usage{
 ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", verbose = FALSE, ionml = FALSE)
+  ref = "Si29", verbose = FALSE, ionml = TRUE)
 }
 \arguments{
-\item{pmlame_or_file}{ion-type pmlame or ion-type TBLAME.csv with
-extension `.ion'.}
+\item{pmlame_or_file}{ion-type pmlame or IONML or QTEGRA.CSV.}
 
 \item{t0}{When baseline starts (default: 5 s).}
 
@@ -24,17 +22,18 @@ extension `.ion'.}
 
 \item{verbose}{Output debug info (default: FALSE).}
 
-\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: FALSE).}
+\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: TRUE).}
 }
 \value{
 The ion-type pmlame of ion-to-ref ratio online with rows of
   statistical information.
 }
 \description{
-Read ion-type TBLAME.csv originated from Analyte G2
-  with iCAP-Q.  The original QTEGRA.csv (CSV file exported from
-  Qtegra) should be processed in advance to be ion-type
-  TBLNAME.csv with extension `.ion'.
+Read IONML originated from Analyte G2 with iCAP-Q.
+  When missing the IONML, this will read QTEGRA.CSV (CSV file
+  exported from Qtegra) with identical basename and process it to
+  be an IONML.  On this process, ion-type TBLNAME.csv will be
+  created and stored in a temporary directory.
 
   The ion-type TBLNAME.csv consists of columns of time and ion
   intensities.  The first column of each line should be number of
@@ -53,9 +52,12 @@ Signal between `t2' and `t3' is regarded as main signal
   limit is defined by 3 times standard error of BASELINE measument.
 }
 \examples{
+pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.xml"))
+
 file <- cbk.path("ref_cpx_klb1@1.ion")
-pmlfile0 <- ionml.read.laicpqms(file)
+pmlfile0 <- ionml.read.laicpqms(file,ionml=FALSE)
 }
 \seealso{
 \code{\link{ionml.convert.laicpqms}}
+  \code{\link{ionml.convert.iontblame}}
 }
