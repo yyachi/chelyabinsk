@@ -1,14 +1,14 @@
 #' @title Read IONML originated from Analyte G2 with iCAP-Q
 #'
 #' @description Read IONML originated from Analyte G2 with iCAP-Q.
-#'   When missing the IONML, this will read QTEGRA.CSV (CSV file
-#'   exported from Qtegra) with identical basename and process it to
-#'   be an IONML.  On this process, ion-type TBLNAME.csv will be
-#'   created and stored in a temporary directory.
+#'   When IONML is missing, this will read QTEGRA.CSV (CSV file
+#'   exported from Qtegra) with identical basename with IONML and
+#'   process it to be an IONML.  On this process, ion-type TBLAME.csv
+#'   is created temporarily.
 #'
-#'   The ion-type TBLNAME.csv consists of columns of time and ion
+#'   The ion-type TBLAME.csv consists of columns of time and ion
 #'   intensities.  The first column of each line should be number of
-#'   `cycle'.  Colname of the ion-type TBLNAME.csv should be `time'
+#'   `cycle'.  Colname of the ion-type TBLAME.csv should be `time'
 #'   and name of element followed by atomic weight (`Si29' instead of
 #'   `29Si').
 #'

@@ -1,11 +1,15 @@
-#' @title Convert ion-type TBLAME.csv to IONML
+#' @title Convert IONCSV to IONML
 #'
-#' @description Convert ion-type TBLAME.csv to IONML.  This really
-#'   creates complete IONML.  This program assumes extensions of
-#'   ion-type TBLAME.csv and IONML to be `.ion' and `.xml',
+#' @description Convert IONCSV to IONML.  This program assumes
+#'   extensions of IONCSV and IONML to be `.ion' and `.xml',
 #'   respectively.
 #'
-#' @param iontblame Name of ion-type TBLAME.csv.
+#'   The IONCSV consists of columns of time and ion intensities.  The
+#'   first column of each line should be number of `cycle'.  Colname
+#'   of the ion-type TBLAME.csv should be `time' and name of element
+#'   followed by atomic weight (`Si29' instead of `29Si').
+#' 
+#' @param iontblame Name of IONCSV.
 #' @param outfile Name of IONML that will be created.
 #' @param force Flag to force convert again.
 #' @return Name of IONML that was created.
