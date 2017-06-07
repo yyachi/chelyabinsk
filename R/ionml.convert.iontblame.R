@@ -6,8 +6,8 @@
 #'
 #'   The IONCSV consists of columns of time and ion intensities.  The
 #'   first column of each line should be number of `cycle'.  Colname
-#'   of the ion-type TBLAME.csv should be `time' and name of element
-#'   followed by atomic weight (`Si29' instead of `29Si').
+#'   of the IONCSV should be `time' and name of element followed by
+#'   atomic weight (`Si29' instead of `29Si').
 #' 
 #' @param iontblame Name of IONCSV.
 #' @param outfile Name of IONML that will be created.

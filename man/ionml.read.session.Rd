@@ -32,7 +32,7 @@ sderr of ionic ratio}
 
 \item{verbose}{Output debug info (default: FALSE).}
 
-\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: TRUE).}
+\item{ionml}{Read IONML file instead of IONCSV (default: TRUE).}
 }
 \value{
 Pseudo-pmlame with average and standard error of ionic

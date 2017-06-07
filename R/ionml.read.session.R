@@ -17,7 +17,7 @@
 #' @param intensityp Have mean and sd of intensity instead of mean and
 #'   sderr of ionic ratio
 #' @param verbose Output debug info (default: FALSE).
-#' @param ionml Read IONML file instead of ion-type TBLAME.csv (default: TRUE).
+#' @param ionml Read IONML file instead of IONCSV (default: TRUE).
 #' @return Pseudo-pmlame with average and standard error of ionic
 #'   ratio
 #' @seealso \code{\link{ionml.read.laicpqms}}

@@ -1,23 +1,22 @@
 #' @title Convert laicpqms-type QTEGRA.csv by Analyte G2 with iCAP-Q
-#'   to ion-type TBLAME.csv
+#'   to IONCSV
 #'
 #' @description Convert laicpqms-type QTEGRA.csv by Analyte G2 with
-#'   iCAP-Q to ion-type TBLAME.csv.  Filter metadata out and append
-#'   column of cycle number.
+#'   iCAP-Q to IONCSV.  Filter metadata out and append column of cycle
+#'   number.
 #'
 #'   This program assumes extensions of laicpqms-type QTEGRA.csv and
-#'   ion-type TBLAME.csv to be `.csv' and `.ion', respectively.
+#'   IONCSV to be `.csv' and `.ion', respectively.
 #'
-#'   The ion-type TBLAME.csv consists of columns of time and ion
-#'   intensities.  The first column of each line should be number of
-#'   `cycle'.  Colname of the ion-type TBLAME.csv should be `time'
-#'   and name of element followed by atomic weight (`Si29' instead of
-#'   `29Si').
+#'   The IONCSV consists of columns of time and ion intensities.  The
+#'   first column of each line should be number of `cycle'.  Colname
+#'   of the IONCSV should be `time' and name of element followed by
+#'   atomic weight (`Si29' instead of `29Si').
 #'
 #' @param acqfile Name of laicpqms-type QTEGRA.csv exported form Qtegra
-#' @param outfile Name of ion-type TBLAME.csv that will be created
+#' @param outfile Name of IONCSV that will be created
 #' @param force Flag to force convert again
-#' @return Name of ion-type TBLAME.csv that was created
+#' @return Name of IONCSV that was created
 #' @seealso ionml-laicpqms.plx
 #' @export
 #' @examples

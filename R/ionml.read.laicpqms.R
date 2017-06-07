@@ -3,14 +3,13 @@
 #' @description Read IONML originated from Analyte G2 with iCAP-Q.
 #'   When IONML is missing, this will read QTEGRA.CSV (CSV file
 #'   exported from Qtegra) with identical basename with IONML and
-#'   process it to be an IONML.  On this process, ion-type TBLAME.csv
-#'   is created temporarily.
+#'   process it to be an IONML.  On this process, IONCSV is created
+#'   temporarily.
 #'
-#'   The ion-type TBLAME.csv consists of columns of time and ion
-#'   intensities.  The first column of each line should be number of
-#'   `cycle'.  Colname of the ion-type TBLAME.csv should be `time'
-#'   and name of element followed by atomic weight (`Si29' instead of
-#'   `29Si').
+#'   The IONCSV consists of columns of time and ion intensities.  The
+#'   first column of each line should be number of `cycle'.  Colname
+#'   of the IONCSV should be `time' and name of element followed by
+#'   atomic weight (`Si29' instead of `29Si').
 #'
 #' @details Signal between `t2' and `t3' is regarded as main signal
 #'   from a sample (online).  Signal between `t0' and `t1' is regarded
@@ -28,7 +27,7 @@
 #' @param t3 When ion ends (default: 60 s).
 #' @param ref reference ion such as `Si29'.
 #' @param verbose Output debug info (default: FALSE).
-#' @param ionml Read IONML file instead of ion-type TBLAME.csv (default: TRUE).
+#' @param ionml Read IONML file instead of IONCSV (default: TRUE).
 #' @return The ion-type pmlame of ion-to-ref ratio online with rows of
 #'   statistical information.
 #' @export

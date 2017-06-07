@@ -3,29 +3,32 @@
 \name{ionml.convert.laicpqms}
 \alias{ionml.convert.laicpqms}
 \title{Convert laicpqms-type QTEGRA.csv by Analyte G2 with iCAP-Q
-  to ion-type TBLAME.csv}
+  to IONCSV}
 \usage{
 ionml.convert.laicpqms(acqfile, outfile = NULL, force = FALSE)
 }
 \arguments{
 \item{acqfile}{Name of laicpqms-type QTEGRA.csv exported form Qtegra}
 
-\item{outfile}{Name of ion-type TBLAME.csv that will be created}
+\item{outfile}{Name of IONCSV that will be created}
 
 \item{force}{Flag to force convert again}
 }
 \value{
-Name of ion-type TBLAME.csv that was created
+Name of IONCSV that was created
 }
 \description{
 Convert laicpqms-type QTEGRA.csv by Analyte G2 with
-  iCAP-Q to ion-type TBLAME.csv.  Filter metadata out and append
-  column of cycle number.
+  iCAP-Q to IONCSV.  Filter metadata out and append column of cycle
+  number.
 
-  This really does NOT create IONML but incomplete IONML that is
-  ion-type TBLAME.csv.  This program assumes extensions of
-  laicpqms-type QTEGRA.csv and ion-type TBLAME.csv to be `.csv' and
-  `.ion', respectively.
+  This program assumes extensions of laicpqms-type QTEGRA.csv and
+  IONCSV to be `.csv' and `.ion', respectively.
+
+  The IONCSV consists of columns of time and ion intensities.  The
+  first column of each line should be number of `cycle'.  Colname
+  of the IONCSV should be `time' and name of element followed by
+  atomic weight (`Si29' instead of `29Si').
 }
 \examples{
 acqfile <- cbk.path("ref_cpx_klb1@1.csv")

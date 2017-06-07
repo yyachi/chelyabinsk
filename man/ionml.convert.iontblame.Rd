@@ -2,12 +2,12 @@
 % Please edit documentation in R/ionml.convert.iontblame.R
 \name{ionml.convert.iontblame}
 \alias{ionml.convert.iontblame}
-\title{Convert ion-type TBLAME.csv to IONML}
+\title{Convert IONCSV to IONML}
 \usage{
 ionml.convert.iontblame(iontblame, outfile = NULL, force = FALSE)
 }
 \arguments{
-\item{iontblame}{Name of ion-type TBLAME.csv.}
+\item{iontblame}{Name of IONCSV.}
 
 \item{outfile}{Name of IONML that will be created.}
 
@@ -17,10 +17,14 @@ ionml.convert.iontblame(iontblame, outfile = NULL, force = FALSE)
 Name of IONML that was created.
 }
 \description{
-Convert ion-type TBLAME.csv to IONML.  This really
-  creates complete IONML.  This program assumes extensions of
-  ion-type TBLAME.csv and IONML to be `.ion' and `.xml',
+Convert IONCSV to IONML.  This program assumes
+  extensions of IONCSV and IONML to be `.ion' and `.xml',
   respectively.
+
+  The IONCSV consists of columns of time and ion intensities.  The
+  first column of each line should be number of `cycle'.  Colname
+  of the IONCSV should be `time' and name of element followed by
+  atomic weight (`Si29' instead of `29Si').
 }
 \examples{
 iontblame <- cbk.path("ref_cpx_klb1@1.ion")

@@ -22,7 +22,7 @@ ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
 
 \item{verbose}{Output debug info (default: FALSE).}
 
-\item{ionml}{Read IONML file instead of ion-type TBLAME.csv (default: TRUE).}
+\item{ionml}{Read IONML file instead of IONCSV (default: TRUE).}
 }
 \value{
 The ion-type pmlame of ion-to-ref ratio online with rows of
@@ -30,16 +30,15 @@ The ion-type pmlame of ion-to-ref ratio online with rows of
 }
 \description{
 Read IONML originated from Analyte G2 with iCAP-Q.
-  When missing the IONML, this will read QTEGRA.CSV (CSV file
-  exported from Qtegra) with identical basename and process it to
-  be an IONML.  On this process, ion-type TBLNAME.csv will be
-  created and stored in a temporary directory.
+  When IONML is missing, this will read QTEGRA.CSV (CSV file
+  exported from Qtegra) with identical basename with IONML and
+  process it to be an IONML.  On this process, IONCSV is created
+  temporarily.
 
-  The ion-type TBLNAME.csv consists of columns of time and ion
-  intensities.  The first column of each line should be number of
-  `cycle'.  Colname of the ion-type TBLNAME.csv should be `time'
-  and name of element followed by atomic weight (`Si29' instead of
-  `29Si').
+  The IONCSV consists of columns of time and ion intensities.  The
+  first column of each line should be number of `cycle'.  Colname
+  of the IONCSV should be `time' and name of element followed by
+  atomic weight (`Si29' instead of `29Si').
 }
 \details{
 Signal between `t2' and `t3' is regarded as main signal
