@@ -30,16 +30,16 @@
 #'   \code{\link{cbk.download.casteml}}
 #' @examples
 #' stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
-#' pmlfiles <- lapply(stone, cbk.download.casteml.direct)
+#' pmlfiles <- lapply(stone, cbk.download.casteml.1)
 #'
-#' pmlfile <- cbk.download.casteml.direct("20081202172326.hkitagawa")
+#' pmlfile <- cbk.download.casteml.1("20081202172326.hkitagawa")
 #' directAuth <- list(uri="dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
-#' pmlfile <- cbk.download.casteml.direct("20110416134901-075-241",directAuth=directAuth)
-#' pmlfile <- cbk.download.casteml.direct("20110416134901-075-241",directAuth=directAuth,recursive=TRUE)
-#' pmlfile <- cbk.download.casteml.direct("20110416134901-075-241",directAuth=directAuth,Recursive=TRUE)
-cbk.download.casteml.direct <- function(stone,file=NULL,force=FALSE,directAuth=NULL,Recursive=FALSE,recursive=FALSE ) {
-  ## cat(file=stderr(),"cbk.download.casteml.direct: stone is |",stone,"|\n")
-  cat(file=stderr(),"cbk.download.casteml.direct:26: stone # =>",stone,"\n")
+#' pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth)
+#' pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth,recursive=TRUE)
+#' pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth,Recursive=TRUE)
+cbk.download.casteml.1 <- function(stone,file=NULL,force=FALSE,directAuth=NULL,Recursive=FALSE,recursive=FALSE ) {
+  ## cat(file=stderr(),"cbk.download.casteml.1: stone is |",stone,"|\n")
+  cat(file=stderr(),"cbk.download.casteml.1:26: stone # =>",stone,"\n")
 
   ## if(directDownload){
   library(httr)
@@ -55,7 +55,7 @@ cbk.download.casteml.direct <- function(stone,file=NULL,force=FALSE,directAuth=N
     password <- directAuth$password
   }
   url <- gsub("/$","",url) # take out slash
-  ## cat(file=stderr(),"cbk.download.casteml.direct:50: url <-",cbk.lame.dump(url,show=F),"\n")
+  ## cat(file=stderr(),"cbk.download.casteml.1:50: url <-",cbk.lame.dump(url,show=F),"\n")
   my_url <- paste0(url,"/records/",stone,".pml")
   if(Recursive){
     my_url <- paste0(url,"/records/",stone,"/families.pml")
@@ -83,12 +83,12 @@ cbk.download.casteml.direct <- function(stone,file=NULL,force=FALSE,directAuth=N
   ## Download file only when it does not exist
   if (force || !file.exists(file)) {
     ## if(directDownload){
-      cat(file=stderr(),"cbk.download.casteml.direct:76: url # =>",my_url,"\n")
+      cat(file=stderr(),"cbk.download.casteml.1:76: url # =>",my_url,"\n")
       req <- GET(my_url,authenticate(user,password,type="basic"))
       bin <- content(req, "raw")
       writeBin(bin, file)
     ## } else {
-    ##   cat(file=stderr(),"cbk.download.casteml.direct:81: cmd # =>",cmd,"\n")
+    ##   cat(file=stderr(),"cbk.download.casteml.1:81: cmd # =>",cmd,"\n")
     ##   cat(system(cmd, intern = TRUE),file=file,sep="\n")
     ## }
   }

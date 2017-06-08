@@ -44,7 +44,7 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,directDownload = TR
   if(directDownload){
     pmlfiles <- c()
     for(ii in 1:length(stone)) {
-      pmlfiles <- append(pmlfiles,cbk.download.casteml.direct(stone[ii],force=force,directAuth=directAuth,Recursive=Recursive,recursive=recursive))
+      pmlfiles <- append(pmlfiles,cbk.download.casteml.1(stone[ii],force=force,directAuth=directAuth,Recursive=Recursive,recursive=recursive))
     }
     join_cmd <- paste(c("casteml join",pmlfiles),collapse=" ")
     seed     <- join_cmd
