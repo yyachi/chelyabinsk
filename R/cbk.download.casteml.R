@@ -5,14 +5,10 @@
 #'   temporary directory unless specified.  Note with the same
 #'   arguments, this function downloads only once per an R session.
 #'
-#' @details Revision on 2017-04-11 changed interface of the first
-#'   argument `stone'.  It used be an array consists of stones and
-#'   option to pass to `casteml download'.  Now this function
-#'   downloads CASTEML file by its own and the argument `stone' only
-#'   accepts a stone.  An user should specify Recursive and recursive
-#'   option not a part of argument `stone' but explicitly.
+#' @details An user should specify Recursive and recursive option not
+#'   a part of argument `stone' but explicitly.
 #' 
-#' @param stone Unique identification number of a stone in Medusa.
+#' @param stone Unique identification number of stones in Medusa.
 #' @param file File path to save downloaded CASTEML file.  Default is
 #'   a temporary file in a temporary directory.
 #' @param force Force download CASTEML file.
@@ -68,7 +64,7 @@ cbk.download.casteml <- function(stone,file=NULL,force=FALSE,directDownload = TR
 
   ## Download file only when it does not exist
   if (force || !file.exists(file)) {
-    cat(file=stderr(),"cbk.download.casteml:81: cmd # =>",seed,"\n")
+    cat(file=stderr(),"cbk.download.casteml:67: cmd # =>",seed,"\n")
     cat(system(seed, intern = TRUE),file=file,sep="\n")
   }
   return(file)

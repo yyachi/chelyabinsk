@@ -1,17 +1,14 @@
 #' @title Download analysis records as a CASTEML file via HTTP
 #'
 #' @description Download analysis records as a CASTEML file via HTTP.
-#'   This is fork of cbk.download.casteml.  This function returns path
-#'   to the file.  The file is stored in a temporary directory unless
-#'   specified.  Note with the same arguments, this function downloads
-#'   only once per an R session.
+#'   This function returns path to the file.  The file is stored in a
+#'   temporary directory unless specified.  Note with the same
+#'   arguments, this function downloads only once per an R session.
 #'
-#' @details Revision on 2017-04-11 changed interface of the first
-#'   argument `stone'.  It used be an array consists of stones and
-#'   option to pass to `casteml download'.  Now this function
-#'   downloads CASTEML file by its own and the argument `stone' only
-#'   accepts a stone.  An user should specify Recursive and recursive
-#'   option not a part of argument `stone' but explicitly.
+#' @details This function was created on 2017-04-11 to download
+#'   CASTEML file by its own from Medusa and the first argument can
+#'   only accept single `stone' unlike \link{cbk.download.casteml} can
+#'   accept an array consists of stones.
 #'
 #' @param stone Unique identification number of a stone in Medusa.
 #' @param file File path to save downloaded CASTEML file.  Default is
@@ -83,12 +80,12 @@ cbk.download.casteml.1 <- function(stone,file=NULL,force=FALSE,directAuth=NULL,R
   ## Download file only when it does not exist
   if (force || !file.exists(file)) {
     ## if(directDownload){
-      cat(file=stderr(),"cbk.download.casteml.1:76: url # =>",my_url,"\n")
+      cat(file=stderr(),"cbk.download.casteml.1:83: url # =>",my_url,"\n")
       req <- GET(my_url,authenticate(user,password,type="basic"))
       bin <- content(req, "raw")
       writeBin(bin, file)
     ## } else {
-    ##   cat(file=stderr(),"cbk.download.casteml.1:81: cmd # =>",cmd,"\n")
+    ##   cat(file=stderr(),"cbk.download.casteml.1:88: cmd # =>",cmd,"\n")
     ##   cat(system(cmd, intern = TRUE),file=file,sep="\n")
     ## }
   }

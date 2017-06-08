@@ -1,11 +1,11 @@
-#' @title Convert laicpqms-type QTEGRA.csv by Analyte G2 with iCAP-Q
+#' @title Convert LAICPQMS-type QTEGRACSV by Analyte G2 with iCAP-Q
 #'   to IONCSV
 #'
-#' @description Convert laicpqms-type QTEGRA.csv by Analyte G2 with
+#' @description Convert LAICPQMS-type QTEGRACSV by Analyte G2 with
 #'   iCAP-Q to IONCSV.  Filter metadata out and append column of cycle
 #'   number.
 #'
-#'   This program assumes extensions of laicpqms-type QTEGRA.csv and
+#'   This program assumes extensions of LAICPQMS-type QTEGRACSV and
 #'   IONCSV to be `.csv' and `.ion', respectively.
 #'
 #'   The IONCSV consists of columns of time and ion intensities.  The
@@ -13,7 +13,7 @@
 #'   of the IONCSV should be `time' and name of element followed by
 #'   atomic weight (`Si29' instead of `29Si').
 #'
-#' @param acqfile Name of laicpqms-type QTEGRA.csv exported form Qtegra
+#' @param acqfile Name of LAICPQMS-type QTEGRACSV exported form Qtegra
 #' @param outfile Name of IONCSV that will be created
 #' @param force Flag to force convert again
 #' @return Name of IONCSV that was created

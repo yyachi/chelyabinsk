@@ -1,10 +1,9 @@
 #' @title Read IONML originated from Analyte G2 with iCAP-Q
 #'
 #' @description Read IONML originated from Analyte G2 with iCAP-Q.
-#'   When IONML is missing, this will read QTEGRA.CSV (CSV file
-#'   exported from Qtegra) with identical basename with IONML and
-#'   process it to be an IONML.  On this process, IONCSV is created
-#'   temporarily.
+#'   When IONML is not found, this will create IONML from QTEGRACSV
+#'   (CSV file exported from Qtegra with identical basename with
+#'   IONML) via IONCSV stored in temporal dirctory.
 #'
 #'   The IONCSV consists of columns of time and ion intensities.  The
 #'   first column of each line should be number of `cycle'.  Colname
@@ -20,7 +19,7 @@
 #'   statistical information at the bottom of the table.  Detection
 #'   limit is defined by 3 times standard error of BASELINE measument.
 #'
-#' @param pmlame_or_file ion-type pmlame or IONML or QTEGRA.CSV.
+#' @param pmlame_or_file ion-type pmlame or IONML or QTEGRACSV.
 #' @param t0 When baseline starts (default: 5 s).
 #' @param t1 When baseline ends (default: 20 s).
 #' @param t2 When ion starts (default: 25 s).
