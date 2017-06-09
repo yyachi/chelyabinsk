@@ -25,7 +25,7 @@ Read IONML file and return an ionlame
 ionlame    <- cbk.read.ionml(cbk.path("ref_cpx_klb1@1.xml"))
 }
 \seealso{
-\code{\link{ionml.convert.laicpqms}},
-  \code{ionml.convert.iontblame}, and
+\code{\link{ionml.convert.qtegracsv2ioncsv}},
+  \code{ionml.convert.ioncsv}, and
   \url{https://github.com/misasa/casteml}
 }

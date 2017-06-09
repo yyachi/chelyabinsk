@@ -6,8 +6,8 @@
 #'   column (default: FALSE).
 #' @param verbose Output debug info (default: TRUE).
 #' @return A dataframe with mean and time columns.
-#' @seealso \code{\link{ionml.convert.laicpqms}},
-#'   \code{ionml.convert.iontblame}, and
+#' @seealso \code{\link{ionml.convert.qtegracsv2ioncsv}},
+#'   \code{ionml.convert.ioncsv}, and
 #'   \url{https://github.com/misasa/casteml}
 #' @export
 #' @examples

@@ -21,15 +21,15 @@
 #' @export
 #' @examples
 #' acqfile <- cbk.path("ref_cpx_klb1@1.csv")
-#' ionml.convert.laicpqms(acqfile,outfile=tempfile(fileext=".ion"))
-ionml.convert.laicpqms <- function(acqfile,outfile=NULL,force=FALSE) {
+#' ionml.convert.qtegracsv2ioncsv(acqfile,outfile=tempfile(fileext=".ion"))
+ionml.convert.qtegracsv2ioncsv <- function(acqfile,outfile=NULL,force=FALSE) {
 
   ## Guess extension of acqfile on omit
   if (grepl("",tools::file_ext(acqfile))) {
     acqfile <- paste0(tools::file_path_sans_ext(acqfile),".csv")
   }
 
-  cat(file=stderr(),"ionml.convert.laicpqms:28: acqfile # =>",acqfile,"\n")
+  cat(file=stderr(),"ionml.convert.qtegracsv2ioncsv:32: acqfile # =>",acqfile,"\n")
 
   ## Set name of outfile by default
   if(is.null(outfile)){

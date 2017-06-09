@@ -8,7 +8,7 @@ ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
   ref = "Si29", verbose = FALSE, ionml = TRUE)
 }
 \arguments{
-\item{pmlame_or_file}{ion-type pmlame or IONML or QTEGRA.CSV.}
+\item{pmlame_or_file}{ion-type pmlame or IONML or QTEGRACSV.}
 
 \item{t0}{When baseline starts (default: 5 s).}
 
@@ -30,10 +30,9 @@ The ion-type pmlame of ion-to-ref ratio online with rows of
 }
 \description{
 Read IONML originated from Analyte G2 with iCAP-Q.
-  When IONML is missing, this will read QTEGRA.CSV (CSV file
-  exported from Qtegra) with identical basename with IONML and
-  process it to be an IONML.  On this process, IONCSV is created
-  temporarily.
+  When IONML is not found, this will create IONML from QTEGRACSV
+  (CSV file exported from Qtegra with identical basename with
+  IONML) via IONCSV stored in temporal dirctory.
 
   The IONCSV consists of columns of time and ion intensities.  The
   first column of each line should be number of `cycle'.  Colname
@@ -57,6 +56,6 @@ file <- cbk.path("ref_cpx_klb1@1.ion")
 pmlfile0 <- ionml.read.laicpqms(file,ionml=FALSE)
 }
 \seealso{
-\code{\link{ionml.convert.laicpqms}}
-  \code{\link{ionml.convert.iontblame}}
+\code{\link{ionml.convert.qtegracsv2ioncsv}}
+  \code{\link{ionml.convert.ioncsv}}
 }

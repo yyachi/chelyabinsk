@@ -9,7 +9,7 @@ cbk.download.casteml(stone, file = NULL, force = FALSE,
   recursive = FALSE)
 }
 \arguments{
-\item{stone}{Unique identification number of a stone in Medusa.}
+\item{stone}{Unique identification number of stones in Medusa.}
 
 \item{file}{File path to save downloaded CASTEML file.  Default is
 a temporary file in a temporary directory.}
@@ -37,12 +37,8 @@ Download analysis records as a CASTEML file.  This
   arguments, this function downloads only once per an R session.
 }
 \details{
-Revision on 2017-04-11 changed interface of the first
-  argument `stone'.  It used be an array consists of stones and
-  option to pass to `casteml download'.  Now this function
-  downloads CASTEML file by its own and the argument `stone' only
-  accepts a stone.  An user should specify Recursive and recursive
-  option not a part of argument `stone' but explicitly.
+An user should specify Recursive and recursive option not
+  a part of argument `stone' but explicitly.
 }
 \examples{
 stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")

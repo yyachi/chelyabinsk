@@ -9,35 +9,35 @@
 #'   of the IONCSV should be `time' and name of element followed by
 #'   atomic weight (`Si29' instead of `29Si').
 #' 
-#' @param iontblame Name of IONCSV.
+#' @param ioncsv Name of IONCSV.
 #' @param outfile Name of IONML that will be created.
 #' @param force Flag to force convert again.
 #' @return Name of IONML that was created.
-#' @seealso \code{ionml.convert.laicpqms}
+#' @seealso \code{ionml.convert.qtegracsv2ioncsv}
 #' @export
 #' @examples
-#' iontblame <- cbk.path("ref_cpx_klb1@1.ion")
-#' ionml.convert.iontblame(iontblame,outfile=tempfile(fileext=".xml"))
-ionml.convert.iontblame <- function(iontblame,outfile=NULL,force=FALSE) {
+#' ioncsv <- cbk.path("ref_cpx_klb1@1.ion")
+#' ionml.convert.ioncsv(ioncsv,outfile=tempfile(fileext=".xml"))
+ionml.convert.ioncsv <- function(ioncsv,outfile=NULL,force=FALSE) {
   library(XML) # install.packages('XML')
   
-  ## Guess extension of iontblame on omit
-  if (grepl("",tools::file_ext(iontblame))) {
-    iontblame <- paste0(tools::file_path_sans_ext(iontblame),".ion")
+  ## Guess extension of ioncsv on omit
+  if (grepl("",tools::file_ext(ioncsv))) {
+    ioncsv <- paste0(tools::file_path_sans_ext(ioncsv),".ion")
   }
 
-  cat(file=stderr(),"ionml.convert.iontblame:25: iontblame # =>",iontblame,"\n")
+  cat(file=stderr(),"ionml.convert.ioncsv:29: ioncsv # =>",ioncsv,"\n")
 
   ## Set name of outfile by default
   if(is.null(outfile)){
-    outfile <- paste0(tools::file_path_sans_ext(iontblame),".xml")
+    outfile <- paste0(tools::file_path_sans_ext(ioncsv),".xml")
   }
 
   ## Convert file only when destination does not exist
   if (force || !file.exists(outfile)) {
 
     ## Input
-    pmlame0    <- cbk.read.tblame(iontblame)
+    pmlame0    <- cbk.read.tblame(ioncsv)
     ## pmlame0    <- pmlame0[c(1,2,3,4,5),] # to make data less
 
     chemlist   <- colnames(pmlame0)

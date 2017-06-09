@@ -30,8 +30,8 @@
 #' @return The ion-type pmlame of ion-to-ref ratio online with rows of
 #'   statistical information.
 #' @export
-#' @seealso \code{\link{ionml.convert.laicpqms}}
-#'   \code{\link{ionml.convert.iontblame}}
+#' @seealso \code{\link{ionml.convert.qtegracsv2ioncsv}}
+#'   \code{\link{ionml.convert.ioncsv}}
 #' @examples
 #' pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.xml"))
 #' 
@@ -41,7 +41,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   library(dplyr)
 
   if (verbose) {
-    cat(file=stderr(),"ionml.read.laicpqms:42: t0 t1 t2 t3 # =>",t0,t1,t2,t3,"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:44: t0 t1 t2 t3 # =>",t0,t1,t2,t3,"\n")
   }
 
   ## Setup I/O
@@ -53,8 +53,8 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
     if (ionml) {
       xmlfile <- paste0(ionbase,".xml")
       if (!file.exists(xmlfile)) {
-        iontblame <- ionml.convert.laicpqms(ionbase,outfile=tempfile(fileext=".ion"))
-        xmlfile   <- ionml.convert.iontblame(iontblame,outfile=xmlfile)
+        ioncsv  <- ionml.convert.qtegracsv2ioncsv(ionbase,outfile=tempfile(fileext=".ion"))
+        xmlfile <- ionml.convert.ioncsv(ioncsv,outfile=xmlfile)
       }
       pmlame0           <- cbk.read.ionml(xmlfile,representative_time=TRUE)
       colnames(pmlame0) <- gsub("int_([0-9]+)([A-Z][a-z]?)","\\2\\1",colnames(pmlame0)) # int_151Eu -> Eu151
@@ -65,7 +65,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
 
       ## automatic conversion on miss of ionfile
       if (!file.exists(ionfile)) {
-        ionfile <- ionml.convert.laicpqms(ionbase)
+        ionfile <- ionml.convert.qtegracsv2ioncsv(ionbase)
       }
 
       ## load from ionfile
@@ -77,7 +77,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   pmlame1             <- filter(pmlame0, time >t0 & time <t1) # baseline
   n_baseline          <- nrow(pmlame1)
   if (verbose) {
-    cat(file=stderr(),"ionml.read.laicpqms:68: n_baseline <-",cbk.lame.dump(n_baseline,show=F),"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:80: n_baseline <-",cbk.lame.dump(n_baseline,show=F),"\n")
   }
 
   pmMean1             <- summarise_each(pmlame1, funs(mean))
@@ -107,7 +107,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   pmDL3               <- pmSd1*3/ refOverallIntMean / sqrt(n_baseline)
   row.names(pmDL3)    <- paste0("DL/",ref)
   if (verbose) {
-    cat(file=stderr(),"ionml.read.laicpqms:99: refOverallIntMean <-",cbk.lame.dump(refOverallIntMean,show=F),"\n")
+    cat(file=stderr(),"ionml.read.laicpqms:110: refOverallIntMean <-",cbk.lame.dump(refOverallIntMean,show=F),"\n")
   }
 
   ## Normalize
