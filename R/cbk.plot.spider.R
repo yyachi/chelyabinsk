@@ -12,6 +12,8 @@
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
 #' @param verbose Output debug info (default: FALSE).
+#' @param pch Array of symbol (default: NULL)
+#' @param col Array of color (default: NULL)
 #' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
@@ -23,32 +25,34 @@
 #' pmlfile <- cbk.path("20160921173604-511857.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 #' cbk.plot.spider(pmlame)
-cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Wasson.1988",verbose=FALSE) {
+cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Wasson.1988",verbose=FALSE,pch=NULL,col=NULL) {
   ## ----------------
   ##* PARSE OPTION
   ## ----------------
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
 
   ### ----------------
   ###* OPENING REMARK
   ### ----------------
-  pmlame0      <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
+  pmlame       <- cbk.read.casteml(pmlfile_or_stone,opts,tableunit)
 
-  pmlame       <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
+  ## pmlame       <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame0))
   reflame      <- cbk.ref(reference,tableunit)
-  stone        <- rownames(pmlame)
+  ## stone        <- rownames(pmlame)
 
   if (verbose) {
-    cat(file=stderr(),"cbk.plot.spider:44: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
-    cat(file=stderr(),"cbk.plot.spider:45: stone <-",cbk.lame.dump(stone,show=F),"\n")
-    cat(file=stderr(),"cbk.plot.spider:46: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.spider:46: pmlame <-",cbk.lame.dump(pmlame,show=F),"\n")
+    ## cat(file=stderr(),"cbk.plot.spider:45: stone <-",cbk.lame.dump(stone,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.spider:48: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
   }
 
   pmlame1      <- cbk.lame.normalize(pmlame,reflame,verbose=verbose)
-  meanlame1    <- cbk.lame.regulate(pmlame1,mean=T,error=F,extra=F)
-  errorlame1   <- cbk.lame.fetch.error(pmlame1)
+  pmlame2      <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame1))
+  stone        <- rownames(pmlame2)
+  meanlame1    <- cbk.lame.regulate(pmlame2,mean=T,error=F,extra=F)
+  errorlame1   <- cbk.lame.fetch.error(pmlame2)
 
   ## ----------------
   ##* PARSE
@@ -76,15 +80,15 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
   ## ----------------
   ##* PLOT
   ## ----------------
-  if (opts$pch) {
-    pch        <- opts$pch
-  } else {
+  if (is.null(pch)) {
     pch        <- 1:length(stone) %% 26
+  ## } else {
+  ##   pch        <- pch
   }
-  if (opts$col) {
-    col        <- opts$col
-  } else {
+  if (is.null(col)) {
     col        <- 1:length(stone)
+  ## } else {
+  ##   col        <- col
   }
 
   matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,

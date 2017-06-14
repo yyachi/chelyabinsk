@@ -22,7 +22,7 @@
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
 #' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
 #' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),opts=list(legendp=FALSE))
-cbk.plot <- function(pmlfile_or_stone,opts=NULL,category=NULL) {
+cbk.plot <- function(pmlfile_or_stone,opts=NULL,category=NULL,...) {
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared option
   opts <- c(opts,opts_default)
@@ -36,13 +36,13 @@ cbk.plot <- function(pmlfile_or_stone,opts=NULL,category=NULL) {
 
     ans <- switch(category,
                   ## "default" = cbk.plot.trace(pmlfile_or_stone),
-                  "trace"   = cbk.plot.trace(pmlfile_or_stone,opts),
-                  "spider"  = cbk.plot.spider(pmlfile_or_stone,opts),
-                  "REE"     = cbk.plot.ree(pmlfile_or_stone,opts),
-                  "lithium" = cbk.plot.lithium(pmlfile_or_stone,opts),
-                  "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone,opts),
-                  "lead"    = cbk.plot.lead(pmlfile_or_stone,opts),
-                  "spots"   = cbk.plot.spots(pmlfile_or_stone,opts),
+                  "trace"   = cbk.plot.trace(pmlfile_or_stone,opts,...),
+                  "spider"  = cbk.plot.spider(pmlfile_or_stone,opts,...),
+                  "REE"     = cbk.plot.ree(pmlfile_or_stone,opts,...),
+                  "lithium" = cbk.plot.lithium(pmlfile_or_stone,opts,...),
+                  "oxygen"  = cbk.plot.oxygen(pmlfile_or_stone,opts,...),
+                  "lead"    = cbk.plot.lead(pmlfile_or_stone,opts,...),
+                  "spots"   = cbk.plot.spots(pmlfile_or_stone,opts,...),
                   stop("No action defined"))
   },error=function(msg){
     cbk.plot.message(pmlfile_or_stone,sQuote(msg))

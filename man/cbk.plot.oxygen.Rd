@@ -4,13 +4,20 @@
 \alias{cbk.plot.oxygen}
 \title{Read CASTEML file and create oxygen diagram}
 \usage{
-cbk.plot.oxygen(pmlfile_or_stone, opts = NULL)
+cbk.plot.oxygen(pmlfile_or_stone, opts = NULL, verbose = FALSE,
+  pch = NULL, col = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or stone-ID (or pmlame).}
 
 \item{opts}{List of further options for plot.  See
 \code{\link{cbk.plot}}.}
+
+\item{verbose}{Output debug info (default: FALSE).}
+
+\item{pch}{Array of symbol (default: NULL)}
+
+\item{col}{Array of color (default: NULL)}
 }
 \value{
 A pmlame used to plot the diagram.

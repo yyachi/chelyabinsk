@@ -26,6 +26,23 @@ When you see message such like below, try following.
 
     R> install.packages(c("curl", "httr"))
 
+Examples to plot analyses related to a stone and its descendants are
+shown below. Issue following commands.
+
+    $ Rscript -e "chelyabinsk::cbk.plot(\"20130528105235-594267\", category=\"trace\")"
+
+    R> library(chelyabinsk)
+    R> pmlame <- cbk.read.casteml("20130528105235-594267")
+    R> cbk.plot.spider(pmlame,property="atomicnumber",reference="Wasson.1988")
+
+Or write a Rscript with following lines.
+
+    #!/usr/bin/env Rscript
+    library(chelyabinsk) 
+    rplotfile <- 'CBK1.pdf'; pdf(rplotfile)
+    cbk.plot("20130528105235-594267")
+    dev.off()
+    if (.Platform$OS.type == "windows") {shell.exec(rplotfile)} else {system((paste("open",rplotfile)))}
 
 # Developer's guide
 

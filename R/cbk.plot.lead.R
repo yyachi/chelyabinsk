@@ -7,14 +7,17 @@
 #' @param pmlfile_or_stone A dataframe of element abundances (or pmlfile or stone-ID).
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
+#' @param verbose Output debug info (default: FALSE).
+#' @param pch Array of symbol (default: NULL)
+#' @param col Array of color (default: NULL)
 #' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' cbk.plot.lead(pmlfile)
-cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
+cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL,verbose=FALSE,pch=NULL,col=NULL) {
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -25,8 +28,13 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   pmlame1    <- pmlame0[,c("Pb206zPb204","Pb207zPb204","Pb208zPb204")]
   pmlame1    <- cbk.lame.drop.dharma(pmlame1)
 
-  stonelist  <- rownames(pmlame1)
+  stone      <- rownames(pmlame1)
   ## stoneindex <- 1:nrow(pmlame1)
+
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.lead:35: pmlame0 <-",cbk.lame.dump(pmlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.lead:36: stone <-",cbk.lame.dump(stone,show=F),"\n")
+  }
 
   ## ----------------
   ##* PARSE
@@ -36,23 +44,23 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
   YY2        <- pmlame1[,'Pb208zPb204']
 
   if (any(c("Pb206zPb204_error","Pb207zPb204_error","Pb208zPb204_error") %in% colnames(pmlame0))) {
-    XX_sd      <- pmlame0[stonelist,"Pb206zPb204_error"]
-    YY1_sd     <- pmlame0[stonelist,"Pb207zPb204_error"]
-    YY2_sd     <- pmlame0[stonelist,"Pb208zPb204_error"]
+    XX_sd      <- pmlame0[stone,"Pb206zPb204_error"]
+    YY1_sd     <- pmlame0[stone,"Pb207zPb204_error"]
+    YY2_sd     <- pmlame0[stone,"Pb208zPb204_error"]
   }
 
   ## ----------------
   ##* PLOT
   ## ----------------
-  if (opts$pch) {
-    pch <- opts$pch
-  } else {
-    pch <- 1:length(stonelist) %% 26
+  if (is.null(pch)) {
+    pch <- 1:length(stone) %% 26
+  ## } else {
+  ##   pch <- opts$pch
   }
-  if (opts$col) {
-    col <- opts$col
-  } else {
-    col  <- 1:length(stonelist)
+  if (is.null(col)) {
+    col  <- 1:length(stone)
+  ## } else {
+  ##   col <- opts$col
   }
 
   par(mfrow=c(2,1),oma=c(0.5,0.5,0.5,0.5)) # c(row,col) c(1,1); c(b,l,t,r) c(0,0,0,0)
@@ -69,7 +77,7 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
     errorbar.y(XX,YY1,YY1_sd,0.05,col=col)
   }
   if (opts$legendp) {
-    legend("bottomright",stonelist,col=col,pch=pch,ncol=2,cex=0.5)
+    legend("bottomright",stone,col=col,pch=pch,ncol=2,cex=0.5)
   }
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(0.1084*x + 13.491,type="l",lty=1,add=TRUE)
@@ -84,7 +92,7 @@ cbk.plot.lead <- function(pmlfile_or_stone,opts=NULL) {
     errorbar.y(XX,YY2,YY2_sd,0.05,col=col)
   }
   if (opts$legendp) {
-    legend("bottomright",stonelist,col=col,pch=pch,ncol=2,cex=0.5)
+    legend("bottomright",stone,col=col,pch=pch,ncol=2,cex=0.5)
   }
   # Northern Hemisphere Reference Line (Hart,1984)
   curve(1.209*x + 15.627,type="l",lty=1,add=TRUE)

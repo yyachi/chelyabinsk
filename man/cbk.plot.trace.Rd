@@ -4,7 +4,7 @@
 \alias{cbk.plot.trace}
 \title{Read CASTEML file and create trace diagram}
 \usage{
-cbk.plot.trace(pmlfile_or_stone, opts = NULL, tableunit = "none")
+cbk.plot.trace(pmlfile_or_stone, opts = NULL, tableunit = "none", ...)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or

@@ -9,16 +9,19 @@
 #' @param imagefile Image shown on background of analyzed spots.
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
+#' @param verbose Output debug info (default: FALSE).
+#' @param pch Array of symbol (default: NULL)
+#' @param col Array of color (default: NULL)
 #' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.download.casteml("20160819165624-372633")
 #' cbk.plot.spots(pmlfile)
-cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
+cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL,verbose=FALSE,pch=NULL,col=NULL) {
   library(jpeg) # install.packages('jpeg')
   library(png) # install.packages('png')
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -29,8 +32,13 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   pmlame1   <- pmlame0[,c("x_image","y_image")]
   pmlame1   <- cbk.lame.drop.dharma(pmlame1)
 
-  stonelist  <- rownames(pmlame1)
+  stone     <- rownames(pmlame1)
   ## stoneindex <- 1:nrow(pmlame1)
+
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.spots:39: pmlame0 <-",cbk.lame.dump(pmlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.spots:40: stone <-",cbk.lame.dump(stone,show=F),"\n")
+  }
 
   ## ----------------
   ##* PARSE
@@ -41,15 +49,15 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
   ## ----------------
   ##* PLOT
   ## ----------------
-  if (opts$pch) {
-    pch <- opts$pch
-  } else {
-    pch <- 1:length(stonelist) %% 26
+  if (is.null(pch)) {
+    pch <- 1:length(stone) %% 26
+  ## } else {
+  ##   pch <- opts$pch
   }
-  if (opts$col) {
-    col <- opts$col
-  } else {
-    col  <- 1:length(stonelist)
+  if (is.null(col)) {
+    col  <- 1:length(stone)
+  ## } else {
+  ##   col <- opts$col
   }
 
   if (is.null(imagefile)) {
@@ -83,7 +91,7 @@ cbk.plot.spots <- function(pmlfile_or_surface,opts=NULL,imagefile=NULL) {
        xlab="",ylab="")
 
   if (opts$legendp) {
-    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=pch,col=col)
+    legend('bottomright',stone,ncol=4,cex=0.5,pch=pch,col=col)
   }
 
   ## ----------------

@@ -5,7 +5,8 @@
 \title{Read CASTEML file and create spider diagram}
 \usage{
 cbk.plot.spider(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  property = "atomicnumber", reference = "Wasson.1988", verbose = FALSE)
+  property = "atomicnumber", reference = "Wasson.1988", verbose = FALSE,
+  pch = NULL, col = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
@@ -21,6 +22,10 @@ stone-ID (or pmlame).}
 \item{reference}{Reference of element abundance}
 
 \item{verbose}{Output debug info (default: FALSE).}
+
+\item{pch}{Array of symbol (default: NULL)}
+
+\item{col}{Array of color (default: NULL)}
 }
 \value{
 A pmlame used to plot the diagram.

@@ -7,14 +7,17 @@
 #' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame).
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
+#' @param verbose Output debug info (default: FALSE).
+#' @param pch Array of symbol (default: NULL)
+#' @param col Array of color (default: NULL)
 #' @return @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.lithium(pmlfile)
-cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
+cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL,verbose=FALSE,pch=NULL,col=NULL) {
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -23,14 +26,19 @@ cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
   ## pmlame  <- cbk.read.casteml(pmlfile,tableunit)
   pmlame0    <- cbk.read.casteml(pmlfile_or_stone,opts)
   pmlame1    <- pmlame0[,c("d7Li","Li")]
-  pmlame1   <- cbk.lame.drop.dharma(pmlame1)
+  pmlame1    <- cbk.lame.drop.dharma(pmlame1)
   XX         <- pmlame1[,'Li']
   YY         <- pmlame1[,'d7Li']
-  stonelist  <- rownames(pmlame1)
+  stone      <- rownames(pmlame1)
+
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.lithium:35: pmlame0 <-",cbk.lame.dump(pmlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.lithium:36: stone <-",cbk.lame.dump(stone,show=F),"\n")
+  }
 
   if (any(c("d7Li_error","Li_error") %in% colnames(pmlame0))) {
-    XX_sd      <- pmlame0[stonelist,'Li_error']
-    YY_sd      <- pmlame0[stonelist,'d7Li_error']
+    XX_sd      <- pmlame0[stone,'Li_error']
+    YY_sd      <- pmlame0[stone,'d7Li_error']
   }
 
   ## ----------------
@@ -43,15 +51,15 @@ cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
   ## ----------------
   ##* Plot
   ## ----------------
-  if (opts$pch) {
-    pch <- opts$pch
-  } else {
-    pch <- 1:length(stonelist) %% 26
+  if (is.null(pch)) {
+    pch <- 1:length(stone) %% 26
+  ## } else {
+  ##   pch <- pch
   }
-  if (opts$col) {
-    col <- opts$col
-  } else {
-    col  <- 1:length(stonelist)
+  if (is.null(col)) {
+    col  <- 1:length(stone)
+  ## } else {
+  ##   col <- col
   }
 
   plot(XX,YY*1000,xlab="[Li]",ylab=expression(paste(delta,{}^7*Li)),pch=pch,col=col,log="x")
@@ -64,7 +72,7 @@ cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL) {
     errorbar.y(XX,YY*1000,YY_sd*1000,0.05,col=col)
   }
   if (opts$legendp) {
-    legend('bottomright',stonelist,lty=0,pch=pch,col=col,ncol=4,cex=0.5)
+    legend('bottomright',stone,lty=0,pch=pch,col=col,ncol=4,cex=0.5)
   }
   ## ----------------
   ##* Closing remark

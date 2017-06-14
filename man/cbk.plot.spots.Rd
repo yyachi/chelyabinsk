@@ -4,7 +4,8 @@
 \alias{cbk.plot.spots}
 \title{Read CASTEML file and create spots diagram}
 \usage{
-cbk.plot.spots(pmlfile_or_surface, opts = NULL, imagefile = NULL)
+cbk.plot.spots(pmlfile_or_surface, opts = NULL, imagefile = NULL,
+  verbose = FALSE, pch = NULL, col = NULL)
 }
 \arguments{
 \item{pmlfile_or_surface}{A CASTEML file that exits locally or
@@ -14,6 +15,12 @@ stone-ID (or pmlame).}
 \code{\link{cbk.plot}}.}
 
 \item{imagefile}{Image shown on background of analyzed spots.}
+
+\item{verbose}{Output debug info (default: FALSE).}
+
+\item{pch}{Array of symbol (default: NULL)}
+
+\item{col}{Array of color (default: NULL)}
 }
 \value{
 A pmlame used to plot the diagram.

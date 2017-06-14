@@ -7,14 +7,17 @@
 #' @param pmlfile_or_stone A CASTEML file that exits locally or stone-ID (or pmlame).
 #' @param opts List of further options for plot.  See
 #'   \code{\link{cbk.plot}}.
+#' @param verbose Output debug info (default: FALSE).
+#' @param pch Array of symbol (default: NULL)
+#' @param col Array of color (default: NULL)
 #' @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
 #' cbk.plot.oxygen(pmlfile)
-cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
-  opts_default <- list(legendp=TRUE, Recursivep=FALSE, pch=FALSE, col=FALSE)
+cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL,verbose=FALSE,pch=NULL,col=NULL) {
+  opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
   ## ----------------
@@ -25,8 +28,13 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   pmlame1   <- pmlame0[,c("d18O","d17O")]
   pmlame1   <- cbk.lame.drop.dharma(pmlame1)
 
-  stonelist  <- rownames(pmlame1)
+  stone  <- rownames(pmlame1)
   ## stoneindex <- 1:nrow(pmlame1)
+
+  if (verbose) {
+    cat(file=stderr(),"cbk.plot.oxygen:35: pmlame0 <-",cbk.lame.dump(pmlame0,show=F),"\n")
+    cat(file=stderr(),"cbk.plot.oxygen:36: stone <-",cbk.lame.dump(stone,show=F),"\n")
+  }
 
   ## ----------------
   ##* PARSE
@@ -35,22 +43,22 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
   YY         <- pmlame1[,'d17O']
 
   if (any(c("d18O_error","d17O_error") %in% colnames(pmlame0))) {
-    XX_sd     <- pmlame0[stonelist,"d18O_error"]
-    YY_sd     <- pmlame0[stonelist,"d17O_error"]
+    XX_sd     <- pmlame0[stone,"d18O_error"]
+    YY_sd     <- pmlame0[stone,"d17O_error"]
   }
 
   ## ----------------
   ##* PLOT
   ## ----------------
-  if (opts$pch) {
-    pch <- opts$pch
-  } else {
-    pch <- 1:length(stonelist) %% 26
+  if (is.null(pch)) {
+    pch <- 1:length(stone) %% 26
+  ## } else {
+  ##   pch <- opts$pch
   }
-  if (opts$col) {
-    col <- opts$col
-  } else {
-    col  <- 1:length(stonelist)
+  if (is.null(col)) {
+    col  <- 1:length(stone)
+  ## } else {
+  ##   col <- opts$col
   }
 
   plot(XX,YY,type="p",pch=pch,col=col,
@@ -63,7 +71,7 @@ cbk.plot.oxygen <- function(pmlfile_or_stone,opts=NULL) {
     errorbar.y(XX,YY,YY_sd,0.05,col=col)
   }
   if (opts$legendp) {
-    legend('bottomright',stonelist,ncol=4,cex=0.5,pch=pch,col=col)
+    legend('bottomright',stone,ncol=4,cex=0.5,pch=pch,col=col)
   }
   ## ----------------
   ##* Draw reference lines
