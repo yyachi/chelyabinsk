@@ -38,11 +38,10 @@ shown below. Issue following commands.
 Or write a Rscript with following lines.
 
     #!/usr/bin/env Rscript
-    library(chelyabinsk) 
-    rplotfile <- 'CBK1.pdf'; pdf(rplotfile)
+    library(chelyabinsk)
+    rplotfile <- 'Rplots.pdf'; pdf(rplotfile)
     cbk.plot("20130528105235-594267")
     dev.off()
-    if (.Platform$OS.type == "windows") {shell.exec(rplotfile)} else {system((paste("open",rplotfile)))}
 
 # Developer's guide
 
