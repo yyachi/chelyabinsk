@@ -77,45 +77,17 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   ## ----------------
   ##* PLOT
   ## ----------------
-  ## plot.args <- c(names(formals(matplot)), names(par()))
-  plot.args <- c(names(formals(plot.default)), names(par()))
-  leg.args  <- names(formals(legend))
-  dots      <- list(...)
+  ## Setup args for matplot and legend
+  args_auto    <- list(...)
+  args_default <- list(pch=1:length(stone) %% 26,col=1:length(stone),lty=1,log="y",type="o",xlab="",ylab="ZZ/CI",axes=FALSE,ncol=4)
+  args_default[intersect(names(args_default),names(args_auto))] <- NULL  ## Reset shared args
+  args_auto    <- c(args_auto,args_default)
+  col          <- args_auto$col
 
-  ## Setup default args for matplot and legend
-  if (!"pch" %in% names(dots)) {
-    dots <- c(dots,list(pch=1:length(stone) %% 26))
-  }
-  if (!"col" %in% names(dots)) {
-    col  <- 1:length(stone)
-    dots <- c(dots,list(col=col))
-  } else {
-    col  <- dots$col
-  }
-  if (!"lty" %in% names(dots)) {
-    dots <- c(dots,list(lty=1))
-  }
-  if (!"log" %in% names(dots)) {
-    dots <- c(dots,list(log="y"))
-  }
-  if (!"type" %in% names(dots)) {
-    dots <- c(dots,list(type="o"))
-  }
-  if (!"xlab" %in% names(dots)) {
-    dots <- c(dots,list(xlab=""))
-  }
-  if (!"ylab" %in% names(dots)) {
-    dots <- c(dots,list(ylab="ZZ/CI"))
-  }
-  if (!"axes" %in% names(dots)) {
-    dots <- c(dots,list(axes=FALSE))
-  }
-  if (!"ncol" %in% names(dots)) {
-    dots <- c(dots,list(ncol=4))
-  }
-
+  names_args_func_plot   <- c(names(formals(plot.default)), names(par()))
+  names_args_func_legend <- names(formals(legend))
   do.call("matplot",
-          c(list(XX,YY), dots[names(dots) %in% plot.args]))
+          c(list(XX,YY), args_auto[names(args_auto) %in% names_args_func_plot]))
   ## matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
   ##         xlab='',ylab='ZZ/CI',axes=FALSE)
   if (length(errorlame1) != 0) {
@@ -133,7 +105,7 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   if (opts$legendp) {
     do.call("legend",
             c(list('bottomright',stone,cex=0.5),
-              dots[names(dots) %in% leg.args]))
+              args_auto[names(args_auto) %in% names_args_func_legend]))
     ## legend('bottomright',stone,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
   }
 
