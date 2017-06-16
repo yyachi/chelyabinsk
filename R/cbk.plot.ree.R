@@ -10,8 +10,8 @@
 #' @param reference Reference of element abundance.
 #' @param opts List of further options for plot.  See \link{cbk.plot}.
 #' @param verbose Output debug info (default: FALSE).
-#' @param pch Array of symbol (default: NULL)
-#' @param col Array of color (default: NULL)
+#' @param ... Graphical options that are passed to matplot and legend,
+#'   such as `col' and `pch'.
 #' @return @return A pmlame used to plot the diagram.
 #' @export
 #' @seealso \url{https://github.com/misasa/casteml}
@@ -21,7 +21,7 @@
 #'
 #' pmlame  <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
 #' cbk.plot.ree(pmlame)
-cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988",verbose=FALSE,pch=NULL,col=NULL,...) {
+cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988",verbose=FALSE,...) {
   ## ----------------
   ##* PARSE OPTION
   ## ----------------
@@ -77,21 +77,50 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   ## ----------------
   ##* PLOT
   ## ----------------
-  if (is.null(pch)) {
-    pch <- 1:length(stone) %% 26
-  ## } else {
-  ##   pch <- pch
+  ## plot.args <- c(names(formals(matplot)), names(par()))
+  plot.args <- c(names(formals(plot.default)), names(par()))
+  leg.args  <- names(formals(legend))
+  dots      <- list(...)
+
+  ## Setup default args for matplot and legend
+  if (!"pch" %in% names(dots)) {
+    dots <- c(dots,list(pch=1:length(stone) %% 26))
   }
-  if (is.null(col)) {
+  if (!"col" %in% names(dots)) {
     col  <- 1:length(stone)
-  ## } else {
-  ##   col <- col
+    dots <- c(dots,list(col=col))
+  } else {
+    col  <- dots$col
+  }
+  if (!"lty" %in% names(dots)) {
+    dots <- c(dots,list(lty=1))
+  }
+  if (!"log" %in% names(dots)) {
+    dots <- c(dots,list(log="y"))
+  }
+  if (!"type" %in% names(dots)) {
+    dots <- c(dots,list(type="o"))
+  }
+  if (!"xlab" %in% names(dots)) {
+    dots <- c(dots,list(xlab=""))
+  }
+  if (!"ylab" %in% names(dots)) {
+    dots <- c(dots,list(ylab="ZZ/CI"))
+  }
+  if (!"axes" %in% names(dots)) {
+    dots <- c(dots,list(axes=FALSE))
+  }
+  if (!"ncol" %in% names(dots)) {
+    dots <- c(dots,list(ncol=4))
   }
 
-  matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
-          xlab='',ylab='ZZ/CI',axes=FALSE)
+  do.call("matplot",
+          c(list(XX,YY), dots[names(dots) %in% plot.args]))
+  ## matplot(XX,YY,log="y",type="o",lty=1,pch=pch,col=col,
+  ##         xlab='',ylab='ZZ/CI',axes=FALSE)
   if (length(errorlame1) != 0) {
     errorbar.y <- function(XX,YY,err,WW,col=1){x0=XX;y0=YY-err;x1=XX;y1=YY+err;arrows(x0,y0,x1,y1,code=3,angle=90,length=WW,col=col);}
+    col        <- rep_len(col,length(stone))
     for(ii in 1:length(stone)) {
       errorbar.y(XX,YY[,ii],YY_error[,ii],0.05,col=col[ii])
     }
@@ -102,7 +131,10 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
   box(lwd=1)
 
   if (opts$legendp) {
-    legend('bottomright',stone,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
+    do.call("legend",
+            c(list('bottomright',stone,cex=0.5),
+              dots[names(dots) %in% leg.args]))
+    ## legend('bottomright',stone,lty=1,pch=pch,col=col,ncol=4,cex=0.5)
   }
 
   ## ----------------

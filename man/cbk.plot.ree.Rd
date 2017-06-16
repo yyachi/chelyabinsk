@@ -5,8 +5,7 @@
 \title{Read CASTEML file and create REE diagram}
 \usage{
 cbk.plot.ree(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  reference = "Wasson.1988", verbose = FALSE, pch = NULL, col = NULL,
-  ...)
+  reference = "Wasson.1988", verbose = FALSE, ...)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
@@ -20,9 +19,8 @@ stone-ID (or pmlame).}
 
 \item{verbose}{Output debug info (default: FALSE).}
 
-\item{pch}{Array of symbol (default: NULL)}
-
-\item{col}{Array of color (default: NULL)}
+\item{...}{Graphical options that are passed to matplot and legend,
+such as `col' and `pch'.}
 }
 \value{
 @return A pmlame used to plot the diagram.
