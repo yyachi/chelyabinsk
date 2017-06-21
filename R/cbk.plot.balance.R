@@ -1,19 +1,22 @@
-#' @title Draw results of mass balance calculation
+#' @title Calculate concentrations of WR and remainder from those of
+#'   phases and mode of phases
 #'
-#' @description Draw results of mass balance calculation.
+#' @description Calculate concentrations of WR and remainder from
+#'   those of phases and mode of phases.
 #'
 #' @param pmlame_or_file A pmlame or CASTEML file with element
 #'   abundance of phases without WR
-#' @param modeinfo A CSV file with rows of mode and density and columns
-#'   of phases including WR
 #' @param reflame A dataframe with element abundance of WR
+#' @param modeinfo A CSV file with rows of mode and density and
+#'   columns of phases including WR
 #' @param verbose Output debug info (default: FALSE).
-#' @return A dataframe with relavie quantity of element.
+#' @return A dataframe with rows of phases and columns mode and
+#'   quantity of elements relative to WR
 #' @export
 #' @examples
 #' reflame <- cbk.ref("Wasson.1988",property=cbk.periodic("atomicnumber"))
-#' MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),cbk.path("demo-mode0.csv"),reflame)
-cbk.plot.balance <- function(pmlame_or_file,modeinfo,reflame,verbose=TRUE){
+#' MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
+cbk.plot.balance <- function(pmlame_or_file,reflame,modeinfo,verbose=TRUE){
 errorbar.y <- function(x,y,yerror,length=0.01,col=1,code=3){
   arrows(x, y, x, y+yerror, code=code, angle=90, length=length, col=col)
   arrows(x, y, x, y-yerror, code=code, angle=90, length=length, col=col)

@@ -2,28 +2,31 @@
 % Please edit documentation in R/cbk.plot.balance.R
 \name{cbk.plot.balance}
 \alias{cbk.plot.balance}
-\title{Draw results of mass balance calculation}
+\title{Calculate concentrations of WR and remainder from those of
+  phases and mode of phases}
 \usage{
-cbk.plot.balance(pmlame_or_file, modeinfo, reflame, verbose = TRUE)
+cbk.plot.balance(pmlame_or_file, reflame, modeinfo, verbose = TRUE)
 }
 \arguments{
 \item{pmlame_or_file}{A pmlame or CASTEML file with element
 abundance of phases without WR}
 
-\item{modeinfo}{A CSV file with rows of mode and density and columns
-of phases including WR}
-
 \item{reflame}{A dataframe with element abundance of WR}
+
+\item{modeinfo}{A CSV file with rows of mode and density and
+columns of phases including WR}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
-A dataframe with relavie quantity of element.
+A dataframe with rows of phases and columns mode and
+  quantity of elements relative to WR
 }
 \description{
-Draw results of mass balance calculation.
+Calculate concentrations of WR and remainder from
+  those of phases and mode of phases.
 }
 \examples{
 reflame <- cbk.ref("Wasson.1988",property=cbk.periodic("atomicnumber"))
-MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),cbk.path("demo-mode0.csv"),reflame)
+MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
 }
