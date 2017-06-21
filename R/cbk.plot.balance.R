@@ -1,12 +1,15 @@
-#' @title Calculate concentrations of WR and remainder from those of
-#'   phases and mode of phases
+#' @title Balance quantity of elements in whole rock and phases
 #'
-#' @description Calculate concentrations of WR and remainder from
-#'   those of phases and mode of phases.
+#' @description Balance quantity of elements in whole rock and phases.
+#'   This calculates quantity of elements in each phases from mode and
+#'   element abundances of each phase.  Then from calculated
+#'   whole-rock (WR) quantity of element by summation and measured
+#'   WR-rock quantity of element, this estimates surplus or deficit
+#'   of elements.
 #'
 #' @param pmlame_or_file A pmlame or CASTEML file with element
-#'   abundance of phases without WR
-#' @param reflame A dataframe with element abundance of WR
+#'   abundance of phases without measured WR
+#' @param reflame A dataframe with element abundance of measured WR
 #' @param modeinfo A CSV file with rows of mode and density and
 #'   columns of phases including WR
 #' @param verbose Output debug info (default: FALSE).
