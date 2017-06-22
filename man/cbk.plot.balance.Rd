@@ -2,16 +2,16 @@
 % Please edit documentation in R/cbk.plot.balance.R
 \name{cbk.plot.balance}
 \alias{cbk.plot.balance}
-\title{Calculate concentrations of WR and remainder from those of
-  phases and mode of phases}
+\title{Balance quantity of elements in whole rock and phases}
 \usage{
-cbk.plot.balance(pmlame_or_file, reflame, modeinfo, verbose = TRUE)
+cbk.plot.balance(pmlame_or_file, reflame_or_file, modeinfo, verbose = TRUE)
 }
 \arguments{
 \item{pmlame_or_file}{A pmlame or CASTEML file with element
-abundance of phases without WR}
+abundance of phases without measured WR}
 
-\item{reflame}{A dataframe with element abundance of WR}
+\item{reflame_or_file}{A pmlame or CASTEML file with element
+abundance of measured WR}
 
 \item{modeinfo}{A CSV file with rows of mode and density and
 columns of phases including WR}
@@ -19,12 +19,15 @@ columns of phases including WR}
 \item{verbose}{Output debug info (default: FALSE).}
 }
 \value{
-A dataframe with rows of phases and columns mode and
-  quantity of elements relative to WR
+A pmlame with element quantities and mode of phases
 }
 \description{
-Calculate concentrations of WR and remainder from
-  those of phases and mode of phases.
+Balance quantity of elements in whole rock and phases.
+  This calculates quantity of elements in each phases from mode and
+  element abundances of each phase.  Then from calculated
+  whole-rock (WR) quantity of element by summation and measured WR
+  quantity of element, this estimates surplus or deficit of
+  elements.
 }
 \examples{
 reflame <- cbk.ref("Wasson.1988",property=cbk.periodic("atomicnumber"))

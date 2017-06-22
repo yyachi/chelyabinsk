@@ -3,23 +3,23 @@
 #' @description Balance quantity of elements in whole rock and phases.
 #'   This calculates quantity of elements in each phases from mode and
 #'   element abundances of each phase.  Then from calculated
-#'   whole-rock (WR) quantity of element by summation and measured
-#'   WR-rock quantity of element, this estimates surplus or deficit
-#'   of elements.
+#'   whole-rock (WR) quantity of element by summation and measured WR
+#'   quantity of element, this estimates surplus or deficit of
+#'   elements.
 #'
 #' @param pmlame_or_file A pmlame or CASTEML file with element
 #'   abundance of phases without measured WR
-#' @param reflame A dataframe with element abundance of measured WR
+#' @param reflame_or_file A pmlame or CASTEML file with element
+#'   abundance of measured WR
 #' @param modeinfo A CSV file with rows of mode and density and
 #'   columns of phases including WR
 #' @param verbose Output debug info (default: FALSE).
-#' @return A dataframe with rows of phases and columns mode and
-#'   quantity of elements relative to WR
+#' @return A pmlame with element quantities and mode of phases
 #' @export
 #' @examples
 #' reflame <- cbk.ref("Wasson.1988",property=cbk.periodic("atomicnumber"))
 #' MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
-cbk.plot.balance <- function(pmlame_or_file,reflame,modeinfo,verbose=TRUE){
+cbk.plot.balance <- function(pmlame_or_file,reflame_or_file,modeinfo,verbose=TRUE){
 errorbar.y <- function(x,y,yerror,length=0.01,col=1,code=3){
   arrows(x, y, x, y+yerror, code=code, angle=90, length=length, col=col)
   arrows(x, y, x, y-yerror, code=code, angle=90, length=length, col=col)
@@ -29,12 +29,17 @@ errorbar.y <- function(x,y,yerror,length=0.01,col=1,code=3){
 ZZ       <- cbk.read.casteml(pmlame_or_file)
 DD       <- cbk.read.tblame(modeinfo)
 ## spec0 <- cbk.read.tblame('demo-spec0.csv')
+if (is.data.frame(reflame_or_file)) {
+  reflame <- reflame_or_file
+} else {
+  reflame <- cbk.read.casteml(reflame_or_file)
+}
 ref0     <- cbk.lame.regulate(reflame,error=FALSE)
 
 if (verbose) {
-  cat(file=stderr(),"cbk.plot.balance:29: ZZ <-",cbk.lame.dump(ZZ,show=F),"\n")
-  cat(file=stderr(),"cbk.plot.balance:30: DD <-",cbk.lame.dump(DD,show=F),"\n")
-  cat(file=stderr(),"cbk.plot.balance:31: ref0 <-",cbk.lame.dump(ref0,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:41: ZZ <-",cbk.lame.dump(ZZ,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:42: DD <-",cbk.lame.dump(DD,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:43: ref0 <-",cbk.lame.dump(ref0,show=F),"\n")
 }
 
 ## ----------------------------------------
