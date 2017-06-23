@@ -1,3 +1,6 @@
-,WR,ol,opx,cpx,gl
-mode,1,0.7,0.1,0.1,0.1
-density,3.3,3.3,3.4,3.4,2.8
+,mode,density
+WR,1,3.3
+ol,0.7,3.3
+opx,0.1,3.4
+cpx,0.1,3.4
+gl,0.1,2.8

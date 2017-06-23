@@ -13,8 +13,8 @@ abundance of phases without measured WR}
 \item{reflame_or_file}{A pmlame or CASTEML file with element
 abundance of measured WR}
 
-\item{modeinfo}{A CSV file with rows of mode and density and
-columns of phases including WR}
+\item{modeinfo}{A pmlame or TBLAME.csv with mode and density of
+phases including WR}
 
 \item{verbose}{Output debug info (default: FALSE).}
 }

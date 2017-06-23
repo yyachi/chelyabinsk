@@ -11,8 +11,8 @@
 #'   abundance of phases without measured WR
 #' @param reflame_or_file A pmlame or CASTEML file with element
 #'   abundance of measured WR
-#' @param modeinfo A CSV file with rows of mode and density and
-#'   columns of phases including WR
+#' @param modeinfo A pmlame or TBLAME.csv with mode and density of
+#'   phases including WR
 #' @param verbose Output debug info (default: FALSE).
 #' @return A pmlame with element quantities and mode of phases
 #' @export
@@ -26,20 +26,23 @@ errorbar.y <- function(x,y,yerror,length=0.01,col=1,code=3){
 }
 
 ## Load element abundance and mode
-ZZ       <- cbk.read.casteml(pmlame_or_file)
-DD       <- cbk.read.tblame(modeinfo)
-## spec0 <- cbk.read.tblame('demo-spec0.csv')
+ZZ      <- cbk.read.casteml(pmlame_or_file)
+if (is.data.frame(modeinfo)) {
+  DD      <- modeinfo
+} else {
+  DD      <- cbk.read.tblame(modeinfo)
+}
 if (is.data.frame(reflame_or_file)) {
   reflame <- reflame_or_file
 } else {
   reflame <- cbk.read.casteml(reflame_or_file)
 }
-ref0     <- cbk.lame.regulate(reflame,error=FALSE)
+ref0    <- cbk.lame.regulate(reflame,error=FALSE)
 
 if (verbose) {
-  cat(file=stderr(),"cbk.plot.balance:41: ZZ <-",cbk.lame.dump(ZZ,show=F),"\n")
-  cat(file=stderr(),"cbk.plot.balance:42: DD <-",cbk.lame.dump(DD,show=F),"\n")
-  cat(file=stderr(),"cbk.plot.balance:43: ref0 <-",cbk.lame.dump(ref0,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:43: ZZ <-",cbk.lame.dump(ZZ,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:44: DD <-",cbk.lame.dump(DD,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:45: ref0 <-",cbk.lame.dump(ref0,show=F),"\n")
 }
 
 ## ----------------------------------------
@@ -69,8 +72,8 @@ ZZ["WR",element] <- ref0[,element]
 ##* Process
 ## ----------------------------------------
 phasianus        <- c(phases,"remainder")                       # list of phases including `missing phase'
-density          <- cbk.vector(DD["density",])                  # note that density includes WR
-mode             <- cbk.vector(DD["mode",])                     # note that mode includes WR
+density          <- cbk.vector(DD[,"density"])                  # note that density includes WR
+mode             <- cbk.vector(DD[,"mode"])                     # note that mode includes WR
 
 ZZzCI            <- cbk.lame.normalize(ZZ,ref0)                 # normalization to draw data in `[Z] over CI'
 ZZzCI_mean       <- cbk.lame.regulate(ZZzCI,mean=T,error=F)
