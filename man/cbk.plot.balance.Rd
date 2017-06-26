@@ -4,14 +4,14 @@
 \alias{cbk.plot.balance}
 \title{Balance quantity of elements in whole rock and phases}
 \usage{
-cbk.plot.balance(pmlame_or_file, reflame_or_file, modeinfo, verbose = TRUE)
+cbk.plot.balance(pmlame_or_file, reflame_or_file, modeinfo, verbose = FALSE)
 }
 \arguments{
-\item{pmlame_or_file}{A pmlame or CASTEML file with element
-abundance of phases without measured WR}
+\item{pmlame_or_file}{A pmlame or CASTEML or TBLAME.csv with
+element abundance of phases without measured WR}
 
-\item{reflame_or_file}{A pmlame or CASTEML file with element
-abundance of measured WR}
+\item{reflame_or_file}{A pmlame or CASTEML or TBLAME.csv with
+element abundance of measured WR}
 
 \item{modeinfo}{A pmlame or TBLAME.csv with mode and density of
 phases including WR}

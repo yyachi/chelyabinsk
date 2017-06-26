@@ -7,10 +7,10 @@
 #'   quantity of element, this estimates surplus or deficit of
 #'   elements.
 #'
-#' @param pmlame_or_file A pmlame or CASTEML file with element
-#'   abundance of phases without measured WR
-#' @param reflame_or_file A pmlame or CASTEML file with element
-#'   abundance of measured WR
+#' @param pmlame_or_file A pmlame or CASTEML or TBLAME.csv with
+#'   element abundance of phases without measured WR
+#' @param reflame_or_file A pmlame or CASTEML or TBLAME.csv with
+#'   element abundance of measured WR
 #' @param modeinfo A pmlame or TBLAME.csv with mode and density of
 #'   phases including WR
 #' @param verbose Output debug info (default: FALSE).
@@ -19,30 +19,46 @@
 #' @examples
 #' reflame <- cbk.ref("Wasson.1988",property=cbk.periodic("atomicnumber"))
 #' MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
-cbk.plot.balance <- function(pmlame_or_file,reflame_or_file,modeinfo,verbose=TRUE){
+cbk.plot.balance <- function(pmlame_or_file,reflame_or_file,modeinfo,verbose=FALSE){
 errorbar.y <- function(x,y,yerror,length=0.01,col=1,code=3){
   arrows(x, y, x, y+yerror, code=code, angle=90, length=length, col=col)
   arrows(x, y, x, y-yerror, code=code, angle=90, length=length, col=col)
 }
 
 ## Load element abundance and mode
-ZZ      <- cbk.read.casteml(pmlame_or_file)
+if (is.data.frame(pmlame_or_file)) {
+  ZZ     <- pmlame_or_file
+} else {
+  pmlext <- tools::file_ext(pmlame_or_file)
+  if (pmlext == "csv") {
+    ZZ      <- cbk.read.tblame(pmlame_or_file)
+  } else {
+    ZZ      <- cbk.read.casteml(pmlame_or_file)
+  }
+}
+
+if (is.data.frame(reflame_or_file)) {
+  reflame <- reflame_or_file
+} else {
+  refext  <- tools::file_ext(reflame_or_file)
+  if (refext == "csv") {
+    reflame <- cbk.read.tblame(reflame_or_file)
+  } else {
+    reflame <- cbk.read.casteml(reflame_or_file)
+  }
+}
+ref0    <- cbk.lame.regulate(reflame,error=FALSE)
+
 if (is.data.frame(modeinfo)) {
   DD      <- modeinfo
 } else {
   DD      <- cbk.read.tblame(modeinfo)
 }
-if (is.data.frame(reflame_or_file)) {
-  reflame <- reflame_or_file
-} else {
-  reflame <- cbk.read.casteml(reflame_or_file)
-}
-ref0    <- cbk.lame.regulate(reflame,error=FALSE)
 
 if (verbose) {
-  cat(file=stderr(),"cbk.plot.balance:43: ZZ <-",cbk.lame.dump(ZZ,show=F),"\n")
-  cat(file=stderr(),"cbk.plot.balance:44: DD <-",cbk.lame.dump(DD,show=F),"\n")
-  cat(file=stderr(),"cbk.plot.balance:45: ref0 <-",cbk.lame.dump(ref0,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:51: ZZ <-",cbk.lame.dump(ZZ,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:52: DD <-",cbk.lame.dump(DD,show=F),"\n")
+  cat(file=stderr(),"cbk.plot.balance:53: ref0 <-",cbk.lame.dump(ref0,show=F),"\n")
 }
 
 ## ----------------------------------------
@@ -73,7 +89,9 @@ ZZ["WR",element] <- ref0[,element]
 ## ----------------------------------------
 phasianus        <- c(phases,"remainder")                       # list of phases including `missing phase'
 density          <- cbk.vector(DD[,"density"])                  # note that density includes WR
+names(density)   <- rownames(DD)
 mode             <- cbk.vector(DD[,"mode"])                     # note that mode includes WR
+names(mode)      <- rownames(DD)
 
 ZZzCI            <- cbk.lame.normalize(ZZ,ref0)                 # normalization to draw data in `[Z] over CI'
 ZZzCI_mean       <- cbk.lame.regulate(ZZzCI,mean=T,error=F)
