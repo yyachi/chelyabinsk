@@ -115,7 +115,7 @@ MM[MM<0]         <- 0
 ## ----------------------------------------
 ##* Plot setup
 ## ----------------------------------------
-par(mfrow=c(3,1),mar=c(2.5,4,0.1,0.1),mgp=c(3,1,0))
+## par(mfrow=c(3,1),mar=c(2.5,4,0.1,0.1),mgp=c(3,1,0))
 
 ## ----------------------------------------
 ##* Concentration
@@ -134,7 +134,9 @@ phaselist <- rownames(ZZzCI_mean)
 for(iphase in phaselist) { # ol, opx, cpx, gl, WR
   lines(XX,ZZzCI_mean[iphase,],type="o",
         pch=spec0[iphase,"pch"],col=spec0[iphase,"col"],lwd=spec0[iphase,"lwd"])
-  errorbar.y(XX,as.numeric(ZZzCI_mean[iphase,]),as.numeric(ZZzCI_error[iphase,]),col=spec0[iphase,"col"])
+  if (length(ZZzCI_error) != 0) {
+    errorbar.y(XX,as.numeric(ZZzCI_mean[iphase,]),as.numeric(ZZzCI_error[iphase,]),col=spec0[iphase,"col"])
+  }
 }
 
 ## Draw WR (calc) and remainder
