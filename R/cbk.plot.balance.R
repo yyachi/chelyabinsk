@@ -121,7 +121,7 @@ MM[MM<0]         <- 0
 ##* Concentration
 ## ----------------------------------------
 ## Make box
-matplot(XX,t(ZZzCI_mean),type="n",log="y",axes=FALSE,xlab="",ylab="[Z] over CI",lwd=3)
+matplot(XX,t(ZZzCI_mean),type="n",log="y",axes=FALSE,xlab="",ylab="[Z] over WR",lwd=3)
 axis(1,XX,labels=names(XX),cex.axis=1,las=2)
 axis(2,cex.axis=1,axTicks(2),axTicks(2))
 legend("bottomright",legend=rownames(spec0),cex=0.7,ncol=3,
