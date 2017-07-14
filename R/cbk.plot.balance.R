@@ -70,8 +70,8 @@ if (verbose) {
 phases        <- rownames(ZZ)
 
 spec0         <- data.frame(row.names=c("WR","WR (calc)","remainder",phases)) # legend properties
-spec0[,'col'] <- c("black","black","purple",2:(length(phases)+1))
-spec0[,'pch'] <- c(NaN,NaN,17,1:length(phases))
+spec0[,'col'] <- c("black","black","black",2:(length(phases)+1))
+spec0[,'pch'] <- c(NaN,NaN,2,1:length(phases))
 spec0[,'lty'] <- c(1,2,2,rep(1,length(phases)))
 spec0[,'lwd'] <- c(1,3,1,rep(1,length(phases)))
 
@@ -171,6 +171,7 @@ for(iquant in quantlist) { # WR, WR (calc), remainder (quantity), ol (quantity),
 ##* Relative quantity
 ## ----------------------------------------
 par(mgp=c(2.5,0.6,0))
+spec0["remainder","col"] <- "white"
 barplot(as.matrix(MM),col=spec0[rownames(MM),'col'],las=2)
 
 ## ----------------------------------------
