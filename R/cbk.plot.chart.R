@@ -1,10 +1,11 @@
-#' @title Read IONML dataframe and plot intensity chart of elements
+#' @title Visualze IONML as intensity chart
 #'
-#' @description Read IONML dataframe and plot intensity chart of
-#'   elements.  This draws intensity charts of elements with and
-#'   without normalization by Si.
+#' @description Visualze IONML as intensity chart.  This reads IONML
+#'   or ion-type pmlame (R object) and plots intensity chart of
+#'   elements.  Two intensity charts will be droawn with and without
+#'   normalization by reference ion intensity.
 #'
-#' @param IONML_or_pmlame IONML or ion-type pmlame.
+#' @param IONML_or_pmlame IONML (xml file) or ion-type pmlame (R object).
 #' @param t2 When ion starts (default: 25 s).
 #' @param t3 When ion ends (default: 60 s).
 #' @param ref Reference ion species (default: "int_29Si").
@@ -72,7 +73,7 @@ cbk.plot.chart <- function(IONML_or_pmlame,opts=NULL,t2=25,t3=60,ref="int_29Si",
   ## ----------------
   ## Setup args for matplot and legend
   args_auto    <- list(...)
-  args_default <- list(col=rainbow(length(chem)),lty=1,type="l",xlab="Time",ylab="Intensity",log="y",ncol=3)
+  args_default <- list(col=rainbow(length(chem)),lty=1,type="l",xlab="Time",ylab="intensity",log="y",ncol=3)
   args_default[intersect(names(args_default),names(args_auto))] <- NULL  ## Reset shared args
   args_auto    <- c(args_auto,args_default)
   col          <- args_auto$col
@@ -101,7 +102,7 @@ cbk.plot.chart <- function(IONML_or_pmlame,opts=NULL,t2=25,t3=60,ref="int_29Si",
   ## Draw profile of intensity normalized by Si
   ## do.call("matplot",
   ##         c(list(XX1,YY1zref,type="n",ylab="Normalized",xlim=c(t2,t3)), args_auto[names(args_auto) %in% names_args_func_plot]))
-  matplot(XX1,YY1zref,type="n",col=col,lty=1,xlab="Time",ylab="Normalized",log="y",xlim=c(t2,t3))
+  matplot(XX1,YY1zref,type="n",col=col,lty=1,xlab="Time",ylab="intensity/ref",log="y",xlim=c(t2,t3))
   text(rep(t3,length(chem)),colMeans(YY1zref,na.rm=T),chem0,col=col,cex=0.8,font=1)
 
   YY1zref_MovAve <- mutate_all(YY1zref, funs(roll_mean(., n=w_size, fill=NA))) # data smoothing by moving average method
