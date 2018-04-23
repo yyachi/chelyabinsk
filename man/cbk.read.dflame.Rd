@@ -36,7 +36,7 @@ This internally calls
 \examples{
 pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")
 dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
-pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
+pmlame     <- cbk.read.dflame(dflame.csv,"ppm",force=TRUE)
 
 pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
 pmlame     <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),"ppm")

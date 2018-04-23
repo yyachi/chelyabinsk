@@ -2,13 +2,13 @@
 % Please edit documentation in R/cbk.plot.chart.R
 \name{cbk.plot.chart}
 \alias{cbk.plot.chart}
-\title{Read IONML dataframe and plot intensity chart of elements}
+\title{Visualze IONML as intensity chart}
 \usage{
 cbk.plot.chart(IONML_or_pmlame, opts = NULL, t2 = 25, t3 = 60,
   ref = "int_29Si", acq = "", w_size = 10, verbose = FALSE, ...)
 }
 \arguments{
-\item{IONML_or_pmlame}{IONML or ion-type pmlame.}
+\item{IONML_or_pmlame}{IONML (xml file) or ion-type pmlame (R object).}
 
 \item{opts}{List of further options for plot.  See \link{cbk.plot}.}
 
@@ -31,9 +31,10 @@ such as `col' and `pch'.}
 @return A pmlame used to plot the diagram.
 }
 \description{
-Read IONML dataframe and plot intensity chart of
-  elements.  This draws intensity charts of elements with and
-  without normalization by Si.
+Visualze IONML as intensity chart.  This reads IONML
+  or ion-type pmlame (R object) and plots intensity chart of
+  elements.  Two intensity charts will be droawn with and without
+  normalization by reference ion intensity.
 }
 \examples{
 ionml.xml <- cbk.path("ref_cpx_klb1@1.xml")

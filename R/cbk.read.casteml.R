@@ -25,6 +25,7 @@
 #' stone   <- "20081202172326.hkitagawa"
 #' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
 cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL,force=FALSE,verbose=TRUE){
+  library(MedusaRClient)
   opts_default <- list(Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
@@ -40,18 +41,25 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
   } else {
     if (file.exists(pmlfile_or_stone)) { # existing-pmlfile fed
       pmlfile  <- pmlfile_or_stone
+      dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
+      pmlame     <- cbk.read.dflame(dflame.csv,tableunit,force=force)
     } else {                             # stone fed
       stone    <- pmlfile_or_stone
       if (opts$Recursivep) {
-        # pmlfile  <- cbk.download.casteml(c("-R", stone))
-        pmlfile  <- cbk.download.casteml(stone,Recursive=TRUE)
+        ## # pmlfile  <- cbk.download.casteml(c("-R", stone))
+        ## pmlfile  <- cbk.download.casteml(stone,Recursive=TRUE)
+        pmlame <- medusaRClient.read.pmlame(stone,opts=list(Recursivep=TRUE))
       } else {
-        # pmlfile  <- cbk.download.casteml(c("-r", stone))
-        pmlfile  <- cbk.download.casteml(stone,recursive=TRUE)
+        ## # pmlfile  <- cbk.download.casteml(c("-r", stone))
+        ## pmlfile  <- cbk.download.casteml(stone,recursive=TRUE)
+        pmlame <- medusaRClient.read.pmlame(stone)
+      }
+      if(tableunit!='none'){
+        pmlame0 <- pmlame[,grepl("^[A-Z].*",colnames(pmlame))]
+        pmlame1 <- pmlame0 * cbk.convector(tableunit)
+        pmlame  <- cbind(pmlame[,!grepl("^[A-Z].*",colnames(pmlame))],pmlame1)
       }
     }
-    dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
-    pmlame     <- cbk.read.dflame(dflame.csv,tableunit,force=force)
   }
 
   chemlist                    <- colnames(pmlame)
