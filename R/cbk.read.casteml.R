@@ -23,16 +23,15 @@
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #' stone   <- "20081202172326.hkitagawa"
-#' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace")
+#' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace",force=TRUE)
 cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL,force=FALSE,verbose=TRUE){
-  library(MedusaRClient)
   opts_default <- list(Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)
 
   if (verbose) {
     cat(file=stderr(),
-        "cbk.read.casteml:29: pmlfile_or_stone # =>",
+        "cbk.read.casteml:34: pmlfile_or_stone # =>",
         ifelse(is.data.frame(pmlfile_or_stone),"#<pmlame>",pmlfile_or_stone),"\n")
   }
   
@@ -41,25 +40,18 @@ cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",categor
   } else {
     if (file.exists(pmlfile_or_stone)) { # existing-pmlfile fed
       pmlfile  <- pmlfile_or_stone
-      dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
-      pmlame     <- cbk.read.dflame(dflame.csv,tableunit,force=force)
     } else {                             # stone fed
       stone    <- pmlfile_or_stone
       if (opts$Recursivep) {
-        ## # pmlfile  <- cbk.download.casteml(c("-R", stone))
-        ## pmlfile  <- cbk.download.casteml(stone,Recursive=TRUE)
-        pmlame <- medusaRClient.read.pmlame(stone,opts=list(Recursivep=TRUE))
+        # pmlfile  <- cbk.download.casteml(c("-R", stone))
+        pmlfile  <- cbk.download.casteml(stone,Recursive=TRUE)
       } else {
-        ## # pmlfile  <- cbk.download.casteml(c("-r", stone))
-        ## pmlfile  <- cbk.download.casteml(stone,recursive=TRUE)
-        pmlame <- medusaRClient.read.pmlame(stone)
-      }
-      if(tableunit!='none'){
-        pmlame0 <- pmlame[,grepl("^[A-Z].*",colnames(pmlame))]
-        pmlame1 <- pmlame0 * cbk.convector(tableunit)
-        pmlame  <- cbind(pmlame[,!grepl("^[A-Z].*",colnames(pmlame))],pmlame1)
+        # pmlfile  <- cbk.download.casteml(c("-r", stone))
+        pmlfile  <- cbk.download.casteml(stone,recursive=TRUE)
       }
     }
+    dflame.csv <- cbk.convert.casteml(pmlfile,category=category)
+    pmlame     <- cbk.read.dflame(dflame.csv,tableunit,force=force)
   }
 
   chemlist                    <- colnames(pmlame)
