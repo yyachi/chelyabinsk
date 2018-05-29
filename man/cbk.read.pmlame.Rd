@@ -2,9 +2,9 @@
 % Please edit documentation in R/cbk.read.pmlame.R
 \name{cbk.read.pmlame}
 \alias{cbk.read.pmlame}
-\title{Get and return a pmlame}
+\title{Return a pmlame that is stored in Medusa}
 \usage{
-cbk.read.pmlame(pmlfile_or_stone, opts = NULL, use_gem = FALSE,
+cbk.read.pmlame(pmlfile_or_stone, opts = NULL, casteml = FALSE,
   verbose = TRUE, ...)
 }
 \arguments{
@@ -13,8 +13,8 @@ stone-ID.}
 
 \item{opts}{List of further options for plot.}
 
-\item{use_gem}{Download a CASTEML file into a temporary directory
-(default: FALSE).}
+\item{casteml}{Download a CASTEML file using external program `gem package --
+casteml' (default: FALSE).}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }
@@ -22,11 +22,20 @@ stone-ID.}
 A dataframe with unit organized.
 }
 \description{
-Get and return a pmlame.  This function can use two
-  pathways to get a pmlame.  The one downloads a json data from
-  medusa, while the other downloads a CASTEML file using
-  rubygem. Finally, they are converted to pmlames with same
-  structure.
+Return a pmlame that is stored in Medusa.  There can
+  be two approach to get the pmlame.  (1) The first approach is to
+  downloads a CASTEML file using external program `gem package --
+  casteml'.  (2) The other approach is to download a json data
+  directoly from Medusa.
+
+  The essential functions involved in this function as of May 29
+  (2018) are shown below.
+
+  cbk.read.pmlame <returns pmlame>
+  --> cbk.read.casteml <returns pmlame>
+      --> cbk.download.casteml <returns pmlfile>
+  --> cbk.download.pmlame <returns pmlame>
+      --> medusaRClient.read.pmlame <returns pmlame>
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")

@@ -42,7 +42,7 @@ cbk.read.pmlame <- function(pmlfile_or_stone,opts=NULL,casteml=FALSE,verbose=TRU
         ifelse(is.data.frame(pmlfile_or_stone),"#<pmlame>",pmlfile_or_stone),"\n")
   }
 
-  if (casteml || is.data.frame(pmlfile_or_stone) || file.exists(pmlfile_or_stone)) {
+  if (isTRUE(casteml) || is.data.frame(pmlfile_or_stone) || file.exists(pmlfile_or_stone)) {
     pmlame <- cbk.read.casteml(pmlfile_or_stone,opts,verbose=verbose,...)
   } else {
     pmlame <- cbk.download.pmlame(pmlfile_or_stone,opts,verbose=verbose,...)
