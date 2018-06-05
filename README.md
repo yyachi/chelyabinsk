@@ -2,8 +2,9 @@
 
 R package for geochemical datasets
 
-This is referred by [gem package --
-casteml](https://github.com/misasa/casteml "follow instruction").  See
+This refers [gem package --
+casteml](https://github.com/misasa/casteml "follow instruction") and [r package --
+MedusaRClient](https://github.com/misasa/MedusaRClient "follow instruction").  See
 manual at
 `http://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf'.
 
