@@ -11,6 +11,7 @@ manual at
 
 ## [GNU R](https://www.r-project.org/ "follow instruction")
 ## [gem package -- casteml](https://github.com/misasa/casteml "follow instruction")
+## [r package -- MedusaRClient](https://github.com/misasa/MedusaRClient "follow instruction")
 
 # User's guide
 
@@ -18,6 +19,7 @@ To install this package issue following command.
 
     R> install.packages('devtools')
     R> devtools::install_github('misasa/chelyabinsk')
+    R> devtools::install_github('misasa/MedusaRClient')
     R> library('chelyabinsk')
     R> cbk.path("periodic-dflame1.csv")
 
