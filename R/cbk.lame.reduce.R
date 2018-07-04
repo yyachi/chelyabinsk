@@ -28,11 +28,13 @@ cbk.lame.reduce <- function(pmlame) {
 | K2O   | K     |     0.5 |
 | P2O5  | P     |     2.5 |
 | MnO   | Mn    |       1 |
+| Cr2O3 | Cr    |     1.5 |
+| NiO   | Ni    |       1 |
 "
   ## BEGIN RECEIVE ORGTBL detoxtable:datain
-  detoxtable <- data.frame(row.names=c("SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO"))
-  detoxtable[,'metal'] <- c("Si","Al","Ca","Mg","Fe","Fe","Na","H","Ti","K","P","Mn")
-  detoxtable[,'noxygen'] <- c(2,1.5,1,1,1.5,1,0.5,0.5,2,0.5,2.5,1)
+  detoxtable <- data.frame(row.names=c("SiO2","Al2O3","CaO","MgO","Fe2O3","FeO","Na2O","H2O+","TiO2","K2O","P2O5","MnO","Cr2O3","NiO"))
+  detoxtable[,'metal'] <- c("Si","Al","Ca","Mg","Fe","Fe","Na","H","Ti","K","P","Mn","Cr","Ni")
+  detoxtable[,'noxygen'] <- c(2,1.5,1,1,1.5,1,0.5,0.5,2,0.5,2.5,1,1.5,1)
   ## END RECEIVE ORGTBL detoxtable:datain
 
   meanlame0    <- cbk.lame.regulate(pmlame,mean=T,error=F,extra=F)

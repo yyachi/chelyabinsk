@@ -48,8 +48,9 @@ cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property
     cat(file=stderr(),"cbk.plot.spider:48: reflame <-",cbk.lame.dump(reflame,show=F),"\n")
   }
 
-  pmlame1      <- cbk.lame.normalize(pmlame,reflame,verbose=verbose)
-  pmlame2      <- cbk.lame.drop.dharma(cbk.lame.reduce(pmlame1))
+  pmlame0      <- cbk.lame.reduce(pmlame)
+  pmlame1      <- cbk.lame.normalize(pmlame0,reflame,verbose=verbose)
+  pmlame2      <- cbk.lame.drop.dharma(pmlame1)
   stone        <- rownames(pmlame2)
   meanlame1    <- cbk.lame.regulate(pmlame2,mean=T,error=F,extra=F)
   errorlame1   <- cbk.lame.fetch.error(pmlame2)
