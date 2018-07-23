@@ -1,13 +1,14 @@
 Datasets of ref1 are shown in Table \ref{dflame1}.  Note that these
 are in notation of metal not in oxide.  "Wasson.1988",
 "McDonough.1995", "Boynton.1989", "Palme.2014", and "Anders.1989" are
-from [1], [2], [3], [4], and [5], respectively.
+from [1], [2], [3], [4], and [5], respectively.  Prof Noboru Nakamura
+recommended to use [5] on July 23, 2018.
 
 [1] Wasson, J. T., and Kallemeyn, G. W. (1988). Compositions of chondrites. Phil. Trans. Roy. Soc. London A, 325, 535-544.
 [2] McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223-253.
 [3] Janousek, V. et al. (2015). Geochemical Modelling of Igneous Processes--Principles And Recipes in R Language. Springer
 [4] Palme, H., Lodders, K. and Jones, A. (2014) Solar System Abundances of the Elements, In Treatise on Geochemistry (Second Edition), edited by Heinrich D. Holland and Karl K. Turekian, Elsevier, Oxford, Pages 15-36.
-[5] Anders, E., and Nicolas, G. (1989). Abundances of the elements: Meteoritic and solar. Geochimica et Cosmochimica Acta, 53, 197-214.
+[5] Anders, E., and Grevesse, N.. (1989). Abundances of the elements: Meteoritic and solar. Geochimica et Cosmochimica Acta, 53, 197-214.
 
 #+CAPTION: ref1
 #+TBLNAME: dflame0
