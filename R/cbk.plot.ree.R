@@ -21,7 +21,7 @@
 #'
 #' pmlame  <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
 #' cbk.plot.ree(pmlame)
-cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Wasson.1988",verbose=FALSE,...) {
+cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="Anders.1989",verbose=FALSE,...) {
   ## ----------------
   ##* PARSE OPTION
   ## ----------------

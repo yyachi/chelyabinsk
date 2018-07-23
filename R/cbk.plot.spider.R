@@ -25,7 +25,7 @@
 #' pmlfile <- cbk.path("20160921173604-511857.pml")
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 #' cbk.plot.spider(pmlame)
-cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Wasson.1988",verbose=FALSE,pch=NULL,col=NULL) {
+cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Anders.1989",verbose=FALSE,pch=NULL,col=NULL) {
   ## ----------------
   ##* PARSE OPTION
   ## ----------------
