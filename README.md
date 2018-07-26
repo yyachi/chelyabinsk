@@ -64,7 +64,8 @@ R> install.packages("roxygen2")
    document with rule of Roxygen2.  Do not use |#' | in main code
    besides the documentation in Roxygen2.
 
-3. Generate Rdoc by following commands.
+3. Update version number in ./DESCRIPTION and generate Rdoc by
+   following commands.
 
 ```
 $ cd ~/devel-godigo/chelyabinsk
@@ -76,14 +77,14 @@ R> setwd(path.expand("~/devel-godigo/chelyabinsk"))
 R> devtools::document()
 ```
 
-4. Run test
+4. Run test.
 
 ```
 $ vi ./tests/testthat/test-mytest.R
 $ R CMD check ../chelyabinsk
 ```
 
-5. Update manual
+5. Update manual.
 
 Copy manual automatically created by roxygen to
 http://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf
@@ -94,7 +95,8 @@ $ cp ./chelyabinsk.Rcheck/chelyabinsk-manual.pdf ~/devel-godigo/documentation/
 ```
 
 
-6. Push to the server or build/install locally
+6. Push to the server or build/install locally.  An exmple of local
+   installation is shown below.
 
 ```
 $ R CMD build ../chelyabinsk
