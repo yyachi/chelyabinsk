@@ -30,6 +30,6 @@ Balance quantity of elements in whole rock and phases.
   elements.
 }
 \examples{
-reflame <- cbk.ref("Wasson.1988",property=cbk.periodic("atomicnumber"))
+reflame <- cbk.ref("Anders.1989",property=cbk.periodic("atomicnumber"))
 MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
 }

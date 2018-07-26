@@ -38,6 +38,9 @@ Read IONML originated from Analyte G2 with iCAP-Q.
   first column of each line should be number of `cycle'.  Colname
   of the IONCSV should be `time' and name of element followed by
   atomic weight (`Si29' instead of `29Si').
+
+  This is a fork from `Batch_calc_separated_pdf_2.3.R'.  On
+  2018-07-27, `summarise_each' was replaced by `summarise_all'.
 }
 \details{
 Signal between `t2' and `t3' is regarded as main signal

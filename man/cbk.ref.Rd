@@ -8,7 +8,7 @@ cbk.ref(analysis, tableunit = "none", property = NULL)
 }
 \arguments{
 \item{analysis}{A name of reference that is one of "Wasson.1988",
-"McDonough.1995", and "Boynton.1989".}
+"McDonough.1995", "Boynton.1989", "Palme.2014", and "Anders.1989".}
 
 \item{tableunit}{Output unit that will be resolved by
 `cbk.convector'. (default: "none")}
@@ -22,11 +22,14 @@ A pmlame of element abundances
 }
 \description{
 Return element abundances of reference.  The reference
-  includes "Wasson.1988", "McDonough.1995", and "Boynton.1989".
+  includes "Wasson.1988", "McDonough.1995", "Boynton.1989",
+  "Palme.2014", and "Anders.1989".
 
 [1] Wasson, J. T., and Kallemeyn, G. W. (1988). Compositions of chondrites. Phil. Trans. Roy. Soc. London A, 325, 535-544.
 [2] McDonough, W., and Sun, S. (1995). The composition of the earth. Chemical Geology, 120(3-4), 223-253.
 [3] Janousek, V. et al. (2015). Geochemical Modelling of Igneous Processes--Principles And Recipes in R Language. Springer
+[4] Palme, H., Lodders, K. and Jones, A. (2014) Solar System Abundances of the Elements, In Treatise on Geochemistry (Second Edition), edited by Heinrich D. Holland and Karl K. Turekian, Elsevier, Oxford, Pages 15-36.
+[5] Anders, E., and Grevesse, N.. (1989). Abundances of the elements: Meteoritic and solar. Geochimica et Cosmochimica Acta, 53, 197-214.
 }
 \examples{
 cbk.ref("Boynton.1989","ppm")

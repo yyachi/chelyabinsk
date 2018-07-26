@@ -5,7 +5,7 @@
 \title{Read CASTEML file and create REE diagram}
 \usage{
 cbk.plot.ree(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  reference = "Wasson.1988", verbose = FALSE, ...)
+  reference = "Anders.1989", verbose = FALSE, ...)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
