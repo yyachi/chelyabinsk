@@ -10,6 +10,9 @@
 #'   of the IONCSV should be `time' and name of element followed by
 #'   atomic weight (`Si29' instead of `29Si').
 #'
+#'   This is a fork from `Batch_calc_separated_pdf_2.3.R'.  On
+#'   2018-07-27, `summarise_each' was replaced by `summarise_all'.
+#'
 #' @details Signal between `t2' and `t3' is regarded as main signal
 #'   from a sample (online).  Signal between `t0' and `t1' is regarded
 #'   as background.  Mean of latter is calculated as BASELINE.  Then
@@ -80,7 +83,7 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
     cat(file=stderr(),"ionml.read.laicpqms:80: n_baseline <-",cbk.lame.dump(n_baseline,show=F),"\n")
   }
 
-  pmMean1             <- summarise_each(pmlame1, funs(mean))
+  pmMean1             <- summarise_all(pmlame1, funs(mean))
   pmMean1$time        <- NA
   row.names(pmMean1)  <- "mean(base)/cps"
 
@@ -92,14 +95,14 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   pmlame3             <- filter(pmlame2, time >t2 & time <t3) # ion online
   n_online            <- nrow(pmlame3)
 
-  pmMean3             <- summarize_each(pmlame3, funs(mean))
+  pmMean3             <- summarise_all(pmlame3, funs(mean))
   row.names(pmMean3)  <- "mean/cps"
 
-  pmSd3               <- summarize_each(pmlame3, funs(sd))
+  pmSd3               <- summarise_all(pmlame3, funs(sd))
   row.names(pmSd3)    <- "sd/cps"
 
   ## Detection limit defined as 3 x Sd(base) / ref / sqrt(n) during background period
-  pmSd1               <- summarise_each(pmlame1, funs(sd))
+  pmSd1               <- summarise_all(pmlame1, funs(sd))
   pmSd1$time          <- NA
   row.names(pmSd1)    <- "sd(base)/cps"
 
@@ -116,11 +119,11 @@ ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29"
   pmlame5             <- filter(pmlame4, time >t2 & time <t3) # ion/ref online
 
   ## Stat ion/ref online
-  pmMean5             <- summarize_each(pmlame5, funs(mean))
+  pmMean5             <- summarise_all(pmlame5, funs(mean))
   row.names(pmMean5)  <- paste0("mean/",ref)
-  pmSd5               <- summarize_each(pmlame5, funs(sd))
+  pmSd5               <- summarise_all(pmlame5, funs(sd))
   row.names(pmSd5)    <- paste0("sd/",ref)
-  pmSderr5            <- summarize_each(pmlame5, funs(sd)) / sqrt(nrow(pmlame5))
+  pmSderr5            <- summarise_all(pmlame5, funs(sd)) / sqrt(nrow(pmlame5))
   row.names(pmSderr5) <- paste0("sderr/",ref)
   Sdrel5              <- pmSderr5 / pmMean5 * 100
   row.names(Sdrel5)   <- "sderr%"
