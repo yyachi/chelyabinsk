@@ -25,7 +25,7 @@ To install this package issue following command.
     R> devtools::install_github('misasa/chelyabinsk')
     R> devtools::install_github('misasa/MedusaRClient')
     R> library('chelyabinsk')
-    R> cbk.path("periodic-dflame1.csv")
+    R> cbk.path("periodic-dflame0.csv")
 
 When you see message such like below, try following.
 
