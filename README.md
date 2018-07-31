@@ -2,7 +2,9 @@
 
 R package for geochemical datasets
 
-This package allows you to process geochemical datasets, namely
+# Description
+
+R package for geochemical datasets. This package allows you to process geochemical datasets, namely
 CASTEML and IONML.
 
 This refers [gem package --
