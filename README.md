@@ -4,8 +4,10 @@ R package for geochemical datasets
 
 # Description
 
-R package for geochemical datasets. This package allows you to process geochemical datasets, namely
-CASTEML and IONML.
+R package for geochemical datasets. This package reads and processes
+geochemical datasets.  This package downloads CASTEML from Medusa.
+This package processes IONML.  This package plots typical geochemical
+datasets.
 
 This refers [gem package --
 casteml](https://github.com/misasa/casteml "follow instruction") and [r package --
