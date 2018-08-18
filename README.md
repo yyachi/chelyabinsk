@@ -102,7 +102,7 @@ $ cp ./chelyabinsk.Rcheck/chelyabinsk-manual.pdf ~/devel-godigo/documentation/
 ```
 
 
-6. Push to the server or build/install locally.  An exmple of local
+6. Push to the server or build/install locally.  An example of local
    installation is shown below.
 
 ```
@@ -123,4 +123,4 @@ $ R CMD install chelyabinsk_1.0.tar.gz
 2. Write test code
 3. Write document in R/chelyabinsk-package.R
 4. Have inst/extdata/ref.csv in casteml-dataframe format ref1.dataframe
-5. Revise cbk.ref.R accodringly or create new function
+5. Revise cbk.ref.R accordingly or create new function
