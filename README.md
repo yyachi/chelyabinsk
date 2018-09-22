@@ -1,4 +1,4 @@
-# chelyabinsk
+# r package -- chelyabinsk
 
 R package for geochemical datasets
 
