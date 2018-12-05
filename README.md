@@ -9,9 +9,7 @@ geochemical datasets.  This package downloads CASTEML from Medusa.
 This package processes IONML.  This package plots typical geochemical
 datasets.
 
-This refers [gem package --
-casteml](https://github.com/misasa/casteml "follow instruction") and [r package --
-MedusaRClient](https://github.com/misasa/MedusaRClient "follow instruction").  See
+See
 manual at
 `http://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf'.
 
