@@ -17,7 +17,6 @@ manual at
 
 # Dependency
 
-## [GNU R](https://www.r-project.org/ "follow instruction")
 ## [gem package -- casteml](https://github.com/misasa/casteml "follow instruction")
 ## [r package -- MedusaRClient](https://github.com/misasa/MedusaRClient "follow instruction")
 
