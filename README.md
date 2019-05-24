@@ -10,7 +10,7 @@ and plots typical geochemical datasets.
 
 See
 manual at
-`http://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf'.
+`https://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf'.
 See [shiny project -- VisualAnalysis](https://github.com/misasa/VisualAnalysis) that refers to this package.
 
 # Dependency
