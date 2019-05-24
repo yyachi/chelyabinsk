@@ -91,7 +91,7 @@ $ R CMD check ../chelyabinsk
 5. Update manual.
 
 Copy manual automatically created by roxygen to
-http://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf
+https://dream.misasa.okayama-u.ac.jp/documentation/chelyabinsk-manual.pdf
 when necessary.
 
 ```
