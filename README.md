@@ -28,6 +28,7 @@ To install this package issue following command.
     R> library('chelyabinsk')
     R> cbk.path("periodic-dflame0.csv")
 
+Check a directory for packages `~/R/win-library/` when necessary.
 When you see message such like below, try following.
 
     Error in curl::curl_fetch_disk(url, x$path, handle = handle) :   Problem with the SSL CA cert (path? access rights?
