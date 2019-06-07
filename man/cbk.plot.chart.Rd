@@ -38,6 +38,7 @@ Visualze IONML as intensity chart.  This reads IONML
 }
 \examples{
 ionml.xml <- cbk.path("ref_cpx_klb1@1.xml")
+message(sprintf("The ionml.xml is located at |\%s|.",ionml.xml))
 cbk.plot.chart(ionml.xml,acq="ref_cpx_klb1@1")
 
 pmlame <- cbk.read.ionml(ionml.xml,representative_time=TRUE)

@@ -29,6 +29,7 @@ Read CASTEML dataframe and create lithium diagram.
 }
 \examples{
 pmlfile <- cbk.path("20130528105235-594267.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 cbk.plot.lithium(pmlfile)
 }
 \seealso{

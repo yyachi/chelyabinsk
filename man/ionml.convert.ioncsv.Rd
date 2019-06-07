@@ -28,6 +28,7 @@ Convert IONCSV to IONML.  This program assumes
 }
 \examples{
 ioncsv <- cbk.path("ref_cpx_klb1@1.ion")
+message(sprintf("The ioncsv is located at |\%s|.",ioncsv))
 ionml.convert.ioncsv(ioncsv,outfile=tempfile(fileext=".xml"))
 }
 \seealso{

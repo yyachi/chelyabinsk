@@ -32,9 +32,12 @@ Read CASTEML dataframe and create REE diagram.  This
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 cbk.plot.ree(pmlfile)
 
-pmlame  <- cbk.read.casteml(cbk.path("20160921173604-511857.pml"))
+pmlfile <- cbk.path("20160921173604-511857.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
+pmlame  <- cbk.read.casteml(pmlfile)
 cbk.plot.ree(pmlame)
 }
 \seealso{

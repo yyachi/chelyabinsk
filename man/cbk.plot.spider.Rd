@@ -5,8 +5,8 @@
 \title{Read CASTEML file and create spider diagram}
 \usage{
 cbk.plot.spider(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  property = "atomicnumber", reference = "Anders.1989", verbose = FALSE,
-  pch = NULL, col = NULL)
+  property = "atomicnumber", reference = "Anders.1989",
+  verbose = FALSE, pch = NULL, col = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
@@ -37,10 +37,12 @@ Read CASTEML dataframe and create spider diagram.
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 cbk.plot.spider(pmlame)
 
 pmlfile <- cbk.path("20160921173604-511857.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 cbk.plot.spider(pmlame)
 }

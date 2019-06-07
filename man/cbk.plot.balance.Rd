@@ -4,7 +4,8 @@
 \alias{cbk.plot.balance}
 \title{Balance quantity of elements in whole rock and phases}
 \usage{
-cbk.plot.balance(pmlame_or_file, reflame_or_file, modeinfo, verbose = FALSE)
+cbk.plot.balance(pmlame_or_file, reflame_or_file, modeinfo,
+  verbose = FALSE)
 }
 \arguments{
 \item{pmlame_or_file}{A pmlame or CASTEML or TBLAME.csv with
@@ -30,6 +31,10 @@ Balance quantity of elements in whole rock and phases.
   elements.
 }
 \examples{
-reflame <- cbk.ref("Anders.1989",property=cbk.periodic("atomicnumber"))
-MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
+reflame  <- cbk.ref("Anders.1989",property=cbk.periodic("atomicnumber"))
+pmlfile  <- cbk.path("demo-trc0.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
+modeinfo <- cbk.path("demo-mode0.csv")
+message(sprintf("The modeinfo is located at |\%s|.",modeinfo))
+MM       <- cbk.plot.balance(pmlfile,reflame,modeinfo)
 }

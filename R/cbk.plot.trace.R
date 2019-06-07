@@ -14,6 +14,7 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ug/g",category=NULL)
 #' cbk.plot.trace(pmlame,tableunit="ug/g")
 cbk.plot.trace <- function(pmlfile_or_stone,opts=NULL,tableunit="none",...) {

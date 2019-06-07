@@ -29,8 +29,10 @@ Return normalized element abundances.  Note that only
   See also "Geochemical Modelling..." by Janousek et al. (2015)
 }
 \examples{
-pmlame  <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
-reflame <- cbk.ref("Boynton.1989","ppm")
+dflame.csv <- cbk.path("20081202172326.hkitagawa_trace.dflame")
+message(sprintf("The dflame.csv is located at |\%s|.",dflame.csv))
+pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
+reflame    <- cbk.ref("Boynton.1989","ppm")
 cbk.lame.normalize(pmlame,reflame)
 }
 \seealso{

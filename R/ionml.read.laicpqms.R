@@ -36,9 +36,12 @@
 #' @seealso \code{\link{ionml.convert.qtegracsv2ioncsv}}
 #'   \code{\link{ionml.convert.ioncsv}}
 #' @examples
-#' pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.xml"))
+#' ionmlfile <- cbk.path("ref_cpx_klb1@1.xml")
+#' message(sprintf("The ionmlfile is located at |%s|.",ionmlfile))
+#' pmlfile0  <- ionml.read.laicpqms(ionmlfile)
 #' 
-#' file <- cbk.path("ref_cpx_klb1@1.ion")
+#' file     <- cbk.path("ref_cpx_klb1@1.ion")
+#' message(sprintf("The file is located at |%s|.",file))
 #' pmlfile0 <- ionml.read.laicpqms(file,ionml=FALSE)
 ionml.read.laicpqms <- function(pmlame_or_file,t0=5,t1=20,t2=25,t3=60,ref="Si29",verbose=FALSE,ionml=TRUE) {
   library(dplyr)

@@ -15,13 +15,19 @@
 #' @seealso \code{\link{cbk.plot.trace}}
 #' @examples
 #' cbk.plot(c("20141106120733-593074","20141106120433-380274","20141106120509-983968"))
-#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"))
-#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
-#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
-#' cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
-#' cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
-#' cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
-#' cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),opts=list(legendp=FALSE))
+#'
+#' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
+#' cbk.plot(pmlfile)
+#' cbk.plot(pmlfile,category="trace")
+#' cbk.plot(pmlfile,category="lead")
+#' cbk.plot(pmlfile,opts=list(legendp=FALSE))
+#'
+#' pmlfile <- cbk.path("20130528105235-594267.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
+#' cbk.plot(pmlfile,category="trace")
+#' cbk.plot(pmlfile,category="lithium")
+#' cbk.plot(pmlfile,category="oxygen")
 cbk.plot <- function(pmlfile_or_stone,opts=NULL,category=NULL,...) {
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared option

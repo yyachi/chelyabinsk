@@ -4,7 +4,8 @@
 \alias{cbk.lame.delivery}
 \title{Estimate delivery rate of chem}
 \usage{
-cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09, verbose = FALSE)
+cbk.lame.delivery(pmlame, intlame, sputter.rate = 1.1e-09,
+  verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}

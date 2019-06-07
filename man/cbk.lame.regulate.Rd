@@ -30,7 +30,9 @@ A pmlame with columns of concern
 Regulate pmlame to extract mean, error, or extra columns
 }
 \examples{
-pmlame  <- cbk.read.casteml(cbk.path("20130528105235-594267.pml"))
+pmlfile <- cbk.path("20130528105235-594267.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
+pmlame  <- cbk.read.casteml(pmlfile)
 pmlame1 <- cbk.lame.regulate(pmlame)
 }
 \seealso{

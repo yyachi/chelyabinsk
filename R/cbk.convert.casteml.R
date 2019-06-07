@@ -20,6 +20,7 @@
 #'   \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile    <- cbk.path("20081202172326.hkitagawa.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
 #' dflame.csv <- cbk.convert.casteml(pmlfile)
 #'
 #' pmlfile    <- cbk.download.casteml("20081202172326.hkitagawa")

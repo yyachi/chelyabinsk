@@ -4,7 +4,8 @@
 \alias{cbk.lame.stat}
 \title{Estimate reproducibility of acquisition by each stone}
 \usage{
-cbk.lame.stat(pmlame, stonify_regexp = "@[[:digit:]]+$", verbose = FALSE)
+cbk.lame.stat(pmlame, stonify_regexp = "@[[:digit:]]+$",
+  verbose = FALSE)
 }
 \arguments{
 \item{pmlame}{A pmlame with row of stone and column of chem [g/g].}

@@ -20,6 +20,8 @@ Dataframe used to plot the diagram
 Display message on a diagram.
 }
 \examples{
-pmlame <- cbk.read.casteml(cbk.path("20081202172326.hkitagawa.pml"),"ppm")
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
+pmlame  <- cbk.read.casteml(pmlfile,"ppm")
 cbk.plot.message(pmlame,sQuote("Hello, world!"))
 }

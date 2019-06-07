@@ -25,9 +25,17 @@
 #' dflame.csv <- cbk.convert.casteml(pmlfile,category="trace")
 #' pmlame     <- cbk.read.dflame(dflame.csv,"ppm",force=TRUE)
 #'
-#' pmlame     <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
-#' pmlame     <- cbk.read.dflame(cbk.path("ref1-dflame0.csv"),"ppm")
-#' pmlame     <- cbk.read.dflame(cbk.path("periodic-dflame0.csv"))
+#' dflame.csv <- cbk.path("20081202172326.hkitagawa_trace.dflame")
+#' message(sprintf("The dflame.csv is located at |%s|.",dflame.csv))
+#' pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
+#'
+#' dflame.csv <- cbk.path("ref1-dflame0.csv")
+#' message(sprintf("The dflame.csv is located at |%s|.",dflame.csv))
+#' pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
+#'
+#' dflame.csv <- cbk.path("periodic-dflame0.csv")
+#' message(sprintf("The dflame.csv is located at |%s|.",dflame.csv))
+#' pmlame     <- cbk.read.dflame(dflame.csv)
 cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=FALSE){
 
   if (verbose) {

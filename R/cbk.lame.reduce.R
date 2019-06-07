@@ -4,7 +4,8 @@
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
-#' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
+#' pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL,force=TRUE)
 #' pmlame1 <- cbk.lame.reduce(pmlame)
 #'
 #' pmlame <- structure(list(Si = c(NA, NA, NA, 0.233, NA, NA, NA, NA), SiO2 = c(0.5195, 0.5359, 0.5341, 0.499, 0.5133, 0.5899, 0.5305, 0.5)), .Names = c("Si", "SiO2"), class = "data.frame", row.names = c("ref-cpx-klb1", "ref-cpx-sax33", "ref-cpx-sax39c", "ref-gl-bhvo2", "ref-gl-dr1a1", "ref-gl-tahiti", "ref-pl-bytownite-c", "ref_dl_blank"))

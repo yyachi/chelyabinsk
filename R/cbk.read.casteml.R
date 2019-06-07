@@ -21,6 +21,7 @@
 #' @export
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #' stone   <- "20081202172326.hkitagawa"
 #' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace",force=TRUE)

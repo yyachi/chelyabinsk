@@ -17,8 +17,12 @@
 #' @return A pmlame with element quantities and mode of phases
 #' @export
 #' @examples
-#' reflame <- cbk.ref("Anders.1989",property=cbk.periodic("atomicnumber"))
-#' MM      <- cbk.plot.balance(cbk.path("demo-trc0.pml"),reflame,cbk.path("demo-mode0.csv"))
+#' reflame  <- cbk.ref("Anders.1989",property=cbk.periodic("atomicnumber"))
+#' pmlfile  <- cbk.path("demo-trc0.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
+#' modeinfo <- cbk.path("demo-mode0.csv")
+#' message(sprintf("The modeinfo is located at |%s|.",modeinfo))
+#' MM       <- cbk.plot.balance(pmlfile,reflame,modeinfo)
 cbk.plot.balance <- function(pmlame_or_file,reflame_or_file,modeinfo,verbose=FALSE){
 errorbar.y <- function(x,y,yerror,length=0.01,col=1,code=3){
   arrows(x, y, x, y+yerror, code=code, angle=90, length=length, col=col)

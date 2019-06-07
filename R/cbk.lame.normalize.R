@@ -15,8 +15,10 @@
 #' @seealso \link{cbk.ref} and \link{cbk.periodic}
 #' @export
 #' @examples
-#' pmlame  <- cbk.read.dflame(cbk.path("20081202172326.hkitagawa_trace.dflame"),"ppm")
-#' reflame <- cbk.ref("Boynton.1989","ppm")
+#' dflame.csv <- cbk.path("20081202172326.hkitagawa_trace.dflame")
+#' message(sprintf("The dflame.csv is located at |%s|.",dflame.csv))
+#' pmlame     <- cbk.read.dflame(dflame.csv,"ppm")
+#' reflame    <- cbk.ref("Boynton.1989","ppm")
 #' cbk.lame.normalize(pmlame,reflame)
 cbk.lame.normalize <- function(pmlame,reflame,suffix_after_chem=NULL,verbose=FALSE){
   ## filter name when number of elements in reflame exceeds those in sample

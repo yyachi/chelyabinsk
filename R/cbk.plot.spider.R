@@ -19,10 +19,12 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 #' cbk.plot.spider(pmlame)
 #'
 #' pmlfile <- cbk.path("20160921173604-511857.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="none",category=NULL)
 #' cbk.plot.spider(pmlame)
 cbk.plot.spider <- function(pmlfile_or_stone,opts=NULL,tableunit="none",property="atomicnumber",reference="Anders.1989",verbose=FALSE,pch=NULL,col=NULL) {

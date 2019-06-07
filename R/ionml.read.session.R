@@ -23,9 +23,12 @@
 #' @seealso \code{\link{ionml.read.laicpqms}}
 #' @export
 #' @examples
-#' pmlame0 <- ionml.read.session(cbk.path("ref_cpx_klb1@1.xml"))
+#' ionmlfile <- cbk.path("ref_cpx_klb1@1.xml")
+#' message(sprintf("The ionmlfile is located at |%s|.",ionmlfile))
+#' pmlame0   <- ionml.read.session(ionmlfile)
 #'
-#' files <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
+#' files   <- c(cbk.path("ref_cpx_klb1@1.ion"),cbk.path("ref_cpx_klb1@2.ion"),cbk.path("ref_cpx_klb1@3.ion"))
+#' message(sprintf("The files are located at |%s|.",files[1]))
 #' pmlame0 <- ionml.read.session(files,ionml=FALSE)
 ionml.read.session <- function(ionml.xml,t0=5,t1=20,t2=25,t3=60,ref="Si29",error="sterr",intensityp=FALSE,verbose=FALSE,ionml=TRUE) {
   if (verbose) {

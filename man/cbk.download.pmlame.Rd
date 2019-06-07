@@ -4,8 +4,8 @@
 \alias{cbk.download.pmlame}
 \title{Download analysis records from Medusa and return a pmlame}
 \usage{
-cbk.download.pmlame(stone, opts = NULL, file = NULL, tableunit = "none",
-  force = FALSE, verbose = TRUE)
+cbk.download.pmlame(stone, opts = NULL, file = NULL,
+  tableunit = "none", force = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{stone}{Unique identification number of stones in Medusa.}

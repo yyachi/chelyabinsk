@@ -4,8 +4,8 @@
 \alias{ionml.read.laicpqms}
 \title{Read IONML originated from Analyte G2 with iCAP-Q}
 \usage{
-ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25, t3 = 60,
-  ref = "Si29", verbose = FALSE, ionml = TRUE)
+ionml.read.laicpqms(pmlame_or_file, t0 = 5, t1 = 20, t2 = 25,
+  t3 = 60, ref = "Si29", verbose = FALSE, ionml = TRUE)
 }
 \arguments{
 \item{pmlame_or_file}{ion-type pmlame or IONML or QTEGRACSV.}
@@ -53,9 +53,12 @@ Signal between `t2' and `t3' is regarded as main signal
   limit is defined by 3 times standard error of BASELINE measument.
 }
 \examples{
-pmlfile0 <- ionml.read.laicpqms(cbk.path("ref_cpx_klb1@1.xml"))
+ionmlfile <- cbk.path("ref_cpx_klb1@1.xml")
+message(sprintf("The ionmlfile is located at |\%s|.",ionmlfile))
+pmlfile0  <- ionml.read.laicpqms(ionmlfile)
 
-file <- cbk.path("ref_cpx_klb1@1.ion")
+file     <- cbk.path("ref_cpx_klb1@1.ion")
+message(sprintf("The file is located at |\%s|.",file))
 pmlfile0 <- ionml.read.laicpqms(file,ionml=FALSE)
 }
 \seealso{

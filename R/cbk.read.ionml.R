@@ -11,7 +11,9 @@
 #'   \url{https://github.com/misasa/casteml}
 #' @export
 #' @examples
-#' ionlame    <- cbk.read.ionml(cbk.path("ref_cpx_klb1@1.xml"))
+#' ionmlfile <- cbk.path("ref_cpx_klb1@1.xml")
+#' message(sprintf("The ionmlfile is located at |%s|.",ionmlfile))
+#' ionlame   <- cbk.read.ionml(ionmlfile)
 cbk.read.ionml <- function(ionml.xml,representative_time=FALSE,verbose=TRUE){
   library(XML)
 

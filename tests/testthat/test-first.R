@@ -10,7 +10,7 @@ test_that("cbk.read.casteml(stone, ...) should return Dataframe",{
   bib <- "20081202172326.hkitagawa"
   tbl0 <- cbk.read.casteml(bib,tableunit='ppm',category='trace',force=TRUE)
   expect_true(is.data.frame(tbl0))
-  expect_that(as.numeric(tbl0["analysis of I1502","Li"]), equals(as.numeric(4.02)))
+  expect_that(as.numeric(tbl0["I1502","Li"]), equals(as.numeric(4.02)))
 })
 
 test_that("cbk.read.casteml(pmlfile, ...) should return Dataframe",{

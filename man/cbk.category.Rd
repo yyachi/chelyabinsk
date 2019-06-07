@@ -19,6 +19,7 @@ Suggest categories to plot
 }
 \examples{
 pmlfile  <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 category <- cbk.category(pmlfile)
 category <- cbk.category()
 }

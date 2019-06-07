@@ -8,8 +8,10 @@
 #' @return File path to texfile.
 #' @export
 #' @examples
-#' pmlame <- cbk.read.casteml(cbk.path("ref_phase_obj.pml"))
-#' chem <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
+#' pmlfile <- cbk.path("ref_phase_obj.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
+#' pmlame  <- cbk.read.casteml(pmlfile)
+#' chem    <- c("Li","B","Si","Rb","Sr","Y","Zr","Nb","Cs")
 #' cbk.lame.texify1(pmlame,chem)
 cbk.lame.texify1 <- function(pmlame,chem,outfile=NULL,verbose=FALSE) {
   if (verbose) {

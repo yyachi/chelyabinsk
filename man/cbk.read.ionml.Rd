@@ -22,7 +22,9 @@ A dataframe with mean and time columns.
 Read IONML file and return an ionlame
 }
 \examples{
-ionlame    <- cbk.read.ionml(cbk.path("ref_cpx_klb1@1.xml"))
+ionmlfile <- cbk.path("ref_cpx_klb1@1.xml")
+message(sprintf("The ionmlfile is located at |\%s|.",ionmlfile))
+ionlame   <- cbk.read.ionml(ionmlfile)
 }
 \seealso{
 \code{\link{ionml.convert.qtegracsv2ioncsv}},

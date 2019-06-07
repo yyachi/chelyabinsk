@@ -26,13 +26,19 @@ Plot Analyses with descendants of a stone.  This
 }
 \examples{
 cbk.plot(c("20141106120733-593074","20141106120433-380274","20141106120509-983968"))
-cbk.plot(cbk.path("20081202172326.hkitagawa.pml"))
-cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="trace")
-cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),category="lead")
-cbk.plot(cbk.path("20130528105235-594267.pml"),category="trace")
-cbk.plot(cbk.path("20130528105235-594267.pml"),category="lithium")
-cbk.plot(cbk.path("20130528105235-594267.pml"),category="oxygen")
-cbk.plot(cbk.path("20081202172326.hkitagawa.pml"),opts=list(legendp=FALSE))
+
+pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
+cbk.plot(pmlfile)
+cbk.plot(pmlfile,category="trace")
+cbk.plot(pmlfile,category="lead")
+cbk.plot(pmlfile,opts=list(legendp=FALSE))
+
+pmlfile <- cbk.path("20130528105235-594267.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
+cbk.plot(pmlfile,category="trace")
+cbk.plot(pmlfile,category="lithium")
+cbk.plot(pmlfile,category="oxygen")
 }
 \seealso{
 \code{\link{cbk.plot.trace}}

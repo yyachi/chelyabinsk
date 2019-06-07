@@ -17,6 +17,7 @@
 #' @export
 #' @examples
 #' ioncsv <- cbk.path("ref_cpx_klb1@1.ion")
+#' message(sprintf("The ioncsv is located at |%s|.",ioncsv))
 #' ionml.convert.ioncsv(ioncsv,outfile=tempfile(fileext=".xml"))
 ionml.convert.ioncsv <- function(ioncsv,outfile=NULL,force=FALSE) {
   library(XML) # install.packages('XML')

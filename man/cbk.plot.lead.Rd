@@ -4,8 +4,8 @@
 \alias{cbk.plot.lead}
 \title{Read CASTEML file and create lead diagram}
 \usage{
-cbk.plot.lead(pmlfile_or_stone, opts = NULL, verbose = FALSE, pch = NULL,
-  col = NULL)
+cbk.plot.lead(pmlfile_or_stone, opts = NULL, verbose = FALSE,
+  pch = NULL, col = NULL)
 }
 \arguments{
 \item{pmlfile_or_stone}{A dataframe of element abundances (or pmlfile or stone-ID).}
@@ -29,6 +29,7 @@ Read CASTEML dataframe and create lead diagram.  This
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 cbk.plot.lead(pmlfile)
 }
 \seealso{

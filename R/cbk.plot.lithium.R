@@ -15,6 +15,7 @@
 #' @seealso \url{https://github.com/misasa/casteml}
 #' @examples
 #' pmlfile <- cbk.path("20130528105235-594267.pml")
+#' message(sprintf("The pmlfile is located at |%s|.",pmlfile))
 #' cbk.plot.lithium(pmlfile)
 cbk.plot.lithium <- function(pmlfile_or_stone,opts=NULL,verbose=FALSE,pch=NULL,col=NULL) {
   opts_default <- list(legendp=TRUE, Recursivep=FALSE)

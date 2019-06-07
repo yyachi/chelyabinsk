@@ -21,6 +21,7 @@ Remove rows where all values are NA
 }
 \examples{
 pmlfile <- cbk.path("20081202172326.hkitagawa.pml")
+message(sprintf("The pmlfile is located at |\%s|.",pmlfile))
 pmlame  <- cbk.read.casteml(pmlfile,"ppm",category=NULL)
 pmlame1 <- cbk.lame.drop.dharma(pmlame)
 }

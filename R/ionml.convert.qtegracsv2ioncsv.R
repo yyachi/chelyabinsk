@@ -21,6 +21,7 @@
 #' @export
 #' @examples
 #' acqfile <- cbk.path("ref_cpx_klb1@1.csv")
+#' message(sprintf("The acqfile is located at |%s|.",acqfile))
 #' ionml.convert.qtegracsv2ioncsv(acqfile,outfile=tempfile(fileext=".ion"))
 ionml.convert.qtegracsv2ioncsv <- function(acqfile,outfile=NULL,force=FALSE) {
 
