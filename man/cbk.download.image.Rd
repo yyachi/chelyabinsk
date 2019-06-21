@@ -4,7 +4,8 @@
 \alias{cbk.download.image}
 \title{Download imagefile from a surface}
 \usage{
-cbk.download.image(pmlfile_or_surface, outfile = NULL, force = FALSE)
+cbk.download.image(pmlfile_or_surface, outfile = NULL, force = FALSE,
+  directAuth = NULL)
 }
 \arguments{
 \item{pmlfile_or_surface}{Unique ID of surface. Really, surface can
@@ -27,10 +28,11 @@ Download imagefile from a surface. This function
   outfile exists, this function does not download a new imagefile.
 }
 \examples{
-pmlfile <- cbk.download.casteml("20160819165624-372633")
+directAuth <- list(uri="https://dream.misasa.okayama-u.ac.jp/pub/")
+pmlfile <- cbk.download.casteml("20160819165624-372633",directAuth=directAuth,force=TRUE)
 imagefile <- cbk.download.image(pmlfile)
 
-imagefile <- cbk.download.image("20160819165624-372633")
+imagefile <- cbk.download.image("20160819165624-372633",directAuth=directAuth,force=TRUE)
 }
 \seealso{
 \code{casteml download},

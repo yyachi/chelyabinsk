@@ -30,7 +30,7 @@
 #' pmlfiles <- lapply(stone, cbk.download.casteml.1)
 #'
 #' pmlfile <- cbk.download.casteml.1("20081202172326.hkitagawa")
-#' directAuth <- list(uri="dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
+#' directAuth <- list(uri="https://dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
 #' pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth)
 #' pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth,recursive=TRUE)
 #' pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth,Recursive=TRUE)
@@ -43,11 +43,11 @@ cbk.download.casteml.1 <- function(stone,file=NULL,force=FALSE,directAuth=NULL,R
   if(is.null(directAuth)){
     library(yaml)
     orochirc <- yaml.load_file("~/.orochirc")
-    url <- paste0("http://",orochirc$uri)
+    url <- orochirc$uri
     user <- orochirc$user
     password <- orochirc$password
   } else {
-    url <- paste0("http://",directAuth$uri)
+    url <- directAuth$uri
     user <- directAuth$user
     password <- directAuth$password
   }
@@ -81,7 +81,11 @@ cbk.download.casteml.1 <- function(stone,file=NULL,force=FALSE,directAuth=NULL,R
   if (force || !file.exists(file)) {
     ## if(directDownload){
       cat(file=stderr(),"cbk.download.casteml.1:83: url # =>",my_url,"\n")
-      req <- GET(my_url,authenticate(user,password,type="basic"))
+      if (is.null(user)) {
+        req <- GET(url = my_url)
+      } else {
+        req <- GET(url = my_url,authenticate(user,password,type="basic"))
+      }
       bin <- content(req, "raw")
       writeBin(bin, file)
     ## } else {

@@ -18,11 +18,12 @@
 #'   \url{https://github.com/misasa/casteml}, and
 #'   \code{\link{cbk.convert.casteml}}
 #' @examples
-#' pmlfile <- cbk.download.casteml("20160819165624-372633")
+#' directAuth <- list(uri="https://dream.misasa.okayama-u.ac.jp/pub/")
+#' pmlfile <- cbk.download.casteml("20160819165624-372633",directAuth=directAuth,force=TRUE)
 #' imagefile <- cbk.download.image(pmlfile)
 #'
-#' imagefile <- cbk.download.image("20160819165624-372633")
-cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
+#' imagefile <- cbk.download.image("20160819165624-372633",directAuth=directAuth,force=TRUE)
+cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE,directAuth=NULL,recursive=FALSE) {
   library(yaml)
   library(urltools)
   library(XML)
@@ -38,7 +39,7 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
       ##   pmlfile  <- cbk.download.casteml(c("-R", surface))
       ## } else {
       ## pmlfile <- cbk.download.casteml(c("-r", surface))
-      pmlfile <- cbk.download.casteml(surface,recursive=TRUE)
+      pmlfile <- cbk.download.casteml(surface,recursive=recursive,directAuth=directAuth,force=force)
       ## }
     }
     doc           <- xmlParse(pmlfile)
@@ -50,9 +51,13 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
     file_path     <- as.character(pmlame[1,"image_path"])
   }
   file_path     <- gsub("[\n[:blank:]*]", "", file_path)  # chomp and remove spaces
-  orochirc      <- yaml.load_file("~/.orochirc")
-  file_url      <- paste("http://",domain(orochirc$uri),file_path, sep="")
-
+  cat(file=stderr(),"cbk.download.image:54: file_path # =>", file_path ,"\n")
+  if (is.null(directAuth)){
+    orochirc      <- yaml.load_file("~/.orochirc")
+    file_url      <- paste(paste0(scheme(orochirc$uri),"://",domain(orochirc$uri)),file_path, sep="")
+  } else {
+    file_url <- paste(paste0(scheme(directAuth$uri),"://",domain(directAuth$uri)),file_path, sep="")
+  }
   if (is.null(outfile)) {
     file_basename <- strsplit(basename(file_path),'[.?]')[[1]][1]
     file_ext      <- strsplit(basename(file_path),'[.?]')[[1]][2]
@@ -60,6 +65,7 @@ cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE) {
     outfile       <- file.path(tempdir(),paste(digest::digest(basename(file_path),algo='md5'),file_ext,sep="."))
   }
   if (force || !file.exists(outfile)) {
+    cat(file=stderr(),"cbk.download.image:67: file_url # =>", file_url ,"\n")
     download.file(file_url, outfile)
   }
   return(outfile)
