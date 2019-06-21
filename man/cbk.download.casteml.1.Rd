@@ -43,7 +43,7 @@ stone <- c("20080616170000.hk","20080616170056.hk","20080616170054.hk")
 pmlfiles <- lapply(stone, cbk.download.casteml.1)
 
 pmlfile <- cbk.download.casteml.1("20081202172326.hkitagawa")
-directAuth <- list(uri="dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
+directAuth <- list(uri="https://dream.misasa.okayama-u.ac.jp/demo/",user='admin',password='admin')
 pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth)
 pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth,recursive=TRUE)
 pmlfile <- cbk.download.casteml.1("20110416134901-075-241",directAuth=directAuth,Recursive=TRUE)

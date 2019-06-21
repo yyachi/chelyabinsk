@@ -4,3 +4,4 @@ test_that("cbk.download.casteml(stone) should return path of pmlfile",{
   expect_true(file.exists(pmlfiles[[1]]))
   expect_true(file.exists(pmlfiles[[2]]))
 })
+
