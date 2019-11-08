@@ -11,7 +11,7 @@
 #' @param category Category specifier that is passed to \code{casteml
 #'   convert}.
 #' @param force Force read pmlfile with duplicated acquisitions
-#'   (default: FALSE).
+#'   (default: TRUE).
 #' @param opts List of further options for plot.
 #' @param verbose Output debug info (default: TRUE).
 #' @return A dataframe with unit organized.
@@ -25,7 +25,7 @@
 #' pmlame  <- cbk.read.casteml(pmlfile,tableunit="ppm",category="trace")
 #' stone   <- "20081202172326.hkitagawa"
 #' pmlame  <- cbk.read.casteml(stone,tableunit="ppm",category="trace",force=TRUE)
-cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL,force=FALSE,verbose=TRUE){
+cbk.read.casteml <- function(pmlfile_or_stone,opts=NULL,tableunit="none",category=NULL,force=TRUE,verbose=TRUE){
   opts_default <- list(Recursivep=FALSE)
   opts_default[intersect(names(opts_default),names(opts))] <- NULL  ## Reset shared options
   opts <- c(opts,opts_default)

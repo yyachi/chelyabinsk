@@ -14,7 +14,7 @@
 #'   \link{cbk.convector} (default: "none").
 #' @param verbose Output debug info (default: TRUE).
 #' @param force Force read csvfile with duplicated acquisitions
-#'   (default: FALSE).
+#'   (default: TRUE).
 #' @return A pmlame with unit organized.
 #' @seealso \code{\link{cbk.download.casteml}}, \code{casteml
 #'   convert}, \url{https://github.com/misasa/casteml}, and
@@ -36,7 +36,7 @@
 #' dflame.csv <- cbk.path("periodic-dflame0.csv")
 #' message(sprintf("The dflame.csv is located at |%s|.",dflame.csv))
 #' pmlame     <- cbk.read.dflame(dflame.csv)
-cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=FALSE){
+cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=TRUE){
 
   if (verbose) {
     cat(file=stderr(),"cbk.read.dflame:32: dflame.csv # =>",dflame.csv,"\n")
