@@ -1,8 +1,8 @@
 Package: chelyabinsk
 Type: Package
 Title: Express geochemical datasets
-Version: 1.0.6
-Date: 2018-07-27
+Version: 1.0.7
+Date: 2019-11-30
 Author: Tak Kunihiro
 Maintainer: Tak Kunihiro <tkk@misasa.okayama-u.ac.jp>
 Description: R package for geochemical datasets
