@@ -51,6 +51,7 @@ cbk.read.dflame <- function(dflame.csv,tableunit="none",verbose=TRUE,force=TRUE)
   qmlame <- read.csv(dflame.csv,row.names=1,header=T,stringsAsFactors=F,check.names=F)
   ## qmlame <- qmlame[unique(colnames(qmlame))]
 
+  colnames(qmlame)  <- gsub("-","_",colnames(qmlame))
   if (any(duplicated(colnames(qmlame)))){
     dupstone <- colnames(qmlame)[duplicated(colnames(qmlame))]
     if (force) {

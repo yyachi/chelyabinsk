@@ -1,5 +1,5 @@
 PACKAGENAME = $(shell basename `pwd`)
-VERSION = 1.0
+VERSION = 1.0.7
 TARGET = $(PACKAGENAME)_$(VERSION).tar.gz
 RFILE = $(wildcard R/*.R)
 RDOCFILE = $(wildcard man/*.Rd)

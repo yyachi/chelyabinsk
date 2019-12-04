@@ -20,7 +20,7 @@
 #' @examples
 #' directAuth <- list(uri="https://dream.misasa.okayama-u.ac.jp/pub/")
 #' pmlfile <- cbk.download.casteml("20160819165624-372633",directAuth=directAuth,force=TRUE)
-#' imagefile <- cbk.download.image(pmlfile)
+#' imagefile <- cbk.download.image(pmlfile,directAuth=directAuth)
 #'
 #' imagefile <- cbk.download.image("20160819165624-372633",directAuth=directAuth,force=TRUE)
 cbk.download.image <- function(pmlfile_or_surface,outfile=NULL,force=FALSE,directAuth=NULL,recursive=FALSE) {

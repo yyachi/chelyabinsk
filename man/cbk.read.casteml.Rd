@@ -5,7 +5,7 @@
 \title{Read CASTEML file and return a pmlame}
 \usage{
 cbk.read.casteml(pmlfile_or_stone, opts = NULL, tableunit = "none",
-  category = NULL, force = FALSE, verbose = TRUE)
+  category = NULL, force = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{pmlfile_or_stone}{A CASTEML file that exits locally or
@@ -20,7 +20,7 @@ cbk.convector() (default: "none").}
 convert}.}
 
 \item{force}{Force read pmlfile with duplicated acquisitions
-(default: FALSE).}
+(default: TRUE).}
 
 \item{verbose}{Output debug info (default: TRUE).}
 }

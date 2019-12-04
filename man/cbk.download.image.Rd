@@ -5,7 +5,7 @@
 \title{Download imagefile from a surface}
 \usage{
 cbk.download.image(pmlfile_or_surface, outfile = NULL, force = FALSE,
-  directAuth = NULL)
+  directAuth = NULL, recursive = FALSE)
 }
 \arguments{
 \item{pmlfile_or_surface}{Unique ID of surface. Really, surface can
@@ -30,7 +30,7 @@ Download imagefile from a surface. This function
 \examples{
 directAuth <- list(uri="https://dream.misasa.okayama-u.ac.jp/pub/")
 pmlfile <- cbk.download.casteml("20160819165624-372633",directAuth=directAuth,force=TRUE)
-imagefile <- cbk.download.image(pmlfile)
+imagefile <- cbk.download.image(pmlfile,directAuth=directAuth)
 
 imagefile <- cbk.download.image("20160819165624-372633",directAuth=directAuth,force=TRUE)
 }

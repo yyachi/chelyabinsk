@@ -5,7 +5,7 @@
 \title{Read csvfile created by casteml convert with column `unit'}
 \usage{
 cbk.read.dflame(dflame.csv, tableunit = "none", verbose = TRUE,
-  force = FALSE)
+  force = TRUE)
 }
 \arguments{
 \item{dflame.csv}{A csvfile with columns of stone and rows of
@@ -17,7 +17,7 @@ element.  abundances, with 2nd column `unit'.}
 \item{verbose}{Output debug info (default: TRUE).}
 
 \item{force}{Force read csvfile with duplicated acquisitions
-(default: FALSE).}
+(default: TRUE).}
 }
 \value{
 A pmlame with unit organized.
