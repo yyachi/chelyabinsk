@@ -63,6 +63,11 @@ cbk.plot.ree <- function(pmlfile_or_stone,opts=NULL,tableunit="none",reference="
     cat(file=stderr(),"cbk.plot.ree:55: chem <-",cbk.lame.dump(chem,show=F),"\n")
   }
 
+  if (length(chem) == 0) {
+    plot(1:100,0.01:100,type="n",xlab="",ylab="ZZ/CI",xaxt="n",log="y")
+    return(NA)
+  }
+
   ## Deal mean
   meanlame8  <- meanlame1[,chem,drop=FALSE]
   YY         <- t(meanlame8)
