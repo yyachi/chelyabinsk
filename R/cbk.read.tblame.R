@@ -58,10 +58,10 @@ cbk.read.tblame <- function(tblame,tableunit="none",verbose=TRUE){
 
   if ('unit' %in% rownames(pmlame0)) {
     unit_in <- pmlame0["unit",]
-    pmlame0 <- pmlame0[setdiff(rownames(pmlame0),, "unit")]
+    pmlame0 <- pmlame0[setdiff(rownames(pmlame0), "unit"),]
   }
   ## if (any(grepl("_error",unit_in)) && !('unit' %in% rownames(pmlame0))) {
-  if (any(!is.na(cbk.convector(unit_in)))) {
+  if (any(!is.na(cbk.convector(as.character(unit_in))))) {
     ## Create lookup-table
     datap           <- !grepl("_error$",isomeas_in)
     tblunit         <- unit_in[datap]
